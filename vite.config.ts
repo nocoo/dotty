@@ -6,7 +6,8 @@ import path from "path";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    port: 7017,
+    allowedHosts: ["basalt.dev.hexly.ai"],
     hmr: {
       overlay: false,
     },
