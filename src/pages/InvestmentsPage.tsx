@@ -11,17 +11,17 @@ export default function InvestmentsPage() {
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
         <div className="rounded-[14px] bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Portfolio Value</p>
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground font-[DM_Sans] tracking-tight">${totalValue.toLocaleString()}</h2>
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">${totalValue.toLocaleString()}</h2>
           <span className="text-xs font-medium text-success">+8.6% all time</span>
         </div>
         <div className="rounded-[14px] bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Today's Change</p>
-          <h2 className="text-xl md:text-2xl font-semibold text-success font-[DM_Sans] tracking-tight">+$342.50</h2>
+          <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight">+$342.50</h2>
           <span className="text-xs font-medium text-success">+0.34%</span>
         </div>
         <div className="rounded-[14px] bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Return</p>
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground font-[DM_Sans] tracking-tight">$8,600</h2>
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">$8,600</h2>
           <span className="text-xs font-medium text-success">+8.6%</span>
         </div>
       </div>

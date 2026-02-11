@@ -22,7 +22,7 @@ export function AccountOverviewCard() {
             <div key={acc.name} className="flex items-center justify-between">
               <span className="text-sm text-foreground">{acc.name}</span>
               <div className="text-right">
-                <span className="text-sm font-medium text-foreground font-[DM_Sans]">
+                <span className="text-sm font-medium text-foreground font-display">
                   ${acc.balance.toLocaleString()}
                 </span>
                 <span className="text-xs text-success ml-2">{acc.change}</span>

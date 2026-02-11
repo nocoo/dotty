@@ -19,7 +19,7 @@ export function SpendingTrendCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Spending Trend</CardTitle>
         </div>
         <div className="flex items-baseline gap-3">
-          <h2 className="text-3xl font-semibold text-foreground font-[DM_Sans] tracking-tight">$3,420</h2>
+          <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">$3,420</h2>
           <span className="text-xs font-medium text-destructive">-1.8%</span>
         </div>
       </CardHeader>

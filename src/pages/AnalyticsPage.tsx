@@ -9,7 +9,7 @@ export default function AnalyticsPage() {
         {analyticsStats.map((s) => (
           <div key={s.label} className="rounded-[14px] bg-secondary p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground mb-1">{s.label}</p>
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground font-[DM_Sans] tracking-tight">{s.value}</h3>
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">{s.value}</h3>
             <span className={`text-xs font-medium ${s.change.startsWith("+") ? "text-success" : s.change.startsWith("-") ? "text-destructive" : "text-muted-foreground"}`}>{s.change}</span>
           </div>
         ))}

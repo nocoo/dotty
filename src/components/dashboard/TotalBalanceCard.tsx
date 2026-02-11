@@ -16,9 +16,9 @@ export function TotalBalanceCard() {
       </CardHeader>
       <CardContent>
         <div className="rounded-[10px] border border-border p-4">
-          <h2 className="text-3xl font-semibold text-foreground font-[DM_Sans] tracking-tight">$8,800</h2>
+          <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">$8,800</h2>
           <div className="mt-1 flex items-center gap-2">
-            <span className="text-sm font-medium text-success font-[DM_Sans]">+3.1%</span>
+            <span className="text-sm font-medium text-success font-display">+3.1%</span>
             <span className="text-sm text-muted-foreground">vs last month</span>
           </div>
           <div className="mt-3 h-[50px]">

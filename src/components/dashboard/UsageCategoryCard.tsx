@@ -21,7 +21,7 @@ export function UsageCategoryCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Usage Category</CardTitle>
         </div>
         <div className="flex items-baseline gap-3">
-          <h2 className="text-3xl font-semibold text-foreground font-[DM_Sans] tracking-tight">$15,200</h2>
+          <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">$15,200</h2>
           <span className="text-sm text-muted-foreground">total transactions</span>
         </div>
       </CardHeader>
