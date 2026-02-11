@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { portfolio, performanceData } from "@/data/mock";
-import { CHART_COLORS, chartPositive, chartAxis } from "@/lib/palette";
+import { CHART_COLORS, CHART_TOKENS, chartPositive, chartAxis, withAlpha } from "@/lib/palette";
 
 export default function InvestmentsPage() {
   const totalValue = portfolio.reduce((a, b) => a + b.value, 0);
@@ -71,7 +71,7 @@ export default function InvestmentsPage() {
           {portfolio.map((item, i) => (
             <div key={item.name} className="flex items-center justify-between rounded-[10px] bg-card p-3">
               <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ background: `${CHART_COLORS[i]}20` }}>
+                <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ background: withAlpha(CHART_TOKENS[i], 0.12) }}>
                   {item.up ? <TrendingUp className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} /> : <TrendingDown className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} />}
                 </div>
                 <span className="text-sm text-foreground">{item.name}</span>

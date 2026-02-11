@@ -60,7 +60,7 @@
     --chart-5: 30 90% 55%;    /* Orange */
     --chart-6: 186 80% 45%;   /* Teal / Cyan */
     --chart-7: 45 93% 47%;    /* Amber */
-    --chart-8: 0 0% 45%;      /* Neutral gray */
+    --chart-8: 0 0% 25%;      /* Neutral gray */
 
     /* Chart utility tokens */
     --chart-axis: 0 0% 40%;
@@ -121,7 +121,7 @@
     --chart-5: 30 90% 60%;
     --chart-6: 186 80% 50%;
     --chart-7: 45 93% 52%;
-    --chart-8: 0 0% 55%;
+    --chart-8: 0 0% 65%;
 
     /* Chart utility tokens */
     --chart-axis: 0 0% 50%;

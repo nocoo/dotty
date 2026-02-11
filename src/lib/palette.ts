@@ -5,6 +5,12 @@
 /** Helper — wraps a CSS custom property name for inline style usage. */
 const v = (token: string) => `hsl(var(--${token}))`;
 
+/**
+ * Returns a CSS color string with alpha from a CSS custom property.
+ * Usage: `withAlpha("chart-1", 0.12)` → `hsl(var(--chart-1) / 0.12)`
+ */
+export const withAlpha = (token: string, alpha: number) =>
+  `hsl(var(--${token}) / ${alpha})`;
 // ── Sequential chart colors (1-indexed for readability) ──
 
 export const chart = {
@@ -28,6 +34,12 @@ export const CHART_COLORS = [
   chart.teal,
   chart.amber,
   chart.gray,
+] as const;
+
+/** CSS variable names (without --) matching CHART_COLORS order — for withAlpha(). */
+export const CHART_TOKENS = [
+  "chart-1", "chart-2", "chart-3", "chart-4",
+  "chart-5", "chart-6", "chart-7", "chart-8",
 ] as const;
 
 // ── Semantic aliases ──
