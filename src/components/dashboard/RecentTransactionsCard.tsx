@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowDownLeft } from "lucide-react";
+import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const transactions = [
@@ -14,7 +14,10 @@ export function RecentTransactionsCard() {
     <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-sm font-normal text-muted-foreground">Recent Transactions</CardTitle>
+          <div className="flex items-center gap-2">
+            <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+            <CardTitle className="text-sm font-normal text-muted-foreground">Recent Transactions</CardTitle>
+          </div>
           <span className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">View All</span>
         </div>
       </CardHeader>

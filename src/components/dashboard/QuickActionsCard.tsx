@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowDownLeft, CreditCard, PiggyBank } from "lucide-react";
+import { ArrowUpRight, ArrowDownLeft, CreditCard, PiggyBank, Zap } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const actions = [
@@ -12,7 +12,10 @@ export function QuickActionsCard() {
   return (
     <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
       <CardHeader>
-        <CardTitle className="text-sm font-normal text-muted-foreground">Quick Actions</CardTitle>
+        <div className="flex items-center gap-2">
+          <Zap className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <CardTitle className="text-sm font-normal text-muted-foreground">Quick Actions</CardTitle>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-2">

@@ -13,7 +13,7 @@ export function TotalBalanceCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Total Balance</CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="pb-0">
+      <CardContent>
         <div className="rounded-[10px] border border-border p-4">
           <h2 className="text-3xl font-semibold text-foreground font-[Space_Grotesk]">$8,800</h2>
           <div className="mt-1 flex items-center gap-2">
