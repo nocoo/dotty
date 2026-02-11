@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   LayoutDashboard, Wallet, CreditCard, ArrowLeftRight,
   PiggyBank, Target, BarChart3, TrendingUp,
@@ -14,6 +14,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Tooltip, TooltipContent, TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  CommandDialog, CommandEmpty, CommandGroup,
+  CommandInput, CommandItem, CommandList,
+} from "@/components/ui/command";
 
 // ── Navigation data model ──
 
@@ -148,6 +152,28 @@ interface AppSidebarProps {
 
 export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // ⌘K / Ctrl+K shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const handleSelect = useCallback(
+    (path: string) => {
+      setSearchOpen(false);
+      navigate(path);
+    },
+    [navigate],
+  );
 
   return (
     <aside
@@ -165,10 +191,24 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
           <button
             onClick={onToggle}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-1"
           >
             <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
           </button>
+
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
+              >
+                <Search className="h-4 w-4" strokeWidth={1.5} />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="right" sideOffset={8}>
+              Search (⌘K)
+            </TooltipContent>
+          </Tooltip>
 
           <nav className="flex-1 flex flex-col items-center gap-1 overflow-y-auto pt-1">
             {ALL_NAV_ITEMS.map((item) => (
@@ -207,10 +247,16 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           </div>
 
           <div className="px-4 pb-1">
-            <div className="flex items-center gap-3 rounded-lg bg-secondary px-3 py-2.5">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="flex w-full items-center gap-3 rounded-lg bg-secondary px-3 py-2.5 transition-colors hover:bg-accent cursor-pointer"
+            >
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-              <span className="text-sm text-muted-foreground">Search</span>
-            </div>
+              <span className="flex-1 text-left text-sm text-muted-foreground">Search</span>
+              <kbd className="pointer-events-none hidden rounded border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
+                ⌘K
+              </kbd>
+            </button>
           </div>
 
           <nav className="flex-1 overflow-y-auto pt-1">
@@ -236,6 +282,29 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           </div>
         </div>
       )}
+
+      {/* Search command palette */}
+      <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
+        <CommandInput placeholder="Search pages..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          {NAV_GROUPS.map((group) => (
+            <CommandGroup key={group.label} heading={group.label}>
+              {group.items.map((item) => (
+                <CommandItem
+                  key={item.path}
+                  value={item.title}
+                  onSelect={() => handleSelect(item.path)}
+                  className="gap-3 cursor-pointer"
+                >
+                  <item.icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+                  <span>{item.title}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          ))}
+        </CommandList>
+      </CommandDialog>
     </aside>
   );
 }
