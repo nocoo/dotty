@@ -19,6 +19,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/investments": "Investments",
   "/help": "Help Center",
   "/settings": "Settings",
+  "/palette": "Color Palette",
 };
 
 export function DashboardLayout() {

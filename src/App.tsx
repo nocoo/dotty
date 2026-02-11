@@ -14,6 +14,7 @@ import CashFlowPage from "./pages/CashFlowPage";
 import InvestmentsPage from "./pages/InvestmentsPage";
 import HelpPage from "./pages/HelpPage";
 import SettingsPage from "./pages/SettingsPage";
+import PalettePage from "./pages/PalettePage";
 import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/investments" element={<InvestmentsPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/palette" element={<PalettePage />} />
         </Route>
         {/* Standalone pages (no sidebar) */}
         <Route path="/login" element={<LoginPage />} />

@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Wallet, CreditCard, ArrowLeftRight,
   PiggyBank, Target, BarChart3, TrendingUp,
   LineChart, HelpCircle, Settings, Search, ChevronUp,
-  PanelLeft, LogOut, Mountain,
+  PanelLeft, LogOut, Mountain, Palette,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -61,6 +61,7 @@ const NAV_GROUPS: NavGroup[] = [
     defaultOpen: true,
     items: [
       { title: "Help Center", icon: HelpCircle, path: "/help" },
+      { title: "Color Palette", icon: Palette, path: "/palette" },
       { title: "Settings", icon: Settings, path: "/settings" },
     ],
   },
