@@ -13,7 +13,7 @@ export function IncomeCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Income</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pb-0">
         <div className="rounded-[10px] border border-border p-4">
           <h2 className="text-3xl font-semibold text-foreground font-[Space_Grotesk]">$4,500</h2>
           <div className="mt-1 flex items-center gap-2">
