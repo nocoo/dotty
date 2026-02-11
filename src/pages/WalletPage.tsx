@@ -11,7 +11,7 @@ export default function WalletPage() {
               <WalletIcon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="text-sm text-muted-foreground">{acc.name}</span>
             </div>
-            <h2 className="text-2xl font-semibold text-foreground">${acc.balance.toLocaleString()}</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground font-[DM_Sans] tracking-tight">${acc.balance.toLocaleString()}</h2>
             <span className="text-xs font-medium text-success mt-1 inline-block">{acc.change}</span>
           </div>
         ))}
