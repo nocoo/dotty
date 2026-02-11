@@ -2,11 +2,11 @@ import { useState } from "react";
 import {
   LayoutDashboard, Wallet, CreditCard, ArrowLeftRight,
   PiggyBank, Target, BarChart3, TrendingUp,
-  LineChart, HelpCircle, Search, ChevronUp,
+  LineChart, HelpCircle, Settings, Search, ChevronUp,
   Sparkles, PanelLeft, LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Collapsible, CollapsibleContent, CollapsibleTrigger,
 } from "@/components/ui/collapsible";
@@ -15,52 +15,78 @@ import {
   Tooltip, TooltipContent, TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+// ── Navigation data model ──
+
 interface NavItem {
   title: string;
   icon: React.ElementType;
-  badge?: number;
   path: string;
+  badge?: number;
 }
 
-const mainMenuItems: NavItem[] = [
-  { title: "Dashboard", icon: LayoutDashboard, path: "/" },
-  { title: "Wallet", icon: Wallet, path: "/wallet" },
-  { title: "Cards", icon: CreditCard, path: "/cards" },
-  { title: "Transactions", icon: ArrowLeftRight, path: "/transactions", badge: 6 },
-  { title: "Budget", icon: PiggyBank, path: "/budget" },
-  { title: "Goals", icon: Target, path: "/goals" },
+interface NavGroup {
+  label: string;
+  items: NavItem[];
+  defaultOpen?: boolean;
+}
+
+const NAV_GROUPS: NavGroup[] = [
+  {
+    label: "Main Menu",
+    defaultOpen: true,
+    items: [
+      { title: "Dashboard", icon: LayoutDashboard, path: "/" },
+      { title: "Wallet", icon: Wallet, path: "/wallet" },
+      { title: "Cards", icon: CreditCard, path: "/cards" },
+      { title: "Transactions", icon: ArrowLeftRight, path: "/transactions", badge: 6 },
+      { title: "Budget", icon: PiggyBank, path: "/budget" },
+      { title: "Goals", icon: Target, path: "/goals" },
+    ],
+  },
+  {
+    label: "Analytics",
+    defaultOpen: true,
+    items: [
+      { title: "Analytics", icon: BarChart3, path: "/analytics" },
+      { title: "Cash Flow", icon: TrendingUp, path: "/cash-flow", badge: 2 },
+      { title: "Investments", icon: LineChart, path: "/investments" },
+    ],
+  },
+  {
+    label: "Others",
+    defaultOpen: true,
+    items: [
+      { title: "Help Center", icon: HelpCircle, path: "/help" },
+      { title: "Settings", icon: Settings, path: "/settings" },
+    ],
+  },
 ];
 
-const analyticsItems: NavItem[] = [
-  { title: "Analytics", icon: BarChart3, path: "/analytics" },
-  { title: "Cash Flow", icon: TrendingUp, path: "/cash-flow", badge: 2 },
-  { title: "Investments", icon: LineChart, path: "/investments" },
-];
+const ALL_NAV_ITEMS = NAV_GROUPS.flatMap((g) => g.items);
 
-const otherItems: NavItem[] = [
-  { title: "Help Center", icon: HelpCircle, path: "/help" },
-];
+// ── Sub-components ──
 
-/* ── Expanded nav group with collapsible sections ── */
-function NavGroup({
-  label, items, defaultOpen = true, currentPath,
-}: {
-  label: string; items: NavItem[]; defaultOpen?: boolean; currentPath: string;
-}) {
-  const [open, setOpen] = useState(defaultOpen);
+function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath: string }) {
+  const [open, setOpen] = useState(group.defaultOpen ?? true);
   const navigate = useNavigate();
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger className="flex w-full items-center justify-between px-5 py-2.5 mt-2">
-        <span className="text-sm font-normal text-muted-foreground">{label}</span>
-        <ChevronUp className={cn("h-4 w-4 text-muted-foreground transition-transform duration-200", !open && "rotate-180")} strokeWidth={1.5} />
+        <span className="text-sm font-normal text-muted-foreground">{group.label}</span>
+        <ChevronUp
+          className={cn(
+            "h-4 w-4 text-muted-foreground transition-transform duration-200",
+            !open && "rotate-180"
+          )}
+          strokeWidth={1.5}
+        />
       </CollapsibleTrigger>
       <CollapsibleContent>
         <div className="flex flex-col gap-0.5 px-3">
-          {items.map((item) => (
+          {group.items.map((item) => (
             <button
-              key={item.title}
+              key={item.path}
               onClick={() => navigate(item.path)}
               className={cn(
                 "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-normal transition-colors",
@@ -84,7 +110,6 @@ function NavGroup({
   );
 }
 
-/* ── Collapsed icon-only nav item ── */
 function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: string }) {
   const navigate = useNavigate();
   return (
@@ -114,9 +139,16 @@ function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: s
   );
 }
 
-const allNavItems = [...mainMenuItems, ...analyticsItems, ...otherItems];
+// ── Main sidebar component ──
 
-export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: boolean; onToggle: () => void; currentPath: string }) {
+interface AppSidebarProps {
+  collapsed: boolean;
+  onToggle: () => void;
+}
+
+export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
+  const { pathname } = useLocation();
+
   return (
     <aside
       className={cn(
@@ -124,15 +156,13 @@ export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: bo
         collapsed ? "w-[68px]" : "w-[260px]"
       )}
     >
-      {/* ── Collapsed (icon-only) view ── */}
-      {collapsed && (
+      {collapsed ? (
+        /* ── Collapsed (icon-only) view ── */
         <div className="flex h-screen w-[68px] flex-col items-center">
-          {/* Logo */}
           <div className="flex h-14 items-center justify-center">
             <Sparkles className="h-5 w-5 text-primary" strokeWidth={1.5} />
           </div>
 
-          {/* Expand button */}
           <button
             onClick={onToggle}
             className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
@@ -140,14 +170,12 @@ export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: bo
             <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
           </button>
 
-          {/* Nav icons */}
           <nav className="flex-1 flex flex-col items-center gap-1 overflow-y-auto pt-1">
-            {allNavItems.map((item) => (
-              <CollapsedNavItem key={item.title} item={item} currentPath={currentPath} />
+            {ALL_NAV_ITEMS.map((item) => (
+              <CollapsedNavItem key={item.path} item={item} currentPath={pathname} />
             ))}
           </nav>
 
-          {/* User avatar */}
           <div className="py-3 flex justify-center w-full">
             <Tooltip delayDuration={0}>
               <TooltipTrigger asChild>
@@ -162,33 +190,35 @@ export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: bo
             </Tooltip>
           </div>
         </div>
-      )}
-
-      {/* ── Expanded view ── */}
-      {!collapsed && (
+      ) : (
+        /* ── Expanded view ── */
         <div className="flex h-screen w-[260px] flex-col">
           <div className="flex h-14 items-center justify-between px-5">
             <div className="flex items-center gap-3">
               <Sparkles className="h-5 w-5 text-primary" strokeWidth={1.5} />
               <span className="text-lg font-semibold text-foreground">Acme Inc.</span>
             </div>
-            <button onClick={onToggle} className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors">
+            <button
+              onClick={onToggle}
+              className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors"
+            >
               <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
             </button>
           </div>
+
           <div className="px-4 pb-1">
             <div className="flex items-center gap-3 rounded-lg bg-secondary px-3 py-2.5">
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="text-sm text-muted-foreground">Search</span>
             </div>
           </div>
+
           <nav className="flex-1 overflow-y-auto pt-1">
-            <NavGroup label="Main Menu" items={mainMenuItems} currentPath={currentPath} />
-            <NavGroup label="Analytics" items={analyticsItems} currentPath={currentPath} />
-            <NavGroup label="Others" items={otherItems} currentPath={currentPath} />
+            {NAV_GROUPS.map((group) => (
+              <NavGroupSection key={group.label} group={group} currentPath={pathname} />
+            ))}
           </nav>
 
-          {/* User profile */}
           <div className="px-4 py-3">
             <div className="flex items-center gap-3">
               <Avatar className="h-9 w-9 shrink-0">

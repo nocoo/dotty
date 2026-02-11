@@ -1,27 +1,38 @@
 import { useState, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function DashboardLayout({
-  children,
-  title,
-  currentPath,
-}: {
-  children: React.ReactNode;
-  title: string;
-  currentPath: string;
-}) {
+// Map route paths to page titles
+const PAGE_TITLES: Record<string, string> = {
+  "/": "Dashboard",
+  "/wallet": "Wallet",
+  "/cards": "Cards",
+  "/transactions": "Transactions",
+  "/budget": "Budget",
+  "/goals": "Goals",
+  "/analytics": "Analytics",
+  "/cash-flow": "Cash Flow",
+  "/investments": "Investments",
+  "/help": "Help Center",
+  "/settings": "Settings",
+};
+
+export function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const isMobile = useIsMobile();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  const title = PAGE_TITLES[location.pathname] ?? "Dashboard";
 
   // Close mobile sidebar on route change
   useEffect(() => {
     setMobileOpen(false);
-  }, [currentPath]);
+  }, [location.pathname]);
 
   // Prevent body scroll when mobile sidebar is open
   useEffect(() => {
@@ -30,7 +41,9 @@ export function DashboardLayout({
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
@@ -40,7 +53,6 @@ export function DashboardLayout({
         <AppSidebar
           collapsed={collapsed}
           onToggle={() => setCollapsed(!collapsed)}
-          currentPath={currentPath}
         />
       )}
 
@@ -52,11 +64,7 @@ export function DashboardLayout({
             onClick={() => setMobileOpen(false)}
           />
           <div className="fixed inset-y-0 left-0 z-50 w-[260px]">
-            <AppSidebar
-              collapsed={false}
-              onToggle={() => setMobileOpen(false)}
-              currentPath={currentPath}
-            />
+            <AppSidebar collapsed={false} onToggle={() => setMobileOpen(false)} />
           </div>
         </>
       )}
@@ -78,7 +86,7 @@ export function DashboardLayout({
         </header>
         <div className={cn("flex-1 px-2 pb-2 md:px-3 md:pb-3")}>
           <div className="h-full rounded-[16px] md:rounded-[20px] bg-card p-3 md:p-5 overflow-y-auto">
-            {children}
+            <Outlet />
           </div>
         </div>
       </main>

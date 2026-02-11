@@ -1,22 +1,9 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
 import { ArrowUpRight, ArrowDownLeft, Filter } from "lucide-react";
-
-const transactions = [
-  { id: 1, name: "Netflix Subscription", category: "Entertainment", amount: -15.99, date: "Feb 11, 2026", status: "Completed" },
-  { id: 2, name: "Salary Deposit", category: "Income", amount: 5200.00, date: "Feb 10, 2026", status: "Completed" },
-  { id: 3, name: "Grocery Store", category: "Food", amount: -82.40, date: "Feb 10, 2026", status: "Completed" },
-  { id: 4, name: "Freelance Payment", category: "Income", amount: 1200.00, date: "Feb 8, 2026", status: "Completed" },
-  { id: 5, name: "Electric Bill", category: "Utilities", amount: -145.00, date: "Feb 7, 2026", status: "Completed" },
-  { id: 6, name: "Restaurant", category: "Food", amount: -56.80, date: "Feb 6, 2026", status: "Completed" },
-  { id: 7, name: "Gas Station", category: "Transport", amount: -42.00, date: "Feb 5, 2026", status: "Pending" },
-  { id: 8, name: "Online Transfer", category: "Transfer", amount: -300.00, date: "Feb 4, 2026", status: "Completed" },
-  { id: 9, name: "Gym Membership", category: "Health", amount: -49.99, date: "Feb 3, 2026", status: "Completed" },
-  { id: 10, name: "Dividend Income", category: "Income", amount: 85.50, date: "Feb 2, 2026", status: "Completed" },
-];
+import { transactions } from "@/data/mock";
 
 export default function TransactionsPage() {
   return (
-    <DashboardLayout title="Transactions" currentPath="/transactions">
+    <>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">{transactions.length} transactions</span>
         <button className="flex items-center gap-2 rounded-[10px] bg-secondary px-3 py-2 text-sm text-muted-foreground hover:text-foreground">
@@ -75,6 +62,6 @@ export default function TransactionsPage() {
           </div>
         ))}
       </div>
-    </DashboardLayout>
+    </>
   );
 }

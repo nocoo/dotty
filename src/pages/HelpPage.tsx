@@ -1,12 +1,5 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
 import { HelpCircle, Book, MessageCircle, FileText, ChevronRight } from "lucide-react";
-
-const faqs = [
-  { q: "How do I add a new bank account?", a: "Go to Wallet → Add Money → Link Bank Account." },
-  { q: "How are budget limits calculated?", a: "Budget limits are set monthly and reset on the 1st." },
-  { q: "Can I export my transactions?", a: "Yes, go to Transactions → Filter → Export CSV." },
-  { q: "How do I change my notification settings?", a: "Settings → Notifications → Toggle preferences." },
-];
+import { faqs } from "@/data/mock";
 
 const resources = [
   { icon: Book, title: "Getting Started Guide", desc: "Learn the basics of managing your finances" },
@@ -16,7 +9,7 @@ const resources = [
 
 export default function HelpPage() {
   return (
-    <DashboardLayout title="Help Center" currentPath="/help">
+    <>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {resources.map((r) => (
           <div key={r.title} className="rounded-[14px] bg-secondary p-5 cursor-pointer hover:bg-accent transition-colors">
@@ -44,6 +37,6 @@ export default function HelpPage() {
           ))}
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

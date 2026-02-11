@@ -1,22 +1,9 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
 import { Wallet as WalletIcon, ArrowUpRight, ArrowDownLeft, Plus } from "lucide-react";
-
-const accounts = [
-  { name: "Main Account", balance: 12450.80, currency: "USD", change: "+2.4%" },
-  { name: "Savings", balance: 8200.00, currency: "USD", change: "+5.1%" },
-  { name: "Investment", balance: 23100.50, currency: "USD", change: "+8.7%" },
-];
-
-const recentActivity = [
-  { desc: "Transfer to Savings", amount: -500, date: "Today" },
-  { desc: "Received from John", amount: 250, date: "Yesterday" },
-  { desc: "ATM Withdrawal", amount: -200, date: "Feb 9" },
-  { desc: "Refund - Amazon", amount: 45.99, date: "Feb 8" },
-];
+import { accounts, walletActivity } from "@/data/mock";
 
 export default function WalletPage() {
   return (
-    <DashboardLayout title="Wallet" currentPath="/wallet">
+    <>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {accounts.map((acc) => (
           <div key={acc.name} className="rounded-[14px] bg-secondary p-5">
@@ -42,7 +29,7 @@ export default function WalletPage() {
       <div className="mt-4 rounded-[14px] bg-secondary p-5">
         <p className="text-sm text-muted-foreground mb-4">Recent Activity</p>
         <div className="flex flex-col gap-3">
-          {recentActivity.map((item, i) => (
+          {walletActivity.map((item, i) => (
             <div key={i} className="flex items-center justify-between py-1">
               <div className="flex items-center gap-3">
                 <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${item.amount > 0 ? "bg-success/10" : "bg-destructive/10"}`}>
@@ -60,6 +47,6 @@ export default function WalletPage() {
           ))}
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

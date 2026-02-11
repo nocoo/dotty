@@ -1,12 +1,5 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, BarChart, Bar } from "recharts";
-
-const monthlyFlow = [
-  { month: "Jul", inflow: 6200, outflow: 4800 }, { month: "Aug", inflow: 5800, outflow: 5200 },
-  { month: "Sep", inflow: 7100, outflow: 4900 }, { month: "Oct", inflow: 6500, outflow: 5500 },
-  { month: "Nov", inflow: 8200, outflow: 6100 }, { month: "Dec", inflow: 7400, outflow: 5800 },
-  { month: "Jan", inflow: 6800, outflow: 5300 }, { month: "Feb", inflow: 7900, outflow: 5100 },
-];
+import { monthlyFlow } from "@/data/mock";
 
 const netFlow = monthlyFlow.map((m) => ({ ...m, net: m.inflow - m.outflow }));
 
@@ -15,7 +8,7 @@ export default function CashFlowPage() {
   const totalOut = monthlyFlow.reduce((a, b) => a + b.outflow, 0);
 
   return (
-    <DashboardLayout title="Cash Flow" currentPath="/cash-flow">
+    <>
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
         <div className="rounded-[14px] bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Inflow</p>
@@ -61,6 +54,6 @@ export default function CashFlowPage() {
           </ResponsiveContainer>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

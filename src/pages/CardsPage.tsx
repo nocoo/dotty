@@ -1,20 +1,14 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
 import { CreditCard, Wifi, Eye, EyeOff, Lock } from "lucide-react";
 import { useState } from "react";
-
-const cards = [
-  { name: "Visa Platinum", number: "4532 •••• •••• 7890", balance: 3250.00, limit: 10000, color: "from-blue-600 to-blue-800" },
-  { name: "Mastercard Gold", number: "5412 •••• •••• 3456", balance: 1820.50, limit: 5000, color: "from-purple-600 to-purple-800" },
-  { name: "Amex Business", number: "3742 •••• •••• 1234", balance: 8400.00, limit: 25000, color: "from-emerald-600 to-emerald-800" },
-];
+import { creditCards } from "@/data/mock";
 
 export default function CardsPage() {
   const [showBalance, setShowBalance] = useState(true);
 
   return (
-    <DashboardLayout title="Cards" currentPath="/cards">
+    <>
       <div className="flex items-center justify-between mb-4">
-        <span className="text-sm text-muted-foreground">{cards.length} cards active</span>
+        <span className="text-sm text-muted-foreground">{creditCards.length} cards active</span>
         <button onClick={() => setShowBalance(!showBalance)} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           {showBalance ? <Eye className="h-4 w-4" strokeWidth={1.5} /> : <EyeOff className="h-4 w-4" strokeWidth={1.5} />}
           {showBalance ? "Hide" : "Show"} balances
@@ -22,7 +16,7 @@ export default function CardsPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        {cards.map((card) => (
+        {creditCards.map((card) => (
           <div key={card.name} className={`rounded-[14px] bg-gradient-to-br ${card.color} p-5 text-white relative overflow-hidden`}>
             <div className="absolute top-4 right-4 opacity-20">
               <Wifi className="h-6 w-6 rotate-90" />
@@ -32,7 +26,7 @@ export default function CardsPage() {
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-[10px] opacity-60 uppercase">Balance</p>
-                <p className="text-lg font-semibold">{showBalance ? `$${card.balance.toLocaleString()}` : "••••••"}</p>
+                <p className="text-lg font-semibold">{showBalance ? `$${card.balance.toLocaleString()}` : "------"}</p>
               </div>
               <CreditCard className="h-8 w-8 opacity-40" strokeWidth={1} />
             </div>
@@ -60,6 +54,6 @@ export default function CardsPage() {
           ))}
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }
