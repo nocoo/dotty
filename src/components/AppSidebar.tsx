@@ -48,30 +48,13 @@ const otherItems: NavItem[] = [
   { title: "Help Center", icon: HelpCircle },
 ];
 
-function NavGroup({
-  label,
-  items,
-  defaultOpen = true,
-}: {
-  label: string;
-  items: NavItem[];
-  defaultOpen?: boolean;
-}) {
+function NavGroup({ label, items, defaultOpen = true }: { label: string; items: NavItem[]; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
-
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger className="flex w-full items-center justify-between px-5 py-2.5 mt-2">
-        <span className="text-sm font-normal text-muted-foreground">
-          {label}
-        </span>
-        <ChevronUp
-          className={cn(
-            "h-4 w-4 text-muted-foreground transition-transform duration-200",
-            !open && "rotate-180"
-          )}
-          strokeWidth={1.5}
-        />
+        <span className="text-sm font-normal text-muted-foreground">{label}</span>
+        <ChevronUp className={cn("h-4 w-4 text-muted-foreground transition-transform duration-200", !open && "rotate-180")} strokeWidth={1.5} />
       </CollapsibleTrigger>
       <CollapsibleContent>
         <div className="flex flex-col gap-0.5 px-3">
@@ -80,9 +63,7 @@ function NavGroup({
               key={item.title}
               className={cn(
                 "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-normal transition-colors",
-                item.active
-                  ? "bg-accent text-foreground font-medium"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                item.active ? "bg-accent text-foreground font-medium" : "text-muted-foreground hover:bg-accent hover:text-foreground"
               )}
             >
               <item.icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
@@ -100,34 +81,43 @@ function NavGroup({
   );
 }
 
-export function AppSidebar() {
+export function AppSidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
   return (
-    <aside className="flex h-screen w-[260px] shrink-0 flex-col bg-background">
-      {/* Logo + Toggle */}
-      <div className="flex items-center justify-between px-5 py-5">
-        <div className="flex items-center gap-3">
-          <Sparkles className="h-5 w-5 text-primary" strokeWidth={1.5} />
-          <span className="text-lg font-semibold text-foreground">Acme Inc.</span>
+    <aside
+      className={cn(
+        "flex h-screen shrink-0 flex-col bg-background transition-all duration-300 ease-in-out overflow-hidden",
+        collapsed ? "w-0" : "w-[260px]"
+      )}
+    >
+      <div className="w-[260px]">
+        {/* Logo row — h-14 matches header */}
+        <div className="flex h-14 items-center justify-between px-5">
+          <div className="flex items-center gap-3">
+            <Sparkles className="h-5 w-5 text-primary" strokeWidth={1.5} />
+            <span className="text-lg font-semibold text-foreground">Acme Inc.</span>
+          </div>
+          <button
+            onClick={onToggle}
+            className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
+          </button>
         </div>
-        <button className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors">
-          <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
-        </button>
-      </div>
 
-      {/* Search — no border, bg contrast only */}
-      <div className="px-4 pb-1">
-        <div className="flex items-center gap-3 rounded-lg bg-secondary px-3 py-2.5">
-          <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <span className="text-sm text-muted-foreground">Search</span>
+        {/* Search */}
+        <div className="px-4 pb-1">
+          <div className="flex items-center gap-3 rounded-lg bg-secondary px-3 py-2.5">
+            <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+            <span className="text-sm text-muted-foreground">Search</span>
+          </div>
         </div>
-      </div>
 
-      {/* Nav Groups */}
-      <nav className="flex-1 overflow-y-auto pt-1">
-        <NavGroup label="Main Menu" items={mainMenuItems} />
-        <NavGroup label="Analytics" items={analyticsItems} />
-        <NavGroup label="Others" items={otherItems} />
-      </nav>
+        <nav className="flex-1 overflow-y-auto pt-1">
+          <NavGroup label="Main Menu" items={mainMenuItems} />
+          <NavGroup label="Analytics" items={analyticsItems} />
+          <NavGroup label="Others" items={otherItems} />
+        </nav>
+      </div>
     </aside>
   );
 }

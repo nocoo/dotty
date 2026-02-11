@@ -4,53 +4,53 @@
 
 @layer base {
   :root {
-    --background: 0 0% 10%;
+    /* L0: deepest background (body) */
+    --background: 0 0% 11%;
     --foreground: 0 0% 93%;
 
-    --card: 0 0% 13%;
+    /* L1: content area panel */
+    --card: 0 0% 14%;
     --card-foreground: 0 0% 93%;
 
-    --popover: 0 0% 13%;
+    /* L2: inner cards / elevated surfaces */
+    --secondary: 0 0% 17%;
+    --secondary-foreground: 0 0% 93%;
+
+    --popover: 0 0% 14%;
     --popover-foreground: 0 0% 93%;
 
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 16%;
-    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 0 0% 48%;
 
-    --muted: 0 0% 16%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 0 0% 18%;
+    /* active sidebar item bg */
+    --accent: 0 0% 17%;
     --accent-foreground: 0 0% 93%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 14%;
+    --border: 0 0% 19%;
+    --input: 0 0% 15%;
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 10%;
+    --sidebar-background: 0 0% 11%;
     --sidebar-foreground: 0 0% 93%;
     --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent: 0 0% 17%;
     --sidebar-accent-foreground: 0 0% 93%;
-    --sidebar-border: 0 0% 18%;
+    --sidebar-border: 0 0% 19%;
     --sidebar-ring: 217 91% 60%;
 
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
     --badge-red: 340 82% 55%;
     --badge-red-foreground: 0 0% 100%;
-    --chart-blue: 217 91% 60%;
-    --chart-cyan: 186 80% 50%;
-    --chart-purple: 270 70% 60%;
-    --chart-gray: 0 0% 25%;
   }
 }
 
@@ -58,7 +58,6 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
