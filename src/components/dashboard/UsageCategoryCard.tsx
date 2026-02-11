@@ -26,7 +26,7 @@ const formatYAxis = (value: number) => `${value / 1000}k`;
 
 export function UsageCategoryCard() {
   return (
-    <div className="flex flex-col rounded-2xl border border-border bg-card p-5">
+    <div className="flex flex-col rounded-2xl bg-secondary p-5">
       <div className="flex items-center gap-2 mb-1">
         <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <span className="text-sm font-normal text-muted-foreground">Usage Category</span>

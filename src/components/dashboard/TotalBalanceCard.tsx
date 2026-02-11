@@ -5,7 +5,7 @@ const data = Array.from({ length: 24 }, (_, i) => ({ value: 3000 + Math.random()
 
 export function TotalBalanceCard() {
   return (
-    <div className="flex flex-col rounded-2xl border border-border bg-card p-5">
+    <div className="flex flex-col rounded-2xl bg-secondary p-5">
       <div className="flex items-center gap-2 mb-4">
         <Globe className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <span className="text-sm font-normal text-muted-foreground">Total Balance</span>
