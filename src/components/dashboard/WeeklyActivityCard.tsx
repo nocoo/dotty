@@ -15,7 +15,7 @@ const data = [
 
 export function WeeklyActivityCard() {
   return (
-    <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-[14px] border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

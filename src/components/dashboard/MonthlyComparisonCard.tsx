@@ -14,7 +14,7 @@ const data = [
 
 export function MonthlyComparisonCard() {
   return (
-    <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-[14px] border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -27,7 +27,7 @@ export function MonthlyComparisonCard() {
               <span className="text-xs text-muted-foreground">Income</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-2 w-2 rounded-full" style={{ background: chart.rose }} />
+              <div className="h-2 w-2 rounded-full" style={{ background: chart.pink }} />
               <span className="text-xs text-muted-foreground">Expense</span>
             </div>
           </div>
@@ -41,7 +41,7 @@ export function MonthlyComparisonCard() {
               <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} tickFormatter={(v: number) => `${v / 1000}k`} />
               <Bar dataKey="income" fill={chart.green} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="expense" fill={chart.rose} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="expense" fill={chart.pink} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

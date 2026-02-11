@@ -29,12 +29,12 @@ export default function Index() {
         <ExpenseBreakdownCard />
       </div>
 
-      {/* Row 3: wide area chart + radial cards */}
+      {/* Row 3: wide area chart + 2 radial cards */}
       <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <WeeklyActivityCard />
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+        <div className="flex flex-col gap-4">
           <SavingsGoalCard />
           <CreditScoreCard />
         </div>
