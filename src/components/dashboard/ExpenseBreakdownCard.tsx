@@ -20,17 +20,19 @@ export function ExpenseBreakdownCard() {
         </div>
       </CardHeader>
       <CardContent className="flex flex-col">
-        <div className="flex flex-1 flex-col items-center">
-          <div className="h-[120px] w-[120px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={data} cx="50%" cy="50%" innerRadius={35} outerRadius={55} dataKey="value" strokeWidth={0}>
-                  {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
+        <div className="flex flex-1 flex-col items-center min-h-0">
+          <div className="flex-1 min-h-0 w-full flex items-center justify-center">
+            <div className="aspect-square h-full max-h-[180px] min-h-[100px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie data={data} cx="50%" cy="50%" innerRadius="50%" outerRadius="80%" dataKey="value" strokeWidth={0}>
+                    {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-          <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
+          <div className="mt-3 grid w-full grid-cols-3 gap-x-4 gap-y-3">
             {data.map((item, i) => (
               <div key={item.name} className="flex flex-col items-center gap-0.5">
                 <span className="text-sm font-medium text-foreground font-display">{item.value}%</span>

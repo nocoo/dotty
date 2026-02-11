@@ -28,34 +28,36 @@ export function CreditScoreCard() {
         </div>
       </CardHeader>
       <CardContent className="flex flex-col">
-        <div className="flex flex-1 flex-col items-center">
-          <div className="relative h-[120px] w-[120px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadialBarChart
-                cx="50%"
-                cy="50%"
-                innerRadius="75%"
-                outerRadius="95%"
-                startAngle={90}
-                endAngle={-270}
-                data={data}
-                barSize={12}
-              >
-                <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                <RadialBar
-                  dataKey="value"
-                  cornerRadius={6}
-                  fill={chart.green}
-                  background={{ fill: chart.gray }}
-                />
-              </RadialBarChart>
-            </ResponsiveContainer>
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-2xl font-semibold text-foreground font-display tracking-tight">{score}</span>
-              <span className={`text-xs font-medium ${color}`}>{label}</span>
+        <div className="flex flex-1 flex-col items-center min-h-0">
+          <div className="flex-1 min-h-0 w-full flex items-center justify-center">
+            <div className="relative aspect-square h-full max-h-[180px] min-h-[100px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadialBarChart
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="75%"
+                  outerRadius="95%"
+                  startAngle={90}
+                  endAngle={-270}
+                  data={data}
+                  barSize={12}
+                >
+                  <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+                  <RadialBar
+                    dataKey="value"
+                    cornerRadius={6}
+                    fill={chart.green}
+                    background={{ fill: chart.gray }}
+                  />
+                </RadialBarChart>
+              </ResponsiveContainer>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-2xl font-semibold text-foreground font-display tracking-tight">{score}</span>
+                <span className={`text-xs font-medium ${color}`}>{label}</span>
+              </div>
             </div>
           </div>
-          <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
+          <div className="mt-3 grid w-full grid-cols-3 gap-x-4 gap-y-3">
             <div className="flex flex-col items-center gap-0.5">
               <span className="text-sm font-medium text-foreground font-display">{score}</span>
               <span className="text-xs text-muted-foreground">Score</span>
