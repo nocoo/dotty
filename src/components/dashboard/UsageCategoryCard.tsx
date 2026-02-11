@@ -25,8 +25,8 @@ export function UsageCategoryCard() {
           <span className="text-sm text-muted-foreground">total transactions</span>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="h-[220px]">
+      <CardContent className="flex flex-col">
+        <div className="flex-1 min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} barCategoryGap="25%">
               <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} />

@@ -23,8 +23,8 @@ export function SpendingTrendCard() {
           <span className="text-xs font-medium text-destructive">-1.8%</span>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="h-[140px]">
+      <CardContent className="flex flex-col">
+        <div className="flex-1 min-h-[100px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />

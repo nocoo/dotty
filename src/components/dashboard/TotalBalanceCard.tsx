@@ -14,14 +14,14 @@ export function TotalBalanceCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Total Balance</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="rounded-[10px] border border-border p-4">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-col flex-1 rounded-[10px] border border-border p-4">
           <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">$8,800</h2>
           <div className="mt-1 flex items-center gap-2">
             <span className="text-sm font-medium text-success font-display">+3.1%</span>
             <span className="text-sm text-muted-foreground">vs last month</span>
           </div>
-          <div className="mt-3 h-[50px]">
+          <div className="mt-3 flex-1 min-h-[50px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} barGap={1} barCategoryGap={1}>
                 <Bar dataKey="value" radius={[2, 2, 0, 0]} maxBarSize={8}>

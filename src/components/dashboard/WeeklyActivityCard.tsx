@@ -34,8 +34,8 @@ export function WeeklyActivityCard() {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="h-[200px]">
+      <CardContent className="flex flex-col">
+        <div className="flex-1 min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>
               <defs>

@@ -21,8 +21,8 @@ export function RecentTransactionsCard() {
           <span className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">View All</span>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-3">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-1 flex-col gap-3">
           {transactions.map((tx, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${tx.type === "income" ? "bg-success/10" : "bg-destructive/10"}`}>

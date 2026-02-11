@@ -19,8 +19,8 @@ export function ExpenseBreakdownCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Expense Breakdown</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-6">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-1 items-center gap-6">
           <div className="h-[130px] w-[130px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>

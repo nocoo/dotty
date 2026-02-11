@@ -27,8 +27,8 @@ export function CreditScoreCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Credit Score</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col items-center">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-1 flex-col items-center justify-center">
           <div className="relative h-[140px] w-[140px]">
             <ResponsiveContainer width="100%" height="100%">
               <RadialBarChart

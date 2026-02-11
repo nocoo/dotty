@@ -33,8 +33,8 @@ export function MonthlyComparisonCard() {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="h-[200px]">
+      <CardContent className="flex flex-col">
+        <div className="flex-1 min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} barGap={4} barCategoryGap="20%">
               <CartesianGrid strokeDasharray="3 3" stroke={chartAxis} strokeOpacity={0.15} vertical={false} />

@@ -17,8 +17,8 @@ export function QuickActionsCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Quick Actions</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 gap-2">
+      <CardContent className="flex flex-col">
+        <div className="flex-1 grid grid-cols-2 gap-2">
           {actions.map((action) => (
             <button
               key={action.label}

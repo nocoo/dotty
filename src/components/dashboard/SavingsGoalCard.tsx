@@ -21,8 +21,8 @@ export function SavingsGoalCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Savings Goal</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-5">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-1 items-center gap-5">
           <div className="relative h-[120px] w-[120px]">
             <ResponsiveContainer width="100%" height="100%">
               <RadialBarChart

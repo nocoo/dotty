@@ -16,8 +16,8 @@ export function AccountOverviewCard() {
           <CardTitle className="text-sm font-normal text-muted-foreground">Accounts</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-3">
+      <CardContent className="flex flex-col">
+        <div className="flex flex-1 flex-col gap-3">
           {accountItems.map((acc) => (
             <div key={acc.name} className="flex items-center justify-between">
               <span className="text-sm text-foreground">{acc.name}</span>
