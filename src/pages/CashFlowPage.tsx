@@ -1,5 +1,6 @@
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { monthlyFlow } from "@/data/mock";
+import { chartPositive, chartNegative, chartPrimary, chartAxis } from "@/lib/palette";
 
 const netFlow = monthlyFlow.map((m) => ({ ...m, net: m.inflow - m.outflow }));
 
@@ -29,14 +30,14 @@ export default function CashFlowPage() {
         <div className="h-[200px] md:h-[240px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={monthlyFlow}>
-              <XAxis dataKey="month" tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
+              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
               <defs>
-                <linearGradient id="inflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="hsl(142,71%,45%)" stopOpacity={0.3} /><stop offset="100%" stopColor="hsl(142,71%,45%)" stopOpacity={0} /></linearGradient>
-                <linearGradient id="outflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="hsl(0,72%,51%)" stopOpacity={0.3} /><stop offset="100%" stopColor="hsl(0,72%,51%)" stopOpacity={0} /></linearGradient>
+                <linearGradient id="inflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartPositive} stopOpacity={0.3} /><stop offset="100%" stopColor={chartPositive} stopOpacity={0} /></linearGradient>
+                <linearGradient id="outflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartNegative} stopOpacity={0.3} /><stop offset="100%" stopColor={chartNegative} stopOpacity={0} /></linearGradient>
               </defs>
-              <Area type="monotone" dataKey="inflow" stroke="hsl(142,71%,45%)" strokeWidth={2} fill="url(#inflowG)" />
-              <Area type="monotone" dataKey="outflow" stroke="hsl(0,72%,51%)" strokeWidth={2} fill="url(#outflowG)" />
+              <Area type="monotone" dataKey="inflow" stroke={chartPositive} strokeWidth={2} fill="url(#inflowG)" />
+              <Area type="monotone" dataKey="outflow" stroke={chartNegative} strokeWidth={2} fill="url(#outflowG)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -47,9 +48,9 @@ export default function CashFlowPage() {
         <div className="h-[160px] md:h-[180px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={netFlow}>
-              <XAxis dataKey="month" tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
-              <Bar dataKey="net" fill="hsl(200,90%,55%)" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
+              <Bar dataKey="net" fill={chartPrimary} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

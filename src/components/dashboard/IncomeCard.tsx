@@ -1,6 +1,7 @@
 import { BarChart, Bar, ResponsiveContainer } from "recharts";
 import { TrendingUp } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { chart } from "@/lib/palette";
 
 const data = Array.from({ length: 20 }, (_, i) => ({ value: 2000 + Math.random() * 6000 }));
 
@@ -23,7 +24,7 @@ export function IncomeCard() {
           <div className="mt-3 h-[50px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} barGap={1} barCategoryGap={1}>
-                <Bar dataKey="value" fill="hsl(270, 70%, 60%)" radius={[2, 2, 0, 0]} maxBarSize={8} />
+                <Bar dataKey="value" fill={chart.purple} radius={[2, 2, 0, 0]} maxBarSize={8} />
               </BarChart>
             </ResponsiveContainer>
           </div>

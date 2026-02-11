@@ -1,6 +1,7 @@
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { Activity } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { chartPrimary, chartAxis } from "@/lib/palette";
 
 const data = [
   { name: "Mon", value: 2400 }, { name: "Tue", value: 1398 },
@@ -26,9 +27,9 @@ export function SpendingTrendCard() {
         <div className="h-[140px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
-              <XAxis dataKey="name" tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis hide />
-              <Line type="monotone" dataKey="value" stroke="hsl(200, 90%, 60%)" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="value" stroke={chartPrimary} strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </div>

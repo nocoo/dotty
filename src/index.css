@@ -51,6 +51,20 @@
     --success-foreground: 0 0% 100%;
     --badge-red: 340 82% 55%;
     --badge-red-foreground: 0 0% 100%;
+
+    /* Visualization palette (8 sequential chart colors) */
+    --chart-1: 200 90% 55%;   /* Blue — primary chart color */
+    --chart-2: 270 70% 60%;   /* Purple */
+    --chart-3: 142 71% 45%;   /* Green (= success) */
+    --chart-4: 340 82% 55%;   /* Pink / Rose (= badge-red) */
+    --chart-5: 30 90% 55%;    /* Orange */
+    --chart-6: 186 80% 45%;   /* Teal / Cyan */
+    --chart-7: 45 93% 47%;    /* Amber */
+    --chart-8: 0 0% 45%;      /* Neutral gray */
+
+    /* Chart utility tokens */
+    --chart-axis: 0 0% 40%;
+    --chart-muted: 0 0% 70%;
   }
 
   .dark {
@@ -98,6 +112,20 @@
     --success-foreground: 0 0% 100%;
     --badge-red: 340 82% 55%;
     --badge-red-foreground: 0 0% 100%;
+
+    /* Visualization palette — boosted saturation/brightness for dark bg */
+    --chart-1: 200 90% 60%;
+    --chart-2: 270 70% 65%;
+    --chart-3: 142 71% 50%;
+    --chart-4: 340 82% 60%;
+    --chart-5: 30 90% 60%;
+    --chart-6: 186 80% 50%;
+    --chart-7: 45 93% 52%;
+    --chart-8: 0 0% 55%;
+
+    /* Chart utility tokens */
+    --chart-axis: 0 0% 50%;
+    --chart-muted: 0 0% 35%;
   }
 }
 

@@ -1,6 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { PiggyBank } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { chart, chartAxis } from "@/lib/palette";
 
 const data = [
   { name: "Jan", value: 12000 }, { name: "Feb", value: 15000 },
@@ -28,9 +29,9 @@ export function UsageCategoryCard() {
         <div className="h-[220px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} barCategoryGap="25%">
-              <XAxis dataKey="name" tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
-              <Bar dataKey="value" fill="hsl(0,0%,20%)" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
+              <Bar dataKey="value" fill={chart.gray} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

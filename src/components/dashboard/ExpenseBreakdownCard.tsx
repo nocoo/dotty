@@ -1,6 +1,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Target } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CHART_COLORS } from "@/lib/palette";
 
 const data = [
   { name: "Food", value: 35 },
@@ -8,7 +9,6 @@ const data = [
   { name: "Shopping", value: 25 },
   { name: "Bills", value: 20 },
 ];
-const COLORS = ["hsl(200,90%,55%)", "hsl(270,70%,60%)", "hsl(142,71%,45%)", "hsl(0,0%,35%)"];
 
 export function ExpenseBreakdownCard() {
   return (
@@ -25,7 +25,7 @@ export function ExpenseBreakdownCard() {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie data={data} cx="50%" cy="50%" innerRadius={35} outerRadius={55} dataKey="value" strokeWidth={0}>
-                  {data.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
+                  {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
@@ -33,7 +33,7 @@ export function ExpenseBreakdownCard() {
           <div className="flex flex-col gap-2.5">
             {data.map((item, i) => (
               <div key={item.name} className="flex items-center gap-2">
-                <div className="h-2.5 w-2.5 rounded-full" style={{ background: COLORS[i] }} />
+                <div className="h-2.5 w-2.5 rounded-full" style={{ background: CHART_COLORS[i] }} />
                 <span className="text-xs text-muted-foreground">{item.name}</span>
                 <span className="text-xs font-medium text-foreground ml-auto">{item.value}%</span>
               </div>

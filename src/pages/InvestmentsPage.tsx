@@ -1,6 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, TrendingDown } from "lucide-react";
-import { portfolio, performanceData, CHART_COLORS } from "@/data/mock";
+import { portfolio, performanceData } from "@/data/mock";
+import { CHART_COLORS, chartPositive, chartAxis } from "@/lib/palette";
 
 export default function InvestmentsPage() {
   const totalValue = portfolio.reduce((a, b) => a + b.value, 0);
@@ -31,9 +32,9 @@ export default function InvestmentsPage() {
           <div className="h-[180px] md:h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={performanceData}>
-                <XAxis dataKey="month" tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "hsl(0,0%,40%)", fontSize: 11 }} axisLine={false} tickLine={false} width={40} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} />
-                <Line type="monotone" dataKey="value" stroke="hsl(142,71%,45%)" strokeWidth={2} dot={false} />
+                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={40} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} />
+                <Line type="monotone" dataKey="value" stroke={chartPositive} strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>

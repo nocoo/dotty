@@ -34,7 +34,6 @@ export interface Budget {
   category: string;
   spent: number;
   limit: number;
-  color: string;
 }
 
 export interface MonthlyBudget {
@@ -149,11 +148,11 @@ export const transactions: Transaction[] = [
 
 // ── Budget ──
 export const budgets: Budget[] = [
-  { category: "Food & Dining", spent: 420, limit: 600, color: "hsl(200,90%,55%)" },
-  { category: "Transportation", spent: 180, limit: 300, color: "hsl(270,70%,60%)" },
-  { category: "Entertainment", spent: 95, limit: 150, color: "hsl(340,82%,55%)" },
-  { category: "Shopping", spent: 310, limit: 400, color: "hsl(142,71%,45%)" },
-  { category: "Utilities", spent: 245, limit: 250, color: "hsl(30,90%,55%)" },
+  { category: "Food & Dining", spent: 420, limit: 600 },
+  { category: "Transportation", spent: 180, limit: 300 },
+  { category: "Entertainment", spent: 95, limit: 150 },
+  { category: "Shopping", spent: 310, limit: 400 },
+  { category: "Utilities", spent: 245, limit: 250 },
 ];
 
 export const monthlyBudgetData: MonthlyBudget[] = [
@@ -238,11 +237,3 @@ export const faqs: FAQ[] = [
   { q: "How do I change my notification settings?", a: "Settings > Notifications > Toggle preferences." },
 ];
 
-// ── Shared chart colors ──
-export const CHART_COLORS = [
-  "hsl(200,90%,55%)",
-  "hsl(270,70%,60%)",
-  "hsl(142,71%,45%)",
-  "hsl(340,82%,55%)",
-  "hsl(0,0%,35%)",
-];

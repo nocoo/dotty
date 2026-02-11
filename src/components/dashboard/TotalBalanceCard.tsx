@@ -1,6 +1,7 @@
 import { BarChart, Bar, ResponsiveContainer, Cell } from "recharts";
 import { Globe } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { chartPrimary, chart } from "@/lib/palette";
 
 const data = Array.from({ length: 24 }, (_, i) => ({ value: 3000 + Math.random() * 5000 }));
 
@@ -25,7 +26,7 @@ export function TotalBalanceCard() {
               <BarChart data={data} barGap={1} barCategoryGap={1}>
                 <Bar dataKey="value" radius={[2, 2, 0, 0]} maxBarSize={8}>
                   {data.map((_, i) => (
-                    <Cell key={i} fill={i < 12 ? `hsl(200, 90%, ${55 + (i % 3) * 5}%)` : `hsl(0, 0%, ${30 - (i - 12) * 1}%)`} />
+                    <Cell key={i} fill={i < 12 ? chartPrimary : chart.gray} />
                   ))}
                 </Bar>
               </BarChart>
