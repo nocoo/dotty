@@ -31,7 +31,7 @@ export function UsageCategoryCard() {
             <BarChart data={data} barCategoryGap="25%">
               <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
-              <Bar dataKey="value" fill={chart.gray} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="value" fill={chart.blue} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
