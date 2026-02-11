@@ -26,12 +26,12 @@ export default function CashFlowPage() {
         </div>
       </div>
 
-      <div className="flex flex-col mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Cash Flow Over Time</p>
         </div>
-        <div className="flex-1 min-h-[200px] md:min-h-[240px]">
+        <div className="h-[200px] md:h-[240px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={monthlyFlow}>
               <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
@@ -47,12 +47,12 @@ export default function CashFlowPage() {
         </div>
       </div>
 
-      <div className="flex flex-col mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Net Cash Flow by Month</p>
         </div>
-        <div className="flex-1 min-h-[160px] md:min-h-[180px]">
+        <div className="h-[160px] md:h-[180px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={netFlow}>
               <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />

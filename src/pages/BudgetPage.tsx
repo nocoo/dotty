@@ -44,12 +44,12 @@ export default function BudgetPage() {
         </div>
       </div>
 
-      <div className="flex flex-col mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Budget vs Actual</p>
         </div>
-        <div className="flex-1 min-h-[180px] md:min-h-[200px]">
+        <div className="h-[180px] md:h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={monthlyBudgetData} barGap={4}>
               <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
