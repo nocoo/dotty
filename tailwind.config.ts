@@ -79,9 +79,6 @@ export default {
           muted: "hsl(var(--chart-muted))",
         },
       },
-      fontFamily: {
-        display: ['"DM Sans"', "system-ui", "sans-serif"],
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

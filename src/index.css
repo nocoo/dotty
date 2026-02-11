@@ -138,3 +138,9 @@
     font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
 }
+
+@layer utilities {
+  .font-display {
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+}
