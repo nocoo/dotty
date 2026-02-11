@@ -87,7 +87,7 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="flex w-full items-center justify-between px-5 py-2.5 mt-2">
+      <CollapsibleTrigger className="flex w-full items-center justify-between pl-5 pr-[14px] py-2.5 mt-2">
         <span className="text-sm font-normal text-muted-foreground">{group.label}</span>
         <ChevronUp
           className={cn(
@@ -263,7 +263,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       ) : (
         /* ── Expanded view ── */
         <div className="flex h-screen w-[260px] flex-col">
-          <div className="flex h-14 items-center justify-between px-5">
+          <div className="flex h-14 items-center justify-between pl-5 pr-3.5">
             <div className="flex items-center gap-3">
               <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
               <span className="text-lg md:text-xl font-semibold text-foreground">basalt.</span>
