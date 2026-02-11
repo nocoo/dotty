@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { AppSidebar } from "@/components/AppSidebar";
+import { TotalBalanceCard } from "@/components/dashboard/TotalBalanceCard";
+import { IncomeCard } from "@/components/dashboard/IncomeCard";
+import { UsageCategoryCard } from "@/components/dashboard/UsageCategoryCard";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="flex min-h-screen w-full bg-background">
+      <AppSidebar />
+
+      <main className="flex-1 overflow-y-auto">
+        {/* Header */}
+        <header className="flex items-center justify-between px-8 py-6">
+          <h1 className="text-lg font-medium text-foreground">Dashboard</h1>
+        </header>
+
+        {/* Bento Grid */}
+        <div className="px-8 pb-8">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <TotalBalanceCard />
+            <IncomeCard />
+            <UsageCategoryCard />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
