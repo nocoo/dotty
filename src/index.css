@@ -4,47 +4,46 @@
 
 @layer base {
   :root {
-    /* L0: deepest background (body) */
-    --background: 0 0% 11%;
+    /* L0 body: #171717 */
+    --background: 0 0% 9%;
     --foreground: 0 0% 93%;
 
-    /* L1: content area panel */
-    --card: 0 0% 14%;
+    /* L1 content panel: #1b1b1b */
+    --card: 0 0% 10.6%;
     --card-foreground: 0 0% 93%;
 
-    /* L2: inner cards / elevated surfaces */
-    --secondary: 0 0% 17%;
+    /* L2 inner cards: #1f1f1f */
+    --secondary: 0 0% 12.2%;
     --secondary-foreground: 0 0% 93%;
 
-    --popover: 0 0% 14%;
+    --popover: 0 0% 10.6%;
     --popover-foreground: 0 0% 93%;
 
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 17%;
+    --muted: 0 0% 12.2%;
     --muted-foreground: 0 0% 48%;
 
-    /* active sidebar item bg */
-    --accent: 0 0% 17%;
+    --accent: 0 0% 14%;
     --accent-foreground: 0 0% 93%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 19%;
-    --input: 0 0% 15%;
+    --border: 0 0% 16%;
+    --input: 0 0% 12%;
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 11%;
+    --sidebar-background: 0 0% 9%;
     --sidebar-foreground: 0 0% 93%;
     --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 17%;
+    --sidebar-accent: 0 0% 14%;
     --sidebar-accent-foreground: 0 0% 93%;
-    --sidebar-border: 0 0% 19%;
+    --sidebar-border: 0 0% 16%;
     --sidebar-ring: 217 91% 60%;
 
     --success: 142 71% 45%;

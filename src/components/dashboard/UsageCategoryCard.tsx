@@ -26,12 +26,12 @@ const formatYAxis = (value: number) => `${value / 1000}k`;
 
 export function UsageCategoryCard() {
   return (
-    <div className="flex flex-col rounded-2xl bg-secondary p-5">
+    <div className="flex flex-col rounded-[14px] bg-secondary p-5">
       <div className="flex items-center gap-2 mb-1">
         <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <span className="text-sm font-normal text-muted-foreground">Usage Category</span>
       </div>
-      <div className="flex items-baseline gap-3 mb-6">
+      <div className="flex items-baseline gap-3 mb-5">
         <h2 className="text-3xl font-semibold text-foreground">$15,200</h2>
         <span className="text-sm text-muted-foreground">total transactions</span>
       </div>
@@ -55,7 +55,7 @@ export function UsageCategoryCard() {
             />
             <Bar
               dataKey="value"
-              fill="hsl(0, 0%, 22%)"
+              fill="hsl(0, 0%, 20%)"
               radius={[4, 4, 0, 0]}
             />
           </BarChart>

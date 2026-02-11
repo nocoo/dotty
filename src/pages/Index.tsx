@@ -13,7 +13,7 @@ const Index = () => {
       <AppSidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
 
       <main className="flex-1 flex flex-col min-h-screen">
-        {/* Header row — h-14 aligns with sidebar logo */}
+        {/* Header — outside the panel */}
         <header className="flex h-14 items-center gap-3 px-6">
           {collapsed && (
             <button
@@ -26,9 +26,10 @@ const Index = () => {
           <h1 className="text-xl font-semibold text-foreground">Dashboard</h1>
         </header>
 
-        {/* Content panel — top aligns with search bar */}
+        {/* L1 panel: rounded-[20px], uniform padding */}
         <div className="flex-1 px-3 pb-3 pr-3">
-          <div className="h-full rounded-2xl bg-card p-6 overflow-y-auto">
+          <div className="h-full rounded-[20px] bg-card p-5 overflow-y-auto">
+            {/* Cards grid — uniform 16px gap */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               <TotalBalanceCard />
               <IncomeCard />
