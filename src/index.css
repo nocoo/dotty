@@ -4,6 +4,56 @@
 
 @layer base {
   :root {
+    /* Light mode — subtle 3-tier hierarchy */
+    /* L0 body */
+    --background: 220 14% 94%;
+    --foreground: 0 0% 12%;
+
+    /* L1 content panel */
+    --card: 220 14% 97%;
+    --card-foreground: 0 0% 12%;
+
+    /* L2 inner cards */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 220 14% 92%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 14% 94%;
+    --sidebar-foreground: 0 0% 12%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 217 91% 60%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --badge-red: 340 82% 55%;
+    --badge-red-foreground: 0 0% 100%;
+  }
+
+  .dark {
     /* L0 body: #171717 */
     --background: 0 0% 9%;
     --foreground: 0 0% 93%;
@@ -34,8 +84,6 @@
     --border: 0 0% 16%;
     --input: 0 0% 12%;
     --ring: 217 91% 60%;
-
-    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 9%;
     --sidebar-foreground: 0 0% 93%;
