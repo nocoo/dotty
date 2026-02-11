@@ -148,7 +148,7 @@ export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: bo
           </nav>
 
           {/* User avatar */}
-          <div className="border-t border-border py-3 flex justify-center w-full">
+          <div className="py-3 flex justify-center w-full">
             <Tooltip delayDuration={0}>
               <TooltipTrigger asChild>
                 <Avatar className="h-9 w-9 cursor-pointer">
@@ -189,7 +189,7 @@ export function AppSidebar({ collapsed, onToggle, currentPath }: { collapsed: bo
           </nav>
 
           {/* User profile */}
-          <div className="border-t border-border px-4 py-3">
+          <div className="px-4 py-3">
             <div className="flex items-center gap-3">
               <Avatar className="h-9 w-9 shrink-0">
                 <AvatarImage src="https://avatar.vercel.sh/acme" alt="User" />

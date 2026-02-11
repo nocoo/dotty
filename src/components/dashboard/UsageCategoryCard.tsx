@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { PiggyBank } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const data = [
   { name: "Jan", value: 12000 }, { name: "Feb", value: 15000 },
@@ -12,24 +13,28 @@ const data = [
 
 export function UsageCategoryCard() {
   return (
-    <div className="flex flex-col rounded-[14px] bg-secondary p-5">
-      <div className="flex items-center gap-2 mb-1">
-        <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-        <span className="text-sm font-normal text-muted-foreground">Usage Category</span>
-      </div>
-      <div className="flex items-baseline gap-3 mb-5">
-        <h2 className="text-3xl font-semibold text-foreground">$15,200</h2>
-        <span className="text-sm text-muted-foreground">total transactions</span>
-      </div>
-      <div className="h-[220px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} barCategoryGap="25%">
-            <XAxis dataKey="name" tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} />
-            <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
-            <Bar dataKey="value" fill="hsl(0,0%,20%)" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
+    <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <CardHeader>
+        <div className="flex items-center gap-2">
+          <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <CardTitle className="text-sm font-normal text-muted-foreground">Usage Category</CardTitle>
+        </div>
+        <div className="flex items-baseline gap-3">
+          <h2 className="text-3xl font-semibold text-foreground">$15,200</h2>
+          <span className="text-sm text-muted-foreground">total transactions</span>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="h-[220px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data} barCategoryGap="25%">
+              <XAxis dataKey="name" tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: "hsl(0,0%,40%)", fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
+              <Bar dataKey="value" fill="hsl(0,0%,20%)" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
