@@ -44,12 +44,12 @@ export function ThemeToggle() {
     <button
       onClick={cycleTheme}
       className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-      title={`Theme: ${theme}`}
+      aria-label={`Toggle theme, currently ${theme}`}
     >
       {applied === "dark" ? (
-        <Moon className="h-4 w-4" strokeWidth={1.5} />
+        <Moon className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
       ) : (
-        <Sun className="h-4 w-4" strokeWidth={1.5} />
+        <Sun className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
       )}
     </button>
   );

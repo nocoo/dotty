@@ -77,9 +77,10 @@ export function DashboardLayout() {
             {isMobile && (
               <button
                 onClick={() => setMobileOpen(true)}
+                aria-label="Open navigation menu"
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
-                <Menu className="h-5 w-5" strokeWidth={1.5} />
+                <Menu className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
               </button>
             )}
             <h1 className="text-lg md:text-xl font-semibold text-foreground">{title}</h1>
@@ -89,9 +90,10 @@ export function DashboardLayout() {
               href="https://github.com/nocoo/basalt"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub repository"
               className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
             >
-              <Github className="h-[18px] w-[18px]" strokeWidth={1.5} />
+              <Github className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
             </a>
             <ThemeToggle />
           </div>

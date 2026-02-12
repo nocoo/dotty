@@ -59,6 +59,7 @@ export default function SettingsPage() {
                 <button
                   key={id}
                   onClick={() => setActiveSection(id)}
+                  aria-label={label}
                   className={`flex items-center gap-2 rounded-widget px-3 py-2.5 text-sm transition-colors ${
                     activeSection === id
                       ? "bg-accent text-foreground font-medium"
@@ -105,8 +106,8 @@ function ProfileSection() {
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
               <User className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <button className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90">
-              <Camera className="h-3 w-3" strokeWidth={1.5} />
+            <button className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90" aria-label="Change profile photo">
+              <Camera className="h-3 w-3" aria-hidden="true" strokeWidth={1.5} />
             </button>
           </div>
           <div>

@@ -231,18 +231,20 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
           <button
             onClick={onToggle}
+            aria-label="Expand sidebar"
             className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-1"
           >
-            <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
+            <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
           </button>
 
           <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
               <button
                 onClick={() => setSearchOpen(true)}
+                aria-label="Search (⌘K)"
                 className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
               >
-                <Search className="h-4 w-4" strokeWidth={1.5} />
+                <Search className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={8}>
@@ -281,9 +283,10 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               </div>
               <button
                 onClick={onToggle}
+                aria-label="Collapse sidebar"
                 className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors"
               >
-                <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
+                <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </div>
           </div>
@@ -319,8 +322,8 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
                 <p className="text-sm font-medium text-foreground truncate">Zheng Li</p>
                 <p className="text-xs text-muted-foreground truncate">zhengli@example.com</p>
               </div>
-              <button className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
-                <LogOut className="h-4 w-4" strokeWidth={1.5} />
+              <button aria-label="Log out" className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
+                <LogOut className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </div>
           </div>
