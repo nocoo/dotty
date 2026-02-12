@@ -1,5 +1,5 @@
 import { Check, Shield, Plane, Car, Home } from "lucide-react";
-import { goals } from "@/data/mock";
+import { useTargetCardsViewModel } from "@/viewmodels/useTargetCardsViewModel";
 
 const GOAL_ICONS: Record<string, React.ElementType> = {
   shield: Shield,
@@ -9,10 +9,11 @@ const GOAL_ICONS: Record<string, React.ElementType> = {
 };
 
 export default function TargetCardsPage() {
+  const { goals } = useTargetCardsViewModel();
+
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       {goals.map((goal) => {
-        const pct = Math.round((goal.saved / goal.target) * 100);
         const Icon = GOAL_ICONS[goal.icon] ?? Shield;
         return (
           <div key={goal.name} className="rounded-[14px] bg-secondary p-5">
@@ -24,14 +25,14 @@ export default function TargetCardsPage() {
                 <p className="text-sm font-medium text-foreground">{goal.name}</p>
                 <p className="text-xs text-muted-foreground">${goal.saved.toLocaleString()} of ${goal.target.toLocaleString()}</p>
               </div>
-              <span className="text-sm font-semibold text-foreground">{pct}%</span>
+              <span className="text-sm font-semibold text-foreground">{goal.percent}%</span>
             </div>
             <div className="h-2 rounded-full bg-card">
-              <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+              <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${goal.percent}%` }} />
             </div>
             <div className="mt-3 flex items-center gap-4">
-              <span className="text-xs text-muted-foreground">Monthly target: ${Math.round((goal.target - goal.saved) / 6).toLocaleString()}</span>
-              {pct >= 75 && <span className="flex items-center gap-1 text-xs text-success"><Check className="h-3 w-3" strokeWidth={2} /> On Track</span>}
+              <span className="text-xs text-muted-foreground">Monthly target: ${goal.monthlyTarget.toLocaleString()}</span>
+              {goal.onTrack && <span className="flex items-center gap-1 text-xs text-success"><Check className="h-3 w-3" strokeWidth={2} /> On Track</span>}
             </div>
           </div>
         );

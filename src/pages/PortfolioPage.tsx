@@ -1,10 +1,10 @@
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, TrendingDown, PieChart as PieChartIcon, Briefcase } from "lucide-react";
-import { portfolio, performanceData } from "@/data/mock";
+import { usePortfolioViewModel } from "@/viewmodels/usePortfolioViewModel";
 import { CHART_COLORS, CHART_TOKENS, chartPositive, chartAxis, withAlpha } from "@/lib/palette";
 
 export default function PortfolioPage() {
-  const totalValue = portfolio.reduce((a, b) => a + b.value, 0);
+  const { totalValue, holdings, performanceData } = usePortfolioViewModel();
 
   return (
     <>
@@ -52,14 +52,14 @@ export default function PortfolioPage() {
             <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={portfolio} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0}>
-                    {portfolio.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
+                  <Pie data={holdings} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0}>
+                    {holdings.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
             </div>
             <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
-              {portfolio.map((item, i) => (
+              {holdings.map((item, i) => (
                 <div key={item.name} className="flex flex-col items-center gap-0.5">
                   <span className="text-sm font-medium text-foreground font-display">{item.allocation}%</span>
                   <div className="flex items-center gap-1.5">
@@ -79,7 +79,7 @@ export default function PortfolioPage() {
           <p className="text-sm text-muted-foreground">Holdings</p>
         </div>
         <div className="flex flex-col gap-3">
-          {portfolio.map((item, i) => (
+          {holdings.map((item, i) => (
             <div key={item.name} className="flex items-center justify-between rounded-[10px] bg-card p-3">
               <div className="flex items-center gap-3">
                 <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ background: withAlpha(CHART_TOKENS[i], 0.12) }}>

@@ -1,17 +1,19 @@
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from "recharts";
 import { BarChart3, Target, TrendingUp } from "lucide-react";
-import { analyticsWeekly, analyticsCategories, analyticsTrend, analyticsStats } from "@/data/mock";
+import { useStatsOverviewViewModel } from "@/viewmodels/useStatsOverviewViewModel";
 import { CHART_COLORS, chart, chartPrimary, chartAxis } from "@/lib/palette";
 
 export default function StatsOverviewPage() {
+  const { stats, weeklyData, categoryData, trendData } = useStatsOverviewViewModel();
+
   return (
     <>
       <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
-        {analyticsStats.map((s) => (
+        {stats.map((s) => (
           <div key={s.label} className="rounded-[14px] bg-secondary p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground mb-1">{s.label}</p>
             <h3 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">{s.value}</h3>
-            <span className={`text-xs font-medium ${s.change.startsWith("+") ? "text-success" : s.change.startsWith("-") ? "text-destructive" : "text-muted-foreground"}`}>{s.change}</span>
+            <span className={`text-xs font-medium ${s.changeColorClass}`}>{s.change}</span>
           </div>
         ))}
       </div>
@@ -24,7 +26,7 @@ export default function StatsOverviewPage() {
           </div>
           <div className="h-[180px] md:h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={analyticsWeekly} barGap={4}>
+              <BarChart data={weeklyData} barGap={4}>
                 <XAxis dataKey="day" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={30} />
                 <Bar dataKey="income" fill={chartPrimary} radius={[4, 4, 0, 0]} />
@@ -43,14 +45,14 @@ export default function StatsOverviewPage() {
             <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={analyticsCategories} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="value" strokeWidth={0}>
-                    {analyticsCategories.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
+                  <Pie data={categoryData} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="value" strokeWidth={0}>
+                    {categoryData.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
             </div>
             <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
-              {analyticsCategories.map((item, i) => (
+              {categoryData.map((item, i) => (
                 <div key={item.name} className="flex flex-col items-center gap-0.5">
                   <span className="text-sm font-medium text-foreground font-display">{item.value}%</span>
                   <div className="flex items-center gap-1.5">
@@ -71,7 +73,7 @@ export default function StatsOverviewPage() {
         </div>
         <div className="h-[180px] md:h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={analyticsTrend}>
+            <AreaChart data={trendData}>
               <XAxis dataKey="day" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
               <defs>
