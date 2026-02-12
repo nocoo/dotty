@@ -1,6 +1,7 @@
 // ViewModel for the Stats Overview page.
 // Composes model logic with data source — View consumes this hook only.
 
+import { useMemo } from "react";
 import {
   analyticsWeekly,
   analyticsCategories,
@@ -17,10 +18,14 @@ export interface StatCard {
 }
 
 export function useStatsOverviewViewModel() {
-  const stats: StatCard[] = analyticsStats.map((s) => ({
-    ...s,
-    changeColorClass: changeToColorClass(classifyChange(s.change)),
-  }));
+  const stats: StatCard[] = useMemo(
+    () =>
+      analyticsStats.map((s) => ({
+        ...s,
+        changeColorClass: changeToColorClass(classifyChange(s.change)),
+      })),
+    [],
+  );
 
   return {
     stats,

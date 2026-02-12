@@ -1,6 +1,7 @@
 // ViewModel for the Help page.
 // Composes model logic with data source — View consumes this hook only.
 
+import { useMemo } from "react";
 import { faqs } from "@/data/mock";
 import { filterFAQs, faqCount } from "@/models/help";
 
@@ -23,7 +24,7 @@ const resources: ResourceItem[] = [
 
 export function useHelpViewModel(searchQuery = "") {
   const allFAQs: FAQItem[] = faqs;
-  const filteredFAQs = filterFAQs(faqs, searchQuery);
+  const filteredFAQs = useMemo(() => filterFAQs(faqs, searchQuery), [searchQuery]);
   const totalFAQs = faqCount(faqs);
 
   return { resources, allFAQs, filteredFAQs, totalFAQs };
