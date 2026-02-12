@@ -10,7 +10,6 @@ vi.mock("recharts", () => ({
   YAxis: () => null,
   PieChart: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
   Pie: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  Cell: () => null,
   AreaChart: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
   Area: () => null,
 }));
