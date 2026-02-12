@@ -1,6 +1,7 @@
 import { Wifi, Eye, EyeOff, Lock, NfcIcon } from "lucide-react";
 import { useState } from "react";
 import { useCardShowcaseViewModel } from "@/viewmodels/useCardShowcaseViewModel";
+import { Switch } from "@/components/ui/switch";
 import type { CreditCard as CreditCardType } from "@/models/types";
 
 function NetworkLogo({ network }: { network: CreditCardType["network"] }) {
@@ -136,10 +137,8 @@ export default function CardShowcasePage() {
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
           {["Online Payments", "Contactless", "ATM Withdrawal"].map((feat) => (
             <div key={feat} className="flex items-center justify-between rounded-widget bg-card p-3">
-              <span className="text-sm text-foreground">{feat}</span>
-              <div className="h-5 w-9 rounded-full bg-success/20 flex items-center justify-end px-0.5">
-                <div className="h-4 w-4 rounded-full bg-success" />
-              </div>
+              <label htmlFor={`switch-${feat}`} className="text-sm text-foreground cursor-pointer">{feat}</label>
+              <Switch id={`switch-${feat}`} defaultChecked aria-label={feat} className="h-5 w-9 data-[state=checked]:bg-success/20 data-[state=unchecked]:bg-input [&>span]:h-4 [&>span]:w-4 [&>span]:data-[state=checked]:bg-success [&>span]:data-[state=checked]:translate-x-4" />
             </div>
           ))}
         </div>
