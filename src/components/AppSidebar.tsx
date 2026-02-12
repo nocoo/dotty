@@ -38,24 +38,24 @@ interface NavGroup {
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    label: "Main Menu",
+    label: "Pages",
     defaultOpen: true,
     items: [
       { title: "Dashboard", icon: LayoutDashboard, path: "/" },
-      { title: "Wallet", icon: Wallet, path: "/wallet" },
-      { title: "Cards", icon: CreditCard, path: "/cards" },
-      { title: "Transactions", icon: ArrowLeftRight, path: "/transactions", badge: 6 },
-      { title: "Budget", icon: PiggyBank, path: "/budget" },
-      { title: "Goals", icon: Target, path: "/goals" },
+      { title: "Accounts", icon: Wallet, path: "/accounts" },
+      { title: "Card Showcase", icon: CreditCard, path: "/card-showcase" },
+      { title: "Records", icon: ArrowLeftRight, path: "/records", badge: 6 },
+      { title: "Progress Tracking", icon: PiggyBank, path: "/progress-tracking" },
+      { title: "Targets", icon: Target, path: "/targets" },
     ],
   },
   {
-    label: "Analytics",
+    label: "Charts",
     defaultOpen: true,
     items: [
-      { title: "Analytics", icon: BarChart3, path: "/analytics" },
-      { title: "Cash Flow", icon: TrendingUp, path: "/cash-flow", badge: 2 },
-      { title: "Investments", icon: LineChart, path: "/investments" },
+      { title: "Stats Overview", icon: BarChart3, path: "/stats" },
+      { title: "Flow Comparison", icon: TrendingUp, path: "/flow-comparison", badge: 2 },
+      { title: "Portfolio", icon: LineChart, path: "/portfolio" },
     ],
   },
   {
@@ -68,7 +68,7 @@ const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    label: "Others",
+    label: "System",
     defaultOpen: true,
     items: [
       { title: "Help Center", icon: HelpCircle, path: "/help" },
