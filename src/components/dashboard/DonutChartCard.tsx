@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, ResponsiveContainer } from "recharts";
 import { Target } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { CHART_COLORS } from "@/lib/palette";
@@ -8,7 +8,7 @@ const data = [
   { name: "Transport", value: 20 },
   { name: "Shopping", value: 25 },
   { name: "Bills", value: 20 },
-];
+].map((d, i) => ({ ...d, fill: CHART_COLORS[i] }));
 
 export function DonutChartCard() {
   return (
@@ -25,9 +25,7 @@ export function DonutChartCard() {
             <div className="aspect-square h-full max-h-[180px] min-h-[100px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={data} cx="50%" cy="50%" innerRadius="50%" outerRadius="80%" dataKey="value" strokeWidth={0}>
-                    {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
-                  </Pie>
+                  <Pie data={data} cx="50%" cy="50%" innerRadius="50%" outerRadius="80%" dataKey="value" strokeWidth={0} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
