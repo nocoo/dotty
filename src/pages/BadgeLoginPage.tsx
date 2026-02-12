@@ -1,4 +1,4 @@
-import { Mountain, User } from "lucide-react";
+import { Mountain } from "lucide-react";
 
 export default function BadgeLoginPage() {
   return (
@@ -11,9 +11,9 @@ export default function BadgeLoginPage() {
         }}
       />
       <div className="flex flex-col items-center">
-        {/* Badge card */}
+        {/* Badge card — aspect closer to 3:4 for a more compact badge */}
         <div
-          className="relative aspect-[54/86] w-72 overflow-hidden rounded-2xl bg-card flex flex-col ring-1 ring-black/[0.08] dark:ring-white/[0.06]"
+          className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl bg-card flex flex-col ring-1 ring-black/[0.08] dark:ring-white/[0.06]"
           style={{
             boxShadow: [
               "0 1px 2px rgba(0,0,0,0.06)",
@@ -25,18 +25,7 @@ export default function BadgeLoginPage() {
             ].join(", "),
           }}
         >
-          {/* Header strip */}
-          <div className="relative flex items-center justify-between bg-primary px-5 py-4">
-            <div className="flex items-center gap-2">
-              <Mountain className="h-4 w-4 text-primary-foreground" strokeWidth={1.5} />
-              <span className="text-sm font-semibold text-primary-foreground">basalt.</span>
-            </div>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-primary-foreground/60">
-              Visitor
-            </span>
-          </div>
-
-          {/* Punch hole — centered near top of card */}
+          {/* Punch hole */}
           <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-10">
             <div
               className="h-3 w-3 rounded-full bg-background/80"
@@ -46,18 +35,29 @@ export default function BadgeLoginPage() {
             />
           </div>
 
+          {/* Header strip */}
+          <div className="flex items-center justify-between bg-primary px-5 py-4">
+            <div className="flex items-center gap-2">
+              <Mountain className="h-4 w-4 text-primary-foreground" strokeWidth={1.5} />
+              <span className="text-sm font-semibold text-primary-foreground">basalt.</span>
+            </div>
+            <span className="text-[10px] font-medium uppercase tracking-widest text-primary-foreground/60">
+              Visitor
+            </span>
+          </div>
+
           {/* Badge content */}
-          <div className="flex flex-1 flex-col items-center px-6 pt-6 pb-16">
-            {/* Avatar placeholder */}
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-secondary ring-2 ring-border">
-              <User className="h-8 w-8 text-muted-foreground" strokeWidth={1.5} />
+          <div className="flex flex-1 flex-col items-center px-6 pt-5 pb-14">
+            {/* Brand icon */}
+            <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-secondary ring-1 ring-border">
+              <Mountain className="h-10 w-10 text-foreground" strokeWidth={1.5} />
             </div>
 
-            <p className="mt-4 text-base font-semibold text-foreground">Welcome</p>
+            <p className="mt-4 text-lg font-semibold text-foreground">Welcome</p>
             <p className="mt-1 text-xs text-muted-foreground">Sign in to get your badge</p>
 
             {/* Divider */}
-            <div className="mt-5 h-px w-full bg-border" />
+            <div className="mt-4 h-px w-full bg-border" />
 
             {/* Push button toward bottom */}
             <div className="flex-1" />
@@ -86,13 +86,13 @@ export default function BadgeLoginPage() {
             </button>
 
             {/* Terms */}
-            <p className="mt-4 text-center text-[10px] leading-relaxed text-muted-foreground/60">
+            <p className="mt-3 text-center text-[10px] leading-relaxed text-muted-foreground/60">
               By signing in you agree to our Terms of Service and Privacy Policy
             </p>
           </div>
 
           {/* Footer strip */}
-          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center border-t border-border bg-secondary/50 py-3">
+          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center border-t border-border bg-secondary/50 py-2.5">
             <div className="flex items-center gap-1.5">
               <div className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
               <span className="text-[10px] text-muted-foreground">Secure authentication</span>
