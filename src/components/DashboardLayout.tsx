@@ -62,7 +62,7 @@ export function DashboardLayout() {
       {isMobile && mobileOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs"
             onClick={() => setMobileOpen(false)}
           />
           <div className="fixed inset-y-0 left-0 z-50 w-[260px]">

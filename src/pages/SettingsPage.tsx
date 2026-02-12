@@ -156,7 +156,7 @@ function ProfileSection() {
           <textarea
             defaultValue="Product designer and financial enthusiast."
             rows={3}
-            className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+            className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
           />
         </div>
 
@@ -308,7 +308,7 @@ function SecuritySection() {
                 <p className="text-sm text-foreground">
                   {session.device}
                   {session.current && (
-                    <span className="ml-2 rounded bg-success/10 px-1.5 py-0.5 text-xs font-medium text-success">
+                    <span className="ml-2 rounded-sm bg-success/10 px-1.5 py-0.5 text-xs font-medium text-success">
                       Current
                     </span>
                   )}
@@ -384,7 +384,7 @@ function AppearanceSection() {
               <p className="text-sm text-foreground">Currency</p>
               <p className="text-xs text-muted-foreground">Default display currency</p>
             </div>
-            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
+            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
               <option>USD ($)</option>
               <option>EUR (&euro;)</option>
               <option>GBP (&pound;)</option>
@@ -397,7 +397,7 @@ function AppearanceSection() {
               <p className="text-sm text-foreground">Language</p>
               <p className="text-xs text-muted-foreground">Interface language</p>
             </div>
-            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
+            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
               <option>English</option>
               <option>Spanish</option>
               <option>French</option>

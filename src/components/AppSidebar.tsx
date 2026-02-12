@@ -296,7 +296,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="flex-1 text-left text-sm text-muted-foreground">Search</span>
               <span className="flex h-7 w-7 shrink-0 items-center justify-center">
-                <kbd className="pointer-events-none hidden rounded border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
+                <kbd className="pointer-events-none hidden rounded-sm border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
                   ⌘K
                 </kbd>
               </span>

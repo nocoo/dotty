@@ -99,7 +99,7 @@ function ToastSection() {
                 <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
                   {t.description}
                 </p>
-                <span className="mt-1.5 inline-block rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                <span className="mt-1.5 inline-block rounded-sm bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                   {t.variantLabel}
                 </span>
               </div>
@@ -136,7 +136,7 @@ function DialogSection() {
             >
               <p className="text-sm font-medium text-foreground">{d.title}</p>
               <p className="text-xs text-muted-foreground line-clamp-2">{d.description}</p>
-              <span className="mt-auto rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+              <span className="mt-auto rounded-sm bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                 {styleLabel}
               </span>
             </button>
@@ -232,7 +232,7 @@ function FormDialogContent({
             <textarea
               rows={3}
               placeholder="Tell us what you think..."
-              className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+              className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
             />
           </div>
           <DialogFooter className="gap-2 sm:gap-0">

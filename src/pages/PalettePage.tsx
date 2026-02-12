@@ -95,7 +95,7 @@ function Swatch({ token, label, subtitle }: { token: string; label: string; subt
   return (
     <div className="flex flex-col items-center gap-2">
       <div
-        className="h-14 w-14 rounded-widget border border-border shadow-sm"
+        className="h-14 w-14 rounded-widget border border-border shadow-xs"
         style={{ background: `hsl(var(${token}))` }}
       />
       <div className="text-center">

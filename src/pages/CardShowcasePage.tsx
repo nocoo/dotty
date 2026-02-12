@@ -24,7 +24,7 @@ function NetworkLogo({ network }: { network: CreditCardType["network"] }) {
 function ChipIcon({ isBlack }: { isBlack: boolean }) {
   return (
     <div className={`h-8 w-10 rounded-md ${isBlack ? "bg-amber-300/80" : "bg-amber-200/80"} flex items-center justify-center`}>
-      <div className={`h-5 w-7 rounded-sm border ${isBlack ? "border-amber-600/50" : "border-amber-400/60"} grid grid-cols-3 grid-rows-2 gap-px p-px`}>
+      <div className={`h-5 w-7 rounded-xs border ${isBlack ? "border-amber-600/50" : "border-amber-400/60"} grid grid-cols-3 grid-rows-2 gap-px p-px`}>
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className={`${isBlack ? "bg-amber-500/40" : "bg-amber-300/50"} rounded-[1px]`} />
         ))}

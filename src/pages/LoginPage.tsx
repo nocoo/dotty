@@ -87,7 +87,7 @@ export default function LoginPage() {
 
             {/* Remember me */}
             <div className="flex items-center gap-2">
-              <Checkbox id="remember" className="rounded border-border data-[state=checked]:bg-primary" />
+              <Checkbox id="remember" className="rounded-sm border-border data-[state=checked]:bg-primary" />
               <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
                 Remember me for 30 days
               </Label>
