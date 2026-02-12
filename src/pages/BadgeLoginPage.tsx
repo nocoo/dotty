@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Mountain, User } from "lucide-react";
 
 export default function BadgeLoginPage() {
@@ -12,30 +13,30 @@ export default function BadgeLoginPage() {
 
         {/* Badge card */}
         <div className="relative aspect-[54/86] w-72 overflow-hidden rounded-2xl bg-card shadow-xl ring-1 ring-border">
-          {/* Header strip — covers avatar and welcome text */}
-          <div className="flex flex-col items-center bg-primary px-5 pb-6 pt-4">
-            {/* Top row */}
-            <div className="flex w-full items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <Mountain className="h-4 w-4 text-primary-foreground" strokeWidth={1.5} />
-                <span className="text-sm font-semibold text-primary-foreground">basalt.</span>
-              </div>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-primary-foreground/60">
-                Visitor
-              </span>
+          {/* Header strip */}
+          <div className="flex items-center justify-between bg-primary px-5 py-4">
+            <div className="flex items-center gap-2">
+              <Mountain className="h-4 w-4 text-primary-foreground" strokeWidth={1.5} />
+              <span className="text-sm font-semibold text-primary-foreground">basalt.</span>
             </div>
-
-            {/* Avatar */}
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground/10 ring-2 ring-primary-foreground/20">
-              <User className="h-8 w-8 text-primary-foreground/70" strokeWidth={1.5} />
-            </div>
-
-            <p className="mt-4 text-base font-semibold text-primary-foreground">Welcome</p>
-            <p className="mt-1 text-xs text-primary-foreground/60">Sign in to get your badge</p>
+            <span className="text-[10px] font-medium uppercase tracking-widest text-primary-foreground/60">
+              Visitor
+            </span>
           </div>
 
           {/* Badge content */}
-          <div className="flex flex-1 flex-col items-center px-6 pt-5">
+          <div className="flex flex-1 flex-col items-center px-6 pt-6">
+            {/* Avatar placeholder */}
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-secondary ring-2 ring-border">
+              <User className="h-8 w-8 text-muted-foreground" strokeWidth={1.5} />
+            </div>
+
+            <p className="mt-4 text-base font-semibold text-foreground">Welcome</p>
+            <p className="mt-1 text-xs text-muted-foreground">Sign in to get your badge</p>
+
+            {/* Divider */}
+            <div className="my-5 h-px w-full bg-border" />
+
             {/* Google Sign-in button */}
             <button className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-secondary px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
               <svg className="h-4 w-4" viewBox="0 0 24 24">
@@ -73,6 +74,13 @@ export default function BadgeLoginPage() {
             </div>
           </div>
         </div>
+
+        {/* Back link below badge */}
+        <p className="mt-6 text-sm text-muted-foreground">
+          <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
+            Back to Dashboard
+          </Link>
+        </p>
       </div>
     </div>
   );
