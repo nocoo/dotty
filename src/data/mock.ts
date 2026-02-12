@@ -239,3 +239,60 @@ export const lifeAiActivityBreakdown = [
   { label: "Yoga", value: 8 },
 ];
 
+// SlotBarChart demo data — sleep stages (category bars, equal height, color by type)
+export const lifeAiSleepSlots: { color: string; label: string }[] = [
+  // Deep sleep (indigo-800), Core (indigo-500), REM (green-600), Awake (orange-500)
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-800", label: "Deep 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-orange-500", label: "Awake 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-green-600", label: "REM 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-indigo-500", label: "Core 15m" },
+  { color: "bg-orange-500", label: "Awake 15m" },
+];
+
+// SlotBarChart demo data — heart rate (value-colored bars, color by BPM zone)
+export const lifeAiHeartRateSlots: { color: string; label: string }[] = [
+  { color: "bg-green-600", label: "62 bpm" },
+  { color: "bg-green-600", label: "58 bpm" },
+  { color: "bg-green-600", label: "55 bpm" },
+  { color: "bg-green-600", label: "60 bpm" },
+  { color: "bg-green-600", label: "65 bpm" },
+  { color: "bg-green-600", label: "68 bpm" },
+  { color: "bg-yellow-600", label: "72 bpm" },
+  { color: "bg-yellow-600", label: "78 bpm" },
+  { color: "bg-yellow-600", label: "82 bpm" },
+  { color: "bg-orange-600", label: "95 bpm" },
+  { color: "bg-red-600", label: "110 bpm" },
+  { color: "bg-red-600", label: "125 bpm" },
+  { color: "bg-red-600", label: "118 bpm" },
+  { color: "bg-orange-600", label: "98 bpm" },
+  { color: "bg-yellow-600", label: "85 bpm" },
+  { color: "bg-yellow-600", label: "80 bpm" },
+  { color: "bg-yellow-600", label: "75 bpm" },
+  { color: "bg-green-600", label: "68 bpm" },
+  { color: "bg-green-600", label: "64 bpm" },
+  { color: "bg-green-600", label: "60 bpm" },
+];
+

@@ -7,6 +7,7 @@ import { BarChartWidget } from "@/components/dashboard/BarChartWidget";
 import { DonutChartWidget } from "@/components/dashboard/PieChartWidget";
 import { TimelineWidget } from "@/components/dashboard/TimelineWidget";
 import { DateNavigationWidget } from "@/components/dashboard/DateNavigationWidget";
+import { SlotBarChart } from "@/components/dashboard/SlotBarChart";
 import { chart } from "@/lib/palette";
 
 const statIcons = [Activity, Moon, Heart, Flame] as const;
@@ -38,6 +39,63 @@ export default function LifeAiPage() {
             />
           ))}
         </StatGrid>
+      </div>
+
+      {/* Sleep stages + heart rate slot bar charts */}
+      <div className="mt-4 grid grid-cols-1 gap-3 md:gap-4 lg:grid-cols-2">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
+          <div className="mb-4 flex items-center gap-2">
+            <Moon className="h-4 w-4 text-indigo-500" strokeWidth={1.5} />
+            <p className="text-sm text-muted-foreground">Sleep Stages</p>
+            <span className="ml-auto text-sm font-semibold text-indigo-500">7h 24m</span>
+          </div>
+          <SlotBarChart items={vm.sleepSlots} />
+          <div className="mt-3 grid grid-cols-4 gap-1 text-center text-xs">
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-indigo-800" />
+              <span className="text-muted-foreground">Deep</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-indigo-500" />
+              <span className="text-muted-foreground">Core</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-green-600" />
+              <span className="text-muted-foreground">REM</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-orange-500" />
+              <span className="text-muted-foreground">Awake</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-card bg-secondary p-4 md:p-5">
+          <div className="mb-4 flex items-center gap-2">
+            <Heart className="h-4 w-4 text-red-500" strokeWidth={1.5} />
+            <p className="text-sm text-muted-foreground">Heart Rate</p>
+            <span className="ml-auto text-sm font-semibold text-red-500">72 bpm</span>
+          </div>
+          <SlotBarChart items={vm.heartRateSlots} />
+          <div className="mt-3 grid grid-cols-4 gap-1 text-center text-xs">
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-green-600" />
+              <span className="text-muted-foreground">&lt;70</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-yellow-600" />
+              <span className="text-muted-foreground">70-85</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-orange-600" />
+              <span className="text-muted-foreground">85-100</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="h-2 w-2 rounded-sm bg-red-600" />
+              <span className="text-muted-foreground">&gt;100</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Charts row: weekly steps bar + monthly sleep line */}

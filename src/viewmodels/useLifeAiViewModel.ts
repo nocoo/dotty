@@ -9,6 +9,8 @@ import {
   lifeAiWeeklySteps,
   lifeAiMonthlySleep,
   lifeAiActivityBreakdown,
+  lifeAiSleepSlots,
+  lifeAiHeartRateSlots,
 } from "@/data/mock";
 import { countActiveEvents, computeTotalCalories, shiftDate } from "@/models/life-ai";
 
@@ -21,6 +23,8 @@ export function useLifeAiViewModel() {
   const weeklySteps = lifeAiWeeklySteps;
   const monthlySleep = lifeAiMonthlySleep;
   const activityBreakdown = lifeAiActivityBreakdown;
+  const sleepSlots = lifeAiSleepSlots;
+  const heartRateSlots = lifeAiHeartRateSlots;
 
   const activeEventCount = useMemo(() => countActiveEvents(timeline), [timeline]);
   const totalCalories = useMemo(() => computeTotalCalories(timeline), [timeline]);
@@ -46,6 +50,8 @@ export function useLifeAiViewModel() {
     weeklySteps,
     monthlySleep,
     activityBreakdown,
+    sleepSlots,
+    heartRateSlots,
     activeEventCount,
     totalCalories,
     goToPrevDay,

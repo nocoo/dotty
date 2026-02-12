@@ -38,6 +38,15 @@ vi.mock("@/viewmodels/useLifeAiViewModel", () => ({
     weeklySteps: [{ label: "Mon", value: 7200 }],
     monthlySleep: [{ label: "Jan", value: 7.2 }],
     activityBreakdown: [{ label: "Running", value: 35 }],
+    sleepSlots: [
+      { color: "bg-indigo-800", label: "Deep 15m" },
+      { color: "bg-indigo-500", label: "Core 15m" },
+      { color: "bg-green-600", label: "REM 15m" },
+    ],
+    heartRateSlots: [
+      { color: "bg-green-600", label: "62 bpm" },
+      { color: "bg-yellow-600", label: "78 bpm" },
+    ],
     activeEventCount: 6,
     totalCalories: 1650,
     goToPrevDay: vi.fn(),
@@ -51,15 +60,17 @@ describe("LifeAiPage", () => {
     render(<LifeAiPage />);
     expect(screen.getByText("Steps")).toBeInTheDocument();
     expect(screen.getByText("Sleep")).toBeInTheDocument();
-    expect(screen.getByText("Heart Rate")).toBeInTheDocument();
+    // "Heart Rate" appears in both stat card and slot bar section
+    expect(screen.getAllByText("Heart Rate").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText("Calories")).toBeInTheDocument();
   });
 
   it("renders stat values", () => {
     render(<LifeAiPage />);
     expect(screen.getByText("8,432")).toBeInTheDocument();
-    expect(screen.getByText("7h 24m")).toBeInTheDocument();
-    expect(screen.getByText("72 bpm")).toBeInTheDocument();
+    // "7h 24m" and "72 bpm" appear in both stat cards and slot bar section headers
+    expect(screen.getAllByText("7h 24m").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("72 bpm").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText("2,180")).toBeInTheDocument();
   });
 
@@ -83,5 +94,13 @@ describe("LifeAiPage", () => {
   it("renders date navigation with Today button", () => {
     render(<LifeAiPage />);
     expect(screen.getByText("Today")).toBeInTheDocument();
+  });
+
+  it("renders sleep stages and heart rate slot bar sections", () => {
+    render(<LifeAiPage />);
+    expect(screen.getByText("Sleep Stages")).toBeInTheDocument();
+    // "Heart Rate" appears in both stat card and slot bar section
+    const heartRateElements = screen.getAllByText("Heart Rate");
+    expect(heartRateElements.length).toBeGreaterThanOrEqual(2);
   });
 });
