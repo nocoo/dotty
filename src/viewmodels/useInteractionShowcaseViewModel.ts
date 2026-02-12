@@ -10,7 +10,7 @@ export interface ToastDemo extends ShowcaseToast {
   variantLabel: string;
 }
 
-export interface DialogDemo extends ShowcaseDialog {}
+export type DialogDemo = ShowcaseDialog;
 
 export function useInteractionShowcaseViewModel() {
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
