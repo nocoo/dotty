@@ -50,6 +50,12 @@ export function DashboardLayout() {
 
   return (
     <div className="flex min-h-screen w-full bg-background">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        Skip to main content
+      </a>
       {/* Desktop sidebar */}
       {!isMobile && (
         <AppSidebar
@@ -71,7 +77,7 @@ export function DashboardLayout() {
         </>
       )}
 
-      <main className="flex-1 flex flex-col min-h-screen min-w-0">
+      <main id="main-content" className="flex-1 flex flex-col min-h-screen min-w-0">
         <header className="flex h-14 items-center justify-between px-4 md:px-6 shrink-0">
           <div className="flex items-center gap-3">
             {isMobile && (
