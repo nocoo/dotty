@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Mountain, User } from "lucide-react";
 
 export default function BadgeLoginPage() {
@@ -12,7 +11,7 @@ export default function BadgeLoginPage() {
         <div className="h-8 w-1 bg-zinc-400 dark:bg-zinc-500" />
 
         {/* Badge card */}
-        <div className="relative aspect-[54/86] w-72 overflow-hidden rounded-2xl bg-card shadow-xl ring-1 ring-border">
+        <div className="relative aspect-[54/86] w-72 overflow-hidden rounded-2xl bg-card shadow-xl ring-1 ring-border flex flex-col">
           {/* Header strip */}
           <div className="flex items-center justify-between bg-primary px-5 py-4">
             <div className="flex items-center gap-2">
@@ -25,7 +24,7 @@ export default function BadgeLoginPage() {
           </div>
 
           {/* Badge content */}
-          <div className="flex flex-1 flex-col items-center px-6 pt-6">
+          <div className="flex flex-1 flex-col items-center px-6 pt-6 pb-16">
             {/* Avatar placeholder */}
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-secondary ring-2 ring-border">
               <User className="h-8 w-8 text-muted-foreground" strokeWidth={1.5} />
@@ -35,7 +34,10 @@ export default function BadgeLoginPage() {
             <p className="mt-1 text-xs text-muted-foreground">Sign in to get your badge</p>
 
             {/* Divider */}
-            <div className="my-5 h-px w-full bg-border" />
+            <div className="mt-5 h-px w-full bg-border" />
+
+            {/* Push button toward bottom */}
+            <div className="flex-1" />
 
             {/* Google Sign-in button */}
             <button className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-secondary px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
@@ -74,13 +76,6 @@ export default function BadgeLoginPage() {
             </div>
           </div>
         </div>
-
-        {/* Back link below badge */}
-        <p className="mt-6 text-sm text-muted-foreground">
-          <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
-            Back to Dashboard
-          </Link>
-        </p>
       </div>
     </div>
   );
