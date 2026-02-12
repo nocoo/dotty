@@ -16,6 +16,7 @@ import HelpPage from "./pages/HelpPage";
 import SettingsPage from "./pages/SettingsPage";
 import PalettePage from "./pages/PalettePage";
 import LoginPage from "./pages/LoginPage";
+import BadgeLoginPage from "./pages/BadgeLoginPage";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -41,6 +42,7 @@ const App = () => (
         </Route>
         {/* Standalone pages (no sidebar) */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/badge-login" element={<BadgeLoginPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Wallet, CreditCard, ArrowLeftRight,
   PiggyBank, Target, BarChart3, TrendingUp,
   LineChart, HelpCircle, Settings, Search, ChevronUp,
-  PanelLeft, LogOut, Mountain, Palette, LogIn,
+  PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -63,6 +63,7 @@ const NAV_GROUPS: NavGroup[] = [
     defaultOpen: true,
     items: [
       { title: "Login", icon: LogIn, path: "/login", external: true },
+      { title: "Badge Login", icon: IdCard, path: "/badge-login", external: true },
       { title: "404 Page", icon: FileQuestion, path: "/404", external: true },
     ],
   },
