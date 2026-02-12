@@ -1,4 +1,4 @@
-import { Mountain } from "lucide-react";
+import { Mountain, User } from "lucide-react";
 
 function Barcode() {
   // Varying bar widths for a realistic barcode pattern
@@ -83,9 +83,9 @@ export default function BadgeLoginPage() {
 
           {/* Badge content */}
           <div className="flex flex-1 flex-col items-center px-6 pt-6 pb-14">
-            {/* Brand icon */}
-            <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-secondary ring-1 ring-border">
-              <Mountain className="h-10 w-10 text-foreground" strokeWidth={1.5} />
+            {/* Avatar */}
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-secondary ring-1 ring-border">
+              <User className="h-10 w-10 text-muted-foreground" strokeWidth={1.5} />
             </div>
 
             <p className="mt-5 text-lg font-semibold text-foreground">Welcome</p>
@@ -124,6 +124,11 @@ export default function BadgeLoginPage() {
             <p className="mt-3 text-center text-[10px] leading-relaxed text-muted-foreground/60">
               By signing in you agree to our Terms of Service and Privacy Policy
             </p>
+          </div>
+
+          {/* Mountain watermark — large, faded texture in lower card */}
+          <div className="pointer-events-none absolute bottom-10 left-1/2 -translate-x-1/2">
+            <Mountain className="h-40 w-40 text-foreground/[0.03]" strokeWidth={0.75} />
           </div>
 
           {/* Footer strip */}
