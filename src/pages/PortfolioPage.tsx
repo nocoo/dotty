@@ -1,10 +1,11 @@
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie } from "recharts";
 import { TrendingUp, TrendingDown, PieChart as PieChartIcon, Briefcase } from "lucide-react";
 import { usePortfolioViewModel } from "@/viewmodels/usePortfolioViewModel";
 import { CHART_COLORS, CHART_TOKENS, chartPositive, chartAxis, withAlpha } from "@/lib/palette";
 
 export default function PortfolioPage() {
   const { totalValue, holdings, performanceData } = usePortfolioViewModel();
+  const holdingsWithFill = holdings.map((h, i) => ({ ...h, fill: CHART_COLORS[i] }));
 
   return (
     <>
@@ -52,9 +53,7 @@ export default function PortfolioPage() {
             <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]" role="img" aria-label="Asset allocation donut chart">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={holdings} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0}>
-                    {holdings.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
-                  </Pie>
+                  <Pie data={holdingsWithFill} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
