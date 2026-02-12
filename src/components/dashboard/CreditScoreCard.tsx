@@ -53,7 +53,7 @@ export function CreditScoreCard() {
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-xl font-semibold text-foreground font-display tracking-tight">{score}</span>
-                <span className={`text-xs font-medium ${color}`}>{label}</span>
+                <span className={`text-[10px] font-medium ${color}`}>{label}</span>
               </div>
             </div>
           </div>
