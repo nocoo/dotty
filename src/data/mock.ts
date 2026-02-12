@@ -1,69 +1,19 @@
-// Centralized mock data for all pages
+// Centralized mock data for all pages.
+// Type definitions live in @/models/types.ts — edit those to match your domain.
 
-export interface Account {
-  name: string;
-  balance: number;
-  currency: string;
-  change: string;
-}
+import type {
+  Account,
+  ActivityItem,
+  CreditCard,
+  Transaction,
+  Budget,
+  MonthlyBudget,
+  Goal,
+  PortfolioItem,
+  FAQ,
+} from "@/models/types";
 
-export interface ActivityItem {
-  desc: string;
-  amount: number;
-  date: string;
-}
-
-export interface CreditCard {
-  name: string;
-  bank: string;
-  network: "visa" | "mastercard" | "amex";
-  number: string;
-  expiry: string;
-  balance: number;
-  limit: number;
-  color: string;
-}
-
-export interface Transaction {
-  id: number;
-  name: string;
-  category: string;
-  amount: number;
-  date: string;
-  status: "Completed" | "Pending";
-}
-
-export interface Budget {
-  category: string;
-  spent: number;
-  limit: number;
-}
-
-export interface MonthlyBudget {
-  month: string;
-  budget: number;
-  actual: number;
-}
-
-export interface Goal {
-  name: string;
-  target: number;
-  saved: number;
-  icon: string;
-}
-
-export interface PortfolioItem {
-  name: string;
-  value: number;
-  allocation: number;
-  change: string;
-  up: boolean;
-}
-
-export interface FAQ {
-  q: string;
-  a: string;
-}
+export type { Account, ActivityItem, CreditCard, Transaction, Budget, MonthlyBudget, Goal, PortfolioItem, FAQ };
 
 // ── Dashboard ──
 export const dashboardBalance = {
