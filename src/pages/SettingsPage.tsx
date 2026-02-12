@@ -121,30 +121,34 @@ function ProfileSection() {
         {/* Form fields */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">First name</Label>
+            <Label htmlFor="settings-first-name" className="text-sm text-foreground">First name</Label>
             <Input
+              id="settings-first-name"
               defaultValue="Alex"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Last name</Label>
+            <Label htmlFor="settings-last-name" className="text-sm text-foreground">Last name</Label>
             <Input
+              id="settings-last-name"
               defaultValue="Johnson"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Email</Label>
+            <Label htmlFor="settings-email" className="text-sm text-foreground">Email</Label>
             <Input
+              id="settings-email"
               defaultValue="alex@basalt.app"
               type="email"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Phone</Label>
+            <Label htmlFor="settings-phone" className="text-sm text-foreground">Phone</Label>
             <Input
+              id="settings-phone"
               defaultValue="+1 (555) 123-4567"
               type="tel"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
@@ -153,8 +157,9 @@ function ProfileSection() {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm text-foreground">Bio</Label>
+          <Label htmlFor="settings-bio" className="text-sm text-foreground">Bio</Label>
           <textarea
+            id="settings-bio"
             defaultValue="Product designer and financial enthusiast."
             rows={3}
             className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
@@ -192,10 +197,10 @@ function NotificationsSection() {
           <div key={item.id}>
             <div className="flex items-center justify-between py-3">
               <div className="space-y-0.5">
-                <p className="text-sm text-foreground">{item.label}</p>
+                <label htmlFor={`notif-${item.id}`} className="text-sm text-foreground cursor-pointer">{item.label}</label>
                 <p className="text-xs text-muted-foreground">{item.description}</p>
               </div>
-              <Switch defaultChecked={item.defaultOn} />
+              <Switch id={`notif-${item.id}`} defaultChecked={item.defaultOn} />
             </div>
             {i < NOTIFICATION_TOGGLES.length - 1 && <Separator className="bg-border" />}
           </div>
@@ -222,8 +227,9 @@ function SecuritySection() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Current password</Label>
+            <Label htmlFor="settings-current-password" className="text-sm text-foreground">Current password</Label>
             <Input
+              id="settings-current-password"
               type="password"
               placeholder="••••••••"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
@@ -231,16 +237,18 @@ function SecuritySection() {
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label className="text-sm text-foreground">New password</Label>
+              <Label htmlFor="settings-new-password" className="text-sm text-foreground">New password</Label>
               <Input
+                id="settings-new-password"
                 type="password"
                 placeholder="••••••••"
                 className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-sm text-foreground">Confirm new password</Label>
+              <Label htmlFor="settings-confirm-password" className="text-sm text-foreground">Confirm new password</Label>
               <Input
+                id="settings-confirm-password"
                 type="password"
                 placeholder="••••••••"
                 className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
@@ -268,22 +276,22 @@ function SecuritySection() {
         <CardContent>
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <p className="text-sm text-foreground">Authenticator app</p>
+              <label htmlFor="2fa-authenticator" className="text-sm text-foreground cursor-pointer">Authenticator app</label>
               <p className="text-xs text-muted-foreground">
                 Add an extra layer of security with TOTP
               </p>
             </div>
-            <Switch />
+            <Switch id="2fa-authenticator" />
           </div>
           <Separator className="my-4 bg-border" />
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <p className="text-sm text-foreground">SMS verification</p>
+              <label htmlFor="2fa-sms" className="text-sm text-foreground cursor-pointer">SMS verification</label>
               <p className="text-xs text-muted-foreground">
                 Receive codes via text message
               </p>
             </div>
-            <Switch defaultChecked />
+            <Switch id="2fa-sms" defaultChecked />
           </div>
         </CardContent>
       </Card>
@@ -382,10 +390,10 @@ function AppearanceSection() {
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <p className="text-sm text-foreground">Currency</p>
+              <label htmlFor="settings-currency" className="text-sm text-foreground cursor-pointer">Currency</label>
               <p className="text-xs text-muted-foreground">Default display currency</p>
             </div>
-            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
+            <select id="settings-currency" className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
               <option>USD ($)</option>
               <option>EUR (&euro;)</option>
               <option>GBP (&pound;)</option>
@@ -395,10 +403,10 @@ function AppearanceSection() {
           <Separator className="bg-border" />
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <p className="text-sm text-foreground">Language</p>
+              <label htmlFor="settings-language" className="text-sm text-foreground cursor-pointer">Language</label>
               <p className="text-xs text-muted-foreground">Interface language</p>
             </div>
-            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
+            <select id="settings-language" className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary">
               <option>English</option>
               <option>Spanish</option>
               <option>French</option>
@@ -408,10 +416,10 @@ function AppearanceSection() {
           <Separator className="bg-border" />
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <p className="text-sm text-foreground">Compact mode</p>
+              <label htmlFor="settings-compact-mode" className="text-sm text-foreground cursor-pointer">Compact mode</label>
               <p className="text-xs text-muted-foreground">Reduce spacing and card sizes</p>
             </div>
-            <Switch />
+            <Switch id="settings-compact-mode" />
           </div>
         </CardContent>
       </Card>

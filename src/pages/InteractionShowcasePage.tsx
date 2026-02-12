@@ -221,15 +221,17 @@ function FormDialogContent({
       {!submitted && (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Your name</Label>
+            <Label htmlFor="feedback-name" className="text-sm text-foreground">Your name</Label>
             <Input
+              id="feedback-name"
               placeholder="Alex Johnson"
               className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-sm text-foreground">Message</Label>
+            <Label htmlFor="feedback-message" className="text-sm text-foreground">Message</Label>
             <textarea
+              id="feedback-message"
               rows={3}
               placeholder="Tell us what you think..."
               className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
