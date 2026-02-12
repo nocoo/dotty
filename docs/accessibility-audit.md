@@ -17,7 +17,17 @@ All **Critical** issues (6 categories, ~20 instances) have been resolved in atom
 | 5 | Login page missing `<form>` element | **Fixed** | `fix: wrap login inputs in form element and add aria-hidden to decorative icons` |
 | 6 | No skip navigation link | **Fixed** | `fix: add skip navigation link and main content landmark id` |
 
-**Remaining**: High, Medium, and Low issues are documented below for future remediation passes.
+**High** issues #8, #10, and #11 have also been resolved:
+
+| # | Issue | Status | Commit |
+|---|-------|--------|--------|
+| 8 | Progress bars missing ARIA attributes | **Fixed** | `fix: add progressbar role and aria attributes to css progress bars` |
+| 10 | Fake toggle switches in CardShowcasePage | **Fixed** | `fix: replace decorative div toggles with accessible shadcn switch components` |
+| 11 | Theme selector missing radio group semantics | **Fixed** | `fix: add radio group semantics to theme selector buttons` |
+
+**Skipped**: High #7 (mobile sidebar focus trap) and #9 (color-only indicators) — deferred as higher risk/effort.
+
+**Remaining**: Medium and Low issues are documented below for future remediation passes.
 
 ## Executive Summary
 
@@ -151,7 +161,7 @@ Screen readers cannot navigate these as data tables. Column headers (`Transactio
 
 **WCAG**: 2.1.1 Keyboard (Level A), 1.4.13 Content on Hover or Focus (Level AA)
 
-### 8. Progress Bars Missing ARIA Attributes (~5 instances)
+### 8. Progress Bars Missing ARIA Attributes (~5 instances) -- RESOLVED
 
 | File | Line(s) | Description |
 |------|---------|-------------|
@@ -182,7 +192,7 @@ Information conveyed solely through color without text/pattern alternatives:
 
 **WCAG**: 1.4.1 Use of Color (Level A)
 
-### 10. Fake Toggle Switches in CardShowcasePage
+### 10. Fake Toggle Switches in CardShowcasePage -- RESOLVED
 
 `src/pages/CardShowcasePage.tsx:132-134` -- "Online Payments", "Contactless", "ATM Withdrawal" toggles are pure `<div>` elements styled to look like switches.
 
@@ -194,7 +204,7 @@ Information conveyed solely through color without text/pattern alternatives:
 
 **WCAG**: 2.1.1 Keyboard (Level A), 4.1.2 Name, Role, Value (Level A)
 
-### 11. Theme Selector Missing Radio Group Semantics
+### 11. Theme Selector Missing Radio Group Semantics -- RESOLVED
 
 `src/pages/SettingsPage.tsx:349-365` -- Light/Dark/System buttons behave as a radio group but lack:
 - `role="radiogroup"` on parent
