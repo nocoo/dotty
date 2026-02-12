@@ -7,7 +7,7 @@
 [![Framework: Next.js](https://img.shields.io/badge/Framework-Next.js-black.svg?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Style: Tailwind](https://img.shields.io/badge/Style-Tailwind_CSS-38bdf8.svg?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
 
-![Basalt Preview](https://assets.lizheng.me/wp-content/uploads/2026/02/basalt-scaled.jpg)
+![Basalt Preview](https://assets.lizheng.me/wp-content/uploads/2026/02/basalt-1-scaled.jpg)
 
 ## Philosophy
 
