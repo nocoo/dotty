@@ -3,7 +3,7 @@
 
 import type { Budget } from "@/models/types";
 
-export interface ProgressSummary {
+interface ProgressSummary {
   totalSpent: number;
   totalLimit: number;
   remaining: number;

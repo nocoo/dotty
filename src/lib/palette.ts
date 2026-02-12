@@ -45,7 +45,6 @@ export const CHART_TOKENS = [
 // ── Semantic aliases ──
 
 export const chartAxis = v("chart-axis");
-export const chartMuted = v("chart-muted");
 
 /** Positive / income / inflow */
 export const chartPositive = chart.green;

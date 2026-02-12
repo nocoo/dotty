@@ -3,7 +3,7 @@
 
 import type { ActivityItem } from "@/models/types";
 
-export type AmountDirection = "positive" | "negative";
+type AmountDirection = "positive" | "negative";
 
 export function classifyDirection(amount: number): AmountDirection {
   return amount > 0 ? "positive" : "negative";
