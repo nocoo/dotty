@@ -1,5 +1,5 @@
 import {
-  BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
+  BarChart, Bar, LineChart, Line, PieChart, Pie,
   XAxis, YAxis, ResponsiveContainer, AreaChart, Area,
 } from "recharts";
 import { Palette, LineChart as LineChartIcon, Target, BarChart3, Activity } from "lucide-react";
@@ -22,7 +22,7 @@ const pieData = [
   { name: "Real Estate", value: 15 },
   { name: "Crypto", value: 10 },
   { name: "Cash", value: 10 },
-];
+].map((d, i) => ({ ...d, fill: CHART_COLORS[i] }));
 
 const barData = [
   { name: "Mon", income: 1200, expense: 800 },
@@ -181,9 +181,7 @@ export default function PalettePage() {
             <div className="h-[180px] w-[180px]" role="img" aria-label="Example donut chart showing asset allocation">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={pieData} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="value" strokeWidth={0}>
-                    {pieData.map((_, i) => <Cell key={i} fill={CHART_COLORS[i]} />)}
-                  </Pie>
+                  <Pie data={pieData} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="value" strokeWidth={0} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
