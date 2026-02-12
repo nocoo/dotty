@@ -16,32 +16,44 @@ export default function RecordListPage() {
       {/* Desktop table */}
       <div className="rounded-card bg-secondary overflow-hidden hidden md:block">
         <div className="flex items-center gap-2 px-5 pt-4 pb-2">
-          <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} aria-hidden="true" />
           <p className="text-sm text-muted-foreground">Transactions</p>
         </div>
-        <div className="grid grid-cols-[1fr_100px_120px_100px_90px] gap-2 px-5 py-3 text-xs text-muted-foreground border-b border-border">
-          <span>Transaction</span><span>Category</span><span>Date</span><span className="text-right">Amount</span><span className="text-right">Status</span>
-        </div>
-        {records.map((tx) => (
-          <div key={tx.id} className="grid grid-cols-[1fr_100px_120px_100px_90px] gap-2 px-5 py-3 items-center hover:bg-accent/50 transition-colors">
-            <div className="flex items-center gap-3">
-              <div className={`flex h-7 w-7 items-center justify-center rounded-md ${tx.direction === "positive" ? "bg-success/10" : "bg-destructive/10"}`}>
-                {tx.direction === "positive" ? <ArrowDownLeft className="h-3 w-3 text-success" strokeWidth={1.5} /> : <ArrowUpRight className="h-3 w-3 text-destructive" strokeWidth={1.5} />}
-              </div>
-              <span className="text-sm text-foreground">{tx.name}</span>
-            </div>
-            <span className="text-xs text-muted-foreground">{tx.category}</span>
-            <span className="text-xs text-muted-foreground">{tx.date}</span>
-            <span className={`text-sm font-medium text-right ${tx.direction === "positive" ? "text-success" : "text-foreground"}`}>
-              {tx.formattedAmount}
-            </span>
-            <div className="flex justify-end">
-              <span className={`text-[10px] px-2 py-0.5 rounded-full ${tx.statusVariant === "success" ? "bg-success/10 text-success" : "bg-yellow-500/10 text-yellow-500"}`}>
-                {tx.status}
-              </span>
-            </div>
-          </div>
-        ))}
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-border">
+              <th scope="col" className="px-5 py-3 text-left text-xs font-normal text-muted-foreground">Transaction</th>
+              <th scope="col" className="w-[100px] py-3 text-left text-xs font-normal text-muted-foreground">Category</th>
+              <th scope="col" className="w-[120px] py-3 text-left text-xs font-normal text-muted-foreground">Date</th>
+              <th scope="col" className="w-[100px] py-3 text-right text-xs font-normal text-muted-foreground">Amount</th>
+              <th scope="col" className="w-[90px] py-3 pr-5 text-right text-xs font-normal text-muted-foreground">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {records.map((tx) => (
+              <tr key={tx.id} className="hover:bg-accent/50 transition-colors">
+                <td className="px-5 py-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`flex h-7 w-7 items-center justify-center rounded-md ${tx.direction === "positive" ? "bg-success/10" : "bg-destructive/10"}`}>
+                      {tx.direction === "positive" ? <ArrowDownLeft className="h-3 w-3 text-success" strokeWidth={1.5} aria-hidden="true" /> : <ArrowUpRight className="h-3 w-3 text-destructive" strokeWidth={1.5} aria-hidden="true" />}
+                    </div>
+                    <span className="text-sm text-foreground">{tx.name}</span>
+                  </div>
+                </td>
+                <td className="py-3 text-xs text-muted-foreground">{tx.category}</td>
+                <td className="py-3 text-xs text-muted-foreground">{tx.date}</td>
+                <td className={`py-3 text-sm font-medium text-right ${tx.direction === "positive" ? "text-success" : "text-foreground"}`}>
+                  {tx.formattedAmount}
+                </td>
+                <td className="py-3 pr-5 text-right">
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full ${tx.statusVariant === "success" ? "bg-success/10 text-success" : "bg-yellow-500/10 text-yellow-500"}`}>
+                    {tx.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Mobile list */}

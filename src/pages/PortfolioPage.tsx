@@ -75,25 +75,34 @@ export default function PortfolioPage() {
 
       <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
-          <Briefcase className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <Briefcase className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} aria-hidden="true" />
           <p className="text-sm text-muted-foreground">Holdings</p>
         </div>
-        <div className="flex flex-col gap-3">
-          {holdings.map((item, i) => (
-            <div key={item.name} className="flex items-center justify-between rounded-widget bg-card p-3">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ background: withAlpha(CHART_TOKENS[i], 0.12) }}>
-                  {item.up ? <TrendingUp className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} /> : <TrendingDown className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} />}
-                </div>
-                <span className="text-sm text-foreground">{item.name}</span>
-              </div>
-              <div className="text-right">
-                <p className="text-sm font-medium text-foreground">${item.value.toLocaleString()}</p>
-                <p className={`text-xs ${item.up ? "text-success" : "text-destructive"}`}>{item.change}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="w-full">
+          <thead className="sr-only">
+            <tr>
+              <th scope="col">Asset</th>
+              <th scope="col">Value</th>
+              <th scope="col">Change</th>
+            </tr>
+          </thead>
+          <tbody className="flex flex-col gap-3">
+            {holdings.map((item, i) => (
+              <tr key={item.name} className="flex items-center justify-between rounded-widget bg-card p-3">
+                <td className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ background: withAlpha(CHART_TOKENS[i], 0.12) }}>
+                    {item.up ? <TrendingUp className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} aria-hidden="true" /> : <TrendingDown className="h-3.5 w-3.5" style={{ color: CHART_COLORS[i] }} strokeWidth={1.5} aria-hidden="true" />}
+                  </div>
+                  <span className="text-sm text-foreground">{item.name}</span>
+                </td>
+                <td className="text-right">
+                  <p className="text-sm font-medium text-foreground">${item.value.toLocaleString()}</p>
+                  <p className={`text-xs ${item.up ? "text-success" : "text-destructive"}`}>{item.change}</p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
