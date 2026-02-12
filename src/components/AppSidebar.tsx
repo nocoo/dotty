@@ -87,16 +87,20 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="flex w-full items-center justify-between pl-5 pr-6 py-2.5 mt-2">
-        <span className="text-sm font-normal text-muted-foreground">{group.label}</span>
-        <ChevronUp
-          className={cn(
-            "h-4 w-4 text-muted-foreground transition-transform duration-200",
-            !open && "rotate-180"
-          )}
-          strokeWidth={1.5}
-        />
-      </CollapsibleTrigger>
+      <div className="px-3 mt-2">
+         <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2.5">
+          <span className="text-sm font-normal text-muted-foreground">{group.label}</span>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+            <ChevronUp
+              className={cn(
+                "h-4 w-4 text-muted-foreground transition-transform duration-200",
+                !open && "rotate-180"
+              )}
+              strokeWidth={1.5}
+            />
+          </span>
+        </CollapsibleTrigger>
+      </div>
       <div
         className="grid overflow-hidden"
         style={{
@@ -124,11 +128,15 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
               <item.icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
               <span className="flex-1 text-left">{item.title}</span>
               {item.external && (
-                <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground" strokeWidth={1.5} />
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+                  <ExternalLink className="h-3 w-3 text-muted-foreground" strokeWidth={1.5} />
+                </span>
               )}
               {item.badge && (
-                <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-badge-red px-1.5 text-[11px] font-medium text-badge-red-foreground">
-                  {item.badge}
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+                  <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-badge-red px-1.5 text-[11px] font-medium text-badge-red-foreground">
+                    {item.badge}
+                  </span>
                 </span>
               )}
             </button>
@@ -263,29 +271,33 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       ) : (
         /* ── Expanded view ── */
         <div className="flex h-screen w-[260px] flex-col">
-          <div className="flex h-14 items-center justify-between pl-5 pr-6">
-            <div className="flex items-center gap-3">
-              <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
-              <span className="text-lg md:text-xl font-semibold text-foreground">basalt.</span>
+          <div className="px-3 h-14 flex items-center">
+             <div className="flex w-full items-center justify-between px-3">
+              <div className="flex items-center gap-3">
+                <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                <span className="text-lg md:text-xl font-semibold text-foreground">basalt.</span>
+              </div>
+              <button
+                onClick={onToggle}
+                className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
+              </button>
             </div>
-            <button
-              onClick={onToggle}
-              className="flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <PanelLeft className="h-4 w-4" strokeWidth={1.5} />
-            </button>
           </div>
 
-          <div className="px-4 pb-1">
+          <div className="px-3 pb-1">
             <button
               onClick={() => setSearchOpen(true)}
               className="flex w-full items-center gap-3 rounded-lg bg-secondary px-3 py-2.5 transition-colors hover:bg-accent cursor-pointer"
             >
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="flex-1 text-left text-sm text-muted-foreground">Search</span>
-              <kbd className="pointer-events-none hidden rounded border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
-                ⌘K
-              </kbd>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center">
+                <kbd className="pointer-events-none hidden rounded border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
+                  ⌘K
+                </kbd>
+              </span>
             </button>
           </div>
 
