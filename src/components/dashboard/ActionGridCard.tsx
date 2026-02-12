@@ -10,7 +10,7 @@ const actions = [
 
 export function ActionGridCard() {
   return (
-    <Card className="h-full rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-card border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center gap-2">
           <Zap className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -22,7 +22,7 @@ export function ActionGridCard() {
           {actions.map((action) => (
             <button
               key={action.label}
-              className="flex flex-col items-center gap-2 rounded-[10px] bg-card p-3 hover:bg-accent transition-colors cursor-pointer"
+              className="flex flex-col items-center gap-2 rounded-widget bg-card p-3 hover:bg-accent transition-colors cursor-pointer"
             >
               <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${action.color}`}>
                 <action.icon className="h-4 w-4" strokeWidth={1.5} />

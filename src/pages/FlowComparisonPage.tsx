@@ -9,21 +9,21 @@ export default function FlowComparisonPage() {
   return (
     <>
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Inflow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight">${summary.totalInflow.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Outflow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-destructive font-display tracking-tight">${summary.totalOutflow.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Net Cash Flow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">${summary.netFlow.toLocaleString()}</h2>
         </div>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Cash Flow Over Time</p>
@@ -44,7 +44,7 @@ export default function FlowComparisonPage() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Net Cash Flow by Month</p>

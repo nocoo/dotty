@@ -52,14 +52,14 @@ export default function SettingsPage() {
     <>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         {/* Left nav */}
-        <Card className="rounded-[14px] border-0 bg-secondary shadow-none lg:col-span-1">
+        <Card className="rounded-card border-0 bg-secondary shadow-none lg:col-span-1">
           <CardContent className="p-3">
             <nav className="flex flex-row gap-1 lg:flex-col">
               {SECTIONS.map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
                   onClick={() => setActiveSection(id)}
-                  className={`flex items-center gap-2 rounded-[10px] px-3 py-2.5 text-sm transition-colors ${
+                  className={`flex items-center gap-2 rounded-widget px-3 py-2.5 text-sm transition-colors ${
                     activeSection === id
                       ? "bg-accent text-foreground font-medium"
                       : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
@@ -89,7 +89,7 @@ export default function SettingsPage() {
 
 function ProfileSection() {
   return (
-    <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="rounded-card border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center gap-2">
           <User className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -123,14 +123,14 @@ function ProfileSection() {
             <Label className="text-sm text-foreground">First name</Label>
             <Input
               defaultValue="Alex"
-              className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
             <Label className="text-sm text-foreground">Last name</Label>
             <Input
               defaultValue="Johnson"
-              className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -138,7 +138,7 @@ function ProfileSection() {
             <Input
               defaultValue="alex@basalt.app"
               type="email"
-              className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -146,7 +146,7 @@ function ProfileSection() {
             <Input
               defaultValue="+1 (555) 123-4567"
               type="tel"
-              className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
         </div>
@@ -156,15 +156,15 @@ function ProfileSection() {
           <textarea
             defaultValue="Product designer and financial enthusiast."
             rows={3}
-            className="w-full rounded-[10px] border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+            className="w-full rounded-widget border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           />
         </div>
 
         <div className="flex justify-end gap-3">
-          <button className="rounded-[10px] bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <button className="rounded-widget bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             Cancel
           </button>
-          <button className="rounded-[10px] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+          <button className="rounded-widget bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
             Save changes
           </button>
         </div>
@@ -177,7 +177,7 @@ function ProfileSection() {
 
 function NotificationsSection() {
   return (
-    <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="rounded-card border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center gap-2">
           <Bell className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -210,7 +210,7 @@ function SecuritySection() {
   return (
     <div className="space-y-4">
       {/* Password */}
-      <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <Card className="rounded-card border-0 bg-secondary shadow-none">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -225,7 +225,7 @@ function SecuritySection() {
             <Input
               type="password"
               placeholder="••••••••"
-              className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -234,7 +234,7 @@ function SecuritySection() {
               <Input
                 type="password"
                 placeholder="••••••••"
-                className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+                className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
               />
             </div>
             <div className="space-y-2">
@@ -242,12 +242,12 @@ function SecuritySection() {
               <Input
                 type="password"
                 placeholder="••••••••"
-                className="rounded-[10px] border-border bg-card text-sm focus-visible:ring-primary"
+                className="rounded-widget border-border bg-card text-sm focus-visible:ring-primary"
               />
             </div>
           </div>
           <div className="flex justify-end">
-            <button className="rounded-[10px] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+            <button className="rounded-widget bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
               Update password
             </button>
           </div>
@@ -255,7 +255,7 @@ function SecuritySection() {
       </Card>
 
       {/* Two-factor */}
-      <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <Card className="rounded-card border-0 bg-secondary shadow-none">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Smartphone className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -288,7 +288,7 @@ function SecuritySection() {
       </Card>
 
       {/* Active sessions */}
-      <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <Card className="rounded-card border-0 bg-secondary shadow-none">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Globe className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -303,7 +303,7 @@ function SecuritySection() {
             { device: "iPhone 15 — Safari", location: "San Francisco, US", current: false },
             { device: "Windows PC — Firefox", location: "New York, US", current: false },
           ].map((session) => (
-            <div key={session.device} className="flex items-center justify-between rounded-[10px] border border-border p-3">
+            <div key={session.device} className="flex items-center justify-between rounded-widget border border-border p-3">
               <div className="space-y-0.5">
                 <p className="text-sm text-foreground">
                   {session.device}
@@ -334,7 +334,7 @@ function AppearanceSection() {
   return (
     <div className="space-y-4">
       {/* Theme */}
-      <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <Card className="rounded-card border-0 bg-secondary shadow-none">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Palette className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -348,7 +348,7 @@ function AppearanceSection() {
             {(["Light", "Dark", "System"] as const).map((theme) => (
               <button
                 key={theme}
-                className={`flex flex-col items-center gap-2 rounded-[10px] border p-4 transition-colors ${
+                className={`flex flex-col items-center gap-2 rounded-widget border p-4 transition-colors ${
                   theme === "Dark"
                     ? "border-primary bg-accent"
                     : "border-border hover:border-primary/50 hover:bg-accent/50"
@@ -369,7 +369,7 @@ function AppearanceSection() {
       </Card>
 
       {/* Currency & language */}
-      <Card className="rounded-[14px] border-0 bg-secondary shadow-none">
+      <Card className="rounded-card border-0 bg-secondary shadow-none">
         <CardHeader>
           <div className="flex items-center gap-2">
             <CreditCard className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -384,7 +384,7 @@ function AppearanceSection() {
               <p className="text-sm text-foreground">Currency</p>
               <p className="text-xs text-muted-foreground">Default display currency</p>
             </div>
-            <select className="rounded-[10px] border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
+            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
               <option>USD ($)</option>
               <option>EUR (&euro;)</option>
               <option>GBP (&pound;)</option>
@@ -397,7 +397,7 @@ function AppearanceSection() {
               <p className="text-sm text-foreground">Language</p>
               <p className="text-xs text-muted-foreground">Interface language</p>
             </div>
-            <select className="rounded-[10px] border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
+            <select className="rounded-widget border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">
               <option>English</option>
               <option>Spanish</option>
               <option>French</option>

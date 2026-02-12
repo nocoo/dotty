@@ -10,7 +10,7 @@ export default function StatsOverviewPage() {
     <>
       <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="rounded-[14px] bg-secondary p-4 md:p-5">
+          <div key={s.label} className="rounded-card bg-secondary p-4 md:p-5">
             <p className="text-xs md:text-sm text-muted-foreground mb-1">{s.label}</p>
             <h3 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">{s.value}</h3>
             <span className={`text-xs font-medium ${s.changeColorClass}`}>{s.change}</span>
@@ -19,7 +19,7 @@ export default function StatsOverviewPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-2">
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <div className="flex items-center gap-2 mb-4">
             <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Income vs Expenses</p>
@@ -36,7 +36,7 @@ export default function StatsOverviewPage() {
           </div>
         </div>
 
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <div className="flex items-center gap-2 mb-4">
             <Target className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Spending by Category</p>
@@ -66,7 +66,7 @@ export default function StatsOverviewPage() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <TrendingUp className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">30-Day Balance Trend</p>

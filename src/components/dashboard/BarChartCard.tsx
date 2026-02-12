@@ -14,7 +14,7 @@ const data = [
 
 export function BarChartCard() {
   return (
-    <Card className="h-full rounded-[14px] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-card border-0 bg-secondary shadow-none">
       <CardHeader>
         <div className="flex items-center gap-2">
           <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />

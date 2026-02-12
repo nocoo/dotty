@@ -80,6 +80,8 @@ export default {
         },
       },
       borderRadius: {
+        card: "14px",
+        widget: "10px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

@@ -8,7 +8,7 @@ export default function AccountsPage() {
     <>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {accountList.map((acc) => (
-          <div key={acc.name} className="rounded-[14px] bg-secondary p-5">
+          <div key={acc.name} className="rounded-card bg-secondary p-5">
             <div className="flex items-center gap-2 mb-3">
               <WalletIcon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="text-sm text-muted-foreground">{acc.name}</span>
@@ -20,15 +20,15 @@ export default function AccountsPage() {
       </div>
 
       <div className="mt-4 flex gap-3">
-        <button className="flex items-center gap-2 rounded-[10px] bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">
+        <button className="flex items-center gap-2 rounded-widget bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">
           <Plus className="h-4 w-4" strokeWidth={1.5} /> Add Money
         </button>
-        <button className="flex items-center gap-2 rounded-[10px] bg-secondary px-4 py-2.5 text-sm font-medium text-foreground">
+        <button className="flex items-center gap-2 rounded-widget bg-secondary px-4 py-2.5 text-sm font-medium text-foreground">
           <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} /> Send
         </button>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-5">
+      <div className="mt-4 rounded-card bg-secondary p-5">
         <div className="flex items-center gap-2 mb-4">
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Recent Activity</p>

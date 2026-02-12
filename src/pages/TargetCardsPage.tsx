@@ -16,7 +16,7 @@ export default function TargetCardsPage() {
       {goals.map((goal) => {
         const Icon = GOAL_ICONS[goal.icon] ?? Shield;
         return (
-          <div key={goal.name} className="rounded-[14px] bg-secondary p-5">
+          <div key={goal.name} className="rounded-card bg-secondary p-5">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <Icon className="h-5 w-5 text-primary" strokeWidth={1.5} />

@@ -8,13 +8,13 @@ export default function RecordListPage() {
     <>
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm text-muted-foreground">{totalCount} transactions</span>
-        <button className="flex items-center gap-2 rounded-[10px] bg-secondary px-3 py-2 text-sm text-muted-foreground hover:text-foreground">
+        <button className="flex items-center gap-2 rounded-widget bg-secondary px-3 py-2 text-sm text-muted-foreground hover:text-foreground">
           <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> Filter
         </button>
       </div>
 
       {/* Desktop table */}
-      <div className="rounded-[14px] bg-secondary overflow-hidden hidden md:block">
+      <div className="rounded-card bg-secondary overflow-hidden hidden md:block">
         <div className="flex items-center gap-2 px-5 pt-4 pb-2">
           <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Transactions</p>
@@ -47,7 +47,7 @@ export default function RecordListPage() {
       {/* Mobile list */}
       <div className="flex flex-col gap-2 md:hidden">
         {records.map((tx) => (
-          <div key={tx.id} className="rounded-[14px] bg-secondary p-4">
+          <div key={tx.id} className="rounded-card bg-secondary p-4">
             <div className="flex items-center gap-3">
               <div className={`flex h-8 w-8 items-center justify-center rounded-lg shrink-0 ${tx.direction === "positive" ? "bg-success/10" : "bg-destructive/10"}`}>
                 {tx.direction === "positive" ? <ArrowDownLeft className="h-3.5 w-3.5 text-success" strokeWidth={1.5} /> : <ArrowUpRight className="h-3.5 w-3.5 text-destructive" strokeWidth={1.5} />}

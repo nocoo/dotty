@@ -9,21 +9,21 @@ export default function ProgressTrackingPage() {
   return (
     <>
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Budget</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">${summary.totalLimit.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Spent So Far</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight">${summary.totalSpent.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+        <div className="rounded-card bg-secondary p-4 md:p-5">
           <p className="text-xs md:text-sm text-muted-foreground mb-1">Remaining</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight">${summary.remaining.toLocaleString()}</h2>
         </div>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <LayoutGrid className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Category Budgets</p>
@@ -43,7 +43,7 @@ export default function ProgressTrackingPage() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-4 md:p-5">
+      <div className="mt-4 rounded-card bg-secondary p-4 md:p-5">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Budget vs Actual</p>

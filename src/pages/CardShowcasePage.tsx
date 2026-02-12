@@ -100,7 +100,7 @@ export default function CardShowcasePage() {
       {/* Usage bar */}
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
         {cards.map((card) => (
-          <div key={card.name} className="rounded-[14px] bg-secondary p-4">
+          <div key={card.name} className="rounded-card bg-secondary p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-foreground">{card.bank} {card.name}</span>
               <span className="text-xs text-muted-foreground">
@@ -120,14 +120,14 @@ export default function CardShowcasePage() {
         ))}
       </div>
 
-      <div className="mt-4 rounded-[14px] bg-secondary p-5">
+      <div className="mt-4 rounded-card bg-secondary p-5">
         <div className="flex items-center gap-2 mb-4">
           <Lock className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <span className="text-sm text-muted-foreground">Card Security</span>
         </div>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
           {["Online Payments", "Contactless", "ATM Withdrawal"].map((feat) => (
-            <div key={feat} className="flex items-center justify-between rounded-[10px] bg-card p-3">
+            <div key={feat} className="flex items-center justify-between rounded-widget bg-card p-3">
               <span className="text-sm text-foreground">{feat}</span>
               <div className="h-5 w-9 rounded-full bg-success/20 flex items-center justify-end px-0.5">
                 <div className="h-4 w-4 rounded-full bg-success" />

@@ -95,7 +95,7 @@ function Swatch({ token, label, subtitle }: { token: string; label: string; subt
   return (
     <div className="flex flex-col items-center gap-2">
       <div
-        className="h-14 w-14 rounded-[10px] border border-border shadow-sm"
+        className="h-14 w-14 rounded-widget border border-border shadow-sm"
         style={{ background: `hsl(var(${token}))` }}
       />
       <div className="text-center">
@@ -109,7 +109,7 @@ function Swatch({ token, label, subtitle }: { token: string; label: string; subt
 
 function Section({ title, icon: Icon, children }: { title: string; icon?: React.ElementType; children: React.ReactNode }) {
   return (
-    <div className="rounded-[14px] bg-secondary p-4 md:p-5">
+    <div className="rounded-card bg-secondary p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         {Icon && <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />}
         <p className="text-sm text-muted-foreground">{title}</p>
