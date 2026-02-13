@@ -5,7 +5,7 @@ import {
   LineChart,   LayoutGrid, Settings, Search, ChevronUp,
   PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, Layers2, HeartPulse,
-  Loader, RectangleEllipsis, FormInput, Table, MousePointerClick, Bell,
+  Loader, RectangleEllipsis, FormInput, Table, MousePointerClick, Bell, Eye,
   User, Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -73,6 +73,7 @@ const NAV_GROUPS: NavGroup[] = [
       { title: "Buttons", icon: MousePointerClick, path: "/buttons" },
       { title: "Feedback", icon: Bell, path: "/feedback" },
       { title: "Overlays", icon: Layers2, path: "/overlays" },
+      { title: "Data Display", icon: Eye, path: "/data-display" },
       { title: "Forms", icon: FormInput, path: "/forms" },
       { title: "Tables", icon: Table, path: "/tables" },
       { title: "Pills", icon: CreditCard, path: "/pills" },
