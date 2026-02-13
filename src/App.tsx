@@ -13,7 +13,7 @@ import ProgressTrackingPage from "./pages/ProgressTrackingPage";
 import StatsOverviewPage from "./pages/StatsOverviewPage";
 import FlowComparisonPage from "./pages/FlowComparisonPage";
 import PortfolioPage from "./pages/PortfolioPage";
-import HelpPage from "./pages/HelpPage";
+import LayoutPage from "./pages/LayoutPage";
 import SettingsPage from "./pages/SettingsPage";
 import PalettePage from "./pages/PalettePage";
 import InteractionShowcasePage from "./pages/InteractionShowcasePage";
@@ -47,7 +47,7 @@ const App = () => (
           <Route path="/stats" element={<StatsOverviewPage />} />
           <Route path="/flow-comparison" element={<FlowComparisonPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/help" element={<HelpPage />} />
+          <Route path="/layout" element={<LayoutPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/palette" element={<PalettePage />} />
           <Route path="/interactions" element={<InteractionShowcasePage />} />

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   LayoutDashboard, Wallet, CreditCard, ArrowLeftRight,
   PiggyBank, BarChart3, TrendingUp,
-  LineChart, HelpCircle, Settings, Search, ChevronUp,
+  LineChart,   LayoutGrid, Settings, Search, ChevronUp,
   PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, HeartPulse,
   Loader, RectangleEllipsis, FormInput, Table,
@@ -90,7 +90,7 @@ const NAV_GROUPS: NavGroup[] = [
     label: "System",
     defaultOpen: true,
     items: [
-      { title: "Help Center", icon: HelpCircle, path: "/help" },
+      { title: "Layout", icon: LayoutGrid, path: "/layout" },
       { title: "Color Palette", icon: Palette, path: "/palette" },
       { title: "Settings", icon: Settings, path: "/settings" },
     ],
