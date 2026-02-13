@@ -15,6 +15,16 @@ vi.mock("@/viewmodels/useAccountsViewModel", () => ({
   }),
 }));
 
+vi.mock("@/viewmodels/useRecordListViewModel", () => ({
+  useRecordListViewModel: () => ({
+    records: [
+      { id: 1, name: "Grocery Store", category: "Food", date: "Jan 15", amount: -45.5, direction: "negative" as const, formattedAmount: "-$45.50", status: "Completed", statusVariant: "success" as const },
+      { id: 2, name: "Salary Deposit", category: "Income", date: "Jan 14", amount: 3200, direction: "positive" as const, formattedAmount: "+$3,200.00", status: "Completed", statusVariant: "success" as const },
+    ],
+    totalCount: 2,
+  }),
+}));
+
 describe("AccountsPage", () => {
   it("renders account cards with balances", () => {
     render(<AccountsPage />);
@@ -27,10 +37,10 @@ describe("AccountsPage", () => {
   it("renders activity list", () => {
     render(<AccountsPage />);
 
-    expect(screen.getByText("Grocery Store")).toBeInTheDocument();
-    expect(screen.getByText("Salary Deposit")).toBeInTheDocument();
-    expect(screen.getByText("-$45.50")).toBeInTheDocument();
-    expect(screen.getByText("+$3,200.00")).toBeInTheDocument();
+    expect(screen.getAllByText("Grocery Store").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Salary Deposit").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("-$45.50").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("+$3,200.00").length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders action buttons", () => {
@@ -44,5 +54,13 @@ describe("AccountsPage", () => {
     render(<AccountsPage />);
 
     expect(screen.getByText("Recent Activity")).toBeInTheDocument();
+  });
+
+  it("renders transaction records section", () => {
+    render(<AccountsPage />);
+
+    expect(screen.getByText("2 transactions")).toBeInTheDocument();
+    expect(screen.getByText("Food")).toBeInTheDocument();
+    expect(screen.getByText("Income")).toBeInTheDocument();
   });
 });

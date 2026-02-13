@@ -13,7 +13,6 @@ import OverlaysPage from "./pages/OverlaysPage";
 import DataDisplayPage from "./pages/DataDisplayPage";
 import NavigationPage from "./pages/NavigationPage";
 import AccountsPage from "./pages/AccountsPage";
-import RecordListPage from "./pages/RecordListPage";
 import ProgressTrackingPage from "./pages/ProgressTrackingPage";
 import StatsOverviewPage from "./pages/StatsOverviewPage";
 import FlowComparisonPage from "./pages/FlowComparisonPage";
@@ -51,7 +50,6 @@ const App = () => (
           <Route path="/navigation" element={<NavigationPage />} />
           <Route path="/" element={<DashboardPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
-          <Route path="/records" element={<RecordListPage />} />
           <Route path="/progress-tracking" element={<ProgressTrackingPage />} />
           <Route path="/stats" element={<StatsOverviewPage />} />
           <Route path="/flow-comparison" element={<FlowComparisonPage />} />
