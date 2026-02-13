@@ -3,16 +3,8 @@
 
 import type { Transaction } from "@/models/types";
 
-export type AmountDirection = "positive" | "negative";
-
-export function classifyDirection(amount: number): AmountDirection {
-  return amount > 0 ? "positive" : "negative";
-}
-
-export function formatSignedAmount(amount: number): string {
-  const prefix = amount > 0 ? "+" : "";
-  return `${prefix}$${Math.abs(amount).toFixed(2)}`;
-}
+export { classifyDirection, formatSignedAmount } from "@/models/amount";
+export type { AmountDirection } from "@/models/amount";
 
 export type StatusVariant = "success" | "warning";
 

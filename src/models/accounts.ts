@@ -3,16 +3,8 @@
 
 import type { ActivityItem } from "@/models/types";
 
-type AmountDirection = "positive" | "negative";
-
-export function classifyDirection(amount: number): AmountDirection {
-  return amount > 0 ? "positive" : "negative";
-}
-
-export function formatSignedAmount(amount: number): string {
-  const prefix = amount > 0 ? "+" : "";
-  return `${prefix}$${Math.abs(amount).toFixed(2)}`;
-}
+export { classifyDirection, formatSignedAmount } from "@/models/amount";
+export type { AmountDirection } from "@/models/amount";
 
 export function computeActivitySummary(items: ActivityItem[]) {
   const totalIn = items.filter((i) => i.amount > 0).reduce((s, i) => s + i.amount, 0);
