@@ -22,7 +22,6 @@ import LayoutPage from "./pages/LayoutPage";
 import SettingsPage from "./pages/SettingsPage";
 import PalettePage from "./pages/PalettePage";
 import InteractionShowcasePage from "./pages/InteractionShowcasePage";
-import LifeAiPage from "./pages/LifeAiPage";
 import HealthPage from "./pages/HealthPage";
 import PillsPage from "./pages/PillsPage";
 import WearableDashboardPage from "./pages/WearableDashboardPage";
@@ -61,7 +60,6 @@ const App = () => (
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/palette" element={<PalettePage />} />
           <Route path="/interactions" element={<InteractionShowcasePage />} />
-          <Route path="/life-ai" element={<LifeAiPage />} />
           <Route path="/health" element={<HealthPage />} />
           <Route path="/pills" element={<PillsPage />} />
           <Route path="/wearable" element={<WearableDashboardPage />} />

@@ -81,25 +81,3 @@ export interface ShowcaseDialog {
   description: string;
   style: "info" | "form" | "confirm";
 }
-
-// ── Life.ai demo types ──
-
-export interface LifeAiTimelineEvent {
-  id: string;
-  time: string; // HH:mm
-  title: string;
-  subtitle?: string;
-  color?: string;
-}
-
-export interface LifeAiStat {
-  title: string;
-  value: string | number;
-  subtitle?: string;
-  trend?: { value: number; label?: string };
-}
-
-export interface LifeAiHeatmapPoint {
-  date: string; // YYYY-MM-DD
-  value: number;
-}

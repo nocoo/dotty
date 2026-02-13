@@ -22,7 +22,6 @@ const PAGE_TITLES: Record<string, string> = {
   "/network": "Network Ops",
   "/health": "Health",
   "/pills": "Pills",
-  "/life-ai": "Life.ai",
   "/": "Dashboard",
   "/accounts": "Accounts",
   "/records": "Records",

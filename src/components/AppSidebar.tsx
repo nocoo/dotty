@@ -6,7 +6,7 @@ import {
   PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, Layers2, HeartPulse,
   Loader, RectangleEllipsis, FormInput, Table, MousePointerClick, Bell,   Eye, Navigation,
-  User, Sparkles,
+  User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router";
@@ -46,7 +46,6 @@ const NAV_GROUPS: NavGroup[] = [
       { title: "Dashboard", icon: LayoutDashboard, path: "/" },
       { title: "Components", icon: RectangleEllipsis, path: "/components" },
       { title: "Health", icon: HeartPulse, path: "/health" },
-      { title: "Life.ai", icon: Sparkles, path: "/life-ai" },
       { title: "Accounts", icon: Wallet, path: "/accounts" },
       { title: "Records", icon: ArrowLeftRight, path: "/records", badge: 6 },
       { title: "Progress Tracking", icon: PiggyBank, path: "/progress-tracking" },
