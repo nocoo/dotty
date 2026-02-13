@@ -1,4 +1,4 @@
-import { Moon, Sun } from "lucide-react";
+import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
@@ -6,6 +6,8 @@ type Theme = "light" | "dark" | "system";
 function getSystemTheme(): "light" | "dark" {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
+
+const ICON_PROPS = { className: "h-4 w-4", "aria-hidden": true as const, strokeWidth: 1.5 };
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -38,18 +40,18 @@ export function ThemeToggle() {
     });
   };
 
-  const applied = theme === "system" ? getSystemTheme() : theme;
-
   return (
     <button
       onClick={cycleTheme}
       className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
       aria-label={`Toggle theme, currently ${theme}`}
     >
-      {applied === "dark" ? (
-        <Moon className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
+      {theme === "system" ? (
+        <Monitor {...ICON_PROPS} />
+      ) : theme === "dark" ? (
+        <Moon {...ICON_PROPS} />
       ) : (
-        <Sun className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
+        <Sun {...ICON_PROPS} />
       )}
     </button>
   );
