@@ -1,11 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeatmapCalendar, heatmapColorScales } from "@/components/dashboard/HeatmapCalendar";
 
-const heatmapData = Array.from({ length: 140 }).map((_, i) => {
+const heatmapData = Array.from({ length: 365 }).map((_, i) => {
   const date = new Date(2026, 0, 1 + i);
+  const noise = Math.sin(i * 12.9898) * 43758.5453;
+  const random = noise - Math.floor(noise);
+  const value = Math.max(1, Math.round(3 + random * 9));
   return {
     date: date.toISOString().slice(0, 10),
-    value: (i % 7) * 2 + 1,
+    value,
   };
 });
 

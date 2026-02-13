@@ -59,11 +59,14 @@ const timelineEvents = [
   { id: "t5", time: "21:40", title: "Wind down", subtitle: "Stretching", color: "bg-indigo-400" },
 ];
 
-const heatmapData = Array.from({ length: 90 }).map((_, i) => {
+const heatmapData = Array.from({ length: 365 }).map((_, i) => {
   const date = new Date(2026, 0, 1 + i);
+  const noise = Math.sin(i * 17.13 + 3.1) * 100000;
+  const random = noise - Math.floor(noise);
+  const value = Math.max(1, Math.round(2 + random * 9));
   return {
     date: date.toISOString().slice(0, 10),
-    value: Math.floor(1 + (i % 7) * 3),
+    value,
   };
 });
 
