@@ -11,7 +11,7 @@
 
 ## Overview
 
-**Basalt** is a fully functional personal finance dashboard demo, showcasing a design system inspired by the fine-grained volcanic rock. It features 14 pages, 12 dashboard widgets, skeuomorphic credit card visuals, and a dual-mode (light/dark) theme with calculated contrast ratios.
+**Basalt** is a fully functional personal finance dashboard demo, showcasing a design system inspired by the fine-grained volcanic rock. It features 17 pages, 12 dashboard widgets, skeuomorphic credit card visuals, and a dual-mode (light/dark) theme with calculated contrast ratios.
 
 ## Design Philosophy
 
@@ -26,7 +26,7 @@
 * **12 Dashboard Widgets:** Total balance, income, spending trend, expense breakdown (donut), weekly activity (area), savings goal (radial), credit score (radial), monthly comparison (grouped bar), recent transactions, quick actions, and more.
 * **Skeuomorphic Cards:** Credit cards rendered with ISO 7810 aspect ratio (85.6×53.98mm), EMV chip, NFC icon, and network logos (Visa, Mastercard, Amex).
 * **8-Color Chart Palette:** Sequential visualization palette with boosted saturation in dark mode, centralized via `src/lib/palette.ts`.
-* **48 shadcn/ui Components:** Full set of accessible primitives built on Radix UI.
+* **12 shadcn/ui Components:** Accessible primitives built on Radix UI.
 * **Command Palette:** Global search via `⌘K` powered by cmdk.
 * **Responsive Layout:** Collapsible sidebar on desktop, overlay drawer on mobile with backdrop blur.
 
@@ -35,18 +35,21 @@
 | Route | Description |
 |---|---|
 | `/` | Main dashboard with 12 widget cards |
-| `/wallet` | Multi-account wallet balances and activity |
-| `/cards` | Credit card gallery with realistic skeuomorphic design |
-| `/transactions` | Transaction list with filters (table on desktop, cards on mobile) |
-| `/budget` | Budget categories with progress bars and monthly chart |
-| `/goals` | Savings goals with progress tracking |
-| `/analytics` | Income vs expenses, spending breakdown, 6-month trends |
-| `/cash-flow` | Inflow/outflow area chart and net flow analysis |
-| `/investments` | Portfolio performance, allocation donut, holdings table |
+| `/accounts` | Multi-account wallet balances and activity |
+| `/card-showcase` | Credit card gallery with realistic skeuomorphic design |
+| `/records` | Transaction list with filters (table on desktop, cards on mobile) |
+| `/progress-tracking` | Budget categories with progress bars and monthly chart |
+| `/targets` | Savings goals with progress tracking |
+| `/stats` | Income vs expenses, spending breakdown, 6-month trends |
+| `/flow-comparison` | Inflow/outflow area chart and net flow analysis |
+| `/portfolio` | Portfolio performance, allocation donut, holdings table |
 | `/help` | Resource cards and FAQ accordion |
 | `/settings` | Profile, notifications, security, and appearance tabs |
 | `/palette` | Design system color showcase for all chart types |
+| `/interactions` | Toast, dialog, and form component demos |
+| `/life-ai` | Life.ai health and wellness demo dashboard |
 | `/login` | Standalone login page with decorative gradients |
+| `/badge-login` | Standalone badge-style login page |
 
 ## Tech Stack
 
@@ -56,8 +59,8 @@
 | **UI** | [React 19](https://react.dev) + TypeScript 5.9 |
 | **Routing** | [React Router 7](https://reactrouter.com) |
 | **Styling** | [Tailwind CSS 4](https://tailwindcss.com) + @tailwindcss/vite + tw-animate-css |
-| **Components** | [shadcn/ui](https://ui.shadcn.com) (48 primitives) |
-| **Charts** | [Recharts 2](https://recharts.org) |
+| **Components** | [shadcn/ui](https://ui.shadcn.com) (12 primitives) |
+| **Charts** | [Recharts 3](https://recharts.org) |
 | **Icons** | [Lucide React](https://lucide.dev) (1.5px stroke) |
 | **Testing** | [Vitest 4](https://vitest.dev) + Testing Library |
 | **Package Manager** | [Bun](https://bun.sh) |
