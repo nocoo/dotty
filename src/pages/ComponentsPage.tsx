@@ -16,6 +16,12 @@ import { SparklineCard } from "@/components/dashboard/SparklineCard";
 import { StackedBarCard } from "@/components/dashboard/StackedBarCard";
 import { RadarChartCard } from "@/components/dashboard/RadarChartCard";
 import { HeatmapCard } from "@/components/dashboard/HeatmapCard";
+import { StackedAreaCard } from "@/components/dashboard/StackedAreaCard";
+import { MultiLineCard } from "@/components/dashboard/MultiLineCard";
+import { BulletChartCard } from "@/components/dashboard/BulletChartCard";
+import { MiniDonutCard } from "@/components/dashboard/MiniDonutCard";
+import { SankeyCard } from "@/components/dashboard/SankeyCard";
+import { FunnelChartCard } from "@/components/dashboard/FunnelChartCard";
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
@@ -57,6 +63,12 @@ export default function ComponentsPage() {
           <StackedBarCard />
           <RadarChartCard />
           <SparklineCard />
+          <StackedAreaCard />
+          <MultiLineCard />
+          <BulletChartCard />
+          <MiniDonutCard />
+          <SankeyCard />
+          <FunnelChartCard />
         </div>
       </Section>
 
