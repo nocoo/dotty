@@ -40,40 +40,57 @@ interface NavGroup {
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    label: "Library",
-    defaultOpen: true,
-    items: [
-      { title: "Template Library", icon: LayoutGrid, path: "/library" },
-      { title: "Components", icon: RectangleEllipsis, path: "/components" },
-      { title: "Forms", icon: FormInput, path: "/forms" },
-      { title: "Tables", icon: Table, path: "/tables" },
-      { title: "Empty States", icon: SquareDashed, path: "/empty-states" },
-      { title: "Pricing", icon: BadgePercent, path: "/pricing" },
-      { title: "Profile", icon: User, path: "/profile" },
-      { title: "Onboarding", icon: Sparkles, path: "/onboarding" },
-      { title: "Notifications", icon: Bell, path: "/notifications" },
-    ],
-  },
-  {
     label: "Pages",
     defaultOpen: true,
     items: [
       { title: "Dashboard", icon: LayoutDashboard, path: "/" },
+      { title: "Health", icon: HeartPulse, path: "/health" },
+      { title: "Life.ai", icon: Sparkles, path: "/life-ai" },
       { title: "Accounts", icon: Wallet, path: "/accounts" },
       { title: "Card Showcase", icon: CreditCard, path: "/card-showcase" },
       { title: "Records", icon: ArrowLeftRight, path: "/records", badge: 6 },
       { title: "Progress Tracking", icon: PiggyBank, path: "/progress-tracking" },
       { title: "Targets", icon: Target, path: "/targets" },
-      { title: "Life.ai", icon: HeartPulse, path: "/life-ai" },
     ],
   },
   {
-    label: "Charts",
+    label: "Templates",
     defaultOpen: true,
     items: [
+      { title: "Template Library", icon: LayoutGrid, path: "/library" },
+      { title: "Empty States", icon: SquareDashed, path: "/empty-states" },
+      { title: "Pricing", icon: BadgePercent, path: "/pricing" },
+      { title: "Profile", icon: User, path: "/profile" },
+      { title: "Onboarding", icon: Sparkles, path: "/onboarding" },
+      { title: "Notifications", icon: Bell, path: "/notifications" },
+      { title: "Landing", icon: Layers, path: "/landing" },
+      { title: "Feature", icon: Sparkles, path: "/feature" },
+      { title: "Checkout", icon: CreditCard, path: "/checkout" },
+      { title: "Invoice", icon: FileText, path: "/invoice" },
+      { title: "Team", icon: User, path: "/team" },
+      { title: "CRM", icon: Wallet, path: "/crm" },
+      { title: "Status", icon: HelpCircle, path: "/status" },
+    ],
+  },
+  {
+    label: "Controls",
+    defaultOpen: true,
+    items: [
+      { title: "Controls", icon: RectangleEllipsis, path: "/controls" },
+      { title: "Forms", icon: FormInput, path: "/forms" },
+      { title: "Tables", icon: Table, path: "/tables" },
+      { title: "Pills", icon: CreditCard, path: "/pills" },
+    ],
+  },
+  {
+    label: "Examples",
+    defaultOpen: true,
+    items: [
+      { title: "Modules", icon: RectangleEllipsis, path: "/components" },
       { title: "Stats Overview", icon: BarChart3, path: "/stats" },
       { title: "Flow Comparison", icon: TrendingUp, path: "/flow-comparison", badge: 2 },
       { title: "Portfolio", icon: LineChart, path: "/portfolio" },
+      { title: "Interactions", icon: Layers, path: "/interactions" },
     ],
   },
   {
@@ -93,7 +110,6 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { title: "Help Center", icon: HelpCircle, path: "/help" },
       { title: "Color Palette", icon: Palette, path: "/palette" },
-      { title: "Interactions", icon: Layers, path: "/interactions" },
       { title: "Settings", icon: Settings, path: "/settings" },
     ],
   },

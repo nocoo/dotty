@@ -12,6 +12,14 @@ import PricingPage from "./pages/PricingPage";
 import ProfilePage from "./pages/ProfilePage";
 import OnboardingPage from "./pages/OnboardingPage";
 import NotificationsPage from "./pages/NotificationsPage";
+import ControlsPage from "./pages/ControlsPage";
+import LandingPage from "./pages/LandingPage";
+import FeaturePage from "./pages/FeaturePage";
+import CheckoutPage from "./pages/CheckoutPage";
+import InvoicePage from "./pages/InvoicePage";
+import TeamPage from "./pages/TeamPage";
+import CrmPage from "./pages/CrmPage";
+import StatusPage from "./pages/StatusPage";
 import AccountsPage from "./pages/AccountsPage";
 import CardShowcasePage from "./pages/CardShowcasePage";
 import RecordListPage from "./pages/RecordListPage";
@@ -25,6 +33,8 @@ import SettingsPage from "./pages/SettingsPage";
 import PalettePage from "./pages/PalettePage";
 import InteractionShowcasePage from "./pages/InteractionShowcasePage";
 import LifeAiPage from "./pages/LifeAiPage";
+import HealthPage from "./pages/HealthPage";
+import PillsPage from "./pages/PillsPage";
 import LoginPage from "./pages/LoginPage";
 import BadgeLoginPage from "./pages/BadgeLoginPage";
 import StaticPage from "./pages/StaticPage";
@@ -47,6 +57,14 @@ const App = () => (
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/onboarding" element={<OnboardingPage />} />
           <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/controls" element={<ControlsPage />} />
+          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/feature" element={<FeaturePage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/invoice" element={<InvoicePage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/crm" element={<CrmPage />} />
+          <Route path="/status" element={<StatusPage />} />
           <Route path="/" element={<DashboardPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
           <Route path="/card-showcase" element={<CardShowcasePage />} />
@@ -61,6 +79,8 @@ const App = () => (
           <Route path="/palette" element={<PalettePage />} />
           <Route path="/interactions" element={<InteractionShowcasePage />} />
           <Route path="/life-ai" element={<LifeAiPage />} />
+          <Route path="/health" element={<HealthPage />} />
+          <Route path="/pills" element={<PillsPage />} />
         </Route>
         {/* Standalone pages (no sidebar) */}
         <Route path="/login" element={<LoginPage />} />
