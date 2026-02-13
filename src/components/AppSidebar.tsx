@@ -5,8 +5,8 @@ import {
   LineChart, HelpCircle, Settings, Search, ChevronUp,
   PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, HeartPulse,
-  Loader, LayoutGrid, RectangleEllipsis, FormInput, Table, SquareDashed,
-  BadgePercent, User, Sparkles, Bell,
+  Loader, RectangleEllipsis, FormInput, Table,
+  User, Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router";
@@ -48,25 +48,7 @@ const NAV_GROUPS: NavGroup[] = [
       { title: "Network Ops", icon: LineChart, path: "/network" },
     ],
   },
-  {
-    label: "Templates",
-    defaultOpen: true,
-    items: [
-      { title: "Template Library", icon: LayoutGrid, path: "/library" },
-      { title: "Empty States", icon: SquareDashed, path: "/empty-states" },
-      { title: "Pricing", icon: BadgePercent, path: "/pricing" },
-      { title: "Profile", icon: User, path: "/profile" },
-      { title: "Onboarding", icon: Sparkles, path: "/onboarding" },
-      { title: "Notifications", icon: Bell, path: "/notifications" },
-      { title: "Landing", icon: Layers, path: "/landing" },
-      { title: "Feature", icon: Sparkles, path: "/feature" },
-      { title: "Checkout", icon: CreditCard, path: "/checkout" },
-      { title: "Invoice", icon: FileText, path: "/invoice" },
-      { title: "Team", icon: User, path: "/team" },
-      { title: "CRM", icon: Wallet, path: "/crm" },
-      { title: "Status", icon: HelpCircle, path: "/status" },
-    ],
-  },
+
   {
     label: "Controls",
     defaultOpen: true,
