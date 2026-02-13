@@ -8,6 +8,22 @@ import { cn } from "@/lib/utils";
 
 // Map route paths to page titles
 const PAGE_TITLES: Record<string, string> = {
+  "/library": "Template Library",
+  "/components": "Components",
+  "/forms": "Forms",
+  "/tables": "Tables",
+  "/empty-states": "Empty States",
+  "/pricing": "Pricing",
+  "/profile": "Profile",
+  "/onboarding": "Onboarding",
+  "/notifications": "Notifications",
+  "/landing": "Landing",
+  "/feature": "Feature Overview",
+  "/checkout": "Checkout",
+  "/invoice": "Invoice",
+  "/team": "Team",
+  "/crm": "CRM",
+  "/status": "Status",
   "/": "Dashboard",
   "/accounts": "Accounts",
   "/card-showcase": "Card Showcase",

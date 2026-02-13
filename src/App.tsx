@@ -3,6 +3,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import DashboardPage from "./pages/DashboardPage";
+import LibraryPage from "./pages/LibraryPage";
+import ComponentsPage from "./pages/ComponentsPage";
+import FormsPage from "./pages/FormsPage";
+import TablesPage from "./pages/TablesPage";
+import EmptyStatesPage from "./pages/EmptyStatesPage";
+import PricingPage from "./pages/PricingPage";
+import ProfilePage from "./pages/ProfilePage";
+import OnboardingPage from "./pages/OnboardingPage";
+import NotificationsPage from "./pages/NotificationsPage";
 import AccountsPage from "./pages/AccountsPage";
 import CardShowcasePage from "./pages/CardShowcasePage";
 import RecordListPage from "./pages/RecordListPage";
@@ -29,6 +38,15 @@ const App = () => (
       <Routes>
         {/* Layout route: sidebar + header wraps all dashboard pages */}
         <Route element={<DashboardLayout />}>
+          <Route path="/library" element={<LibraryPage />} />
+          <Route path="/components" element={<ComponentsPage />} />
+          <Route path="/forms" element={<FormsPage />} />
+          <Route path="/tables" element={<TablesPage />} />
+          <Route path="/empty-states" element={<EmptyStatesPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/onboarding" element={<OnboardingPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
           <Route path="/" element={<DashboardPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
           <Route path="/card-showcase" element={<CardShowcasePage />} />
@@ -49,6 +67,7 @@ const App = () => (
         <Route path="/badge-login" element={<BadgeLoginPage />} />
         <Route path="/static-page" element={<StaticPage />} />
         <Route path="/loading" element={<LoadingPage />} />
+        <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

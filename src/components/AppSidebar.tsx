@@ -5,7 +5,8 @@ import {
   LineChart, HelpCircle, Settings, Search, ChevronUp,
   PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, HeartPulse,
-  Loader,
+  Loader, LayoutGrid, RectangleEllipsis, FormInput, Table, SquareDashed,
+  BadgePercent, User, Sparkles, Bell,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router";
@@ -38,6 +39,21 @@ interface NavGroup {
 }
 
 const NAV_GROUPS: NavGroup[] = [
+  {
+    label: "Library",
+    defaultOpen: true,
+    items: [
+      { title: "Template Library", icon: LayoutGrid, path: "/library" },
+      { title: "Components", icon: RectangleEllipsis, path: "/components" },
+      { title: "Forms", icon: FormInput, path: "/forms" },
+      { title: "Tables", icon: Table, path: "/tables" },
+      { title: "Empty States", icon: SquareDashed, path: "/empty-states" },
+      { title: "Pricing", icon: BadgePercent, path: "/pricing" },
+      { title: "Profile", icon: User, path: "/profile" },
+      { title: "Onboarding", icon: Sparkles, path: "/onboarding" },
+      { title: "Notifications", icon: Bell, path: "/notifications" },
+    ],
+  },
   {
     label: "Pages",
     defaultOpen: true,
