@@ -3,7 +3,6 @@ import {
   User, Bell, Shield, Palette,
   Camera, Globe, CreditCard, Smartphone,
 } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -78,16 +77,14 @@ const THEME_OPTIONS = ["Light", "Dark", "System"] as const;
 
 function ProfileSection() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <User className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <CardTitle className="text-sm font-normal text-muted-foreground">
-            Profile Information
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+        <User className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Profile Information
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-6">
         {/* Avatar */}
         <div className="flex items-center gap-4">
           <div className="relative">
@@ -125,7 +122,7 @@ function ProfileSection() {
             <Input
               id="settings-first-name"
               defaultValue="Alex"
-              className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -138,7 +135,7 @@ function ProfileSection() {
             <Input
               id="settings-last-name"
               defaultValue="Johnson"
-              className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -152,7 +149,7 @@ function ProfileSection() {
               id="settings-email"
               defaultValue="alex@dotty.app"
               type="email"
-              className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -166,7 +163,7 @@ function ProfileSection() {
               id="settings-phone"
               defaultValue="+1 (555) 123-4567"
               type="tel"
-              className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
             />
           </div>
         </div>
@@ -179,35 +176,33 @@ function ProfileSection() {
             id="settings-bio"
             defaultValue="Product designer and financial enthusiast."
             rows={3}
-            className="w-full rounded-[var(--radius-widget)] border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
+            className="w-full rounded-[var(--radius-widget)] border border-border bg-secondary px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
           />
         </div>
 
         <div className="flex justify-end gap-3">
-          <button className="rounded-[var(--radius-widget)] bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <button className="rounded-[var(--radius-widget)] bg-secondary px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             Cancel
           </button>
           <button className="rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
             Save changes
           </button>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
 function NotificationsSection() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <Bell className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <CardTitle className="text-sm font-normal text-muted-foreground">
-            Notification Preferences
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-1">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+        <Bell className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Notification Preferences
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-1">
         {NOTIFICATION_TOGGLES.map((item, i) => (
           <div key={item.id}>
             <div className="flex items-center justify-between py-3">
@@ -232,8 +227,8 @@ function NotificationsSection() {
             )}
           </div>
         ))}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
@@ -241,19 +236,14 @@ function SecuritySection() {
   return (
     <div className="space-y-4">
       {/* Password */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Shield
-              className="h-4 w-4 text-muted-foreground"
-              strokeWidth={1.5}
-            />
-            <CardTitle className="text-sm font-normal text-muted-foreground">
-              Password
-            </CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+          <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Password
+          </p>
+        </div>
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
           <div className="space-y-2">
             <Label
               htmlFor="settings-current-password"
@@ -265,7 +255,7 @@ function SecuritySection() {
               id="settings-current-password"
               type="password"
               placeholder="••••••••"
-              className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -280,7 +270,7 @@ function SecuritySection() {
                 id="settings-new-password"
                 type="password"
                 placeholder="••••••••"
-                className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+                className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
               />
             </div>
             <div className="space-y-2">
@@ -294,7 +284,7 @@ function SecuritySection() {
                 id="settings-confirm-password"
                 type="password"
                 placeholder="••••••••"
-                className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
+                className="rounded-[var(--radius-widget)] border-border bg-secondary text-sm focus-visible:ring-primary"
               />
             </div>
           </div>
@@ -303,23 +293,18 @@ function SecuritySection() {
               Update password
             </button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Two-factor */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Smartphone
-              className="h-4 w-4 text-muted-foreground"
-              strokeWidth={1.5}
-            />
-            <CardTitle className="text-sm font-normal text-muted-foreground">
-              Two-Factor Authentication
-            </CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent>
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+          <Smartphone className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Two-Factor Authentication
+          </p>
+        </div>
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <label
@@ -349,27 +334,22 @@ function SecuritySection() {
             </div>
             <Switch id="2fa-sms" defaultChecked />
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Active sessions */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Globe
-              className="h-4 w-4 text-muted-foreground"
-              strokeWidth={1.5}
-            />
-            <CardTitle className="text-sm font-normal text-muted-foreground">
-              Active Sessions
-            </CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-3">
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+          <Globe className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Active Sessions
+          </p>
+        </div>
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
           {ACTIVE_SESSIONS.map((session) => (
             <div
               key={session.device}
-              className="flex items-center justify-between rounded-[var(--radius-widget)] border border-border p-3"
+              className="flex items-center justify-between rounded-[var(--radius-widget)] border border-border bg-secondary p-3"
             >
               <div className="space-y-0.5">
                 <p className="text-sm text-foreground">
@@ -391,8 +371,8 @@ function SecuritySection() {
               )}
             </div>
           ))}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
@@ -401,19 +381,14 @@ function AppearanceSection() {
   return (
     <div className="space-y-4">
       {/* Theme */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Palette
-              className="h-4 w-4 text-muted-foreground"
-              strokeWidth={1.5}
-            />
-            <CardTitle className="text-sm font-normal text-muted-foreground">
-              Theme
-            </CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent>
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+          <Palette className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Theme
+          </p>
+        </div>
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
           <div
             className="grid grid-cols-3 gap-3"
             role="radiogroup"
@@ -443,23 +418,18 @@ function AppearanceSection() {
               </button>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Preferences */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <CreditCard
-              className="h-4 w-4 text-muted-foreground"
-              strokeWidth={1.5}
-            />
-            <CardTitle className="text-sm font-normal text-muted-foreground">
-              Preferences
-            </CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+          <CreditCard className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Preferences
+          </p>
+        </div>
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <label
@@ -474,7 +444,7 @@ function AppearanceSection() {
             </div>
             <select
               id="settings-currency"
-              className="rounded-[var(--radius-widget)] border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border border-border bg-secondary px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
             >
               <option>USD ($)</option>
               <option>EUR (&euro;)</option>
@@ -497,7 +467,7 @@ function AppearanceSection() {
             </div>
             <select
               id="settings-language"
-              className="rounded-[var(--radius-widget)] border border-border bg-card px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
+              className="rounded-[var(--radius-widget)] border border-border bg-secondary px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
             >
               <option>English</option>
               <option>Spanish</option>
@@ -520,8 +490,8 @@ function AppearanceSection() {
             </div>
             <Switch id="settings-compact-mode" />
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
@@ -534,27 +504,25 @@ export default function SettingsPage() {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
       {/* Left nav */}
-      <Card className="rounded-[var(--radius-card)] border-0 bg-secondary shadow-none lg:col-span-1">
-        <CardContent className="p-3">
-          <nav className="flex flex-row gap-1 lg:flex-col">
-            {SECTIONS.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                onClick={() => setActiveSection(id)}
-                aria-label={label}
-                className={`flex items-center gap-2 rounded-[var(--radius-widget)] px-3 py-2.5 text-sm transition-colors ${
-                  activeSection === id
-                    ? "bg-accent text-foreground font-medium"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
-                }`}
-              >
-                <Icon className="h-4 w-4" strokeWidth={1.5} />
-                <span className="hidden sm:inline">{label}</span>
-              </button>
-            ))}
-          </nav>
-        </CardContent>
-      </Card>
+      <div className="rounded-[var(--radius-card)] bg-muted p-3 lg:col-span-1">
+        <nav className="flex flex-row gap-1 lg:flex-col">
+          {SECTIONS.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              onClick={() => setActiveSection(id)}
+              aria-label={label}
+              className={`flex items-center gap-2 rounded-[var(--radius-widget)] px-3 py-2.5 text-sm transition-colors ${
+                activeSection === id
+                  ? "bg-card border border-border text-foreground font-medium"
+                  : "text-muted-foreground hover:bg-card/50 hover:text-foreground"
+              }`}
+            >
+              <Icon className="h-4 w-4" strokeWidth={1.5} />
+              <span className="hidden sm:inline">{label}</span>
+            </button>
+          ))}
+        </nav>
+      </div>
 
       {/* Right content */}
       <div className="lg:col-span-3">

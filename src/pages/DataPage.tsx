@@ -83,7 +83,7 @@ const STATUS_STYLES: Record<string, string> = {
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -99,7 +99,7 @@ export default function DataPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-5 md:p-6">
+      <div className="rounded-[var(--radius-card)] bg-muted p-5 md:p-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Eye className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />

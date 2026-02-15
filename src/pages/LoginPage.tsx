@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Eye, EyeOff, Lock, Mail, ArrowRight } from "lucide-react";
 import { DottyLogo } from "@/components/DottyLogo";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -31,14 +30,11 @@ export default function LoginPage() {
         </div>
 
         {/* Login card — 2-layer pattern */}
-        <div className="rounded-[var(--radius-card)] bg-muted p-2">
-          <Card className="rounded-[var(--radius-widget)] border bg-card shadow-none">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Credentials
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+        <div className="rounded-[var(--radius-card)] bg-muted">
+          <p className="px-5 pt-4 pb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Credentials
+          </p>
+          <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
               <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
                 {/* Email field */}
                 <div className="space-y-2">
@@ -132,8 +128,7 @@ export default function LoginPage() {
                   </button>
                 </div>
               </form>
-            </CardContent>
-          </Card>
+          </div>
         </div>
 
         {/* Footer */}

@@ -4,7 +4,7 @@ import { PixelBarChart } from "@/components/PixelBarChart";
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -20,7 +20,7 @@ export default function ProgressTrackingPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Progress</p>
         <div className="flex items-center gap-2 mb-1">
           <TrendingUp className="h-5 w-5 text-foreground" strokeWidth={1.5} />
@@ -32,15 +32,15 @@ export default function ProgressTrackingPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
-        <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Budget</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.totalLimit.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Spent So Far</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.totalSpent.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Remaining</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight font-mono-num">${summary.remaining.toLocaleString()}</h2>
         </div>

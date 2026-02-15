@@ -45,7 +45,7 @@ export default function AccountsPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Accounts</p>
         <div className="flex items-center gap-2 mb-1">
           <WalletIcon className="h-5 w-5 text-foreground" strokeWidth={1.5} />
@@ -59,7 +59,7 @@ export default function AccountsPage() {
       {/* Account balances */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {accountList.map((acc) => (
-          <div key={acc.name} className="rounded-[var(--radius-card)] bg-secondary p-5">
+          <div key={acc.name} className="rounded-[var(--radius-card)] bg-muted p-5">
             <div className="flex items-center gap-2 mb-3">
               <WalletIcon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="text-sm text-muted-foreground">{acc.name}</span>
@@ -141,7 +141,7 @@ export default function AccountsPage() {
       {/* Usage bar */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {cards.map((card) => (
-          <div key={card.name} className="rounded-[var(--radius-card)] bg-secondary p-4">
+          <div key={card.name} className="rounded-[var(--radius-card)] bg-muted p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-foreground">{card.bank} {card.name}</span>
               <span className="text-xs text-muted-foreground font-mono-num">
@@ -172,7 +172,7 @@ export default function AccountsPage() {
       </div>
 
       {/* Card security */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-5">
         <div className="flex items-center gap-2 mb-4">
           <Lock className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <span className="text-sm text-muted-foreground">Card Security</span>
@@ -188,7 +188,7 @@ export default function AccountsPage() {
       </div>
 
       {/* Recent activity */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-5">
         <div className="flex items-center gap-2 mb-4">
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Recent Activity</p>
@@ -224,7 +224,7 @@ export default function AccountsPage() {
       </div>
 
       {/* Desktop table */}
-      <div className="rounded-[var(--radius-card)] bg-secondary overflow-hidden hidden md:block">
+      <div className="rounded-[var(--radius-card)] bg-muted overflow-hidden hidden md:block">
         <div className="rounded-[var(--radius-card)] bg-card border border-border mx-1 mt-1 mb-1 overflow-hidden">
           <div className="flex items-center gap-2 px-5 pt-4 pb-2">
             <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} aria-hidden="true" />
@@ -271,7 +271,7 @@ export default function AccountsPage() {
       {/* Mobile transaction list */}
       <div className="flex flex-col gap-2 md:hidden">
         {records.map((tx) => (
-          <div key={tx.id} className="rounded-[var(--radius-card)] bg-secondary p-4">
+          <div key={tx.id} className="rounded-[var(--radius-card)] bg-muted p-4">
             <div className="flex items-center gap-3">
               <div className={`flex h-8 w-8 items-center justify-center rounded-lg shrink-0 bg-muted`}>
                 {tx.direction === "positive" ? <ArrowDownLeft className="h-3.5 w-3.5 text-success" strokeWidth={1.5} /> : <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.5} />}

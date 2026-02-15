@@ -30,7 +30,7 @@ export default function BankingDashboardPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">Banking</p>
         <div className="mt-2 flex items-center gap-3">
           <div className="rounded-[var(--radius-widget)] bg-card border border-border p-2 text-muted-foreground">
@@ -70,7 +70,7 @@ export default function BankingDashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <ItemListCard />
         <RecentListCard />
-        <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <CreditCard className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Recent transfers</p>

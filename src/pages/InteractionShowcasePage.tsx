@@ -45,7 +45,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -266,7 +266,7 @@ export default function InteractionShowcasePage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Interactions</p>
         <div className="flex items-center gap-2 mb-1">
           <Layers className="h-5 w-5 text-foreground" strokeWidth={1.5} />

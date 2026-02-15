@@ -86,7 +86,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <div className={`rounded-[var(--radius-card)] bg-secondary p-4 md:p-5 ${className}`}>
+    <div className={`rounded-[var(--radius-card)] bg-muted p-4 md:p-5 ${className}`}>
       <div className="mb-4 flex items-center gap-2">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -103,7 +103,7 @@ export default function WearableDashboardPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">Wearable Health</p>
         <div className="mt-2 flex items-center gap-3">
           <div className="rounded-[var(--radius-widget)] bg-card border border-border p-2 text-muted-foreground">
@@ -119,7 +119,7 @@ export default function WearableDashboardPage() {
       </div>
 
       {/* Date navigation */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />

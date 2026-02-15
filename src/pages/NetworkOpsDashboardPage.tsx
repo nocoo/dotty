@@ -47,7 +47,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <div className={`rounded-[var(--radius-card)] bg-secondary p-4 md:p-5 ${className}`}>
+    <div className={`rounded-[var(--radius-card)] bg-muted p-4 md:p-5 ${className}`}>
       <div className="mb-4 flex items-center gap-2">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -63,7 +63,7 @@ export default function NetworkOpsDashboardPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
+      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">Network Ops</p>
         <div className="mt-2 flex items-center gap-3">
           <div className="rounded-[var(--radius-widget)] bg-card border border-border p-2 text-muted-foreground">
