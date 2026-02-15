@@ -1,7 +1,6 @@
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { LayoutGrid, BarChart3, TrendingUp } from "lucide-react";
 import { useProgressTrackingViewModel } from "@/viewmodels/useProgressTrackingViewModel";
-import { chartPrimary, chart, chartAxis } from "@/lib/palette";
+import { PixelBarChart } from "@/components/PixelBarChart";
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
@@ -74,15 +73,26 @@ export default function ProgressTrackingPage() {
 
       <Section title="Budget vs Actual" icon={BarChart3}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <div className="h-[180px] md:h-[200px]" role="img" aria-label="Budget vs actual spending grouped bar chart by month">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={comparisonData} barGap={4}>
-                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={30} />
-                <Bar dataKey="budget" fill={chart.gray} radius={[4, 4, 0, 0]} />
-                <Bar dataKey="actual" fill={chartPrimary} radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+          <div role="img" aria-label="Budget vs actual spending grouped bar chart by month">
+            <PixelBarChart
+              data={comparisonData.map((d) => ({ label: d.month, series: [d.budget, d.actual] }))}
+              seriesLabels={["Budget", "Actual"]}
+              blockSize={10}
+              blockGap={2}
+              gridRows={6}
+              formatYLabel={(v) => `${Math.round(v / 1000)}k`}
+              tooltipYearSuffix=""
+            />
+          </div>
+          <div className="mt-3 flex gap-4">
+            <div className="flex items-center gap-1.5">
+              <div className="h-2 w-2 bg-foreground" />
+              <span className="text-xs text-muted-foreground">Budget</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="h-2 w-2 bg-muted-foreground" />
+              <span className="text-xs text-muted-foreground">Actual</span>
+            </div>
           </div>
         </div>
       </Section>
