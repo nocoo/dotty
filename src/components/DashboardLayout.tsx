@@ -33,6 +33,33 @@ const PAGE_TITLES: Record<string, string> = {
   "/interactions": "Interactions",
 };
 
+// Map route paths to breadcrumb parent (section label)
+const PAGE_SECTIONS: Record<string, string> = {
+  "/": "Dashboard",
+  "/components": "Blocks",
+  "/health": "Blocks",
+  "/accounts": "Blocks",
+  "/progress-tracking": "Blocks",
+  "/flow-comparison": "Blocks",
+  "/portfolio": "Blocks",
+  "/interactions": "Blocks",
+  "/wearable": "Scenarios",
+  "/banking": "Scenarios",
+  "/network": "Scenarios",
+  "/controls": "Controls",
+  "/buttons": "Controls",
+  "/feedback": "Controls",
+  "/overlays": "Controls",
+  "/data-display": "Controls",
+  "/navigation": "Controls",
+  "/forms": "Controls",
+  "/tables": "Controls",
+  "/pills": "Controls",
+  "/layout": "System",
+  "/palette": "System",
+  "/settings": "System",
+};
+
 export function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const isMobile = useIsMobile();
@@ -40,6 +67,7 @@ export function DashboardLayout() {
   const location = useLocation();
 
   const title = PAGE_TITLES[location.pathname] ?? "Dashboard";
+  const section = PAGE_SECTIONS[location.pathname] ?? "Dashboard";
 
   // Close mobile sidebar on route change
   useEffect(() => {
@@ -99,7 +127,12 @@ export function DashboardLayout() {
                 <Menu className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
               </button>
             )}
-            <h1 className="text-lg md:text-xl font-semibold text-foreground">{title}</h1>
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">{section}</span>
+              <span className="text-muted-foreground/50">&rsaquo;</span>
+              <span className="font-medium text-foreground">{title}</span>
+            </nav>
           </div>
           <div className="flex items-center gap-1">
             <a
@@ -114,8 +147,10 @@ export function DashboardLayout() {
             <ThemeToggle />
           </div>
         </header>
-        <div className={cn("flex-1 px-2 pb-2 md:px-3 md:pb-3")}>
-          <div className="h-full bg-card p-3 md:p-5 overflow-y-auto border border-border">
+        {/* Thin separator below header */}
+        <div className="mx-4 md:mx-6 border-t border-border" />
+        <div className={cn("flex-1 px-2 pb-2 md:px-3 md:pb-3 pt-2 md:pt-3")}>
+          <div className="h-full rounded-[var(--radius-card)] bg-card p-3 md:p-5 overflow-y-auto">
             <Outlet />
           </div>
         </div>

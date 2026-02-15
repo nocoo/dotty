@@ -81,8 +81,8 @@
   --color-heatmap-orange-3: hsl(var(--heatmap-orange-3));
   --color-heatmap-orange-4: hsl(var(--heatmap-orange-4));
 
-  --radius-card: 0px;
-  --radius-widget: 0px;
+  --radius-card: 14px;
+  --radius-widget: 10px;
   --radius-lg: 0px;
   --radius-md: 0px;
   --radius-sm: 0px;
@@ -311,7 +311,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "IBM Plex Mono", "SF Mono", "Fira Code", ui-monospace, monospace;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -320,6 +320,10 @@
  * Custom utilities
  */
 @utility font-display {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+@utility font-mono-num {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-weight: 600;
 }
