@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DonutChartWidget } from "@/components/dashboard/PieChartWidget";
 
 const data = [
@@ -9,31 +8,33 @@ const data = [
 
 export function MiniDonutCard() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Mini donut
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex items-center gap-4">
-        <div className="h-24 w-24">
-          <DonutChartWidget data={data} height={96} />
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex items-center gap-4">
+          <div className="h-24 w-24">
+            <DonutChartWidget data={data} height={96} />
+          </div>
+          <div className="space-y-2 text-xs text-muted-foreground">
+            <div className="flex items-center justify-between gap-6">
+              <span>Active</span>
+              <span className="font-mono-num text-foreground">62%</span>
+            </div>
+            <div className="flex items-center justify-between gap-6">
+              <span>Idle</span>
+              <span className="font-mono-num text-foreground">28%</span>
+            </div>
+            <div className="flex items-center justify-between gap-6">
+              <span>Churn</span>
+              <span className="font-mono-num text-foreground">10%</span>
+            </div>
+          </div>
         </div>
-        <div className="space-y-2 text-xs text-muted-foreground">
-          <div className="flex items-center justify-between gap-6">
-            <span>Active</span>
-            <span className="font-mono-num text-foreground">62%</span>
-          </div>
-          <div className="flex items-center justify-between gap-6">
-            <span>Idle</span>
-            <span className="font-mono-num text-foreground">28%</span>
-          </div>
-          <div className="flex items-center justify-between gap-6">
-            <span>Churn</span>
-            <span className="font-mono-num text-foreground">10%</span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

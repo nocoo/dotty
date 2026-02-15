@@ -1,5 +1,4 @@
 import { ArrowUpDown } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { PixelBarChart } from "@/components/PixelBarChart";
 
 const data = [
@@ -13,30 +12,27 @@ const data = [
 
 export function GroupedBarCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border border-border bg-card shadow-none">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Income vs Expense
-            </CardTitle>
+    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center justify-between px-5 pt-4 pb-3">
+        <div className="flex items-center gap-2">
+          <ArrowUpDown className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Income vs Expense
+          </p>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <div className="h-2 w-2 bg-foreground" />
+            <span className="text-xs text-muted-foreground">Income</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5">
-              <div className="h-2 w-2 bg-foreground" />
-              <span className="text-xs text-muted-foreground">Income</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <div className="h-2 w-2 bg-muted-foreground" />
-              <span className="text-xs text-muted-foreground">Expense</span>
-            </div>
+          <div className="flex items-center gap-1.5">
+            <div className="h-2 w-2 bg-muted-foreground" />
+            <span className="text-xs text-muted-foreground">Expense</span>
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="flex flex-col">
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div
-          className="flex-1"
           role="img"
           aria-label="Grouped bar chart comparing monthly income and expense from July to December"
         >
@@ -50,7 +46,7 @@ export function GroupedBarCard() {
             tooltipYearSuffix=""
           />
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

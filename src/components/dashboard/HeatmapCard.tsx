@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeatmapCalendar, heatmapColorScales } from "@/components/dashboard/HeatmapCalendar";
 
 const heatmapData = Array.from({ length: 365 }).map((_, i) => {
@@ -14,15 +13,15 @@ const heatmapData = Array.from({ length: 365 }).map((_, i) => {
 
 export function HeatmapCard() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Engagement heatmap
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
         <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.blue} metricLabel="Sessions" />
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

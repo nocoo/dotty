@@ -1,5 +1,4 @@
 import { Sankey, ResponsiveContainer, Tooltip } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CHART_COLORS } from "@/lib/palette";
 
 const data = {
@@ -20,26 +19,28 @@ const data = {
 
 export function SankeyCard() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           User flow (Sankey)
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="h-56">
-        <ResponsiveContainer width="100%" height="100%">
-          <Sankey
-            data={data}
-            nodePadding={16}
-            nodeWidth={12}
-            linkCurvature={0.5}
-            node={{ stroke: CHART_COLORS[2], strokeWidth: 1, fill: CHART_COLORS[2] }}
-            link={{ stroke: CHART_COLORS[0], strokeOpacity: 0.3 }}
-          >
-            <Tooltip />
-          </Sankey>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <Sankey
+              data={data}
+              nodePadding={16}
+              nodeWidth={12}
+              linkCurvature={0.5}
+              node={{ stroke: CHART_COLORS[2], strokeWidth: 1, fill: CHART_COLORS[2] }}
+              link={{ stroke: CHART_COLORS[0], strokeOpacity: 0.3 }}
+            >
+              <Tooltip />
+            </Sankey>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
   );
 }

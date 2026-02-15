@@ -1,6 +1,5 @@
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 import { Goal } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { CHART_COLORS, chart } from "@/lib/palette";
 
 const goal = 10000;
@@ -14,23 +13,21 @@ const data = [
 
 export function RadialProgressCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border border-border bg-card shadow-none">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <Goal className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Savings Goal
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="flex flex-col">
-        <div className="flex min-h-0 flex-1 flex-col items-center">
+    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+        <Goal className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Savings Goal
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex flex-col items-center">
           <div
-            className="flex min-h-0 w-full max-h-[180px] min-h-[100px] flex-1 items-center justify-center"
+            className="w-full flex items-center justify-center"
             role="img"
             aria-label={`Savings goal radial progress: ${pct}% complete, $${saved.toLocaleString()} saved of $${goal.toLocaleString()} target`}
           >
-            <div className="relative aspect-square h-full max-h-[180px] min-h-[100px]">
+            <div className="relative aspect-square h-[160px]">
               <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart
                   cx="50%"
@@ -65,7 +62,7 @@ export function RadialProgressCard() {
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from "recharts";
 import { Shield } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { chart } from "@/lib/palette";
 
 const score = 742;
@@ -20,19 +19,21 @@ const { label, color } = getScoreLabel(score);
 
 export function GaugeCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border border-border bg-card shadow-none">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Credit Score
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="flex flex-col">
-        <div className="flex flex-1 flex-col items-center min-h-0">
-          <div className="flex-1 min-h-0 w-full flex items-center justify-center" role="img" aria-label={`Credit score gauge showing ${score} out of ${max}, rated ${label}`}>
-            <div className="relative aspect-square h-full max-h-[220px] min-h-[100px]">
+    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center gap-2 px-5 pt-4 pb-3">
+        <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Credit Score
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex flex-col items-center">
+          <div
+            className="w-full flex items-center justify-center"
+            role="img"
+            aria-label={`Credit score gauge showing ${score} out of ${max}, rated ${label}`}
+          >
+            <div className="relative aspect-square h-[160px]">
               <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart
                   cx="50%"
@@ -74,7 +75,7 @@ export function GaugeCard() {
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

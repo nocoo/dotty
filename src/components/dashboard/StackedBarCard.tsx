@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 // ── Data ──
@@ -35,27 +34,24 @@ export function StackedBarCard() {
   const valuePerBlock = maxTotal / GRID_ROWS;
 
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Stacked engagement
-          </CardTitle>
-          <div className="flex items-center gap-3">
-            {SERIES_LABELS.map((label, i) => (
-              <div key={label} className="flex items-center gap-1.5">
-                <div className={cn("h-2 w-2", SERIES_FILLS[i])} />
-                <span className="text-[10px] text-muted-foreground">{label}</span>
-              </div>
-            ))}
-          </div>
+    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center justify-between px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Stacked engagement
+        </p>
+        <div className="flex items-center gap-3">
+          {SERIES_LABELS.map((label, i) => (
+            <div key={label} className="flex items-center gap-1.5">
+              <div className={cn("h-2 w-2", SERIES_FILLS[i])} />
+              <span className="text-[10px] text-muted-foreground">{label}</span>
+            </div>
+          ))}
         </div>
-      </CardHeader>
-      <CardContent>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="flex items-end justify-between" style={{ height: CHART_HEIGHT }}>
           {stackedData.map((d, mIdx) => {
             const isHovered = activeIdx === mIdx;
-            // Compute blocks per series (stacked bottom to top: a, b, c)
             const seriesBlocks = d.series.map((v) => Math.max(1, Math.round(v / valuePerBlock)));
 
             return (
@@ -66,7 +62,6 @@ export function StackedBarCard() {
                 onMouseEnter={() => setActiveIdx(mIdx)}
                 onMouseLeave={() => setActiveIdx(null)}
               >
-                {/* Stack blocks: series[0] at bottom, then series[1], series[2] on top */}
                 {d.series.map((_, sIdx) => (
                   <div key={sIdx} className="flex flex-col-reverse" style={{ gap: BLOCK_GAP }}>
                     {Array.from({ length: seriesBlocks[sIdx] }, (__, bIdx) => (
@@ -119,7 +114,7 @@ export function StackedBarCard() {
             </div>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

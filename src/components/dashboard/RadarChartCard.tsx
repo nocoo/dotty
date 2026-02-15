@@ -1,5 +1,4 @@
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CHART_COLORS, chartAxis } from "@/lib/palette";
 
 const radarData = [
@@ -12,21 +11,23 @@ const radarData = [
 
 export function RadarChartCard() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Capability radar
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="h-56">
-        <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={radarData} outerRadius={80}>
-            <PolarGrid stroke={chartAxis} strokeOpacity={0.2} />
-            <PolarAngleAxis dataKey="subject" tick={{ fill: chartAxis, fontSize: 11 }} />
-            <Radar dataKey="value" fill={CHART_COLORS[3]} fillOpacity={0.3} stroke={CHART_COLORS[3]} />
-          </RadarChart>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <RadarChart data={radarData} outerRadius={80}>
+              <PolarGrid stroke={chartAxis} strokeOpacity={0.2} />
+              <PolarAngleAxis dataKey="subject" tick={{ fill: chartAxis, fontSize: 11 }} />
+              <Radar dataKey="value" fill={CHART_COLORS[3]} fillOpacity={0.3} stroke={CHART_COLORS[3]} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
   );
 }

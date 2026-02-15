@@ -1,5 +1,4 @@
 import { LineChart as RechartsLineChart, Line, ResponsiveContainer } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CHART_COLORS } from "@/lib/palette";
 
 const sparkData = [
@@ -14,13 +13,13 @@ const sparkData = [
 
 export function SparklineCard() {
   return (
-    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="px-5 pt-4 pb-3">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Weekly active
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3">
+        </p>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
         <div className="text-2xl font-semibold text-foreground font-mono-num">24.8k</div>
         <div className="h-14">
           <ResponsiveContainer width="100%" height="100%">
@@ -36,7 +35,7 @@ export function SparklineCard() {
           </ResponsiveContainer>
         </div>
         <p className="text-xs text-muted-foreground">+6.1% vs last week</p>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const transactions = [
   { name: "Netflix Subscription", amount: -15.99, date: "Today", type: "expense" },
@@ -11,20 +10,18 @@ const transactions = [
 
 export function RecentListCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Recent Transactions
-            </CardTitle>
-          </div>
-          <span className="cursor-pointer text-xs text-muted-foreground hover:text-foreground">View All</span>
+    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+      <div className="flex items-center justify-between px-5 pt-4 pb-3">
+        <div className="flex items-center gap-2">
+          <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Recent Transactions
+          </p>
         </div>
-      </CardHeader>
-      <CardContent className="flex flex-col">
-        <div className="flex flex-1 flex-col gap-3">
+        <span className="cursor-pointer text-xs text-muted-foreground hover:text-foreground">View All</span>
+      </div>
+      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex flex-col gap-3">
           {transactions.map((tx, i) => (
             <div key={i} className="flex items-center gap-3">
               <div
@@ -53,7 +50,7 @@ export function RecentListCard() {
             </div>
           ))}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
