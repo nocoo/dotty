@@ -1,0 +1,45 @@
+import { Sankey, ResponsiveContainer, Tooltip } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CHART_COLORS } from "@/lib/palette";
+
+const data = {
+  nodes: [
+    { name: "Visits" },
+    { name: "Signup" },
+    { name: "Activate" },
+    { name: "Upgrade" },
+    { name: "Churn" },
+  ],
+  links: [
+    { source: 0, target: 1, value: 1200 },
+    { source: 1, target: 2, value: 620 },
+    { source: 2, target: 3, value: 240 },
+    { source: 2, target: 4, value: 110 },
+  ],
+};
+
+export function SankeyCard() {
+  return (
+    <Card className="rounded-[var(--radius-card)] border-border bg-card shadow-none">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          User flow (Sankey)
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="h-56">
+        <ResponsiveContainer width="100%" height="100%">
+          <Sankey
+            data={data}
+            nodePadding={16}
+            nodeWidth={12}
+            linkCurvature={0.5}
+            node={{ stroke: CHART_COLORS[2], strokeWidth: 1, fill: CHART_COLORS[2] }}
+            link={{ stroke: CHART_COLORS[0], strokeOpacity: 0.3 }}
+          >
+            <Tooltip />
+          </Sankey>
+        </ResponsiveContainer>
+      </CardContent>
+    </Card>
+  );
+}
