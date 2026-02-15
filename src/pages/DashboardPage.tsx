@@ -75,7 +75,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Welcome */}
       <h2 className="text-2xl font-semibold text-foreground tracking-tight">
-        Welcome back, Salung
+        Welcome back, Zheng
       </h2>
 
       {/* Stat cards row */}
