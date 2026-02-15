@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import {
-  LayoutDashboard, Wallet, CreditCard,
+  LayoutDashboard, Wallet,
   PiggyBank, TrendingUp,
-  LineChart,   LayoutGrid, Settings, Search, ChevronUp,
+  LineChart, LayoutGrid, Settings, Search, ChevronUp,
   PanelLeft, LogOut, Palette, LogIn, IdCard,
-  ExternalLink, FileQuestion, FileText, Layers, Layers2, HeartPulse,
-  Loader, RectangleEllipsis, FormInput, Table, MousePointerClick, Bell,   Eye, Navigation,
+  ExternalLink, FileQuestion, FileText, Layers, HeartPulse,
+  Loader, RectangleEllipsis, FormInput, MousePointerClick, Eye, Navigation,
   User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -67,15 +67,10 @@ const NAV_GROUPS: NavGroup[] = [
     label: "Controls",
     defaultOpen: true,
     items: [
-      { title: "Controls", icon: RectangleEllipsis, path: "/controls" },
-      { title: "Buttons", icon: MousePointerClick, path: "/buttons" },
-      { title: "Feedback", icon: Bell, path: "/feedback" },
-      { title: "Overlays", icon: Layers2, path: "/overlays" },
-      { title: "Data Display", icon: Eye, path: "/data-display" },
-      { title: "Navigation", icon: Navigation, path: "/navigation" },
+      { title: "Interactive", icon: MousePointerClick, path: "/interactive" },
+      { title: "Data", icon: Eye, path: "/data" },
       { title: "Forms", icon: FormInput, path: "/forms" },
-      { title: "Tables", icon: Table, path: "/tables" },
-      { title: "Pills", icon: CreditCard, path: "/pills" },
+      { title: "Navigation", icon: Navigation, path: "/navigation" },
     ],
   },
   {

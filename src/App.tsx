@@ -5,13 +5,9 @@ import { DashboardLayout } from "@/components/DashboardLayout";
 import DashboardPage from "./pages/DashboardPage";
 import ComponentsPage from "./pages/ComponentsPage";
 import FormsPage from "./pages/FormsPage";
-import TablesPage from "./pages/TablesPage";
-import ControlsPage from "./pages/ControlsPage";
-import ButtonsPage from "./pages/ButtonsPage";
-import FeedbackPage from "./pages/FeedbackPage";
-import OverlaysPage from "./pages/OverlaysPage";
-import DataDisplayPage from "./pages/DataDisplayPage";
 import NavigationPage from "./pages/NavigationPage";
+import InteractivePage from "./pages/InteractivePage";
+import DataPage from "./pages/DataPage";
 import AccountsPage from "./pages/AccountsPage";
 import ProgressTrackingPage from "./pages/ProgressTrackingPage";
 import FlowComparisonPage from "./pages/FlowComparisonPage";
@@ -21,7 +17,6 @@ import SettingsPage from "./pages/SettingsPage";
 import PalettePage from "./pages/PalettePage";
 import InteractionShowcasePage from "./pages/InteractionShowcasePage";
 import HealthPage from "./pages/HealthPage";
-import PillsPage from "./pages/PillsPage";
 import WearableDashboardPage from "./pages/WearableDashboardPage";
 import BankingDashboardPage from "./pages/BankingDashboardPage";
 import NetworkOpsDashboardPage from "./pages/NetworkOpsDashboardPage";
@@ -40,13 +35,9 @@ const App = () => (
         <Route element={<DashboardLayout />}>
           <Route path="/components" element={<ComponentsPage />} />
           <Route path="/forms" element={<FormsPage />} />
-          <Route path="/tables" element={<TablesPage />} />
-          <Route path="/controls" element={<ControlsPage />} />
-          <Route path="/buttons" element={<ButtonsPage />} />
-          <Route path="/feedback" element={<FeedbackPage />} />
-          <Route path="/overlays" element={<OverlaysPage />} />
-          <Route path="/data-display" element={<DataDisplayPage />} />
           <Route path="/navigation" element={<NavigationPage />} />
+          <Route path="/interactive" element={<InteractivePage />} />
+          <Route path="/data" element={<DataPage />} />
           <Route path="/" element={<DashboardPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
           <Route path="/progress-tracking" element={<ProgressTrackingPage />} />
@@ -57,7 +48,6 @@ const App = () => (
           <Route path="/palette" element={<PalettePage />} />
           <Route path="/interactions" element={<InteractionShowcasePage />} />
           <Route path="/health" element={<HealthPage />} />
-          <Route path="/pills" element={<PillsPage />} />
           <Route path="/wearable" element={<WearableDashboardPage />} />
           <Route path="/banking" element={<BankingDashboardPage />} />
           <Route path="/network" element={<NetworkOpsDashboardPage />} />
