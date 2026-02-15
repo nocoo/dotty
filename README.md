@@ -1,7 +1,7 @@
 # dotty
 
 > **Pixel-brutalist dashboard template.**
-> A monochrome React SPA with sharp geometry, stacked-block charts, and a 2-layer card system.
+> Cool-toned monochrome. Sharp geometry. Stacked-block charts. 2-layer cards.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-white.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Framework: Vite](https://img.shields.io/badge/Framework-Vite-646cff.svg?style=flat-square&logo=vite)](https://vite.dev)
@@ -11,31 +11,35 @@
 
 ## Design Philosophy
 
-### Monochrome palette
+### Cool monochrome
 
-Pure black-and-white in both light and dark modes. All chart colors, heatmaps, and data visualizations are grayscale. The only accent is green for positive change indicators (e.g. "+0.94%").
+Near-monochrome grayscale with a subtle **blue undertone** (hue 220, saturation 4–14%). No warm yellows, no neutral grays — every surface carries a faint cool cast that keeps the palette clean and prevents the "dirty gray" look that pure `hsl(0 0% …)` produces. The only chromatic accent is green (`--success`) for positive change indicators.
 
 ### Sharp + round radius rule
 
-Large layout containers (sidebar shell, main content wrapper) have **zero** border radius — hard, architectural edges. Small interactive controls (buttons, search box, nav items, badges, `kbd` tags) use `rounded-lg`. Page-level cards use a dedicated `--radius-card` (14px) token; inner widgets use `--radius-widget` (10px).
+Large layout containers (sidebar shell, main content wrapper) have **zero** border radius — hard, architectural edges. Small interactive controls (buttons, search box, nav items, badges, `kbd` tags) use `rounded-lg`. Page-level cards use `--radius-card` (14px); inner widgets use `--radius-widget` (10px). This creates a deliberate tension between the rigid frame and the soft content within it.
 
 ### 2-layer card pattern
 
 The signature visual element. Every card follows a stacked construction:
 
-1. **Outer container** — `bg-muted` with `rounded-[--radius-card]`, providing the gray base
-2. **Inner content area** — `bg-card` with `rounded-[--radius-widget]` and a 1px border, sitting inside the outer container
+1. **Outer container** — `bg-muted` with `rounded-[--radius-card]`, the cool-gray base
+2. **Inner content area** — `bg-card` with `rounded-[--radius-widget]` and a 1px border, floating inside
 3. **Exposed gray zone** — the gap between inner and outer surfaces holds secondary content (footers, labels, metadata)
 
-This creates a tactile, layered depth without shadows or gradients.
+Depth is communicated through luminance layers, not shadows or gradients.
 
 ### Pixel bar charts
 
-Bar charts are rendered as vertically stacked square blocks (`PixelBarChart` component) rather than smooth SVG rectangles. Each bar is a column of discrete colored squares, reinforcing the pixel-grid aesthetic.
+Bar charts are rendered as vertically stacked square blocks (`PixelBarChart` component) rather than smooth SVG rectangles. Each bar is a column of discrete squares, reinforcing the pixel-grid aesthetic.
+
+### Logo
+
+Three rounded squares arranged to form the number **7** — two blocks on top (the horizontal stroke) and one block bottom-right (the vertical stroke). The logo ships as both a React component (`DottyLogo`) and a static SVG favicon (`public/logo.svg`).
 
 ### Typography
 
-Inter is the global body font — unchanged, no overrides. Only card numerical values (stats, metrics, percentages) use IBM Plex Mono via the `font-mono-num` utility class. Display headings optionally use DM Sans via `font-display`.
+Inter is the global body font. Only card numerical values (stats, metrics, percentages) use IBM Plex Mono via the `font-mono-num` utility. Display headings optionally use DM Sans via `font-display`.
 
 ## Pages
 
@@ -65,17 +69,17 @@ Inter is the global body font — unchanged, no overrides. Only card numerical v
 
 ## Design Tokens
 
-All tokens live in `src/index.css` as CSS custom properties. Light mode uses `:root`, dark mode uses `.dark`.
+All tokens live in `src/index.css` as CSS custom properties with HSL values (hue saturation lightness). Light mode uses `:root`, dark mode uses `.dark`. Every gray-scale token shares hue **220** for consistent cool tonality.
 
 ```
---background     Page background
---foreground     Primary text
---card           Card inner surface
---muted          Card outer surface / secondary backgrounds
---border         Borders (subtle gray)
---radius         0px (global default — sharp corners)
---radius-card    14px (page-level cards)
---radius-widget  10px (inner card widgets)
+--background     Page background         220 14% 96%  (light) / 220 14% 5%  (dark)
+--foreground     Primary text             220 14% 10%  (light) / 220 6% 93%  (dark)
+--card           Card inner surface       220 20% 100% (light) / 220 10% 9%  (dark)
+--muted          Card outer surface       220 10% 93%  (light) / 220 8% 15%  (dark)
+--border         Borders                  220 8% 88%   (light) / 220 6% 22%  (dark)
+--radius         0px      (global default — sharp corners)
+--radius-card    14px     (page-level cards)
+--radius-widget  10px     (inner card widgets)
 ```
 
 ## Getting Started
