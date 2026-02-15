@@ -3,12 +3,13 @@ import {
   LayoutDashboard, Wallet, CreditCard,
   PiggyBank, TrendingUp,
   LineChart,   LayoutGrid, Settings, Search, ChevronUp,
-  PanelLeft, LogOut, Mountain, Palette, LogIn, IdCard,
+  PanelLeft, LogOut, Palette, LogIn, IdCard,
   ExternalLink, FileQuestion, FileText, Layers, Layers2, HeartPulse,
   Loader, RectangleEllipsis, FormInput, Table, MousePointerClick, Bell,   Eye, Navigation,
   User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DottyLogo } from "@/components/DottyLogo";
 import { useNavigate, useLocation } from "react-router";
 import {
   Collapsible, CollapsibleTrigger,
@@ -246,7 +247,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         /* ── Collapsed (icon-only) view ── */
         <div className="flex h-screen w-[68px] flex-col items-center">
           <div className="flex h-14 items-center justify-center">
-            <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
+            <DottyLogo className="h-5 w-5 text-primary" />
           </div>
 
           <button
@@ -298,7 +299,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           <div className="px-3 h-14 flex items-center">
              <div className="flex w-full items-center justify-between px-3">
               <div className="flex items-center gap-3">
-                <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                <DottyLogo className="h-5 w-5 text-primary" />
                 <span className="text-lg md:text-xl font-semibold text-foreground">dotty.</span>
               </div>
               <button

@@ -105,201 +105,201 @@
  * Design tokens — light (default) & dark mode
  */
 :root {
-  /* L0 body — warm off-white */
-  --background: 60 6% 95%;
-  --foreground: 0 0% 7%;
+  /* L0 body — cool off-white with blue undertone */
+  --background: 220 14% 96%;
+  --foreground: 220 14% 10%;
 
   /* L1 content panel — clean white */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 7%;
+  --card: 220 20% 100%;
+  --card-foreground: 220 14% 10%;
 
-  /* L2 inner cards — slightly warm white */
-  --secondary: 60 4% 97%;
-  --secondary-foreground: 0 0% 7%;
+  /* L2 inner cards */
+  --secondary: 220 14% 98%;
+  --secondary-foreground: 220 14% 10%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 7%;
+  --popover: 220 20% 100%;
+  --popover-foreground: 220 14% 10%;
 
-  --primary: 0 0% 7%;
+  --primary: 220 14% 10%;
   --primary-foreground: 0 0% 100%;
 
-  --muted: 60 4% 92%;
-  --muted-foreground: 0 0% 45%;
+  --muted: 220 10% 93%;
+  --muted-foreground: 220 6% 50%;
 
-  --accent: 60 4% 92%;
-  --accent-foreground: 0 0% 7%;
+  --accent: 220 10% 94%;
+  --accent-foreground: 220 14% 10%;
 
-  --destructive: 0 0% 7%;
+  --destructive: 220 14% 10%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 0 0% 82%;
-  --input: 0 0% 82%;
-  --ring: 0 0% 7%;
+  --border: 220 8% 88%;
+  --input: 220 8% 88%;
+  --ring: 220 14% 10%;
 
   --radius: 0px;
 
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 7%;
-  --sidebar-primary: 0 0% 7%;
+  --sidebar-background: 220 20% 100%;
+  --sidebar-foreground: 220 14% 10%;
+  --sidebar-primary: 220 14% 10%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 60 4% 94%;
-  --sidebar-accent-foreground: 0 0% 7%;
-  --sidebar-border: 0 0% 82%;
-  --sidebar-ring: 0 0% 7%;
+  --sidebar-accent: 220 10% 95%;
+  --sidebar-accent-foreground: 220 14% 10%;
+  --sidebar-border: 220 8% 88%;
+  --sidebar-ring: 220 14% 10%;
 
   --success: 160 60% 40%;
   --success-foreground: 0 0% 100%;
-  --badge-red: 0 0% 7%;
+  --badge-red: 220 14% 10%;
   --badge-red-foreground: 0 0% 100%;
 
-  /* Visualization palette — monochrome, 1 accent green */
-  --chart-1: 0 0% 7%;
-  --chart-2: 0 0% 25%;
-  --chart-3: 0 0% 40%;
-  --chart-4: 0 0% 55%;
-  --chart-5: 0 0% 70%;
-  --chart-6: 0 0% 82%;
-  --chart-7: 0 0% 90%;
-  --chart-8: 0 0% 95%;
-  --chart-9: 0 0% 15%;
-  --chart-10: 0 0% 30%;
-  --chart-11: 0 0% 45%;
-  --chart-12: 0 0% 60%;
-  --chart-13: 0 0% 72%;
-  --chart-14: 0 0% 85%;
-  --chart-15: 0 0% 20%;
-  --chart-16: 0 0% 35%;
-  --chart-17: 0 0% 50%;
-  --chart-18: 0 0% 65%;
-  --chart-19: 0 0% 78%;
-  --chart-20: 0 0% 88%;
-  --chart-21: 0 0% 10%;
-  --chart-22: 0 0% 28%;
-  --chart-23: 0 0% 42%;
-  --chart-24: 0 0% 58%;
+  /* Visualization palette — cool monochrome */
+  --chart-1: 220 10% 10%;
+  --chart-2: 220 6% 28%;
+  --chart-3: 220 5% 42%;
+  --chart-4: 220 4% 56%;
+  --chart-5: 220 4% 70%;
+  --chart-6: 220 6% 84%;
+  --chart-7: 220 8% 91%;
+  --chart-8: 220 10% 96%;
+  --chart-9: 220 8% 18%;
+  --chart-10: 220 6% 33%;
+  --chart-11: 220 5% 47%;
+  --chart-12: 220 4% 61%;
+  --chart-13: 220 5% 74%;
+  --chart-14: 220 7% 87%;
+  --chart-15: 220 8% 22%;
+  --chart-16: 220 6% 37%;
+  --chart-17: 220 4% 52%;
+  --chart-18: 220 4% 66%;
+  --chart-19: 220 5% 78%;
+  --chart-20: 220 8% 90%;
+  --chart-21: 220 8% 14%;
+  --chart-22: 220 6% 30%;
+  --chart-23: 220 5% 44%;
+  --chart-24: 220 4% 58%;
 
   /* Chart utility tokens */
-  --chart-axis: 0 0% 55%;
-  --chart-muted: 0 0% 82%;
+  --chart-axis: 220 4% 58%;
+  --chart-muted: 220 6% 84%;
 
-  /* Heatmap color scales — grayscale */
-  --heatmap-green-1: 0 0% 90%;
-  --heatmap-green-2: 0 0% 70%;
-  --heatmap-green-3: 0 0% 45%;
-  --heatmap-green-4: 0 0% 20%;
-  /* Heatmap color scales — red (grayscale) */
-  --heatmap-red-1: 0 0% 88%;
-  --heatmap-red-2: 0 0% 65%;
-  --heatmap-red-3: 0 0% 40%;
-  --heatmap-red-4: 0 0% 18%;
-  /* Heatmap color scales — blue (grayscale) */
-  --heatmap-blue-1: 0 0% 92%;
-  --heatmap-blue-2: 0 0% 72%;
-  --heatmap-blue-3: 0 0% 48%;
-  --heatmap-blue-4: 0 0% 25%;
-  /* Heatmap color scales — orange (grayscale) */
-  --heatmap-orange-1: 0 0% 86%;
-  --heatmap-orange-2: 0 0% 68%;
-  --heatmap-orange-3: 0 0% 42%;
-  --heatmap-orange-4: 0 0% 22%;
+  /* Heatmap color scales — cool grayscale */
+  --heatmap-green-1: 220 8% 92%;
+  --heatmap-green-2: 220 5% 72%;
+  --heatmap-green-3: 220 4% 48%;
+  --heatmap-green-4: 220 6% 24%;
+  /* Heatmap color scales — red (cool grayscale) */
+  --heatmap-red-1: 220 8% 90%;
+  --heatmap-red-2: 220 5% 68%;
+  --heatmap-red-3: 220 4% 44%;
+  --heatmap-red-4: 220 6% 22%;
+  /* Heatmap color scales — blue (cool grayscale) */
+  --heatmap-blue-1: 220 8% 93%;
+  --heatmap-blue-2: 220 5% 74%;
+  --heatmap-blue-3: 220 4% 50%;
+  --heatmap-blue-4: 220 6% 28%;
+  /* Heatmap color scales — orange (cool grayscale) */
+  --heatmap-orange-1: 220 8% 88%;
+  --heatmap-orange-2: 220 5% 70%;
+  --heatmap-orange-3: 220 4% 46%;
+  --heatmap-orange-4: 220 6% 26%;
 }
 
 .dark {
-  /* L0 body: pure black */
-  --background: 0 0% 4%;
-  --foreground: 0 0% 93%;
+  /* L0 body — near-black with cool undertone */
+  --background: 220 14% 5%;
+  --foreground: 220 6% 93%;
 
   /* L1 content panel */
-  --card: 0 0% 8%;
-  --card-foreground: 0 0% 93%;
+  --card: 220 10% 9%;
+  --card-foreground: 220 6% 93%;
 
   /* L2 inner cards */
-  --secondary: 0 0% 12%;
-  --secondary-foreground: 0 0% 93%;
+  --secondary: 220 8% 13%;
+  --secondary-foreground: 220 6% 93%;
 
-  --popover: 0 0% 8%;
-  --popover-foreground: 0 0% 93%;
+  --popover: 220 10% 9%;
+  --popover-foreground: 220 6% 93%;
 
-  --primary: 0 0% 93%;
-  --primary-foreground: 0 0% 4%;
+  --primary: 220 6% 93%;
+  --primary-foreground: 220 14% 5%;
 
-  --muted: 0 0% 14%;
-  --muted-foreground: 0 0% 50%;
+  --muted: 220 8% 15%;
+  --muted-foreground: 220 4% 52%;
 
-  --accent: 0 0% 14%;
-  --accent-foreground: 0 0% 93%;
+  --accent: 220 8% 15%;
+  --accent-foreground: 220 6% 93%;
 
-  --destructive: 0 0% 93%;
-  --destructive-foreground: 0 0% 4%;
+  --destructive: 220 6% 93%;
+  --destructive-foreground: 220 14% 5%;
 
-  --border: 0 0% 20%;
-  --input: 0 0% 14%;
-  --ring: 0 0% 93%;
+  --border: 220 6% 22%;
+  --input: 220 6% 15%;
+  --ring: 220 6% 93%;
 
-  --sidebar-background: 0 0% 4%;
-  --sidebar-foreground: 0 0% 93%;
-  --sidebar-primary: 0 0% 93%;
-  --sidebar-primary-foreground: 0 0% 4%;
-  --sidebar-accent: 0 0% 14%;
-  --sidebar-accent-foreground: 0 0% 93%;
-  --sidebar-border: 0 0% 20%;
-  --sidebar-ring: 0 0% 93%;
+  --sidebar-background: 220 14% 5%;
+  --sidebar-foreground: 220 6% 93%;
+  --sidebar-primary: 220 6% 93%;
+  --sidebar-primary-foreground: 220 14% 5%;
+  --sidebar-accent: 220 8% 15%;
+  --sidebar-accent-foreground: 220 6% 93%;
+  --sidebar-border: 220 6% 22%;
+  --sidebar-ring: 220 6% 93%;
 
   --success: 160 60% 45%;
   --success-foreground: 0 0% 100%;
-  --badge-red: 0 0% 93%;
-  --badge-red-foreground: 0 0% 4%;
+  --badge-red: 220 6% 93%;
+  --badge-red-foreground: 220 14% 5%;
 
-  /* Visualization palette — monochrome inverted */
-  --chart-1: 0 0% 93%;
-  --chart-2: 0 0% 78%;
-  --chart-3: 0 0% 65%;
-  --chart-4: 0 0% 50%;
-  --chart-5: 0 0% 38%;
-  --chart-6: 0 0% 28%;
-  --chart-7: 0 0% 20%;
-  --chart-8: 0 0% 14%;
-  --chart-9: 0 0% 85%;
-  --chart-10: 0 0% 72%;
-  --chart-11: 0 0% 58%;
-  --chart-12: 0 0% 45%;
-  --chart-13: 0 0% 32%;
-  --chart-14: 0 0% 22%;
-  --chart-15: 0 0% 82%;
-  --chart-16: 0 0% 68%;
-  --chart-17: 0 0% 55%;
-  --chart-18: 0 0% 42%;
-  --chart-19: 0 0% 30%;
-  --chart-20: 0 0% 18%;
-  --chart-21: 0 0% 90%;
-  --chart-22: 0 0% 75%;
-  --chart-23: 0 0% 62%;
-  --chart-24: 0 0% 48%;
+  /* Visualization palette — cool monochrome inverted */
+  --chart-1: 220 6% 93%;
+  --chart-2: 220 5% 78%;
+  --chart-3: 220 4% 65%;
+  --chart-4: 220 4% 52%;
+  --chart-5: 220 5% 40%;
+  --chart-6: 220 6% 30%;
+  --chart-7: 220 8% 22%;
+  --chart-8: 220 10% 15%;
+  --chart-9: 220 6% 85%;
+  --chart-10: 220 5% 72%;
+  --chart-11: 220 4% 58%;
+  --chart-12: 220 4% 47%;
+  --chart-13: 220 5% 35%;
+  --chart-14: 220 7% 24%;
+  --chart-15: 220 6% 82%;
+  --chart-16: 220 5% 68%;
+  --chart-17: 220 4% 55%;
+  --chart-18: 220 4% 44%;
+  --chart-19: 220 5% 32%;
+  --chart-20: 220 8% 20%;
+  --chart-21: 220 6% 90%;
+  --chart-22: 220 5% 75%;
+  --chart-23: 220 4% 62%;
+  --chart-24: 220 4% 50%;
 
   /* Chart utility tokens */
-  --chart-axis: 0 0% 45%;
-  --chart-muted: 0 0% 25%;
+  --chart-axis: 220 4% 48%;
+  --chart-muted: 220 6% 27%;
 
-  /* Heatmap color scales — grayscale inverted */
-  --heatmap-green-1: 0 0% 18%;
-  --heatmap-green-2: 0 0% 32%;
-  --heatmap-green-3: 0 0% 50%;
-  --heatmap-green-4: 0 0% 72%;
-  /* Heatmap color scales — red (grayscale) */
-  --heatmap-red-1: 0 0% 16%;
-  --heatmap-red-2: 0 0% 30%;
-  --heatmap-red-3: 0 0% 48%;
-  --heatmap-red-4: 0 0% 68%;
-  /* Heatmap color scales — blue (grayscale) */
-  --heatmap-blue-1: 0 0% 14%;
-  --heatmap-blue-2: 0 0% 28%;
-  --heatmap-blue-3: 0 0% 45%;
-  --heatmap-blue-4: 0 0% 65%;
-  /* Heatmap color scales — orange (grayscale) */
-  --heatmap-orange-1: 0 0% 20%;
-  --heatmap-orange-2: 0 0% 35%;
-  --heatmap-orange-3: 0 0% 52%;
-  --heatmap-orange-4: 0 0% 70%;
+  /* Heatmap color scales — cool grayscale inverted */
+  --heatmap-green-1: 220 8% 20%;
+  --heatmap-green-2: 220 5% 35%;
+  --heatmap-green-3: 220 4% 52%;
+  --heatmap-green-4: 220 6% 74%;
+  /* Heatmap color scales — red (cool grayscale) */
+  --heatmap-red-1: 220 8% 18%;
+  --heatmap-red-2: 220 5% 33%;
+  --heatmap-red-3: 220 4% 50%;
+  --heatmap-red-4: 220 6% 70%;
+  /* Heatmap color scales — blue (cool grayscale) */
+  --heatmap-blue-1: 220 8% 16%;
+  --heatmap-blue-2: 220 5% 30%;
+  --heatmap-blue-3: 220 4% 48%;
+  --heatmap-blue-4: 220 6% 67%;
+  /* Heatmap color scales — orange (cool grayscale) */
+  --heatmap-orange-1: 220 8% 22%;
+  --heatmap-orange-2: 220 5% 38%;
+  --heatmap-orange-3: 220 4% 54%;
+  --heatmap-orange-4: 220 6% 72%;
 }
 
 /*
