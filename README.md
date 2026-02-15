@@ -43,13 +43,13 @@ Inter is the global body font. Only card numerical values (stats, metrics, perce
 
 ## Pages
 
-28 pages organized into 5 sidebar sections. Currently the Dashboard page is fully implemented; all others are layout-ready stubs.
+28 pages organized into 5 sidebar sections. The Dashboard page plus all Controls, Pages, and System pages are fully implemented; Blocks and Scenarios pages are layout-ready stubs.
 
 | Section | Pages |
 |---|---|
 | **Blocks** | Dashboard, Components, Health, Accounts, Progress Tracking, Flow Comparison, Portfolio, Interactions |
 | **Scenarios** | Wearable Health, Banking & Wealth, Network Ops |
-| **Controls** | Controls, Buttons, Feedback, Overlays, Data Display, Navigation, Forms, Tables, Pills |
+| **Controls** | Interactive, Data, Forms, Navigation |
 | **Pages** | Login, Badge Login, Static Page, Loading, 404 |
 | **System** | Layout, Color Palette, Settings |
 
