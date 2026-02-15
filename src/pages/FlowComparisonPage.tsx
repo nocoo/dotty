@@ -1,7 +1,8 @@
-import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, BarChart, Bar } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity, BarChart3, ArrowLeftRight } from "lucide-react";
 import { useFlowComparisonViewModel } from "@/viewmodels/useFlowComparisonViewModel";
-import { chartPositive, chartNegative, chartPrimary, chartAxis } from "@/lib/palette";
+import { chartPositive, chartNegative, chartAxis } from "@/lib/palette";
+import { PixelBarChart } from "@/components/PixelBarChart";
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
@@ -68,14 +69,16 @@ export default function FlowComparisonPage() {
 
       <Section title="Net Cash Flow by Month" icon={BarChart3}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <div className="h-[160px] md:h-[180px]" role="img" aria-label="Net cash flow by month bar chart">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={netFlowData}>
-                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
-                <Bar dataKey="net" fill={chartPrimary} radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+          <div role="img" aria-label="Net cash flow by month bar chart">
+            <PixelBarChart
+              data={netFlowData.map((d) => ({ label: d.month, value: d.net }))}
+              seriesLabels={["Net Flow"]}
+              blockSize={10}
+              blockGap={2}
+              gridRows={6}
+              formatYLabel={(v) => `${Math.round(v / 1000)}k`}
+              tooltipYearSuffix=""
+            />
           </div>
         </div>
       </Section>
