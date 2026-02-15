@@ -12,7 +12,7 @@ const data = [
 
 export function DonutChartCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-[var(--radius-card)] border border-border bg-card shadow-none">
       <CardHeader>
         <div className="flex items-center gap-2">
           <Target className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />

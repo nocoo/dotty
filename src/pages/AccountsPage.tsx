@@ -148,23 +148,25 @@ export default function AccountsPage() {
                 {card.utilization}%
               </span>
             </div>
-            <div
-              className="h-1.5 rounded-full bg-muted"
-              role="progressbar"
-              aria-valuenow={card.utilization}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label={`${card.bank} ${card.name} credit utilization: ${card.utilization}%`}
-            >
+            <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
               <div
-                className="h-full rounded-full bg-foreground/60 transition-all"
-                style={{ width: `${card.utilization}%` }}
-                aria-hidden="true"
-              />
+                className="h-1.5 rounded-full bg-muted"
+                role="progressbar"
+                aria-valuenow={card.utilization}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${card.bank} ${card.name} credit utilization: ${card.utilization}%`}
+              >
+                <div
+                  className="h-full rounded-full bg-foreground/60 transition-all"
+                  style={{ width: `${card.utilization}%` }}
+                  aria-hidden="true"
+                />
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-1.5">
+                <span className="font-mono-num">${card.balance.toLocaleString()}</span> / <span className="font-mono-num">${card.limit.toLocaleString()}</span> limit
+              </p>
             </div>
-            <p className="text-[11px] text-muted-foreground mt-1.5">
-              <span className="font-mono-num">${card.balance.toLocaleString()}</span> / <span className="font-mono-num">${card.limit.toLocaleString()}</span> limit
-            </p>
           </div>
         ))}
       </div>
@@ -191,23 +193,25 @@ export default function AccountsPage() {
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-sm text-muted-foreground">Recent Activity</p>
         </div>
-        <div className="flex flex-col gap-3">
-          {activityList.map((item, i) => (
-            <div key={i} className="flex items-center justify-between py-1">
-              <div className="flex items-center gap-3">
-                <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${item.direction === "positive" ? "bg-muted" : "bg-muted"}`}>
-                  {item.direction === "positive" ? <ArrowDownLeft className="h-3.5 w-3.5 text-success" strokeWidth={1.5} /> : <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.5} />}
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <div className="flex flex-col gap-3">
+            {activityList.map((item, i) => (
+              <div key={i} className="flex items-center justify-between py-1">
+                <div className="flex items-center gap-3">
+                  <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${item.direction === "positive" ? "bg-muted" : "bg-muted"}`}>
+                    {item.direction === "positive" ? <ArrowDownLeft className="h-3.5 w-3.5 text-success" strokeWidth={1.5} /> : <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.5} />}
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground">{item.desc}</p>
+                    <p className="text-xs text-muted-foreground">{item.date}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-foreground">{item.desc}</p>
-                  <p className="text-xs text-muted-foreground">{item.date}</p>
-                </div>
+                <span className={`text-sm font-medium font-mono-num ${item.direction === "positive" ? "text-success" : "text-foreground"}`}>
+                  {item.formattedAmount}
+                </span>
               </div>
-              <span className={`text-sm font-medium font-mono-num ${item.direction === "positive" ? "text-success" : "text-foreground"}`}>
-                {item.formattedAmount}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

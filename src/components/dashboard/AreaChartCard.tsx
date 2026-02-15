@@ -15,7 +15,7 @@ const data = [
 
 export function AreaChartCard() {
   return (
-    <Card className="h-full rounded-[var(--radius-card)] border-0 bg-secondary shadow-none">
+    <Card className="h-full rounded-[var(--radius-card)] border border-border bg-card shadow-none">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

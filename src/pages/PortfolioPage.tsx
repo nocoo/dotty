@@ -53,36 +53,40 @@ export default function PortfolioPage() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section title="Portfolio Performance" icon={TrendingUp}>
-          <div className="h-[180px] md:h-[200px]" role="img" aria-label="Portfolio performance line chart over time">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={performanceData}>
-                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={40} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} />
-                <Line type="monotone" dataKey="value" stroke={chartPositive} strokeWidth={2} dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div className="h-[180px] md:h-[200px]" role="img" aria-label="Portfolio performance line chart over time">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={performanceData}>
+                  <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={40} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} />
+                  <Line type="monotone" dataKey="value" stroke={chartPositive} strokeWidth={2} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </Section>
 
         <Section title="Asset Allocation" icon={PieChartIcon}>
-          <div className="flex flex-col items-center">
-            <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]" role="img" aria-label="Asset allocation donut chart">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={holdingsWithFill} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0} />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
-              {holdings.map((item, i) => (
-                <div key={item.name} className="flex flex-col items-center gap-0.5">
-                  <span className="text-sm font-medium text-foreground font-display font-mono-num">{item.allocation}%</span>
-                  <div className="flex items-center gap-1.5">
-                    <div className="h-2 w-2 rounded-full" style={{ background: CHART_COLORS[i] }} />
-                    <span className="text-xs text-muted-foreground">{item.name}</span>
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div className="flex flex-col items-center">
+              <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]" role="img" aria-label="Asset allocation donut chart">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={holdingsWithFill} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
+                {holdings.map((item, i) => (
+                  <div key={item.name} className="flex flex-col items-center gap-0.5">
+                    <span className="text-sm font-medium text-foreground font-display font-mono-num">{item.allocation}%</span>
+                    <div className="flex items-center gap-1.5">
+                      <div className="h-2 w-2 rounded-full" style={{ background: CHART_COLORS[i] }} />
+                      <span className="text-xs text-muted-foreground">{item.name}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Section>

@@ -48,38 +48,42 @@ export default function ProgressTrackingPage() {
       </div>
 
       <Section title="Category Budgets" icon={LayoutGrid}>
-        <div className="flex flex-col gap-4">
-          {categories.map((cat) => (
-            <div key={cat.category}>
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm text-foreground">{cat.category}</span>
-                <span className="text-xs text-muted-foreground font-mono-num">${cat.spent} / ${cat.limit}</span>
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <div className="flex flex-col gap-4">
+            {categories.map((cat) => (
+              <div key={cat.category}>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-sm text-foreground">{cat.category}</span>
+                  <span className="text-xs text-muted-foreground font-mono-num">${cat.spent} / ${cat.limit}</span>
+                </div>
+                <div
+                  className="h-2 rounded-full bg-muted"
+                  role="progressbar"
+                  aria-valuenow={cat.progress}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${cat.category} budget: ${cat.progress}% spent`}
+                >
+                  <div className="h-full rounded-full transition-all" style={{ width: `${cat.progress}%`, background: cat.color }} aria-hidden="true" />
+                </div>
               </div>
-              <div
-                className="h-2 rounded-full bg-card"
-                role="progressbar"
-                aria-valuenow={cat.progress}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-label={`${cat.category} budget: ${cat.progress}% spent`}
-              >
-                <div className="h-full rounded-full transition-all" style={{ width: `${cat.progress}%`, background: cat.color }} aria-hidden="true" />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
       <Section title="Budget vs Actual" icon={BarChart3}>
-        <div className="h-[180px] md:h-[200px]" role="img" aria-label="Budget vs actual spending grouped bar chart by month">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={comparisonData} barGap={4}>
-              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={30} />
-              <Bar dataKey="budget" fill={chart.gray} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="actual" fill={chartPrimary} radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <div className="h-[180px] md:h-[200px]" role="img" aria-label="Budget vs actual spending grouped bar chart by month">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={comparisonData} barGap={4}>
+                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={30} />
+                <Bar dataKey="budget" fill={chart.gray} radius={[4, 4, 0, 0]} />
+                <Bar dataKey="actual" fill={chartPrimary} radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </Section>
     </div>

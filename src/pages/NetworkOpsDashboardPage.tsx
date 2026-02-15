@@ -88,7 +88,9 @@ export default function NetworkOpsDashboardPage() {
       {/* Row 1 */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section icon={Wifi} title="Latency trend">
-          <LineChartWidget data={latencyTrend} height={220} color={chart.steel} valueFormatter={(v) => `${v}ms`} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <LineChartWidget data={latencyTrend} height={220} color={chart.steel} valueFormatter={(v) => `${v}ms`} />
+          </div>
         </Section>
         <StackedAreaCard />
       </div>
@@ -104,7 +106,9 @@ export default function NetworkOpsDashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <HeatmapCard />
         <Section icon={Clock} title="Incident timeline" className="lg:col-span-2 max-h-[420px] overflow-y-auto">
-          <TimelineWidget events={incidents} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <TimelineWidget events={incidents} />
+          </div>
         </Section>
       </div>
     </div>

@@ -168,7 +168,9 @@ export default function HealthPage() {
             <p className="text-sm text-muted-foreground">Sleep stages</p>
             <span className="ml-auto text-sm font-semibold text-foreground font-mono-num">7h 24m</span>
           </div>
-          <SlotBarChart items={sleepSlots} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <SlotBarChart items={sleepSlots} />
+          </div>
         </div>
         <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
@@ -176,39 +178,51 @@ export default function HealthPage() {
             <p className="text-sm text-muted-foreground">Heart rate zones</p>
             <span className="ml-auto text-sm font-semibold text-foreground font-mono-num">72 bpm</span>
           </div>
-          <SlotBarChart items={heartRateSlots} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <SlotBarChart items={heartRateSlots} />
+          </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section title="Weekly steps" icon={Footprints}>
-          <BarChartWidget data={weeklySteps} height={200} color={chart.green} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <BarChartWidget data={weeklySteps} height={200} color={chart.green} />
+          </div>
         </Section>
         <Section title="Monthly sleep trend" icon={Sparkles}>
-          <LineChartWidget data={monthlySleep} height={200} color={chart.indigo} valueFormatter={(v) => `${v}h`} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <LineChartWidget data={monthlySleep} height={200} color={chart.indigo} valueFormatter={(v) => `${v}h`} />
+          </div>
         </Section>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Section title="Activity breakdown" icon={Activity}>
-          <DonutChartWidget data={activityBreakdown} height={220} showLegend />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <DonutChartWidget data={activityBreakdown} height={220} showLegend />
+          </div>
         </Section>
         <div className="rounded-[var(--radius-card)] bg-secondary p-4 md:p-5 lg:col-span-2 max-h-[400px] overflow-y-auto">
           <div className="mb-4 flex items-center gap-2">
             <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Daily timeline</p>
           </div>
-          <TimelineWidget events={timelineEvents} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <TimelineWidget events={timelineEvents} />
+          </div>
         </div>
       </div>
 
       <Section title="Activity heatmap — 2026" icon={Activity}>
-        <HeatmapCalendar
-          data={heatmapData}
-          year={2026}
-          colorScale={heatmapColorScales.green}
-          metricLabel="Activities"
-        />
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <HeatmapCalendar
+            data={heatmapData}
+            year={2026}
+            colorScale={heatmapColorScales.green}
+            metricLabel="Activities"
+          />
+        </div>
       </Section>
 
       {/* Life.ai insights */}
@@ -232,10 +246,14 @@ export default function HealthPage() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section title="AI readiness trend" icon={ShieldCheck}>
-          <LineChartWidget data={readinessTrend} height={200} color={chart.primary} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <LineChartWidget data={readinessTrend} height={200} color={chart.primary} />
+          </div>
         </Section>
         <Section title="Recommendation impact" icon={Zap}>
-          <BarChartWidget data={recommendationImpact} height={200} color={chart.teal} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <BarChartWidget data={recommendationImpact} height={200} color={chart.teal} />
+          </div>
         </Section>
       </div>
 
@@ -282,7 +300,9 @@ export default function HealthPage() {
             <Brain className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Insight timeline</p>
           </div>
-          <TimelineWidget events={insightTimeline} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <TimelineWidget events={insightTimeline} />
+          </div>
         </div>
       </div>
     </div>

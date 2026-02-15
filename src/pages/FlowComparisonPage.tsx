@@ -48,31 +48,35 @@ export default function FlowComparisonPage() {
       </div>
 
       <Section title="Cash Flow Over Time" icon={Activity}>
-        <div className="h-[200px] md:h-[240px]" role="img" aria-label="Cash flow over time area chart showing inflow and outflow">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={flowData}>
-              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
-              <defs>
-                <linearGradient id="inflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartPositive} stopOpacity={0.3} /><stop offset="100%" stopColor={chartPositive} stopOpacity={0} /></linearGradient>
-                <linearGradient id="outflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartNegative} stopOpacity={0.3} /><stop offset="100%" stopColor={chartNegative} stopOpacity={0} /></linearGradient>
-              </defs>
-              <Area type="monotone" dataKey="inflow" stroke={chartPositive} strokeWidth={2} fill="url(#inflowG)" />
-              <Area type="monotone" dataKey="outflow" stroke={chartNegative} strokeWidth={2} fill="url(#outflowG)" />
-            </AreaChart>
-          </ResponsiveContainer>
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <div className="h-[200px] md:h-[240px]" role="img" aria-label="Cash flow over time area chart showing inflow and outflow">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={flowData}>
+                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
+                <defs>
+                  <linearGradient id="inflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartPositive} stopOpacity={0.3} /><stop offset="100%" stopColor={chartPositive} stopOpacity={0} /></linearGradient>
+                  <linearGradient id="outflowG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={chartNegative} stopOpacity={0.3} /><stop offset="100%" stopColor={chartNegative} stopOpacity={0} /></linearGradient>
+                </defs>
+                <Area type="monotone" dataKey="inflow" stroke={chartPositive} strokeWidth={2} fill="url(#inflowG)" />
+                <Area type="monotone" dataKey="outflow" stroke={chartNegative} strokeWidth={2} fill="url(#outflowG)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </Section>
 
       <Section title="Net Cash Flow by Month" icon={BarChart3}>
-        <div className="h-[160px] md:h-[180px]" role="img" aria-label="Net cash flow by month bar chart">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={netFlowData}>
-              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
-              <Bar dataKey="net" fill={chartPrimary} radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <div className="h-[160px] md:h-[180px]" role="img" aria-label="Net cash flow by month bar chart">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={netFlowData}>
+                <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
+                <Bar dataKey="net" fill={chartPrimary} radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </Section>
     </div>

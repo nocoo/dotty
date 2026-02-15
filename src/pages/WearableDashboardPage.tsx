@@ -148,40 +148,54 @@ export default function WearableDashboardPage() {
           title="Sleep stages"
           trailing={<span className="text-sm font-semibold font-mono-num text-foreground">7h 42m</span>}
         >
-          <SlotBarChart items={sleepSlots} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <SlotBarChart items={sleepSlots} />
+          </div>
         </Section>
         <Section
           icon={Heart}
           title="Heart rate zones"
           trailing={<span className="text-sm font-semibold font-mono-num text-foreground">68 bpm</span>}
         >
-          <SlotBarChart items={heartRateSlots} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <SlotBarChart items={heartRateSlots} />
+          </div>
         </Section>
       </div>
 
       {/* Charts row */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section icon={Footprints} title="Weekly steps">
-          <BarChartWidget data={weeklySteps} height={200} color={chart.primary} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <BarChartWidget data={weeklySteps} height={200} color={chart.primary} />
+          </div>
         </Section>
         <Section icon={Sparkles} title="Recovery trend">
-          <LineChartWidget data={recoveryTrend} height={200} color={chart.steel} valueFormatter={(v) => `${v}%`} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <LineChartWidget data={recoveryTrend} height={200} color={chart.steel} valueFormatter={(v) => `${v}%`} />
+          </div>
         </Section>
       </div>
 
       {/* Activity mix + timeline */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Section icon={Activity} title="Activity mix">
-          <DonutChartWidget data={activityBreakdown} height={220} showLegend />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <DonutChartWidget data={activityBreakdown} height={220} showLegend />
+          </div>
         </Section>
         <Section icon={Clock} title="Daily timeline" className="lg:col-span-2 max-h-[420px] overflow-y-auto">
-          <TimelineWidget events={timeline} />
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <TimelineWidget events={timeline} />
+          </div>
         </Section>
       </div>
 
       {/* Heatmap */}
       <Section icon={Activity} title="Workout consistency — 2026">
-        <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.green} metricLabel="Workouts" />
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+          <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.green} metricLabel="Workouts" />
+        </div>
       </Section>
     </div>
   );

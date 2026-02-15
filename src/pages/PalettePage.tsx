@@ -219,200 +219,208 @@ export default function PalettePage() {
       <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-2">
         {/* Line Chart */}
         <Section title="Line Chart" icon={LineChartIcon}>
-          <div
-            className="h-[200px]"
-            role="img"
-            aria-label="Example multi-series line chart"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={LINE_DATA}>
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={35}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="a"
-                  stroke={chart.primary}
-                  strokeWidth={2}
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="b"
-                  stroke={chart.purple}
-                  strokeWidth={2}
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="c"
-                  stroke={chart.green}
-                  strokeWidth={2}
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div
+              className="h-[200px]"
+              role="img"
+              aria-label="Example multi-series line chart"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={LINE_DATA}>
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                    width={35}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="a"
+                    stroke={chart.primary}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="b"
+                    stroke={chart.purple}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="c"
+                    stroke={chart.green}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <Legend items={LINE_LEGEND} />
           </div>
-          <Legend items={LINE_LEGEND} />
         </Section>
 
         {/* Donut Chart */}
         <Section title="Donut Chart" icon={Target}>
-          <div className="flex flex-col items-center">
-            <div
-              className="h-[180px] w-[180px]"
-              role="img"
-              aria-label="Example donut chart showing asset allocation"
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={PIE_DATA}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={45}
-                    outerRadius={70}
-                    dataKey="value"
-                    strokeWidth={0}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
-              {PIE_DATA.map((item, i) => (
-                <div
-                  key={item.name}
-                  className="flex flex-col items-center gap-0.5"
-                >
-                  <span className="font-mono-num text-sm text-foreground">
-                    {item.value}%
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <div
-                      className="h-2 w-2 rounded-full"
-                      style={{ background: CHART_COLORS[i] }}
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div className="flex flex-col items-center">
+              <div
+                className="h-[180px] w-[180px]"
+                role="img"
+                aria-label="Example donut chart showing asset allocation"
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={PIE_DATA}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={45}
+                      outerRadius={70}
+                      dataKey="value"
+                      strokeWidth={0}
                     />
-                    <span className="text-xs text-muted-foreground">
-                      {item.name}
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="mt-4 grid w-full grid-cols-3 gap-x-4 gap-y-3">
+                {PIE_DATA.map((item, i) => (
+                  <div
+                    key={item.name}
+                    className="flex flex-col items-center gap-0.5"
+                  >
+                    <span className="font-mono-num text-sm text-foreground">
+                      {item.value}%
                     </span>
+                    <div className="flex items-center gap-1.5">
+                      <div
+                        className="h-2 w-2 rounded-full"
+                        style={{ background: CHART_COLORS[i] }}
+                      />
+                      <span className="text-xs text-muted-foreground">
+                        {item.name}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Section>
 
         {/* Grouped Bar Chart */}
         <Section title="Grouped Bar Chart" icon={BarChart3}>
-          <div
-            className="h-[200px]"
-            role="img"
-            aria-label="Example grouped bar chart showing income vs expense"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={BAR_DATA} barGap={4}>
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={30}
-                />
-                <Bar
-                  dataKey="income"
-                  fill={chartPrimary}
-                  radius={[4, 4, 0, 0]}
-                />
-                <Bar
-                  dataKey="expense"
-                  fill={chart.gray}
-                  radius={[4, 4, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div
+              className="h-[200px]"
+              role="img"
+              aria-label="Example grouped bar chart showing income vs expense"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={BAR_DATA} barGap={4}>
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                    width={30}
+                  />
+                  <Bar
+                    dataKey="income"
+                    fill={chartPrimary}
+                    radius={[4, 4, 0, 0]}
+                  />
+                  <Bar
+                    dataKey="expense"
+                    fill={chart.gray}
+                    radius={[4, 4, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <Legend items={BAR_LEGEND} />
           </div>
-          <Legend items={BAR_LEGEND} />
         </Section>
 
         {/* Area Chart */}
         <Section title="Area Chart (Positive / Negative)" icon={Activity}>
-          <div
-            className="h-[200px]"
-            role="img"
-            aria-label="Example area chart showing positive and negative cash flow"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={AREA_DATA}>
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  tick={{ fill: chartAxis, fontSize: 11 }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={35}
-                />
-                <defs>
-                  <linearGradient id="palInG" x1="0" y1="0" x2="0" y2="1">
-                    <stop
-                      offset="0%"
-                      stopColor={chartPositive}
-                      stopOpacity={0.3}
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor={chartPositive}
-                      stopOpacity={0}
-                    />
-                  </linearGradient>
-                  <linearGradient id="palOutG" x1="0" y1="0" x2="0" y2="1">
-                    <stop
-                      offset="0%"
-                      stopColor={chartNegative}
-                      stopOpacity={0.3}
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor={chartNegative}
-                      stopOpacity={0}
-                    />
-                  </linearGradient>
-                </defs>
-                <Area
-                  type="monotone"
-                  dataKey="inflow"
-                  stroke={chartPositive}
-                  strokeWidth={2}
-                  fill="url(#palInG)"
-                />
-                <Area
-                  type="monotone"
-                  dataKey="outflow"
-                  stroke={chartNegative}
-                  strokeWidth={2}
-                  fill="url(#palOutG)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
+            <div
+              className="h-[200px]"
+              role="img"
+              aria-label="Example area chart showing positive and negative cash flow"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={AREA_DATA}>
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fill: chartAxis, fontSize: 11 }}
+                    axisLine={false}
+                    tickLine={false}
+                    width={35}
+                  />
+                  <defs>
+                    <linearGradient id="palInG" x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="0%"
+                        stopColor={chartPositive}
+                        stopOpacity={0.3}
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor={chartPositive}
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                    <linearGradient id="palOutG" x1="0" y1="0" x2="0" y2="1">
+                      <stop
+                        offset="0%"
+                        stopColor={chartNegative}
+                        stopOpacity={0.3}
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor={chartNegative}
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <Area
+                    type="monotone"
+                    dataKey="inflow"
+                    stroke={chartPositive}
+                    strokeWidth={2}
+                    fill="url(#palInG)"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="outflow"
+                    stroke={chartNegative}
+                    strokeWidth={2}
+                    fill="url(#palOutG)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+            <Legend items={AREA_LEGEND} />
           </div>
-          <Legend items={AREA_LEGEND} />
         </Section>
       </div>
     </>
