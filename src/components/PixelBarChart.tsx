@@ -30,7 +30,13 @@ function normalize(d: PixelBarDataPoint): MultiSeriesData {
 interface PixelBarChartProps {
   data: PixelBarDataPoint[];
   seriesLabels?: string[];
-  /** Size in px of each pixel block */
+  /**
+   * Desired chart area height in px.
+   * When provided, blockSize is auto-calculated so the chart fills this height.
+   * Takes precedence over blockSize.
+   */
+  height?: number;
+  /** Size in px of each pixel block (ignored when height is set) */
   blockSize?: number;
   /** Gap between blocks in px */
   blockGap?: number;
@@ -66,7 +72,8 @@ interface TooltipState {
 export function PixelBarChart({
   data: rawData,
   seriesLabels,
-  blockSize = 12,
+  height,
+  blockSize: blockSizeProp = 12,
   blockGap = 2,
   maxValue,
   gridRows = 7,
@@ -77,6 +84,10 @@ export function PixelBarChart({
   highlightIndex,
   tooltipYearSuffix = " 2025",
 }: PixelBarChartProps) {
+  // When height is provided, reverse-calculate blockSize to fill the target height
+  const blockSize = height
+    ? Math.floor(height / gridRows) - blockGap
+    : blockSizeProp;
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [activeMonth, setActiveMonth] = useState<number | null>(highlightIndex ?? null);
 
@@ -99,6 +110,9 @@ export function PixelBarChart({
   // Y-axis labels
   const yLabels = Array.from({ length: maxBlocks + 1 }, (_, i) => i * valuePerBlock);
 
+  // Exact chart area height — use height prop directly when given to avoid rounding gaps
+  const chartHeight = height ?? maxBlocks * (blockSize + blockGap);
+
   // Each month column: seriesCount bars side by side, each bar is blockSize wide
   const barWidth = blockSize;
   const monthWidth = seriesCount * barWidth + (seriesCount - 1) * blockGap;
@@ -110,7 +124,7 @@ export function PixelBarChart({
         {/* Y-axis labels */}
         <div
           className="flex flex-col-reverse justify-between pr-3 text-right"
-          style={{ height: maxBlocks * (blockSize + blockGap) }}
+          style={{ height: chartHeight }}
         >
           {yLabels.map((val, i) => (
             <span
@@ -128,7 +142,7 @@ export function PixelBarChart({
           {/* Grid lines */}
           <div
             className="absolute inset-0 flex flex-col-reverse justify-between pointer-events-none"
-            style={{ height: maxBlocks * (blockSize + blockGap) }}
+            style={{ height: chartHeight }}
           >
             {yLabels.map((_, i) => (
               <div
@@ -142,7 +156,7 @@ export function PixelBarChart({
           {/* Bar columns */}
           <div
             className="relative flex items-end justify-between"
-            style={{ height: maxBlocks * (blockSize + blockGap) }}
+            style={{ height: chartHeight }}
           >
             {data.map((month, mIdx) => {
               const isHovered = activeMonth === mIdx;
