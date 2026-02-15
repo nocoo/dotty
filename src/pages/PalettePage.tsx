@@ -326,7 +326,7 @@ export default function PalettePage() {
               <PixelBarChart
                 data={BAR_DATA}
                 seriesLabels={["Income", "Expense"]}
-                blockSize={10}
+                height={200}
                 blockGap={2}
                 gridRows={6}
                 formatYLabel={(v) => `${Math.round(v / 100) * 100}`}

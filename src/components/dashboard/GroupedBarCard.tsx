@@ -36,14 +36,14 @@ export function GroupedBarCard() {
       </CardHeader>
       <CardContent className="flex flex-col">
         <div
-          className="min-h-[200px] flex-1"
+          className="flex-1"
           role="img"
           aria-label="Grouped bar chart comparing monthly income and expense from July to December"
         >
           <PixelBarChart
             data={data}
             seriesLabels={["Income", "Expense"]}
-            blockSize={10}
+            height={200}
             blockGap={2}
             gridRows={7}
             formatYLabel={(v) => `${Math.round(v / 1000)}k`}

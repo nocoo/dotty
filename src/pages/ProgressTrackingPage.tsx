@@ -77,7 +77,7 @@ export default function ProgressTrackingPage() {
             <PixelBarChart
               data={comparisonData.map((d) => ({ label: d.month, series: [d.budget, d.actual] }))}
               seriesLabels={["Budget", "Actual"]}
-              blockSize={10}
+              height={200}
               blockGap={2}
               gridRows={6}
               formatYLabel={(v) => `${Math.round(v / 1000)}k`}

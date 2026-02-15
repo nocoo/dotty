@@ -22,9 +22,10 @@ const SERIES_FILLS = [
 
 // ── Component ──
 
-const BLOCK_SIZE = 8;
+const CHART_HEIGHT = 224;
 const BLOCK_GAP = 2;
 const GRID_ROWS = 7;
+const BLOCK_SIZE = Math.floor(CHART_HEIGHT / GRID_ROWS) - BLOCK_GAP;
 
 export function StackedBarCard() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -51,7 +52,7 @@ export function StackedBarCard() {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="flex items-end justify-between" style={{ height: GRID_ROWS * (BLOCK_SIZE + BLOCK_GAP) }}>
+        <div className="flex items-end justify-between" style={{ height: CHART_HEIGHT }}>
           {stackedData.map((d, mIdx) => {
             const isHovered = activeIdx === mIdx;
             // Compute blocks per series (stacked bottom to top: a, b, c)

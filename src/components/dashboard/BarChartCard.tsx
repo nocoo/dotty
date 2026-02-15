@@ -30,14 +30,14 @@ export function BarChartCard() {
       </CardHeader>
       <CardContent className="flex flex-col">
         <div
-          className="flex-1 min-h-[200px]"
+          className="flex-1"
           role="img"
           aria-label="Monthly transaction amounts from January to December, bar chart totaling $15,200"
         >
           <PixelBarChart
             data={data}
             seriesLabels={["Amount"]}
-            blockSize={8}
+            height={200}
             blockGap={2}
             gridRows={7}
             maxValue={30000}

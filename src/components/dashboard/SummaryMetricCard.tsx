@@ -31,19 +31,19 @@ export function SummaryMetricCard() {
             <span className="text-sm text-muted-foreground">vs last month</span>
           </div>
           <div
-            className="mt-3 flex items-end gap-[2px] flex-1 min-h-[50px]"
+            className="mt-3 flex items-end gap-[2px] flex-1 min-h-[60px]"
             role="img"
             aria-label="Total balance trend over 24 periods, bar chart"
           >
             {sparkValues.map((v, i) => {
-              const blocks = Math.max(1, Math.round((v / maxVal) * 6));
+              const blocks = Math.max(1, Math.round((v / maxVal) * 8));
               return (
                 <div key={i} className="flex flex-col-reverse gap-[1px] flex-1">
                   {Array.from({ length: blocks }, (_, b) => (
                     <div
                       key={b}
                       className={cn(
-                        "w-full h-[6px]",
+                        "w-full h-[7px]",
                         i < 12 ? "bg-foreground" : "bg-muted-foreground"
                       )}
                     />

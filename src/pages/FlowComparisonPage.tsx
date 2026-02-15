@@ -73,7 +73,7 @@ export default function FlowComparisonPage() {
             <PixelBarChart
               data={netFlowData.map((d) => ({ label: d.month, value: d.net }))}
               seriesLabels={["Net Flow"]}
-              blockSize={10}
+              height={180}
               blockGap={2}
               gridRows={6}
               formatYLabel={(v) => `${Math.round(v / 1000)}k`}

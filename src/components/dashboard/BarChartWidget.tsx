@@ -25,19 +25,14 @@ export function BarChartWidget({
   valueFormatter,
   className,
 }: BarChartWidgetProps) {
-  // Compute sensible gridRows from height + default blockSize
-  const blockSize = 10;
-  const blockGap = 2;
-  const gridRows = Math.max(4, Math.floor(height / (blockSize + blockGap)) - 1);
-
   return (
     <div className={cn("w-full", className)}>
       <PixelBarChart
         data={data}
         seriesLabels={["Value"]}
-        blockSize={blockSize}
-        blockGap={blockGap}
-        gridRows={gridRows}
+        height={height}
+        blockGap={2}
+        gridRows={7}
         formatYLabel={valueFormatter}
         tooltipYearSuffix=""
       />
