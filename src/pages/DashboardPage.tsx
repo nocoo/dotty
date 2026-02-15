@@ -83,43 +83,46 @@ export default function DashboardPage() {
         {STAT_CARDS.map((card) => (
           <div
             key={card.label}
-            className="rounded-[var(--radius-card)] border border-border bg-secondary overflow-hidden"
+            className="rounded-[var(--radius-card)] bg-muted"
           >
-            {/* Value zone */}
-            <div className="flex items-start justify-between p-5 pb-4">
-              <div className="space-y-2.5">
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                  {card.label}
-                </p>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-mono-num text-3xl text-foreground tracking-tight">
-                    {card.value}
-                  </span>
-                  {card.sub && (
-                    <span className="text-sm text-muted-foreground">{card.sub}</span>
-                  )}
+            {/* Inner white card — content zone */}
+            <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+              <div className="flex items-start justify-between">
+                <div className="space-y-2.5">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    {card.label}
+                  </p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono-num text-3xl text-foreground tracking-tight">
+                      {card.value}
+                    </span>
+                    {card.sub && (
+                      <span className="text-sm text-muted-foreground">{card.sub}</span>
+                    )}
+                  </div>
                 </div>
+                <SparkBars values={card.spark} className="mt-4" />
               </div>
-              <SparkBars values={card.spark} className="mt-4" />
             </div>
 
-            {/* Divider + change footer */}
-            <div className="border-t border-border mx-5" />
-            <div className="flex items-center gap-2 px-5 py-3">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-muted">
+            {/* Footer — sits on the gray base layer */}
+            <div className="flex items-center justify-between px-5 py-3">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-border">
                 <ArrowUp className="h-3 w-3 text-muted-foreground" strokeWidth={2} />
               </span>
-              <span className="text-xs text-success font-medium ml-auto">{card.change}</span>
-              <span className="text-xs text-muted-foreground">{card.changeSuffix}</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-success font-medium">{card.change}</span>
+                <span className="text-xs text-muted-foreground">{card.changeSuffix}</span>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Sales Trend section — outer gray wrapper */}
-      <div className="rounded-[var(--radius-card)] bg-muted p-5 space-y-4">
-        {/* Section header */}
-        <div className="flex items-center gap-3">
+      {/* Sales Trend — 2-layer: gray base + white inner card */}
+      <div className="rounded-[var(--radius-card)] bg-muted">
+        {/* Header — sits on gray base */}
+        <div className="flex items-center gap-3 px-5 pt-4 pb-3">
           <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
             Sales Trend
           </h3>
@@ -129,8 +132,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Inner white card for chart content */}
-        <div className="rounded-[var(--radius-widget)] bg-card p-5 space-y-5">
+        {/* Inner white card — chart content */}
+        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-5">
           {/* Chart controls row */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-baseline gap-2">
