@@ -1,15 +1,14 @@
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from "recharts";
 import { ArrowUpDown } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { CHART_COLORS, chartAxis } from "@/lib/palette";
+import { PixelBarChart } from "@/components/PixelBarChart";
 
 const data = [
-  { month: "Jul", income: 4200, expense: 3100 },
-  { month: "Aug", income: 4800, expense: 3600 },
-  { month: "Sep", income: 4500, expense: 3900 },
-  { month: "Oct", income: 5100, expense: 3400 },
-  { month: "Nov", income: 4700, expense: 4100 },
-  { month: "Dec", income: 5500, expense: 3800 },
+  { label: "Jul", series: [4200, 3100] },
+  { label: "Aug", series: [4800, 3600] },
+  { label: "Sep", series: [4500, 3900] },
+  { label: "Oct", series: [5100, 3400] },
+  { label: "Nov", series: [4700, 4100] },
+  { label: "Dec", series: [5500, 3800] },
 ];
 
 export function GroupedBarCard() {
@@ -25,11 +24,11 @@ export function GroupedBarCard() {
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
-              <div className="h-2 w-2 rounded-full" style={{ background: CHART_COLORS[0] }} />
+              <div className="h-2 w-2 bg-foreground" />
               <span className="text-xs text-muted-foreground">Income</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-2 w-2 rounded-full" style={{ background: CHART_COLORS[4] }} />
+              <div className="h-2 w-2 bg-muted-foreground" />
               <span className="text-xs text-muted-foreground">Expense</span>
             </div>
           </div>
@@ -41,21 +40,15 @@ export function GroupedBarCard() {
           role="img"
           aria-label="Grouped bar chart comparing monthly income and expense from July to December"
         >
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} barGap={4} barCategoryGap="20%">
-              <CartesianGrid strokeDasharray="3 3" stroke={chartAxis} strokeOpacity={0.15} vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis
-                tick={{ fill: chartAxis, fontSize: 11 }}
-                axisLine={false}
-                tickLine={false}
-                width={35}
-                tickFormatter={(v: number) => `${v / 1000}k`}
-              />
-              <Bar dataKey="income" fill={CHART_COLORS[0]} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="expense" fill={CHART_COLORS[4]} radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          <PixelBarChart
+            data={data}
+            seriesLabels={["Income", "Expense"]}
+            blockSize={10}
+            blockGap={2}
+            gridRows={7}
+            formatYLabel={(v) => `${Math.round(v / 1000)}k`}
+            tooltipYearSuffix=""
+          />
         </div>
       </CardContent>
     </Card>
