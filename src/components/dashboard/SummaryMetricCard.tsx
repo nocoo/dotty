@@ -1,12 +1,14 @@
-import { BarChart, Bar, ResponsiveContainer } from "recharts";
 import { Globe } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { chartPrimary, chart } from "@/lib/palette";
+import { cn } from "@/lib/utils";
 
-const data = Array.from({ length: 24 }, (_, i) => ({
-  value: 3000 + Math.random() * 5000,
-  fill: i < 12 ? chartPrimary : chart.gray,
-}));
+// Deterministic pseudo-random sparkline data (24 bars)
+const sparkValues = Array.from({ length: 24 }, (_, i) => {
+  const noise = Math.sin(i * 7.31 + 2.4) * 10000;
+  return 3000 + (noise - Math.floor(noise)) * 5000;
+});
+
+const maxVal = Math.max(...sparkValues);
 
 export function SummaryMetricCard() {
   return (
@@ -28,12 +30,27 @@ export function SummaryMetricCard() {
             <span className="text-sm font-medium text-success font-mono-num">+3.1%</span>
             <span className="text-sm text-muted-foreground">vs last month</span>
           </div>
-          <div className="mt-3 flex-1 min-h-[50px]" role="img" aria-label="Total balance trend over 24 periods, bar chart">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data} barGap={1} barCategoryGap={1}>
-                <Bar dataKey="value" radius={[2, 2, 0, 0]} maxBarSize={8} />
-              </BarChart>
-            </ResponsiveContainer>
+          <div
+            className="mt-3 flex items-end gap-[2px] flex-1 min-h-[50px]"
+            role="img"
+            aria-label="Total balance trend over 24 periods, bar chart"
+          >
+            {sparkValues.map((v, i) => {
+              const blocks = Math.max(1, Math.round((v / maxVal) * 6));
+              return (
+                <div key={i} className="flex flex-col-reverse gap-[1px] flex-1">
+                  {Array.from({ length: blocks }, (_, b) => (
+                    <div
+                      key={b}
+                      className={cn(
+                        "w-full h-[6px]",
+                        i < 12 ? "bg-foreground" : "bg-muted-foreground"
+                      )}
+                    />
+                  ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </CardContent>

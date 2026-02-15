@@ -1,9 +1,13 @@
-import { BarChart, Bar, ResponsiveContainer } from "recharts";
 import { TrendingUp } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { chart } from "@/lib/palette";
 
-const data = Array.from({ length: 20 }, () => ({ value: 2000 + Math.random() * 6000 }));
+// Deterministic pseudo-random sparkline data (20 bars)
+const sparkValues = Array.from({ length: 20 }, (_, i) => {
+  const noise = Math.sin(i * 11.73 + 1.8) * 10000;
+  return 2000 + (noise - Math.floor(noise)) * 6000;
+});
+
+const maxVal = Math.max(...sparkValues);
 
 export function SecondaryMetricCard() {
   return (
@@ -25,12 +29,21 @@ export function SecondaryMetricCard() {
             <span className="text-sm font-medium text-success font-mono-num">+2.4%</span>
             <span className="text-sm text-muted-foreground">vs last month</span>
           </div>
-          <div className="mt-3 flex-1 min-h-[50px]" role="img" aria-label="Income trend over 20 periods, bar chart">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data} barGap={1} barCategoryGap={1}>
-                <Bar dataKey="value" fill={chart.purple} radius={[2, 2, 0, 0]} maxBarSize={8} />
-              </BarChart>
-            </ResponsiveContainer>
+          <div
+            className="mt-3 flex items-end gap-[2px] flex-1 min-h-[50px]"
+            role="img"
+            aria-label="Income trend over 20 periods, bar chart"
+          >
+            {sparkValues.map((v, i) => {
+              const blocks = Math.max(1, Math.round((v / maxVal) * 6));
+              return (
+                <div key={i} className="flex flex-col-reverse gap-[1px] flex-1">
+                  {Array.from({ length: blocks }, (_, b) => (
+                    <div key={b} className="w-full h-[6px] bg-muted-foreground" />
+                  ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </CardContent>
