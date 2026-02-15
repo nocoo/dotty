@@ -3,13 +3,32 @@ import { cn } from "@/lib/utils";
 
 // ── Types ──
 
-interface MonthData {
+/** Multi-series data point (original shape) */
+interface MultiSeriesData {
   label: string;
-  series: number[]; // values per series (e.g. [newUser, existingUser])
+  series: number[];
+}
+
+/** Single-series data point (convenience shape) */
+interface SingleSeriesData {
+  label: string;
+  value: number;
+}
+
+/** Accepts either shape — auto-detected at runtime */
+export type PixelBarDataPoint = MultiSeriesData | SingleSeriesData;
+
+function isSingleSeries(d: PixelBarDataPoint): d is SingleSeriesData {
+  return "value" in d;
+}
+
+/** Normalize any input row to the multi-series shape */
+function normalize(d: PixelBarDataPoint): MultiSeriesData {
+  return isSingleSeries(d) ? { label: d.label, series: [d.value] } : d;
 }
 
 interface PixelBarChartProps {
-  data: MonthData[];
+  data: PixelBarDataPoint[];
   seriesLabels?: string[];
   /** Size in px of each pixel block */
   blockSize?: number;
@@ -23,6 +42,8 @@ interface PixelBarChartProps {
   formatYLabel?: (value: number) => string;
   /** Highlight month by index */
   highlightIndex?: number;
+  /** Hide the tooltip label year suffix (default appends " 2025") */
+  tooltipYearSuffix?: string;
 }
 
 // ── Constants ──
@@ -30,11 +51,6 @@ interface PixelBarChartProps {
 const SERIES_FILLS = [
   "bg-foreground",         // black (light) / white (dark) — primary
   "bg-muted-foreground",   // gray — secondary
-] as const;
-
-const SERIES_FILLS_HOVER = [
-  "bg-foreground/80",
-  "bg-muted-foreground/70",
 ] as const;
 
 // ── Tooltip ──
@@ -48,8 +64,8 @@ interface TooltipState {
 // ── Component ──
 
 export function PixelBarChart({
-  data,
-  seriesLabels = ["Series A", "Series B"],
+  data: rawData,
+  seriesLabels,
   blockSize = 12,
   blockGap = 2,
   maxValue,
@@ -59,9 +75,18 @@ export function PixelBarChart({
     return String(v);
   },
   highlightIndex,
+  tooltipYearSuffix = " 2025",
 }: PixelBarChartProps) {
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [activeMonth, setActiveMonth] = useState<number | null>(highlightIndex ?? null);
+
+  // Normalize all data to multi-series shape
+  const data = rawData.map(normalize);
+
+  const seriesCount = data[0]?.series.length ?? 1;
+
+  // Default series labels based on count
+  const labels = seriesLabels ?? (seriesCount === 1 ? ["Value"] : ["Series A", "Series B"]);
 
   // Calculate max from data if not given
   const totalPerMonth = data.map((m) => m.series.reduce((a, b) => a + b, 0));
@@ -74,7 +99,6 @@ export function PixelBarChart({
   // Y-axis labels
   const yLabels = Array.from({ length: maxBlocks + 1 }, (_, i) => i * valuePerBlock);
 
-  const seriesCount = data[0]?.series.length ?? 1;
   // Each month column: seriesCount bars side by side, each bar is blockSize wide
   const barWidth = blockSize;
   const monthWidth = seriesCount * barWidth + (seriesCount - 1) * blockGap;
@@ -154,9 +178,7 @@ export function PixelBarChart({
                             key={bIdx}
                             className={cn(
                               "transition-colors duration-100",
-                              isHovered
-                                ? SERIES_FILLS[sIdx % SERIES_FILLS.length]
-                                : SERIES_FILLS[sIdx % SERIES_FILLS.length],
+                              SERIES_FILLS[sIdx % SERIES_FILLS.length],
                               !isHovered && activeMonth !== null && "opacity-40",
                               isHovered && "opacity-100"
                             )}
@@ -205,7 +227,7 @@ export function PixelBarChart({
           }}
         >
           <p className="text-xs font-medium text-foreground mb-1.5">
-            {data[tooltip.monthIdx].label} 2025
+            {data[tooltip.monthIdx].label}{tooltipYearSuffix}
           </p>
           {data[tooltip.monthIdx].series.map((val, sIdx) => (
             <div key={sIdx} className="flex items-center gap-2 text-xs">
@@ -215,7 +237,7 @@ export function PixelBarChart({
                   SERIES_FILLS[sIdx % SERIES_FILLS.length]
                 )}
               />
-              <span className="text-muted-foreground">{seriesLabels[sIdx]}</span>
+              <span className="text-muted-foreground">{labels[sIdx]}</span>
               <span className="font-medium text-foreground ml-auto pl-3">
                 {formatYLabel(val)}
               </span>
