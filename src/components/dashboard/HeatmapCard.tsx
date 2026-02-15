@@ -13,13 +13,13 @@ const heatmapData = Array.from({ length: 365 }).map((_, i) => {
 
 export function HeatmapCard() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Engagement heatmap
         </p>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.blue} metricLabel="Sessions" />
       </div>
     </div>

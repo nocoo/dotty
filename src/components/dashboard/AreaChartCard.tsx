@@ -14,7 +14,7 @@ const data = [
 
 export function AreaChartCard() {
   return (
-    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <div className="flex items-center gap-2">
           <BarChart3 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -33,7 +33,7 @@ export function AreaChartCard() {
           </div>
         </div>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="h-[200px]" role="img" aria-label="Weekly activity area chart comparing income and expense from Monday to Sunday">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>

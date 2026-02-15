@@ -108,7 +108,7 @@ const recommendations = [
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -122,7 +122,7 @@ export default function HealthPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Health</p>
         <div className="flex items-center gap-2 mb-1">
           <Activity className="h-5 w-5 text-foreground" strokeWidth={1.5} />
@@ -133,7 +133,7 @@ export default function HealthPage() {
         </p>
       </div>
 
-      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Heart className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -162,7 +162,7 @@ export default function HealthPage() {
       </StatGrid>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Moon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Sleep stages</p>
@@ -172,7 +172,7 @@ export default function HealthPage() {
             <SlotBarChart items={sleepSlots} />
           </div>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Heart className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Heart rate zones</p>
@@ -258,7 +258,7 @@ export default function HealthPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <MessageSquare className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Prompt studio</p>
@@ -280,7 +280,7 @@ export default function HealthPage() {
           </button>
         </div>
 
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Recommended actions</p>
@@ -295,7 +295,7 @@ export default function HealthPage() {
           </div>
         </div>
 
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Brain className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <p className="text-sm text-muted-foreground">Insight timeline</p>

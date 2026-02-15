@@ -77,14 +77,14 @@ const THEME_OPTIONS = ["Light", "Dark", "System"] as const;
 
 function ProfileSection() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <User className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Profile Information
         </p>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-6">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-6">
         {/* Avatar */}
         <div className="flex items-center gap-4">
           <div className="relative">
@@ -195,14 +195,14 @@ function ProfileSection() {
 
 function NotificationsSection() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <Bell className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Notification Preferences
         </p>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-1">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-1">
         {NOTIFICATION_TOGGLES.map((item, i) => (
           <div key={item.id}>
             <div className="flex items-center justify-between py-3">
@@ -236,14 +236,14 @@ function SecuritySection() {
   return (
     <div className="space-y-4">
       {/* Password */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Password
           </p>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
           <div className="space-y-2">
             <Label
               htmlFor="settings-current-password"
@@ -297,14 +297,14 @@ function SecuritySection() {
       </div>
 
       {/* Two-factor */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Smartphone className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Two-Factor Authentication
           </p>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <label
@@ -338,14 +338,14 @@ function SecuritySection() {
       </div>
 
       {/* Active sessions */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Globe className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Active Sessions
           </p>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
           {ACTIVE_SESSIONS.map((session) => (
             <div
               key={session.device}
@@ -381,14 +381,14 @@ function AppearanceSection() {
   return (
     <div className="space-y-4">
       {/* Theme */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Palette className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Theme
           </p>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
           <div
             className="grid grid-cols-3 gap-3"
             role="radiogroup"
@@ -422,14 +422,14 @@ function AppearanceSection() {
       </div>
 
       {/* Preferences */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <CreditCard className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Preferences
           </p>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <label
@@ -504,7 +504,7 @@ export default function SettingsPage() {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
       {/* Left nav */}
-      <div className="rounded-[var(--radius-card)] bg-muted p-3 lg:col-span-1">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-3 lg:col-span-1">
         <nav className="flex flex-row gap-1 lg:flex-col">
           {SECTIONS.map(({ id, label, icon: Icon }) => (
             <button

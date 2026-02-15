@@ -30,11 +30,11 @@ export default function LoginPage() {
         </div>
 
         {/* Login card — 2-layer pattern */}
-        <div className="rounded-[var(--radius-card)] bg-muted">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
           <p className="px-5 pt-4 pb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Credentials
           </p>
-          <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+          <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
               <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
                 {/* Email field */}
                 <div className="space-y-2">

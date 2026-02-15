@@ -10,7 +10,7 @@ const transactions = [
 
 export function RecentListCard() {
   return (
-    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <div className="flex items-center gap-2">
           <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -20,7 +20,7 @@ export function RecentListCard() {
         </div>
         <span className="cursor-pointer text-xs text-muted-foreground hover:text-foreground">View All</span>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="flex flex-col gap-3">
           {transactions.map((tx, i) => (
             <div key={i} className="flex items-center gap-3">

@@ -12,7 +12,7 @@ const data = [
 
 export function GroupedBarCard() {
   return (
-    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <div className="flex items-center gap-2">
           <ArrowUpDown className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
@@ -31,7 +31,7 @@ export function GroupedBarCard() {
           </div>
         </div>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div
           role="img"
           aria-label="Grouped bar chart comparing monthly income and expense from July to December"

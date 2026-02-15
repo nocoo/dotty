@@ -3,8 +3,8 @@ import { ArrowLeft } from "lucide-react";
 export default function StaticPage() {
   return (
     <div className="min-h-screen bg-background p-2 md:p-4 flex items-center justify-center">
-      <div className="mx-auto w-full max-w-2xl rounded-[var(--radius-card)] bg-muted p-2">
-        <div className="rounded-[var(--radius-widget)] bg-card border border-border p-6 md:p-10">
+      <div className="mx-auto w-full max-w-2xl h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-2">
+        <div className="flex-1 rounded-[var(--radius-widget)] bg-card border border-border p-6 md:p-10">
           {/* Header */}
           <div className="space-y-4 mb-8">
             <div className="flex items-center gap-2">

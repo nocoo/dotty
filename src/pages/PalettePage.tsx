@@ -153,7 +153,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         {Icon && (
           <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />

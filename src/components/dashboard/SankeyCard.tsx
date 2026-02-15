@@ -19,13 +19,13 @@ const data = {
 
 export function SankeyCard() {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           User flow (Sankey)
         </p>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <Sankey

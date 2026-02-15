@@ -12,14 +12,14 @@ const data = [
 
 export function BarChartCard() {
   return (
-    <div className="h-full rounded-[var(--radius-card)] bg-muted">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <PiggyBank className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Usage Category
         </p>
       </div>
-      <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="flex items-baseline gap-3 mb-4">
           <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">
             <span className="font-mono-num">$15,200</span>

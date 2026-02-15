@@ -6,7 +6,7 @@ import { PixelBarChart } from "@/components/PixelBarChart";
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
   return (
-    <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
       <div className="flex items-center gap-2 mb-4">
         <Icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-sm text-muted-foreground">{title}</p>
@@ -22,7 +22,7 @@ export default function FlowComparisonPage() {
   return (
     <div className="space-y-4">
       {/* Page intro */}
-      <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Cash Flow</p>
         <div className="flex items-center gap-2 mb-1">
           <ArrowLeftRight className="h-5 w-5 text-foreground" strokeWidth={1.5} />
@@ -34,15 +34,15 @@ export default function FlowComparisonPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Inflow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight font-mono-num">${summary.totalInflow.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Outflow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground font-display tracking-tight font-mono-num">${summary.totalOutflow.toLocaleString()}</h2>
         </div>
-        <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
+        <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Net Cash Flow</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.netFlow.toLocaleString()}</h2>
         </div>

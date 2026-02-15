@@ -83,10 +83,10 @@ export default function DashboardPage() {
         {STAT_CARDS.map((card) => (
           <div
             key={card.label}
-            className="rounded-[var(--radius-card)] bg-muted"
+            className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted"
           >
             {/* Inner white card — content zone */}
-            <div className="rounded-[var(--radius-card)] bg-card border border-border p-5">
+            <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
               <div className="flex items-start justify-between">
                 <div className="space-y-2.5">
                   <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
@@ -120,7 +120,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Sales Trend — 2-layer: gray base + white inner card */}
-      <div className="rounded-[var(--radius-card)] bg-muted">
+      <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
         {/* Header — sits on gray base */}
         <div className="flex items-center gap-3 px-5 pt-4 pb-3">
           <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
@@ -133,7 +133,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Inner white card — chart content */}
-        <div className="rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-5">
+        <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-5">
           {/* Chart controls row */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-baseline gap-2">
