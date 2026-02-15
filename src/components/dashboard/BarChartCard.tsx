@@ -1,15 +1,14 @@
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { PiggyBank } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { chart, chartAxis } from "@/lib/palette";
+import { PixelBarChart } from "@/components/PixelBarChart";
 
 const data = [
-  { name: "Jan", value: 12000 }, { name: "Feb", value: 15000 },
-  { name: "Mar", value: 11000 }, { name: "Apr", value: 18000 },
-  { name: "May", value: 14000 }, { name: "Jun", value: 20000 },
-  { name: "Jul", value: 16000 }, { name: "Aug", value: 22000 },
-  { name: "Sep", value: 13000 }, { name: "Oct", value: 17000 },
-  { name: "Nov", value: 25000 }, { name: "Dec", value: 19000 },
+  { label: "Jan", value: 12000 }, { label: "Feb", value: 15000 },
+  { label: "Mar", value: 11000 }, { label: "Apr", value: 18000 },
+  { label: "May", value: 14000 }, { label: "Jun", value: 20000 },
+  { label: "Jul", value: 16000 }, { label: "Aug", value: 22000 },
+  { label: "Sep", value: 13000 }, { label: "Oct", value: 17000 },
+  { label: "Nov", value: 25000 }, { label: "Dec", value: 19000 },
 ];
 
 export function BarChartCard() {
@@ -30,14 +29,21 @@ export function BarChartCard() {
         </div>
       </CardHeader>
       <CardContent className="flex flex-col">
-        <div className="flex-1 min-h-[200px]" role="img" aria-label="Monthly transaction amounts from January to December, bar chart totaling $15,200">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} barCategoryGap="25%">
-              <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tickFormatter={(v: number) => `${v / 1000}k`} tick={{ fill: chartAxis, fontSize: 12 }} axisLine={false} tickLine={false} width={35} domain={[0, 30000]} ticks={[10000, 15000, 20000, 25000, 30000]} />
-              <Bar dataKey="value" fill={chart.primary} radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+        <div
+          className="flex-1 min-h-[200px]"
+          role="img"
+          aria-label="Monthly transaction amounts from January to December, bar chart totaling $15,200"
+        >
+          <PixelBarChart
+            data={data}
+            seriesLabels={["Amount"]}
+            blockSize={8}
+            blockGap={2}
+            gridRows={7}
+            maxValue={30000}
+            formatYLabel={(v) => `${Math.round(v / 1000)}k`}
+            tooltipYearSuffix=""
+          />
         </div>
       </CardContent>
     </Card>
