@@ -141,7 +141,7 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
                   : navigate(item.path)
               }
               className={cn(
-                "flex w-full items-center gap-3 px-3 py-2.5 text-sm font-normal transition-colors",
+                "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-normal transition-colors",
                 !item.external && currentPath === item.path
                   ? "bg-accent text-foreground"
                   : "text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -156,7 +156,7 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
               )}
               {item.badge && (
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center">
-                  <span className="flex h-5 min-w-[20px] items-center justify-center bg-badge-red px-1.5 text-[11px] font-medium text-badge-red-foreground">
+                  <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-badge-red px-1.5 text-[11px] font-medium text-badge-red-foreground">
                     {item.badge}
                   </span>
                 </span>
@@ -182,7 +182,7 @@ function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: s
               : navigate(item.path)
           }
           className={cn(
-            "relative flex h-10 w-10 items-center justify-center transition-colors",
+            "relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
             !item.external && currentPath === item.path
               ? "bg-accent text-foreground"
               : "text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -190,7 +190,7 @@ function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: s
         >
           <item.icon className="h-4 w-4" strokeWidth={1.5} />
           {item.badge && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[16px] items-center justify-center bg-badge-red px-1 text-[10px] font-medium text-badge-red-foreground">
+            <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-badge-red px-1 text-[10px] font-medium text-badge-red-foreground">
               {item.badge}
             </span>
           )}
@@ -252,7 +252,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           <button
             onClick={onToggle}
             aria-label="Expand sidebar"
-            className="flex h-10 w-10 items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-1"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-1"
           >
             <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
           </button>
@@ -262,7 +262,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search (⌘K)"
-                className="flex h-10 w-10 items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
               >
                 <Search className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
@@ -304,7 +304,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               <button
                 onClick={onToggle}
                 aria-label="Collapse sidebar"
-                className="flex h-7 w-7 items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground transition-colors"
               >
                 <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
@@ -314,12 +314,12 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           <div className="px-3 pb-1">
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex w-full items-center gap-3 bg-secondary px-3 py-1.5 transition-colors hover:bg-accent cursor-pointer"
+              className="flex w-full items-center gap-3 rounded-lg bg-secondary px-3 py-1.5 transition-colors hover:bg-accent cursor-pointer"
             >
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
               <span className="flex-1 text-left text-sm text-muted-foreground">Search</span>
               <span className="flex h-7 w-7 shrink-0 items-center justify-center">
-                <kbd className="pointer-events-none hidden border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
+                <kbd className="pointer-events-none hidden rounded-md border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
                   ⌘K
                 </kbd>
               </span>
@@ -342,7 +342,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
                 <p className="text-sm font-medium text-foreground truncate">Zheng Li</p>
                 <p className="text-xs text-muted-foreground truncate">zhengli@example.com</p>
               </div>
-              <button aria-label="Log out" className="flex h-8 w-8 items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
+              <button aria-label="Log out" className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
                 <LogOut className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </div>
