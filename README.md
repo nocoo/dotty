@@ -1,4 +1,4 @@
-# basalt
+# dotty
 
 > **Dense. Refined. Functional.**
 > A personal finance dashboard built with a matte design system and 3-tier luminance hierarchy.
@@ -7,7 +7,7 @@
 [![Framework: Vite](https://img.shields.io/badge/Framework-Vite-646cff.svg?style=flat-square&logo=vite)](https://vite.dev)
 [![Style: Tailwind](https://img.shields.io/badge/Style-Tailwind_CSS-38bdf8.svg?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
 
-![Basalt Preview](https://assets.lizheng.me/wp-content/uploads/2026/02/basalt-1-scaled.jpg)
+![Dotty Preview](https://assets.lizheng.me/wp-content/uploads/2026/02/dotty-1-scaled.jpg)
 
 ## Overview
 

@@ -103,7 +103,7 @@ export function DashboardLayout() {
           </div>
           <div className="flex items-center gap-1">
             <a
-              href="https://github.com/nocoo/basalt"
+              href="https://github.com/nocoo/dotty"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub repository"

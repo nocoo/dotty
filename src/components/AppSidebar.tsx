@@ -299,7 +299,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
              <div className="flex w-full items-center justify-between px-3">
               <div className="flex items-center gap-3">
                 <Mountain className="h-5 w-5 text-primary" strokeWidth={1.5} />
-                <span className="text-lg md:text-xl font-semibold text-foreground">basalt.</span>
+                <span className="text-lg md:text-xl font-semibold text-foreground">dotty.</span>
               </div>
               <button
                 onClick={onToggle}

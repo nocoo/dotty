@@ -7,8 +7,8 @@ import path from "path";
 export default defineConfig(() => ({
   server: {
     host: "::",
-    port: 7017,
-    allowedHosts: ["basalt.dev.hexly.ai"],
+    port: 7020,
+    allowedHosts: ["dotty.dev.hexly.ai"],
     hmr: {
       overlay: false,
     },
