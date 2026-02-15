@@ -1,5 +1,5 @@
 import {
-  BarChart, Bar, LineChart, Line, PieChart, Pie,
+  LineChart, Line, PieChart, Pie,
   XAxis, YAxis, ResponsiveContainer, AreaChart, Area,
 } from "recharts";
 import {
@@ -8,8 +8,9 @@ import {
 } from "lucide-react";
 import {
   CHART_COLORS, chart,
-  chartPrimary, chartPositive, chartNegative, chartAxis,
+  chartPositive, chartNegative, chartAxis,
 } from "@/lib/palette";
+import { PixelBarChart } from "@/components/PixelBarChart";
 
 // ── View Model — mock data ──
 
@@ -31,11 +32,11 @@ const PIE_DATA = [
 ].map((d, i) => ({ ...d, fill: CHART_COLORS[i] }));
 
 const BAR_DATA = [
-  { name: "Mon", income: 1200, expense: 800 },
-  { name: "Tue", income: 900, expense: 1100 },
-  { name: "Wed", income: 1500, expense: 700 },
-  { name: "Thu", income: 800, expense: 900 },
-  { name: "Fri", income: 2000, expense: 1200 },
+  { label: "Mon", series: [1200, 800] },
+  { label: "Tue", series: [900, 1100] },
+  { label: "Wed", series: [1500, 700] },
+  { label: "Thu", series: [800, 900] },
+  { label: "Fri", series: [2000, 1200] },
 ];
 
 const AREA_DATA = [
@@ -113,7 +114,7 @@ const LINE_LEGEND: LegendItemVM[] = [
 ];
 
 const BAR_LEGEND: LegendItemVM[] = [
-  { label: "Income", color: chartPrimary },
+  { label: "Income", color: chart.primary },
   { label: "Expense", color: chart.gray },
 ];
 
@@ -319,36 +320,18 @@ export default function PalettePage() {
         <Section title="Grouped Bar Chart" icon={BarChart3}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div
-              className="h-[200px]"
               role="img"
               aria-label="Example grouped bar chart showing income vs expense"
             >
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={BAR_DATA} barGap={4}>
-                  <XAxis
-                    dataKey="name"
-                    tick={{ fill: chartAxis, fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    tick={{ fill: chartAxis, fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                    width={30}
-                  />
-                  <Bar
-                    dataKey="income"
-                    fill={chartPrimary}
-                    radius={[4, 4, 0, 0]}
-                  />
-                  <Bar
-                    dataKey="expense"
-                    fill={chart.gray}
-                    radius={[4, 4, 0, 0]}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+              <PixelBarChart
+                data={BAR_DATA}
+                seriesLabels={["Income", "Expense"]}
+                blockSize={10}
+                blockGap={2}
+                gridRows={6}
+                formatYLabel={(v) => `${Math.round(v / 100) * 100}`}
+                tooltipYearSuffix=""
+              />
             </div>
             <Legend items={BAR_LEGEND} />
           </div>
