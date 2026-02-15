@@ -138,46 +138,47 @@ export default function DataPage() {
       </Section>
 
       {/* Data Table */}
-      <div className="rounded-[var(--radius-card)] bg-secondary overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-3 border-b border-border">
-          <p className="text-sm text-muted-foreground">Data Table</p>
-          <div className="flex items-center gap-2">
-            <div className="relative min-w-[180px]">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} />
-              <Input placeholder="Search" className="rounded-[var(--radius-widget)] border-border bg-card pl-10 text-sm h-8" />
+      <Section title="Data Table" icon={Filter}>
+        <div className="rounded-[var(--radius-widget)] border border-border bg-card overflow-hidden">
+          <div className="flex items-center justify-between px-5 py-3 border-b border-border">
+            <div className="flex items-center gap-2">
+              <div className="relative min-w-[180px]">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} />
+                <Input placeholder="Search" className="rounded-[var(--radius-widget)] border-border bg-background pl-10 text-sm h-8" />
+              </div>
+              <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border">
+                <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> Filter
+              </button>
             </div>
-            <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border">
-              <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> Filter
-            </button>
           </div>
-        </div>
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-border text-left text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              <th className="px-5 py-3 font-medium">Invoice</th>
-              <th className="px-5 py-3 font-medium">Customer</th>
-              <th className="px-5 py-3 font-medium">Status</th>
-              <th className="px-5 py-3 font-medium">Amount</th>
-              <th className="px-5 py-3 font-medium">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {TABLE_ROWS.map((row) => (
-              <tr key={row.id} className="border-b border-border last:border-b-0 hover:bg-accent/40">
-                <td className="px-5 py-3 text-sm text-foreground font-mono-num">{row.id}</td>
-                <td className="px-5 py-3 text-sm text-foreground">{row.customer}</td>
-                <td className="px-5 py-3 text-xs">
-                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[row.status] ?? ""}`}>
-                    {row.status}
-                  </span>
-                </td>
-                <td className="px-5 py-3 text-sm text-foreground font-mono-num">{row.amount}</td>
-                <td className="px-5 py-3 text-sm text-muted-foreground">{row.date}</td>
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-border text-left text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                <th className="px-5 py-3 font-medium">Invoice</th>
+                <th className="px-5 py-3 font-medium">Customer</th>
+                <th className="px-5 py-3 font-medium">Status</th>
+                <th className="px-5 py-3 font-medium">Amount</th>
+                <th className="px-5 py-3 font-medium">Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {TABLE_ROWS.map((row) => (
+                <tr key={row.id} className="border-b border-border last:border-b-0 hover:bg-accent/40">
+                  <td className="px-5 py-3 text-sm text-foreground font-mono-num">{row.id}</td>
+                  <td className="px-5 py-3 text-sm text-foreground">{row.customer}</td>
+                  <td className="px-5 py-3 text-xs">
+                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[row.status] ?? ""}`}>
+                      {row.status}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 text-sm text-foreground font-mono-num">{row.amount}</td>
+                  <td className="px-5 py-3 text-sm text-muted-foreground">{row.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
 
       {/* Avatars */}
       <Section title="Avatars" icon={Users}>
