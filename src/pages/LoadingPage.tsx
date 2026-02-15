@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DottyLogo } from "@/components/DottyLogo";
 
 /**
  * Loading page — square pixel spinner
@@ -104,8 +103,6 @@ export default function LoadingPage() {
         })}
       </div>
 
-      {/* Logo beneath spinner */}
-      <DottyLogo className="h-6 w-6 text-muted-foreground/40" />
     </div>
   );
 }
