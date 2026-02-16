@@ -7,7 +7,7 @@
 [![Framework: Vite](https://img.shields.io/badge/Framework-Vite-646cff.svg?style=flat-square&logo=vite)](https://vite.dev)
 [![Style: Tailwind](https://img.shields.io/badge/Style-Tailwind_CSS-38bdf8.svg?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
 
-![Dotty Preview](https://assets.lizheng.me/wp-content/uploads/2026/02/dotty-1-scaled.jpg)
+![Dotty Preview](https://s.zhe.to/dcd0e6e42358/20260216/91f4d06b-28f6-40d6-b243-d168fd24d240.jpg)
 
 ## Design Philosophy
 
