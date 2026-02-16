@@ -9,6 +9,8 @@
 
 ![Dotty Preview](https://s.zhe.to/dcd0e6e42358/20260216/91f4d06b-28f6-40d6-b243-d168fd24d240.jpg)
 
+**[Live Preview →](https://dotty.hexly.ai)**
+
 ## Design Philosophy
 
 ### Cool monochrome
