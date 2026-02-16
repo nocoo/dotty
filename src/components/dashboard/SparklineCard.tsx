@@ -19,9 +19,9 @@ export function SparklineCard() {
           Weekly active
         </p>
       </div>
-      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
+      <div className="flex-1 flex flex-col rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
         <div className="text-2xl font-semibold text-foreground font-mono-num">24.8k</div>
-        <div className="h-14">
+        <div className="flex-1 min-h-[40px]">
           <ResponsiveContainer width="100%" height="100%">
             <RechartsLineChart data={sparkData} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
               <Line

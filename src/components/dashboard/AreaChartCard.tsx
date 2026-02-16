@@ -34,7 +34,7 @@ export function AreaChartCard() {
         </div>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
-        <div className="h-[200px]" role="img" aria-label="Weekly activity area chart comparing income and expense from Monday to Sunday">
+        <div className="h-full min-h-[200px]" role="img" aria-label="Weekly activity area chart comparing income and expense from Monday to Sunday">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>
               <defs>

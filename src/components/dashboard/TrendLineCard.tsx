@@ -18,14 +18,14 @@ export function TrendLineCard() {
           Spending Trend
         </p>
       </div>
-      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
+      <div className="flex-1 flex flex-col rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="flex items-baseline gap-3 mb-4">
           <h2 className="text-3xl font-semibold text-foreground font-display tracking-tight">
             <span className="font-mono-num">$3,420</span>
           </h2>
           <span className="text-xs font-medium text-muted-foreground font-mono-num">-1.8%</span>
         </div>
-        <div className="h-[120px]" role="img" aria-label="Spending trend line chart from Monday to Sunday, current total $3,420">
+        <div className="flex-1 min-h-[80px]" role="img" aria-label="Spending trend line chart from Monday to Sunday, current total $3,420">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />

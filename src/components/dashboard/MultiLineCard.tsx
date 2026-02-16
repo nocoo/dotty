@@ -23,7 +23,7 @@ export function MultiLineCard() {
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
-        <div className="h-56">
+        <div className="h-full min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <RechartsLineChart data={data} margin={{ top: 8, right: 0, left: 0, bottom: 0 }}>
               <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: chartAxis, fontSize: 11 }} />

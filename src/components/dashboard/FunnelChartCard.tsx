@@ -17,7 +17,7 @@ export function FunnelChartCard() {
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
-        <div className="h-56">
+        <div className="h-full min-h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <FunnelChart>
               <Tooltip />
