@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, PieChart, Pie } from "recharts";
 import { TrendingUp, TrendingDown, PieChart as PieChartIcon, Briefcase } from "lucide-react";
 import { usePortfolioViewModel } from "@/viewmodels/usePortfolioViewModel";
@@ -16,6 +17,7 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 }
 
 export default function PortfolioPage() {
+  const { t } = useTranslation();
   const { totalValue, holdings, performanceData } = usePortfolioViewModel();
   const holdingsWithFill = holdings.map((h, i) => ({ ...h, fill: CHART_COLORS[i] }));
 
@@ -35,26 +37,26 @@ export default function PortfolioPage() {
 
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Portfolio Value</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.portfolio.portfolioValue")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${totalValue.toLocaleString()}</h2>
-          <span className="text-xs font-medium text-success">+8.6% all time</span>
+          <span className="text-xs font-medium text-success">{t("pages.portfolio.allTime")}</span>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Today's Change</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.portfolio.todaysChange")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight font-mono-num">+$342.50</h2>
           <span className="text-xs font-medium text-success">+0.34%</span>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Return</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.portfolio.totalReturn")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">$8,600</h2>
           <span className="text-xs font-medium text-success">+8.6%</span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Section title="Portfolio Performance" icon={TrendingUp}>
+        <Section title={t("pages.portfolio.portfolioPerformance")} icon={TrendingUp}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-            <div className="h-[180px] md:h-[200px]" role="img" aria-label="Portfolio performance line chart over time">
+            <div className="h-[180px] md:h-[200px]" role="img" aria-label={t("pages.portfolio.performanceAria")}>
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={performanceData}>
                   <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
@@ -66,10 +68,10 @@ export default function PortfolioPage() {
           </div>
         </Section>
 
-        <Section title="Asset Allocation" icon={PieChartIcon}>
+        <Section title={t("pages.portfolio.assetAllocation")} icon={PieChartIcon}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div className="flex flex-col items-center">
-              <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]" role="img" aria-label="Asset allocation donut chart">
+              <div className="h-[160px] w-[160px] md:h-[180px] md:w-[180px]" role="img" aria-label={t("pages.portfolio.allocationAria")}>
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie data={holdingsWithFill} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="allocation" strokeWidth={0} />
@@ -92,13 +94,13 @@ export default function PortfolioPage() {
         </Section>
       </div>
 
-      <Section title="Holdings" icon={Briefcase}>
+      <Section title={t("pages.portfolio.holdings")} icon={Briefcase}>
         <table className="w-full">
           <thead className="sr-only">
             <tr>
-              <th scope="col">Asset</th>
-              <th scope="col">Value</th>
-              <th scope="col">Change</th>
+              <th scope="col">{t("pages.portfolio.asset")}</th>
+              <th scope="col">{t("pages.portfolio.value")}</th>
+              <th scope="col">{t("pages.portfolio.change")}</th>
             </tr>
           </thead>
           <tbody className="flex flex-col gap-3">

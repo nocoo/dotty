@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { LayoutGrid, BarChart3, TrendingUp } from "lucide-react";
 import { useProgressTrackingViewModel } from "@/viewmodels/useProgressTrackingViewModel";
 import { PixelBarChart } from "@/components/PixelBarChart";
@@ -15,6 +16,7 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 }
 
 export default function ProgressTrackingPage() {
+  const { t } = useTranslation();
   const { summary, categories, comparisonData } = useProgressTrackingViewModel();
 
   return (
@@ -33,20 +35,20 @@ export default function ProgressTrackingPage() {
 
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Budget</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.progressTracking.totalBudget")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.totalLimit.toLocaleString()}</h2>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Spent So Far</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.progressTracking.spentSoFar")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.totalSpent.toLocaleString()}</h2>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Remaining</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.progressTracking.remaining")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight font-mono-num">${summary.remaining.toLocaleString()}</h2>
         </div>
       </div>
 
-      <Section title="Category Budgets" icon={LayoutGrid}>
+      <Section title={t("pages.progressTracking.categoryBudgets")} icon={LayoutGrid}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
           <div className="flex flex-col gap-4">
             {categories.map((cat) => (
@@ -71,9 +73,9 @@ export default function ProgressTrackingPage() {
         </div>
       </Section>
 
-      <Section title="Budget vs Actual" icon={BarChart3}>
+      <Section title={t("pages.progressTracking.budgetVsActual")} icon={BarChart3}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <div role="img" aria-label="Budget vs actual spending grouped bar chart by month">
+          <div role="img" aria-label={t("pages.progressTracking.budgetVsActualAria")}>
             <PixelBarChart
               data={comparisonData.map((d) => ({ label: d.month, series: [d.budget, d.actual] }))}
               seriesLabels={["Budget", "Actual"]}

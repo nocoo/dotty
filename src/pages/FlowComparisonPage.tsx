@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity, BarChart3, ArrowLeftRight } from "lucide-react";
 import { useFlowComparisonViewModel } from "@/viewmodels/useFlowComparisonViewModel";
@@ -17,6 +18,7 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 }
 
 export default function FlowComparisonPage() {
+  const { t } = useTranslation();
   const { summary, flowData, netFlowData } = useFlowComparisonViewModel();
 
   return (
@@ -35,22 +37,22 @@ export default function FlowComparisonPage() {
 
       <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-3">
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Inflow</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.flowComparison.totalInflow")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-success font-display tracking-tight font-mono-num">${summary.totalInflow.toLocaleString()}</h2>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Total Outflow</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.flowComparison.totalOutflow")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground font-display tracking-tight font-mono-num">${summary.totalOutflow.toLocaleString()}</h2>
         </div>
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Net Cash Flow</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.flowComparison.netCashFlow")}</p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground font-display tracking-tight font-mono-num">${summary.netFlow.toLocaleString()}</h2>
         </div>
       </div>
 
-      <Section title="Cash Flow Over Time" icon={Activity}>
+      <Section title={t("pages.flowComparison.cashFlowOverTime")} icon={Activity}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <div className="h-[200px] md:h-[240px]" role="img" aria-label="Cash flow over time area chart showing inflow and outflow">
+          <div className="h-[200px] md:h-[240px]" role="img" aria-label={t("pages.flowComparison.cashFlowOverTimeAria")}>
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={flowData}>
                 <XAxis dataKey="month" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />
@@ -67,9 +69,9 @@ export default function FlowComparisonPage() {
         </div>
       </Section>
 
-      <Section title="Net Cash Flow by Month" icon={BarChart3}>
+      <Section title={t("pages.flowComparison.netCashFlowByMonth")} icon={BarChart3}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <div role="img" aria-label="Net cash flow by month bar chart">
+          <div role="img" aria-label={t("pages.flowComparison.netCashFlowByMonthAria")}>
             <PixelBarChart
               data={netFlowData.map((d) => ({ label: d.month, value: d.net }))}
               seriesLabels={["Net Flow"]}

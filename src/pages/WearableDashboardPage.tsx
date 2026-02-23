@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Activity, Heart, Moon, Flame, Footprints, Sparkles, Clock } from "lucide-react";
 import { StatCardWidget, StatGrid } from "@/components/dashboard/StatCardWidget";
 import { DateNavigationWidget } from "@/components/dashboard/DateNavigationWidget";
@@ -11,11 +12,11 @@ import { chart, CHART_COLORS, withAlpha } from "@/lib/palette";
 
 // ── View Model ──
 
-const statCards = [
-  { title: "Steps", value: "12,480", subtitle: "Goal 14k", icon: Footprints, trend: { value: 5.2, label: "vs last week" } },
-  { title: "Calories", value: "2,460", subtitle: "Active burn", icon: Flame, trend: { value: 3.1, label: "vs last week" } },
-  { title: "Heart Rate", value: "68 bpm", subtitle: "Resting avg", icon: Heart, trend: { value: -1.4, label: "vs last week" } },
-  { title: "Sleep", value: "7h 42m", subtitle: "Consistency 84%", icon: Moon, trend: { value: 2.6, label: "vs last week" } },
+const useStatCards = (t: (key: string) => string) => [
+  { title: t("pages.wearable.steps"), value: "12,480", subtitle: t("pages.wearable.goal14k"), icon: Footprints, trend: { value: 5.2, label: "vs last week" } },
+  { title: t("pages.wearable.calories"), value: "2,460", subtitle: t("pages.wearable.activeBurn"), icon: Flame, trend: { value: 3.1, label: "vs last week" } },
+  { title: t("pages.wearable.heartRate"), value: "68 bpm", subtitle: t("pages.wearable.restingAvg"), icon: Heart, trend: { value: -1.4, label: "vs last week" } },
+  { title: t("pages.wearable.sleep"), value: "7h 42m", subtitle: t("pages.wearable.consistency84"), icon: Moon, trend: { value: 2.6, label: "vs last week" } },
 ];
 
 const weeklySteps = [
@@ -54,12 +55,12 @@ const heartRateSlots = Array.from({ length: 24 }).map((_, i) => ({
   label: `Hour ${i}`,
 }));
 
-const timeline = [
-  { id: "t1", time: "06:10", title: "Wake up", subtitle: "Recovery score 86" },
-  { id: "t2", time: "07:30", title: "Morning walk", subtitle: "3.2 km" },
+const useTimeline = (t: (key: string) => string) => [
+  { id: "t1", time: "06:10", title: t("pages.wearable.wakeUp"), subtitle: t("pages.wearable.recoveryScore86") },
+  { id: "t2", time: "07:30", title: t("pages.wearable.morningWalk"), subtitle: "3.2 km" },
   { id: "t3", time: "12:40", title: "Hydration", subtitle: "600 ml" },
-  { id: "t4", time: "18:10", title: "Training", subtitle: "Strength 45m" },
-  { id: "t5", time: "21:30", title: "Wind down", subtitle: "Stretch & breath" },
+  { id: "t4", time: "18:10", title: t("pages.wearable.training"), subtitle: t("pages.wearable.strength45m") },
+  { id: "t5", time: "21:30", title: t("pages.wearable.windDown"), subtitle: t("pages.wearable.stretchBreath") },
 ];
 
 const heatmapData = Array.from({ length: 365 }).map((_, i) => {
@@ -100,19 +101,23 @@ function Section({
 // ── View ──
 
 export default function WearableDashboardPage() {
+  const { t } = useTranslation();
+  const statCards = useStatCards(t);
+  const timeline = useTimeline(t);
+
   return (
     <div className="space-y-4">
       {/* Page intro */}
       <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">Wearable Health</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{t("pages.wearable.eyebrow")}</p>
         <div className="mt-2 flex items-center gap-3">
           <div className="rounded-[var(--radius-widget)] bg-card border border-border p-2 text-muted-foreground">
             <Activity className="h-5 w-5" strokeWidth={1.5} />
           </div>
           <div>
-            <h1 className="text-lg font-semibold font-display text-foreground">Wearable performance dashboard</h1>
+            <h1 className="text-lg font-semibold font-display text-foreground">{t("pages.wearable.title")}</h1>
             <p className="text-sm text-muted-foreground">
-              A professional wearable view with recovery, sleep, activity mix, and daily timeline insights.
+              {t("pages.wearable.description")}
             </p>
           </div>
         </div>
@@ -123,7 +128,7 @@ export default function WearableDashboardPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Today summary</p>
+            <p className="text-sm text-muted-foreground">{t("pages.wearable.todaySummary")}</p>
           </div>
           <DateNavigationWidget
             selectedDate={new Date(2026, 1, 13)}
@@ -145,7 +150,7 @@ export default function WearableDashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Section
           icon={Moon}
-          title="Sleep stages"
+          title={t("pages.wearable.sleepStages")}
           trailing={<span className="text-sm font-semibold font-mono-num text-foreground">7h 42m</span>}
         >
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
@@ -154,7 +159,7 @@ export default function WearableDashboardPage() {
         </Section>
         <Section
           icon={Heart}
-          title="Heart rate zones"
+          title={t("pages.wearable.heartRateZones")}
           trailing={<span className="text-sm font-semibold font-mono-num text-foreground">68 bpm</span>}
         >
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
@@ -165,12 +170,12 @@ export default function WearableDashboardPage() {
 
       {/* Charts row */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Section icon={Footprints} title="Weekly steps">
+        <Section icon={Footprints} title={t("pages.wearable.weeklySteps")}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <BarChartWidget data={weeklySteps} height={200} color={chart.primary} />
           </div>
         </Section>
-        <Section icon={Sparkles} title="Recovery trend">
+        <Section icon={Sparkles} title={t("pages.wearable.recoveryTrend")}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <LineChartWidget data={recoveryTrend} height={200} color={chart.steel} valueFormatter={(v) => `${v}%`} />
           </div>
@@ -179,12 +184,12 @@ export default function WearableDashboardPage() {
 
       {/* Activity mix + timeline */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Section icon={Activity} title="Activity mix">
+        <Section icon={Activity} title={t("pages.wearable.activityMix")}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <DonutChartWidget data={activityBreakdown} height={220} showLegend />
           </div>
         </Section>
-        <Section icon={Clock} title="Daily timeline" className="lg:col-span-2 max-h-[420px] overflow-y-auto">
+        <Section icon={Clock} title={t("pages.wearable.dailyTimeline")} className="lg:col-span-2 max-h-[420px] overflow-y-auto">
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <TimelineWidget events={timeline} />
           </div>
@@ -192,9 +197,9 @@ export default function WearableDashboardPage() {
       </div>
 
       {/* Heatmap */}
-      <Section icon={Activity} title="Workout consistency — 2026">
+      <Section icon={Activity} title={t("pages.wearable.workoutConsistency2026")}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
-          <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.green} metricLabel="Workouts" />
+          <HeatmapCalendar data={heatmapData} year={2026} colorScale={heatmapColorScales.green} metricLabel={t("pages.wearable.workouts")} />
         </div>
       </Section>
     </div>

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Router, Wifi, Server, AlertTriangle, Clock } from "lucide-react";
 import { StatCardWidget, StatGrid } from "@/components/dashboard/StatCardWidget";
 import { LineChartWidget } from "@/components/dashboard/LineChartWidget";
@@ -11,11 +12,11 @@ import { chart } from "@/lib/palette";
 
 // ── View Model ──
 
-const statCards = [
-  { title: "Uptime", value: "99.98%", subtitle: "30 days", icon: Server, trend: { value: 0.02, label: "vs last month" } },
-  { title: "Latency", value: "18 ms", subtitle: "Avg RTT", icon: Wifi, trend: { value: -4.2, label: "vs last week" } },
-  { title: "Packet Loss", value: "0.12%", subtitle: "Region avg", icon: AlertTriangle, trend: { value: -0.04, label: "vs last week" } },
-  { title: "Throughput", value: "4.8 Gbps", subtitle: "Peak today", icon: Router, trend: { value: 6.4, label: "vs last week" } },
+const useStatCards = (t: (key: string) => string) => [
+  { title: t("pages.networkOps.uptime"), value: "99.98%", subtitle: t("pages.networkOps.days30"), icon: Server, trend: { value: 0.02, label: "vs last month" } },
+  { title: t("pages.networkOps.latency"), value: "18 ms", subtitle: t("pages.networkOps.avgRtt"), icon: Wifi, trend: { value: -4.2, label: "vs last week" } },
+  { title: t("pages.networkOps.packetLoss"), value: "0.12%", subtitle: t("pages.networkOps.regionAvg"), icon: AlertTriangle, trend: { value: -0.04, label: "vs last week" } },
+  { title: t("pages.networkOps.throughput"), value: "4.8 Gbps", subtitle: t("pages.networkOps.peakToday"), icon: Router, trend: { value: 6.4, label: "vs last week" } },
 ];
 
 const latencyTrend = [
@@ -60,19 +61,22 @@ function Section({
 // ── View ──
 
 export default function NetworkOpsDashboardPage() {
+  const { t } = useTranslation();
+  const statCards = useStatCards(t);
+
   return (
     <div className="space-y-4">
       {/* Page intro */}
       <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">Network Ops</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{t("pages.networkOps.eyebrow")}</p>
         <div className="mt-2 flex items-center gap-3">
           <div className="rounded-[var(--radius-widget)] bg-card border border-border p-2 text-muted-foreground">
             <Router className="h-5 w-5" strokeWidth={1.5} />
           </div>
           <div>
-            <h1 className="text-lg font-semibold font-display text-foreground">Network operations dashboard</h1>
+            <h1 className="text-lg font-semibold font-display text-foreground">{t("pages.networkOps.title")}</h1>
             <p className="text-sm text-muted-foreground">
-              Router telemetry with uptime, latency, traffic mix, and incident timeline for operators.
+              {t("pages.networkOps.description")}
             </p>
           </div>
         </div>
@@ -87,7 +91,7 @@ export default function NetworkOpsDashboardPage() {
 
       {/* Row 1 */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Section icon={Wifi} title="Latency trend">
+        <Section icon={Wifi} title={t("pages.networkOps.latencyTrend")}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <LineChartWidget data={latencyTrend} height={220} color={chart.steel} valueFormatter={(v) => `${v}ms`} />
           </div>
@@ -105,7 +109,7 @@ export default function NetworkOpsDashboardPage() {
       {/* Row 3 */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <HeatmapCard />
-        <Section icon={Clock} title="Incident timeline" className="lg:col-span-2 max-h-[420px] overflow-y-auto">
+        <Section icon={Clock} title={t("pages.networkOps.incidentTimeline")} className="lg:col-span-2 max-h-[420px] overflow-y-auto">
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <TimelineWidget events={incidents} />
           </div>

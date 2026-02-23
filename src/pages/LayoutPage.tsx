@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   LayoutGrid, Grid3X3, Columns3, Rows3,
   AlignHorizontalDistributeCenter, Maximize2,
@@ -9,16 +10,6 @@ interface SectionVM {
   title: string;
   icon: React.ElementType;
 }
-
-const SECTIONS: Record<string, SectionVM> = {
-  equal:       { title: "Equal Columns",        icon: Grid3X3 },
-  asymmetric:  { title: "Asymmetric Columns",   icon: Columns3 },
-  responsive:  { title: "Responsive Breakpoints", icon: Maximize2 },
-  spanning:    { title: "Spanning Rows & Columns", icon: Rows3 },
-  dashboard:   { title: "Dashboard Composition", icon: LayoutGrid },
-  flexbox:     { title: "Flexbox Patterns",     icon: AlignHorizontalDistributeCenter },
-  autofit:     { title: "Auto-Fit Grid",        icon: Grid3X3 },
-};
 
 // ── View helpers ──
 
@@ -77,6 +68,18 @@ function LabeledBlock({
 // ── Page ──
 
 export default function LayoutPage() {
+  const { t } = useTranslation();
+
+  const SECTIONS: Record<string, SectionVM> = {
+    equal:       { title: t("pages.layout.equalColumns"),        icon: Grid3X3 },
+    asymmetric:  { title: t("pages.layout.asymmetricColumns"),   icon: Columns3 },
+    responsive:  { title: t("pages.layout.responsiveBreakpoints"), icon: Maximize2 },
+    spanning:    { title: t("pages.layout.spanningRowsCols"), icon: Rows3 },
+    dashboard:   { title: t("pages.layout.dashboardComposition"), icon: LayoutGrid },
+    flexbox:     { title: t("pages.layout.flexboxPatterns"),     icon: AlignHorizontalDistributeCenter },
+    autofit:     { title: t("pages.layout.autoFitGrid"),        icon: Grid3X3 },
+  };
+
   return (
     <div className="space-y-4">
       {/* Page intro — 2-layer card */}
@@ -85,15 +88,14 @@ export default function LayoutPage() {
           <div className="flex items-center gap-2">
             <LayoutGrid className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Layout
+              {t("pages.layout.eyebrow")}
             </span>
           </div>
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground font-display tracking-tight">
-            Grid systems and layout patterns
+            {t("pages.layout.title")}
           </h2>
           <p className="text-sm text-muted-foreground max-w-2xl">
-            Reusable responsive layouts built with CSS Grid and Flexbox. Copy
-            any pattern to compose your own pages.
+            {t("pages.layout.description")}
           </p>
         </div>
       </div>
@@ -140,8 +142,7 @@ export default function LayoutPage() {
       {/* Responsive breakpoints */}
       <Section {...SECTIONS.responsive}>
         <p className="text-xs text-muted-foreground mb-3">
-          Resize the browser to see these reflow. Mobile: 1 col &rarr; md: 2
-          cols &rarr; lg: 4 cols.
+          {t("pages.layout.responsiveDesc")}
         </p>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <LabeledBlock label="A" className="min-h-[80px]" />
@@ -155,12 +156,12 @@ export default function LayoutPage() {
       <Section {...SECTIONS.spanning}>
         <div className="grid grid-cols-3 grid-rows-2 gap-4">
           <LabeledBlock
-            label="span 2 rows"
+            label={t("pages.layout.span2Rows")}
             className="row-span-2 min-h-[160px]"
           />
           <LabeledBlock label="1x1" />
           <LabeledBlock label="1x1" />
-          <LabeledBlock label="span 2 cols" className="col-span-2" />
+          <LabeledBlock label={t("pages.layout.span2Cols")} className="col-span-2" />
         </div>
       </Section>
 
@@ -169,18 +170,18 @@ export default function LayoutPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Block className="lg:col-span-2 min-h-[120px]">
             <p className="text-xs font-medium text-foreground mb-1">
-              Wide card
+              {t("pages.layout.wideCard")}
             </p>
             <p className="text-xs">
-              Spans 2 columns on large screens. Ideal for charts or summaries.
+              {t("pages.layout.wideCardDesc")}
             </p>
           </Block>
           <Block className="min-h-[120px]">
-            <p className="text-xs font-medium text-foreground mb-1">Metric</p>
+            <p className="text-xs font-medium text-foreground mb-1">{t("pages.layout.metric")}</p>
             <p className="font-mono-num text-2xl text-foreground">1,284</p>
           </Block>
           <Block className="min-h-[120px]">
-            <p className="text-xs font-medium text-foreground mb-1">Metric</p>
+            <p className="text-xs font-medium text-foreground mb-1">{t("pages.layout.metric")}</p>
             <p className="font-mono-num text-2xl text-foreground">$42.5k</p>
           </Block>
         </div>
@@ -188,16 +189,16 @@ export default function LayoutPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-4">
           <Block className="md:col-span-2 min-h-[200px]">
             <p className="text-xs font-medium text-foreground mb-1">
-              Main content area
+              {t("pages.layout.mainContentArea")}
             </p>
             <p className="text-xs">
-              2/3 width. Perfect for primary charts, tables, or data views.
+              {t("pages.layout.mainContentDesc")}
             </p>
           </Block>
           <Block className="min-h-[200px]">
-            <p className="text-xs font-medium text-foreground mb-1">Sidebar</p>
+            <p className="text-xs font-medium text-foreground mb-1">{t("pages.layout.sidebar")}</p>
             <p className="text-xs">
-              1/3 width. Use for filters, recent activity, or secondary info.
+              {t("pages.layout.sidebarDesc")}
             </p>
           </Block>
         </div>
@@ -223,8 +224,8 @@ export default function LayoutPage() {
               justify-between
             </p>
             <div className="flex justify-between gap-3">
-              <LabeledBlock label="Left" className="w-24" />
-              <LabeledBlock label="Right" className="w-24" />
+              <LabeledBlock label={t("common.left")} className="w-24" />
+              <LabeledBlock label={t("common.right")} className="w-24" />
             </div>
           </div>
           {/* Wrap */}
@@ -245,7 +246,7 @@ export default function LayoutPage() {
             </p>
             <div className="flex flex-col gap-3 max-w-xs">
               <LabeledBlock label="Top" />
-              <LabeledBlock label="Middle" />
+              <LabeledBlock label={t("common.middle")} />
               <LabeledBlock label="Bottom" />
             </div>
           </div>
@@ -255,8 +256,7 @@ export default function LayoutPage() {
       {/* Auto-fit / auto-fill */}
       <Section {...SECTIONS.autofit}>
         <p className="text-xs text-muted-foreground mb-3">
-          Cards fill available space with a minimum width of 200px. No
-          breakpoint classes needed.
+          {t("pages.layout.autoFitDesc")}
         </p>
         <div
           className="grid gap-4"
@@ -267,10 +267,10 @@ export default function LayoutPage() {
           {Array.from({ length: 6 }, (_, i) => (
             <Block key={i} className="min-h-[100px]">
               <p className="text-xs font-medium text-foreground mb-1">
-                Card {i + 1}
+                {t("pages.layout.cardN", { n: i + 1 })}
               </p>
               <p className="text-xs">
-                Auto-sized content block that adapts to container width.
+                {t("pages.layout.cardAutoDesc")}
               </p>
             </Block>
           ))}
