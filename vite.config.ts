@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { readFileSync } from "fs";
-import { buildLiveResponse } from "./src/models/live";
 
 function getVersion(): string {
   const pkg = JSON.parse(readFileSync(path.resolve(__dirname, "package.json"), "utf-8"));
@@ -17,7 +16,7 @@ function apiLivePlugin(): PluginOption {
     configureServer(server) {
       server.middlewares.use("/api/live", (_req, res) => {
         res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify(buildLiveResponse(getVersion())));
+        res.end(JSON.stringify({ status: "ok", version: getVersion() }));
       });
     },
   };
