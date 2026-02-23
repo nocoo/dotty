@@ -6,6 +6,8 @@
  * with a 2-column gap between them.
  */
 
+import { useTranslation } from "react-i18next";
+
 // 5×7 pixel font bitmaps — 1 = filled, 0 = empty
 // Each row is read left-to-right, rows top-to-bottom
 const DIGIT_4 = [
@@ -38,6 +40,7 @@ const BITMAP_404 = DIGIT_4.map((row, r) => [
 ]);
 
 export default function NotFound() {
+  const { t } = useTranslation();
   const blockSize = "clamp(8px, 2.5vw, 20px)";
   const gap = "clamp(2px, 0.5vw, 4px)";
 
@@ -71,7 +74,7 @@ export default function NotFound() {
         href="/"
         className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
       >
-        Back to Homepage
+        {t("pages.notFound.backHome")}
       </a>
     </div>
   );

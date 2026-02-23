@@ -1,5 +1,6 @@
 import { Wallet as WalletIcon, ArrowUpRight, ArrowDownLeft, Plus, Activity, Wifi, Eye, EyeOff, Lock, NfcIcon, ArrowLeftRight, Filter } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useAccountsViewModel } from "@/viewmodels/useAccountsViewModel";
 import { useCardShowcaseViewModel } from "@/viewmodels/useCardShowcaseViewModel";
 import { useRecordListViewModel } from "@/viewmodels/useRecordListViewModel";
@@ -37,10 +38,17 @@ function ChipIcon({ isBlack }: { isBlack: boolean }) {
 }
 
 export default function AccountsPage() {
+  const { t } = useTranslation();
   const { accountList, activityList } = useAccountsViewModel();
   const [showBalance, setShowBalance] = useState(true);
   const { cards, cardCount, formatBalance } = useCardShowcaseViewModel(showBalance);
   const { records, totalCount } = useRecordListViewModel();
+
+  const SECURITY_FEATURES = [
+    { key: "onlinePayments", label: t("pages.accounts.onlinePayments") },
+    { key: "contactless", label: t("pages.accounts.contactless") },
+    { key: "atmWithdrawal", label: t("pages.accounts.atmWithdrawal") },
+  ];
 
   return (
     <div className="space-y-4">
@@ -72,19 +80,19 @@ export default function AccountsPage() {
 
       <div className="flex gap-3">
         <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">
-          <Plus className="h-4 w-4" strokeWidth={1.5} /> Add Money
+          <Plus className="h-4 w-4" strokeWidth={1.5} /> {t("pages.accounts.addMoney")}
         </button>
         <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-secondary px-4 py-2.5 text-sm font-medium text-foreground">
-          <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} /> Send
+          <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} /> {t("pages.accounts.send")}
         </button>
       </div>
 
       {/* Card showcase */}
       <div className="flex items-center justify-between">
-        <span className="text-sm text-muted-foreground">{cardCount} cards active</span>
+        <span className="text-sm text-muted-foreground">{t("pages.accounts.cardsActive", { count: cardCount })}</span>
         <button onClick={() => setShowBalance(!showBalance)} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           {showBalance ? <Eye className="h-4 w-4" strokeWidth={1.5} /> : <EyeOff className="h-4 w-4" strokeWidth={1.5} />}
-          {showBalance ? "Hide" : "Show"} balances
+          {showBalance ? t("pages.accounts.hide") : t("pages.accounts.show")} {t("pages.accounts.balances")}
         </button>
       </div>
 
@@ -119,11 +127,11 @@ export default function AccountsPage() {
               <div className="flex items-end justify-between relative z-10">
                 <div className="flex gap-6">
                   <div>
-                    <p className={`text-[9px] uppercase ${cs.textMuted}`}>Valid Thru</p>
+                    <p className={`text-[9px] uppercase ${cs.textMuted}`}>{t("pages.accounts.validThru")}</p>
                     <p className={`text-xs font-mono ${cs.textSecondary}`}>{card.expiry}</p>
                   </div>
                   <div>
-                    <p className={`text-[9px] uppercase ${cs.textMuted}`}>Balance</p>
+                    <p className={`text-[9px] uppercase ${cs.textMuted}`}>{t("pages.accounts.balance")}</p>
                     <p className={`text-sm font-semibold font-mono-num ${cs.textPrimary}`}>
                       {formatBalance(card.balance)}
                     </p>
@@ -155,7 +163,7 @@ export default function AccountsPage() {
                 aria-valuenow={card.utilization}
                 aria-valuemin={0}
                 aria-valuemax={100}
-                aria-label={`${card.bank} ${card.name} credit utilization: ${card.utilization}%`}
+                aria-label={`${card.bank} ${card.name} ${t("pages.accounts.creditUtilization")}: ${card.utilization}%`}
               >
                 <div
                   className="h-full rounded-full bg-foreground/60 transition-all"
@@ -164,7 +172,7 @@ export default function AccountsPage() {
                 />
               </div>
               <p className="text-[11px] text-muted-foreground mt-1.5">
-                <span className="font-mono-num">${card.balance.toLocaleString()}</span> / <span className="font-mono-num">${card.limit.toLocaleString()}</span> limit
+                <span className="font-mono-num">${card.balance.toLocaleString()}</span> / <span className="font-mono-num">${card.limit.toLocaleString()}</span> {t("pages.accounts.limit")}
               </p>
             </div>
           </div>
@@ -175,13 +183,13 @@ export default function AccountsPage() {
       <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-5">
         <div className="flex items-center gap-2 mb-4">
           <Lock className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <span className="text-sm text-muted-foreground">Card Security</span>
+          <span className="text-sm text-muted-foreground">{t("pages.accounts.cardSecurity")}</span>
         </div>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-          {["Online Payments", "Contactless", "ATM Withdrawal"].map((feat) => (
-            <div key={feat} className="flex items-center justify-between rounded-[var(--radius-widget)] bg-card border border-border p-3">
-              <label htmlFor={`switch-${feat}`} className="text-sm text-foreground cursor-pointer">{feat}</label>
-              <Switch id={`switch-${feat}`} defaultChecked aria-label={feat} className="h-5 w-9 data-[state=checked]:bg-success/20 data-[state=unchecked]:bg-input [&>span]:h-4 [&>span]:w-4 [&>span]:data-[state=checked]:bg-success [&>span]:data-[state=checked]:translate-x-4" />
+          {SECURITY_FEATURES.map((feat) => (
+            <div key={feat.key} className="flex items-center justify-between rounded-[var(--radius-widget)] bg-card border border-border p-3">
+              <label htmlFor={`switch-${feat.key}`} className="text-sm text-foreground cursor-pointer">{feat.label}</label>
+              <Switch id={`switch-${feat.key}`} defaultChecked aria-label={feat.label} className="h-5 w-9 data-[state=checked]:bg-success/20 data-[state=unchecked]:bg-input [&>span]:h-4 [&>span]:w-4 [&>span]:data-[state=checked]:bg-success [&>span]:data-[state=checked]:translate-x-4" />
             </div>
           ))}
         </div>
@@ -191,7 +199,7 @@ export default function AccountsPage() {
       <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-5">
         <div className="flex items-center gap-2 mb-4">
           <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-          <p className="text-sm text-muted-foreground">Recent Activity</p>
+          <p className="text-sm text-muted-foreground">{t("pages.accounts.recentActivity")}</p>
         </div>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
           <div className="flex flex-col gap-3">
@@ -217,9 +225,9 @@ export default function AccountsPage() {
 
       {/* Transactions */}
       <div className="flex items-center justify-between">
-        <span className="text-sm text-muted-foreground">{totalCount} transactions</span>
+        <span className="text-sm text-muted-foreground">{t("pages.accounts.transactions", { count: totalCount })}</span>
         <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-secondary px-3 py-2 text-sm text-muted-foreground hover:text-foreground">
-          <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> Filter
+          <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> {t("pages.accounts.filterLabel")}
         </button>
       </div>
 
@@ -228,16 +236,16 @@ export default function AccountsPage() {
         <div className="rounded-[var(--radius-card)] bg-card border border-border mx-1 mt-1 mb-1 overflow-hidden">
           <div className="flex items-center gap-2 px-5 pt-4 pb-2">
             <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} aria-hidden="true" />
-            <p className="text-sm text-muted-foreground">Transactions</p>
+            <p className="text-sm text-muted-foreground">{t("pages.accounts.transactionsTitle")}</p>
           </div>
           <table className="w-full">
             <thead>
               <tr className="border-b border-border">
-                <th scope="col" className="px-5 py-3 text-left text-xs font-normal text-muted-foreground">Transaction</th>
-                <th scope="col" className="w-[100px] py-3 text-left text-xs font-normal text-muted-foreground">Category</th>
-                <th scope="col" className="w-[120px] py-3 text-left text-xs font-normal text-muted-foreground">Date</th>
-                <th scope="col" className="w-[100px] py-3 text-right text-xs font-normal text-muted-foreground">Amount</th>
-                <th scope="col" className="w-[90px] py-3 pr-5 text-right text-xs font-normal text-muted-foreground">Status</th>
+                <th scope="col" className="px-5 py-3 text-left text-xs font-normal text-muted-foreground">{t("pages.accounts.transaction")}</th>
+                <th scope="col" className="w-[100px] py-3 text-left text-xs font-normal text-muted-foreground">{t("pages.accounts.category")}</th>
+                <th scope="col" className="w-[120px] py-3 text-left text-xs font-normal text-muted-foreground">{t("pages.accounts.date")}</th>
+                <th scope="col" className="w-[100px] py-3 text-right text-xs font-normal text-muted-foreground">{t("pages.accounts.amount")}</th>
+                <th scope="col" className="w-[90px] py-3 pr-5 text-right text-xs font-normal text-muted-foreground">{t("pages.accounts.status")}</th>
               </tr>
             </thead>
             <tbody>

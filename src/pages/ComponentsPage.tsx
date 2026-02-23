@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { RectangleEllipsis, Sparkles, BarChart3, ListChecks, Activity, Check, Shield, Plane, Car, Home, Target } from "lucide-react";
 import { SummaryMetricCard } from "@/components/dashboard/SummaryMetricCard";
 import { SecondaryMetricCard } from "@/components/dashboard/SecondaryMetricCard";
@@ -43,23 +44,24 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 }
 
 export default function ComponentsPage() {
+  const { t } = useTranslation();
   const { goals } = useTargetCardsViewModel();
 
   return (
     <div className="space-y-4">
       {/* Page intro */}
       <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Components</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.components.eyebrow")}</p>
         <div className="flex items-center gap-2 mb-1">
           <RectangleEllipsis className="h-5 w-5 text-foreground" strokeWidth={1.5} />
-          <h1 className="text-lg font-semibold text-foreground font-display">Composable blocks and visual modules</h1>
+          <h1 className="text-lg font-semibold text-foreground font-display">{t("pages.components.title")}</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Metric cards, charts, lists, action grids, and target trackers that can be reused across pages.
+          {t("pages.components.description")}
         </p>
       </div>
 
-      <Section title="Metric Cards" icon={Sparkles}>
+      <Section title={t("pages.components.metricCards")} icon={Sparkles}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <SummaryMetricCard />
           <SecondaryMetricCard />
@@ -68,7 +70,7 @@ export default function ComponentsPage() {
         </div>
       </Section>
 
-      <Section title="Charts" icon={BarChart3}>
+      <Section title={t("pages.components.charts")} icon={BarChart3}>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           <BarChartCard />
           <AreaChartCard />
@@ -87,13 +89,13 @@ export default function ComponentsPage() {
         </div>
       </Section>
 
-      <Section title="Heatmaps" icon={BarChart3}>
+      <Section title={t("pages.components.heatmaps")} icon={BarChart3}>
         <div className="grid grid-cols-1 gap-4">
           <HeatmapCard />
         </div>
       </Section>
 
-      <Section title="Lists & Actions" icon={ListChecks}>
+      <Section title={t("pages.components.listsActions")} icon={ListChecks}>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           <ActionGridCard />
           <ItemListCard />
@@ -101,22 +103,22 @@ export default function ComponentsPage() {
         </div>
       </Section>
 
-      <Section title="Highlights" icon={Activity}>
+      <Section title={t("pages.components.highlights")} icon={Activity}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
-            <p className="text-sm font-medium text-foreground">AI readiness module</p>
-            <p className="text-xs text-muted-foreground">Compact card pattern for AI insights.</p>
-            <button className="mt-3 rounded-[var(--radius-widget)] bg-secondary px-3 py-2 text-xs text-foreground">View module</button>
+            <p className="text-sm font-medium text-foreground">{t("pages.components.aiReadiness")}</p>
+            <p className="text-xs text-muted-foreground">{t("pages.components.aiReadinessDesc")}</p>
+            <button className="mt-3 rounded-[var(--radius-widget)] bg-secondary px-3 py-2 text-xs text-foreground">{t("common.viewModule")}</button>
           </div>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
-            <p className="text-sm font-medium text-foreground">Retention module</p>
-            <p className="text-xs text-muted-foreground">Stackable list + KPI combination.</p>
-            <button className="mt-3 rounded-[var(--radius-widget)] bg-secondary px-3 py-2 text-xs text-foreground">View module</button>
+            <p className="text-sm font-medium text-foreground">{t("pages.components.retentionModule")}</p>
+            <p className="text-xs text-muted-foreground">{t("pages.components.retentionModuleDesc")}</p>
+            <button className="mt-3 rounded-[var(--radius-widget)] bg-secondary px-3 py-2 text-xs text-foreground">{t("common.viewModule")}</button>
           </div>
         </div>
       </Section>
 
-      <Section title="Targets" icon={Target}>
+      <Section title={t("pages.components.targets")} icon={Target}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {goals.map((goal) => {
             const Icon = GOAL_ICONS[goal.icon] ?? Shield;
@@ -145,8 +147,8 @@ export default function ComponentsPage() {
                   <div className="h-full rounded-full bg-foreground/60 transition-all" style={{ width: `${goal.percent}%` }} aria-hidden="true" />
                 </div>
                 <div className="mt-3 flex items-center gap-4">
-                  <span className="text-xs text-muted-foreground">Monthly target: <span className="font-mono-num">${goal.monthlyTarget.toLocaleString()}</span></span>
-                  {goal.onTrack && <span className="flex items-center gap-1 text-xs text-success"><Check className="h-3 w-3" strokeWidth={2} /> On Track</span>}
+                  <span className="text-xs text-muted-foreground">{t("pages.components.monthlyTarget")} <span className="font-mono-num">${goal.monthlyTarget.toLocaleString()}</span></span>
+                  {goal.onTrack && <span className="flex items-center gap-1 text-xs text-success"><Check className="h-3 w-3" strokeWidth={2} /> {t("pages.components.onTrack")}</span>}
                 </div>
               </div>
             );

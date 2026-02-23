@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   Eye, Users, Tag, TrendingUp, TrendingDown,
   Clock, CheckCircle2, GitCommit, MessageSquare,
@@ -28,10 +29,10 @@ const TIMELINE = [
 ];
 
 const KPI_DATA = [
-  { label: "Revenue",      value: "$48.2k", change: "+12.5%", trend: "up" as const },
-  { label: "Users",         value: "2,841",  change: "+8.2%",  trend: "up" as const },
-  { label: "Bounce Rate",   value: "24.3%",  change: "-3.1%",  trend: "down" as const },
-  { label: "Avg. Session",  value: "4m 32s", change: "0%",     trend: "flat" as const },
+  { label: "revenue",      value: "$48.2k", change: "+12.5%", trend: "up" as const },
+  { label: "users",         value: "2,841",  change: "+8.2%",  trend: "up" as const },
+  { label: "bounceRate",   value: "24.3%",  change: "-3.1%",  trend: "down" as const },
+  { label: "avgSession",  value: "4m 32s", change: "0%",     trend: "flat" as const },
 ];
 
 const TABLE_ROWS = [
@@ -62,15 +63,15 @@ const OUTLINE_PILLS = [
 ];
 
 const ICON_PILLS = [
-  { label: "Verified", icon: BadgeCheck,     className: "bg-success/10 text-success" },
-  { label: "At risk",  icon: AlertTriangle,  className: "bg-chart-3/20 text-chart-2" },
-  { label: "AI",       icon: Sparkles,       className: "bg-chart-5/20 text-chart-1" },
+  { label: "Verified", tKey: "verified", icon: BadgeCheck,     className: "bg-success/10 text-success" },
+  { label: "At risk",  tKey: "atRisk",   icon: AlertTriangle,  className: "bg-chart-3/20 text-chart-2" },
+  { label: "AI",       tKey: "ai",       icon: Sparkles,       className: "bg-chart-5/20 text-chart-1" },
 ];
 
 const DOT_PILLS = [
-  { label: "Live",    dot: "bg-success",           className: "bg-success/10 text-foreground" },
-  { label: "Paused",  dot: "bg-muted-foreground",  className: "bg-muted text-muted-foreground" },
-  { label: "Offline", dot: "bg-chart-3",           className: "bg-chart-6/30 text-chart-2" },
+  { label: "Live",    tKey: "live",    dot: "bg-success",           className: "bg-success/10 text-foreground" },
+  { label: "Paused",  tKey: "paused",  dot: "bg-muted-foreground",  className: "bg-muted text-muted-foreground" },
+  { label: "Offline", tKey: "offline", dot: "bg-chart-3",           className: "bg-chart-6/30 text-chart-2" },
 ];
 
 const STATUS_STYLES: Record<string, string> = {
@@ -96,6 +97,8 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 // ── Page ──
 
 export default function DataPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-4">
       {/* Page intro */}
@@ -104,24 +107,24 @@ export default function DataPage() {
           <div className="flex items-center gap-2">
             <Eye className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Data
+              {t("pages.data.eyebrow")}
             </span>
           </div>
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground font-display tracking-tight">
-            Data display components
+            {t("pages.data.title")}
           </h2>
           <p className="text-sm text-muted-foreground max-w-2xl">
-            Avatars, badges, tables, pills, timelines, and stat tiles for presenting data.
+            {t("pages.data.description")}
           </p>
         </div>
       </div>
 
       {/* Stat Tiles */}
-      <Section title="Stat Tiles / KPIs" icon={TrendingUp}>
+      <Section title={t("pages.data.statTiles")} icon={TrendingUp}>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {KPI_DATA.map((kpi) => (
             <div key={kpi.label} className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{kpi.label}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t(`pages.data.${kpi.label}`)}</p>
               <p className="text-2xl font-semibold text-foreground font-mono-num">{kpi.value}</p>
               <div className="flex items-center gap-1 mt-2">
                 {kpi.trend === "up" && <TrendingUp className="h-3.5 w-3.5 text-success" strokeWidth={1.5} />}
@@ -138,27 +141,27 @@ export default function DataPage() {
       </Section>
 
       {/* Data Table */}
-      <Section title="Data Table" icon={Filter}>
+      <Section title={t("pages.data.dataTable")} icon={Filter}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card overflow-hidden">
           <div className="flex items-center justify-between px-5 py-3 border-b border-border">
             <div className="flex items-center gap-2">
               <div className="relative min-w-[180px]">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} />
-                <Input placeholder="Search" className="rounded-[var(--radius-widget)] border-border bg-background pl-10 text-sm h-8" />
+                <Input placeholder={t("pages.data.searchPlaceholder")} className="rounded-[var(--radius-widget)] border-border bg-background pl-10 text-sm h-8" />
               </div>
               <button className="flex items-center gap-2 rounded-[var(--radius-widget)] bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border">
-                <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> Filter
+                <Filter className="h-3.5 w-3.5" strokeWidth={1.5} /> {t("common.filter")}
               </button>
             </div>
           </div>
           <table className="w-full">
             <thead>
               <tr className="border-b border-border text-left text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                <th className="px-5 py-3 font-medium">Invoice</th>
-                <th className="px-5 py-3 font-medium">Customer</th>
-                <th className="px-5 py-3 font-medium">Status</th>
-                <th className="px-5 py-3 font-medium">Amount</th>
-                <th className="px-5 py-3 font-medium">Date</th>
+                <th className="px-5 py-3 font-medium">{t("pages.data.invoice")}</th>
+                <th className="px-5 py-3 font-medium">{t("pages.data.customer")}</th>
+                <th className="px-5 py-3 font-medium">{t("common.status")}</th>
+                <th className="px-5 py-3 font-medium">{t("common.amount")}</th>
+                <th className="px-5 py-3 font-medium">{t("common.date")}</th>
               </tr>
             </thead>
             <tbody>
@@ -181,10 +184,10 @@ export default function DataPage() {
       </Section>
 
       {/* Avatars */}
-      <Section title="Avatars" icon={Users}>
+      <Section title={t("pages.data.avatars")} icon={Users}>
         <div className="space-y-4">
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">sizes</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.sizes")}</p>
             <div className="flex items-end gap-3">
               {[
                 { size: "h-6 w-6", text: "text-[9px]" },
@@ -200,7 +203,7 @@ export default function DataPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">stacked group</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.stackedGroup")}</p>
             <div className="flex -space-x-2">
               {PEOPLE.map((p) => (
                 <Avatar key={p.seed} className="h-9 w-9 border-2 border-background">
@@ -215,10 +218,10 @@ export default function DataPage() {
       </Section>
 
       {/* Badges */}
-      <Section title="Badges" icon={Tag}>
+      <Section title={t("pages.data.badges")} icon={Tag}>
         <div className="space-y-4">
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">variants</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.variants")}</p>
             <div className="flex flex-wrap items-center gap-2">
               <Badge>Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
@@ -227,11 +230,11 @@ export default function DataPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">semantic</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.semantic")}</p>
             <div className="flex flex-wrap items-center gap-2">
-              <Badge className="border-transparent bg-success/15 text-success">Active</Badge>
-              <Badge className="border-transparent bg-chart-5/20 text-chart-2">Pending</Badge>
-              <Badge className="border-transparent bg-chart-1/15 text-chart-1">Failed</Badge>
+              <Badge className="border-transparent bg-success/15 text-success">{t("pages.data.active")}</Badge>
+              <Badge className="border-transparent bg-chart-5/20 text-chart-2">{t("pages.data.pending")}</Badge>
+              <Badge className="border-transparent bg-chart-1/15 text-chart-1">{t("pages.data.failed")}</Badge>
               <Badge className="border-transparent bg-chart-4/15 text-chart-3">Info</Badge>
             </div>
           </div>
@@ -239,10 +242,10 @@ export default function DataPage() {
       </Section>
 
       {/* Pills */}
-      <Section title="Pills" icon={Circle}>
+      <Section title={t("pages.data.pills")} icon={Circle}>
         <div className="space-y-4">
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">solid</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.solid")}</p>
             <div className="flex flex-wrap gap-2">
               {SOLID_PILLS.map((pill) => (
                 <span key={pill.label} className={`rounded-full px-3 py-1 text-xs font-medium ${pill.className}`}>{pill.label}</span>
@@ -250,7 +253,7 @@ export default function DataPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">soft</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.soft")}</p>
             <div className="flex flex-wrap gap-2">
               {SOFT_PILLS.map((pill) => (
                 <span key={pill.label} className={`rounded-full px-3 py-1 text-xs font-medium ${pill.className}`}>{pill.label}</span>
@@ -266,21 +269,21 @@ export default function DataPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">with icons</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.withIcons")}</p>
             <div className="flex flex-wrap gap-2">
               {ICON_PILLS.map((pill) => (
                 <span key={pill.label} className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${pill.className}`}>
-                  <pill.icon className="h-3.5 w-3.5" strokeWidth={1.5} />{pill.label}
+                  <pill.icon className="h-3.5 w-3.5" strokeWidth={1.5} />{t(`pages.data.${pill.tKey}`)}
                 </span>
               ))}
             </div>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">with dot indicators</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.data.withDotIndicators")}</p>
             <div className="flex flex-wrap gap-2">
               {DOT_PILLS.map((pill) => (
                 <span key={pill.label} className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${pill.className}`}>
-                  <span className={`h-2 w-2 rounded-full ${pill.dot}`} />{pill.label}
+                  <span className={`h-2 w-2 rounded-full ${pill.dot}`} />{t(`pages.data.${pill.tKey}`)}
                 </span>
               ))}
             </div>
@@ -289,7 +292,7 @@ export default function DataPage() {
       </Section>
 
       {/* Timeline */}
-      <Section title="Timeline / Activity Feed" icon={Clock}>
+      <Section title={t("pages.data.timelineFeed")} icon={Clock}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
           <div className="space-y-0">
             {TIMELINE.map((item, i) => (
@@ -312,7 +315,7 @@ export default function DataPage() {
       </Section>
 
       {/* List Items */}
-      <Section title="List Items" icon={Users}>
+      <Section title={t("pages.data.listItems")} icon={Users}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card divide-y divide-border">
           {PEOPLE.slice(0, 4).map((person) => (
             <div key={person.seed} className="flex items-center gap-3 px-4 py-3">
@@ -325,7 +328,7 @@ export default function DataPage() {
                 <p className="text-xs text-muted-foreground truncate">{person.email}</p>
               </div>
               <Badge variant="outline" className="gap-1.5 shrink-0">
-                <span className="h-1.5 w-1.5 rounded-full bg-success" /> Active
+                <span className="h-1.5 w-1.5 rounded-full bg-success" /> {t("pages.data.active")}
               </Badge>
             </div>
           ))}
@@ -333,14 +336,14 @@ export default function DataPage() {
       </Section>
 
       {/* Key-Value Display */}
-      <Section title="Key-Value Display" icon={Eye}>
+      <Section title={t("pages.data.keyValueDisplay")} icon={Eye}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
           <div className="grid grid-cols-1 gap-0 sm:grid-cols-2">
             {[
-              { key: "Status", value: "Active" },
-              { key: "Plan", value: "Enterprise" },
-              { key: "Created", value: "Jan 15, 2026" },
-              { key: "Last login", value: "2 hours ago" },
+              { key: t("common.status"), value: t("pages.data.active") },
+              { key: t("pages.data.plan"), value: t("pages.data.enterprise") },
+              { key: t("pages.data.created"), value: "Jan 15, 2026" },
+              { key: t("pages.data.lastLogin"), value: t("pages.data.hoursAgo") },
             ].map((item, i) => (
               <div key={item.key}>
                 <div className="flex items-center justify-between py-2.5 px-1">

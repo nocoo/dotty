@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   User, Bell, Shield, Palette,
   Camera, Globe, CreditCard, Smartphone,
@@ -10,51 +11,44 @@ import { Separator } from "@/components/ui/separator";
 
 // ── View Model ──
 
-const SECTIONS = [
-  { id: "profile", label: "Profile", icon: User },
-  { id: "notifications", label: "Notifications", icon: Bell },
-  { id: "security", label: "Security", icon: Shield },
-  { id: "appearance", label: "Appearance", icon: Palette },
-] as const;
-
-type SectionId = (typeof SECTIONS)[number]["id"];
+type SectionId = "profile" | "notifications" | "security" | "appearance";
 
 interface NotifToggleVM {
   id: string;
-  label: string;
-  description: string;
+  labelKey: string;
+  descKey: string;
   defaultOn: boolean;
 }
 
 const NOTIFICATION_TOGGLES: NotifToggleVM[] = [
   {
     id: "email",
-    label: "Email notifications",
-    description: "Receive transaction alerts via email",
+    labelKey: "pages.settings.emailNotifications",
+    descKey: "pages.settings.emailNotificationsDesc",
     defaultOn: true,
   },
   {
     id: "push",
-    label: "Push notifications",
-    description: "Browser and mobile push alerts",
+    labelKey: "pages.settings.pushNotifications",
+    descKey: "pages.settings.pushNotificationsDesc",
     defaultOn: true,
   },
   {
     id: "marketing",
-    label: "Marketing emails",
-    description: "Tips, product updates, and offers",
+    labelKey: "pages.settings.marketingEmails",
+    descKey: "pages.settings.marketingEmailsDesc",
     defaultOn: false,
   },
   {
     id: "weekly",
-    label: "Weekly digest",
-    description: "Summary of your weekly spending",
+    labelKey: "pages.settings.weeklyDigest",
+    descKey: "pages.settings.weeklyDigestDesc",
     defaultOn: true,
   },
   {
     id: "security",
-    label: "Security alerts",
-    description: "Login attempts and password changes",
+    labelKey: "pages.settings.securityAlerts",
+    descKey: "pages.settings.securityAlertsDesc",
     defaultOn: true,
   },
 ];
@@ -71,17 +65,17 @@ const ACTIVE_SESSIONS: SessionVM[] = [
   { device: "Windows PC — Firefox", location: "New York, US", current: false },
 ];
 
-const THEME_OPTIONS = ["Light", "Dark", "System"] as const;
-
 // ── View — Section components ──
 
 function ProfileSection() {
+  const { t } = useTranslation();
+
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <User className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Profile Information
+          {t("pages.settings.profileInfo")}
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-6">
@@ -93,7 +87,7 @@ function ProfileSection() {
             </div>
             <button
               className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
-              aria-label="Change profile photo"
+              aria-label={t("pages.settings.changePhoto")}
             >
               <Camera
                 className="h-3 w-3"
@@ -117,7 +111,7 @@ function ProfileSection() {
               htmlFor="settings-first-name"
               className="text-sm text-foreground"
             >
-              First name
+              {t("pages.settings.firstName")}
             </Label>
             <Input
               id="settings-first-name"
@@ -130,7 +124,7 @@ function ProfileSection() {
               htmlFor="settings-last-name"
               className="text-sm text-foreground"
             >
-              Last name
+              {t("pages.settings.lastName")}
             </Label>
             <Input
               id="settings-last-name"
@@ -143,7 +137,7 @@ function ProfileSection() {
               htmlFor="settings-email"
               className="text-sm text-foreground"
             >
-              Email
+              {t("common.email")}
             </Label>
             <Input
               id="settings-email"
@@ -157,7 +151,7 @@ function ProfileSection() {
               htmlFor="settings-phone"
               className="text-sm text-foreground"
             >
-              Phone
+              {t("pages.settings.phone")}
             </Label>
             <Input
               id="settings-phone"
@@ -170,7 +164,7 @@ function ProfileSection() {
 
         <div className="space-y-2">
           <Label htmlFor="settings-bio" className="text-sm text-foreground">
-            Bio
+            {t("pages.settings.bio")}
           </Label>
           <textarea
             id="settings-bio"
@@ -182,10 +176,10 @@ function ProfileSection() {
 
         <div className="flex justify-end gap-3">
           <button className="rounded-[var(--radius-widget)] bg-secondary px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Cancel
+            {t("common.cancel")}
           </button>
           <button className="rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
-            Save changes
+            {t("common.save")}
           </button>
         </div>
       </div>
@@ -194,12 +188,14 @@ function ProfileSection() {
 }
 
 function NotificationsSection() {
+  const { t } = useTranslation();
+
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <Bell className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Notification Preferences
+          {t("pages.settings.notificationPrefs")}
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-1">
@@ -211,10 +207,10 @@ function NotificationsSection() {
                   htmlFor={`notif-${item.id}`}
                   className="text-sm text-foreground cursor-pointer"
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </label>
                 <p className="text-xs text-muted-foreground">
-                  {item.description}
+                  {t(item.descKey)}
                 </p>
               </div>
               <Switch
@@ -233,6 +229,8 @@ function NotificationsSection() {
 }
 
 function SecuritySection() {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-4">
       {/* Password */}
@@ -240,7 +238,7 @@ function SecuritySection() {
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Password
+            {t("pages.settings.passwordTitle")}
           </p>
         </div>
         <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
@@ -249,7 +247,7 @@ function SecuritySection() {
               htmlFor="settings-current-password"
               className="text-sm text-foreground"
             >
-              Current password
+              {t("pages.settings.currentPassword")}
             </Label>
             <Input
               id="settings-current-password"
@@ -264,7 +262,7 @@ function SecuritySection() {
                 htmlFor="settings-new-password"
                 className="text-sm text-foreground"
               >
-                New password
+                {t("pages.settings.newPassword")}
               </Label>
               <Input
                 id="settings-new-password"
@@ -278,7 +276,7 @@ function SecuritySection() {
                 htmlFor="settings-confirm-password"
                 className="text-sm text-foreground"
               >
-                Confirm new password
+                {t("pages.settings.confirmPassword")}
               </Label>
               <Input
                 id="settings-confirm-password"
@@ -290,7 +288,7 @@ function SecuritySection() {
           </div>
           <div className="flex justify-end">
             <button className="rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
-              Update password
+              {t("pages.settings.updatePassword")}
             </button>
           </div>
         </div>
@@ -301,7 +299,7 @@ function SecuritySection() {
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Smartphone className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Two-Factor Authentication
+            {t("pages.settings.twoFactor")}
           </p>
         </div>
         <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
@@ -311,10 +309,10 @@ function SecuritySection() {
                 htmlFor="2fa-authenticator"
                 className="text-sm text-foreground cursor-pointer"
               >
-                Authenticator app
+                {t("pages.settings.authenticatorApp")}
               </label>
               <p className="text-xs text-muted-foreground">
-                Add an extra layer of security with TOTP
+                {t("pages.settings.authenticatorDesc")}
               </p>
             </div>
             <Switch id="2fa-authenticator" />
@@ -326,10 +324,10 @@ function SecuritySection() {
                 htmlFor="2fa-sms"
                 className="text-sm text-foreground cursor-pointer"
               >
-                SMS verification
+                {t("pages.settings.smsVerification")}
               </label>
               <p className="text-xs text-muted-foreground">
-                Receive codes via text message
+                {t("pages.settings.smsDesc")}
               </p>
             </div>
             <Switch id="2fa-sms" defaultChecked />
@@ -342,7 +340,7 @@ function SecuritySection() {
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Globe className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Active Sessions
+            {t("pages.settings.activeSessions")}
           </p>
         </div>
         <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
@@ -356,7 +354,7 @@ function SecuritySection() {
                   {session.device}
                   {session.current && (
                     <span className="ml-2 rounded-[var(--radius-sm)] bg-success/10 px-1.5 py-0.5 text-xs font-medium text-success">
-                      Current
+                      {t("common.currentBadge")}
                     </span>
                   )}
                 </p>
@@ -366,7 +364,7 @@ function SecuritySection() {
               </div>
               {!session.current && (
                 <button className="text-xs text-destructive hover:text-destructive/80 transition-colors">
-                  Revoke
+                  {t("common.revoke")}
                 </button>
               )}
             </div>
@@ -378,6 +376,14 @@ function SecuritySection() {
 }
 
 function AppearanceSection() {
+  const { t } = useTranslation();
+
+  const THEME_OPTIONS = [
+    { key: "light", label: t("pages.settings.light") },
+    { key: "dark", label: t("pages.settings.dark") },
+    { key: "system", label: t("pages.settings.systemTheme") },
+  ] as const;
+
   return (
     <div className="space-y-4">
       {/* Theme */}
@@ -385,36 +391,36 @@ function AppearanceSection() {
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <Palette className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Theme
+            {t("pages.settings.themeTitle")}
           </p>
         </div>
         <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
           <div
             className="grid grid-cols-3 gap-3"
             role="radiogroup"
-            aria-label="Theme"
+            aria-label={t("pages.settings.themeTitle")}
           >
             {THEME_OPTIONS.map((theme) => (
               <button
-                key={theme}
+                key={theme.key}
                 role="radio"
-                aria-checked={theme === "Dark"}
+                aria-checked={theme.key === "dark"}
                 className={`flex flex-col items-center gap-2 rounded-[var(--radius-widget)] border p-4 transition-colors ${
-                  theme === "Dark"
+                  theme.key === "dark"
                     ? "border-primary bg-accent"
                     : "border-border hover:border-primary/50 hover:bg-accent/50"
                 }`}
               >
                 <div
                   className={`h-10 w-full rounded-lg ${
-                    theme === "Light"
+                    theme.key === "light"
                       ? "bg-white border border-gray-200"
-                      : theme === "Dark"
+                      : theme.key === "dark"
                         ? "bg-[#171717]"
                         : "bg-gradient-to-r from-white to-[#171717]"
                   }`}
                 />
-                <span className="text-xs text-foreground">{theme}</span>
+                <span className="text-xs text-foreground">{theme.label}</span>
               </button>
             ))}
           </div>
@@ -426,7 +432,7 @@ function AppearanceSection() {
         <div className="flex items-center gap-2 px-5 pt-4 pb-3">
           <CreditCard className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Preferences
+            {t("pages.settings.preferences")}
           </p>
         </div>
         <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-4">
@@ -436,10 +442,10 @@ function AppearanceSection() {
                 htmlFor="settings-currency"
                 className="text-sm text-foreground cursor-pointer"
               >
-                Currency
+                {t("pages.settings.currency")}
               </label>
               <p className="text-xs text-muted-foreground">
-                Default display currency
+                {t("pages.settings.currencyDesc")}
               </p>
             </div>
             <select
@@ -459,20 +465,20 @@ function AppearanceSection() {
                 htmlFor="settings-language"
                 className="text-sm text-foreground cursor-pointer"
               >
-                Language
+                {t("pages.settings.interfaceLanguage")}
               </label>
               <p className="text-xs text-muted-foreground">
-                Interface language
+                {t("pages.settings.interfaceLanguageDesc")}
               </p>
             </div>
             <select
               id="settings-language"
               className="rounded-[var(--radius-widget)] border border-border bg-secondary px-3 py-1.5 text-sm text-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
             >
-              <option>English</option>
-              <option>Spanish</option>
-              <option>French</option>
-              <option>German</option>
+              <option>{t("pages.settings.english")}</option>
+              <option>{t("pages.settings.spanish")}</option>
+              <option>{t("pages.settings.french")}</option>
+              <option>{t("pages.settings.german")}</option>
             </select>
           </div>
           <Separator className="bg-border" />
@@ -482,10 +488,10 @@ function AppearanceSection() {
                 htmlFor="settings-compact-mode"
                 className="text-sm text-foreground cursor-pointer"
               >
-                Compact mode
+                {t("pages.settings.compactMode")}
               </label>
               <p className="text-xs text-muted-foreground">
-                Reduce spacing and card sizes
+                {t("pages.settings.compactModeDesc")}
               </p>
             </div>
             <Switch id="settings-compact-mode" />
@@ -499,7 +505,15 @@ function AppearanceSection() {
 // ── Page ──
 
 export default function SettingsPage() {
+  const { t } = useTranslation();
   const [activeSection, setActiveSection] = useState<SectionId>("profile");
+
+  const SECTIONS = [
+    { id: "profile" as const, label: t("pages.settings.profile"), icon: User },
+    { id: "notifications" as const, label: t("pages.settings.notifications"), icon: Bell },
+    { id: "security" as const, label: t("pages.settings.security"), icon: Shield },
+    { id: "appearance" as const, label: t("pages.settings.appearance"), icon: Palette },
+  ];
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">

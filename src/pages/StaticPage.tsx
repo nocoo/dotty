@@ -1,6 +1,9 @@
 import { ArrowLeft } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function StaticPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-background p-2 md:p-4 flex items-center justify-center">
       <div className="mx-auto w-full max-w-2xl h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-2">
@@ -15,11 +18,11 @@ export default function StaticPage() {
                 <ArrowLeft className="h-5 w-5" strokeWidth={1.5} />
               </a>
               <h1 className="text-2xl font-semibold text-foreground">
-                Terms of Service
+                {t("pages.static.termsOfService")}
               </h1>
             </div>
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Last updated: January 1, 2026
+              {t("pages.static.lastUpdated")}
             </p>
           </div>
 
@@ -27,73 +30,65 @@ export default function StaticPage() {
           <div className="space-y-6 text-sm">
             <section>
               <h3 className="font-semibold mb-2 text-base">
-                1. Acceptance of Terms
+                {t("pages.static.section1Title")}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                By accessing or using this service, you acknowledge that you have
-                read, understood, and agree to be bound by these Terms of Service.
-                If you do not agree to these terms, please do not use this service.
+                {t("pages.static.section1Body")}
               </p>
             </section>
 
             <section>
               <h3 className="font-semibold mb-2 text-base">
-                2. Service Description
+                {t("pages.static.section2Title")}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-2">
-                This application provides the following features:
+                {t("pages.static.section2Body")}
               </p>
               <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-2">
-                <li>Feature overview and dashboard analytics</li>
-                <li>Account management and tracking</li>
-                <li>Data visualization and reporting</li>
-                <li>Import and export capabilities</li>
+                <li>{t("pages.static.section2Item1")}</li>
+                <li>{t("pages.static.section2Item2")}</li>
+                <li>{t("pages.static.section2Item3")}</li>
+                <li>{t("pages.static.section2Item4")}</li>
               </ul>
             </section>
 
             <section>
               <h3 className="font-semibold mb-2 text-base">
-                3. User Responsibilities
+                {t("pages.static.section3Title")}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-2">
-                When using this service, you agree to:
+                {t("pages.static.section3Body")}
               </p>
               <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-2">
-                <li>Provide accurate and truthful registration information</li>
-                <li>Safeguard your account credentials</li>
-                <li>Be responsible for all activity under your account</li>
-                <li>Not use the service for any unlawful purpose</li>
+                <li>{t("pages.static.section3Item1")}</li>
+                <li>{t("pages.static.section3Item2")}</li>
+                <li>{t("pages.static.section3Item3")}</li>
+                <li>{t("pages.static.section3Item4")}</li>
               </ul>
             </section>
 
             <section>
               <h3 className="font-semibold mb-2 text-base">
-                4. Limitation of Liability
+                {t("pages.static.section4Title")}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                To the maximum extent permitted by law, the service shall not be
-                liable for any direct, indirect, incidental, special, or
-                consequential damages arising from the use or inability to use this
-                service.
+                {t("pages.static.section4Body")}
               </p>
             </section>
 
             <section>
               <h3 className="font-semibold mb-2 text-base">
-                5. Modifications
+                {t("pages.static.section5Title")}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                We reserve the right to modify or discontinue the service at any
-                time without prior notice. We shall not be liable to any user or
-                third party for any modification or suspension of the service.
+                {t("pages.static.section5Body")}
               </p>
             </section>
 
             {/* Footer divider */}
             <div className="pt-4 border-t">
               <p className="text-muted-foreground text-xs">
-                By using this service, you acknowledge that you have read,
-                understood, and agree to comply with these Terms of Service.
+                {t("pages.static.footerText")}
               </p>
             </div>
           </div>
