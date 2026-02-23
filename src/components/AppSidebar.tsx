@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   LayoutDashboard, Wallet,
   PiggyBank, TrendingUp,
@@ -26,7 +27,7 @@ import {
 // ── Navigation data model ──
 
 interface NavItem {
-  title: string;
+  titleKey: string;
   icon: React.ElementType;
   path: string;
   badge?: number;
@@ -34,63 +35,63 @@ interface NavItem {
 }
 
 interface NavGroup {
-  label: string;
+  labelKey: string;
   items: NavItem[];
   defaultOpen?: boolean;
 }
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    label: "Blocks",
+    labelKey: "nav.blocks",
     defaultOpen: true,
     items: [
-      { title: "Dashboard", icon: LayoutDashboard, path: "/" },
-      { title: "Components", icon: RectangleEllipsis, path: "/components" },
-      { title: "Health", icon: HeartPulse, path: "/health" },
-      { title: "Accounts", icon: Wallet, path: "/accounts" },
-      { title: "Progress Tracking", icon: PiggyBank, path: "/progress-tracking" },
-      { title: "Flow Comparison", icon: TrendingUp, path: "/flow-comparison" },
-      { title: "Portfolio", icon: LineChart, path: "/portfolio" },
-      { title: "Interactions", icon: Layers, path: "/interactions", badge: 3 },
+      { titleKey: "nav.dashboard", icon: LayoutDashboard, path: "/" },
+      { titleKey: "nav.components", icon: RectangleEllipsis, path: "/components" },
+      { titleKey: "nav.health", icon: HeartPulse, path: "/health" },
+      { titleKey: "nav.accounts", icon: Wallet, path: "/accounts" },
+      { titleKey: "nav.progressTracking", icon: PiggyBank, path: "/progress-tracking" },
+      { titleKey: "nav.flowComparison", icon: TrendingUp, path: "/flow-comparison" },
+      { titleKey: "nav.portfolio", icon: LineChart, path: "/portfolio" },
+      { titleKey: "nav.interactions", icon: Layers, path: "/interactions", badge: 3 },
     ],
   },
   {
-    label: "Scenarios",
+    labelKey: "nav.scenarios",
     defaultOpen: true,
     items: [
-      { title: "Wearable Health", icon: HeartPulse, path: "/wearable" },
-      { title: "Banking & Wealth", icon: Wallet, path: "/banking" },
-      { title: "Network Ops", icon: LineChart, path: "/network" },
+      { titleKey: "nav.wearableHealth", icon: HeartPulse, path: "/wearable" },
+      { titleKey: "nav.bankingWealth", icon: Wallet, path: "/banking" },
+      { titleKey: "nav.networkOps", icon: LineChart, path: "/network" },
     ],
   },
   {
-    label: "Controls",
+    labelKey: "nav.controls",
     defaultOpen: true,
     items: [
-      { title: "Interactive", icon: MousePointerClick, path: "/interactive" },
-      { title: "Data", icon: Eye, path: "/data" },
-      { title: "Forms", icon: FormInput, path: "/forms" },
-      { title: "Navigation", icon: Navigation, path: "/navigation" },
+      { titleKey: "nav.interactive", icon: MousePointerClick, path: "/interactive" },
+      { titleKey: "nav.data", icon: Eye, path: "/data" },
+      { titleKey: "nav.forms", icon: FormInput, path: "/forms" },
+      { titleKey: "nav.navigation", icon: Navigation, path: "/navigation" },
     ],
   },
   {
-    label: "Pages",
+    labelKey: "nav.pages",
     defaultOpen: true,
     items: [
-      { title: "Login", icon: LogIn, path: "/login", external: true },
-      { title: "Badge Login", icon: IdCard, path: "/badge-login", external: true },
-      { title: "Static Page", icon: FileText, path: "/static-page", external: true },
-      { title: "Loading", icon: Loader, path: "/loading", external: true },
-      { title: "404 Page", icon: FileQuestion, path: "/404", external: true },
+      { titleKey: "nav.login", icon: LogIn, path: "/login", external: true },
+      { titleKey: "nav.badgeLogin", icon: IdCard, path: "/badge-login", external: true },
+      { titleKey: "nav.staticPage", icon: FileText, path: "/static-page", external: true },
+      { titleKey: "nav.loading", icon: Loader, path: "/loading", external: true },
+      { titleKey: "nav.notFoundPage", icon: FileQuestion, path: "/404", external: true },
     ],
   },
   {
-    label: "System",
+    labelKey: "nav.system",
     defaultOpen: true,
     items: [
-      { title: "Layout", icon: LayoutGrid, path: "/layout" },
-      { title: "Color Palette", icon: Palette, path: "/palette" },
-      { title: "Settings", icon: Settings, path: "/settings" },
+      { titleKey: "nav.layout", icon: LayoutGrid, path: "/layout" },
+      { titleKey: "nav.colorPalette", icon: Palette, path: "/palette" },
+      { titleKey: "nav.settings", icon: Settings, path: "/settings" },
     ],
   },
 ];
@@ -102,12 +103,13 @@ const ALL_NAV_ITEMS = NAV_GROUPS.flatMap((g) => g.items);
 function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath: string }) {
   const [open, setOpen] = useState(group.defaultOpen ?? true);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <div className="px-3 mt-2">
          <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2.5">
-          <span className="text-sm font-normal text-muted-foreground">{group.label}</span>
+          <span className="text-sm font-normal text-muted-foreground">{t(group.labelKey)}</span>
           <span className="flex h-7 w-7 shrink-0 items-center justify-center">
             <ChevronUp
               className={cn(
@@ -144,7 +146,7 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
               )}
             >
               <item.icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-              <span className="flex-1 text-left">{item.title}</span>
+              <span className="flex-1 text-left">{t(item.titleKey)}</span>
               {item.external && (
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center">
                   <ExternalLink className="h-3 w-3 text-muted-foreground" strokeWidth={1.5} />
@@ -168,6 +170,7 @@ function NavGroupSection({ group, currentPath }: { group: NavGroup; currentPath:
 
 function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: string }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
@@ -193,7 +196,7 @@ function CollapsedNavItem({ item, currentPath }: { item: NavItem; currentPath: s
         </button>
       </TooltipTrigger>
       <TooltipContent side="right" sideOffset={8}>
-        {item.title}
+        {t(item.titleKey)}
       </TooltipContent>
     </Tooltip>
   );
@@ -209,6 +212,7 @@ interface AppSidebarProps {
 export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchOpen, setSearchOpen] = useState(false);
 
   // ⌘K / Ctrl+K shortcut
@@ -247,7 +251,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
           <button
             onClick={onToggle}
-            aria-label="Expand sidebar"
+            aria-label={t("common.expandSidebar")}
             className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-1"
           >
             <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
@@ -257,14 +261,14 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
             <TooltipTrigger asChild>
               <button
                 onClick={() => setSearchOpen(true)}
-                aria-label="Search (⌘K)"
+                aria-label={`${t("common.search")} (⌘K)`}
                 className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors mb-2"
               >
                 <Search className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={8}>
-              Search (⌘K)
+              {t("common.search")} (⌘K)
             </TooltipContent>
           </Tooltip>
 
@@ -296,10 +300,13 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               <div className="flex items-center gap-3">
                 <DottyLogo className="h-5 w-5 text-primary" />
                 <span className="text-lg md:text-xl font-semibold text-foreground">dotty.</span>
+                <span className="rounded-md bg-secondary px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground leading-none">
+                  v{__APP_VERSION__}
+                </span>
               </div>
               <button
                 onClick={onToggle}
-                aria-label="Collapse sidebar"
+                aria-label={t("common.collapseSidebar")}
                 className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground transition-colors"
               >
                 <PanelLeft className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
@@ -313,7 +320,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
               className="flex w-full items-center gap-3 rounded-lg bg-secondary px-3 py-1.5 transition-colors hover:bg-accent cursor-pointer"
             >
               <Search className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-              <span className="flex-1 text-left text-sm text-muted-foreground">Search</span>
+              <span className="flex-1 text-left text-sm text-muted-foreground">{t("common.search")}</span>
               <span className="flex h-7 w-7 shrink-0 items-center justify-center">
                 <kbd className="pointer-events-none hidden rounded-md border border-border bg-card px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline-block">
                   ⌘K
@@ -324,7 +331,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
           <nav className="flex-1 overflow-y-auto pt-1">
             {NAV_GROUPS.map((group) => (
-              <NavGroupSection key={group.label} group={group} currentPath={pathname} />
+              <NavGroupSection key={group.labelKey} group={group} currentPath={pathname} />
             ))}
           </nav>
 
@@ -338,7 +345,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
                 <p className="text-sm font-medium text-foreground truncate">Zheng Li</p>
                 <p className="text-xs text-muted-foreground truncate">zhengli@example.com</p>
               </div>
-              <button aria-label="Log out" className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
+              <button aria-label={t("common.logOut")} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors shrink-0">
                 <LogOut className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               </button>
             </div>
@@ -348,20 +355,20 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
       {/* Search command palette */}
       <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
-        <CommandInput placeholder="Search pages..." />
+        <CommandInput placeholder={t("common.searchPages")} />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{t("common.noResults")}</CommandEmpty>
           {NAV_GROUPS.map((group) => (
-            <CommandGroup key={group.label} heading={group.label}>
+            <CommandGroup key={group.labelKey} heading={t(group.labelKey)}>
               {group.items.map((item) => (
                 <CommandItem
                   key={item.path}
-                  value={item.title}
+                  value={t(item.titleKey)}
                   onSelect={() => handleSelect(item.path)}
                   className="gap-3 cursor-pointer"
                 >
                   <item.icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-                  <span>{item.title}</span>
+                  <span>{t(item.titleKey)}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
