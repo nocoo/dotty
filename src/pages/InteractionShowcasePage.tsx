@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
   Bell, MessageSquare, AlertTriangle, Info, CheckCircle2,
@@ -58,6 +59,7 @@ function Section({
 // ── Toast section ──
 
 function ToastSection() {
+  const { t } = useTranslation();
   const { toasts } = useInteractionShowcaseViewModel();
 
   const fireToast = (variant: ToastVariant, title: string, description: string) => {
@@ -80,9 +82,9 @@ function ToastSection() {
   };
 
   return (
-    <Section title="Toast Notifications" icon={Bell}>
+    <Section title={t("pages.interactionShowcase.toastNotifications")} icon={Bell}>
       <p className="text-xs text-muted-foreground mb-4">
-        Click any card to trigger a live toast notification via Sonner.
+        {t("pages.interactionShowcase.toastDesc")}
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {toasts.map((t) => {
@@ -115,20 +117,26 @@ function ToastSection() {
 // ── Dialog section ──
 
 function DialogSection() {
+  const { t } = useTranslation();
   const { dialogs, activeDialog, openDialog, closeDialog, getDialogById } =
     useInteractionShowcaseViewModel();
 
   const current = activeDialog ? getDialogById(activeDialog) : undefined;
 
+  const styleLabels: Record<string, string> = {
+    info: t("pages.interactionShowcase.informational"),
+    form: t("pages.interactionShowcase.formInput"),
+    confirm: t("pages.interactive.destructive"),
+  };
+
   return (
-    <Section title="Dialogs" icon={MessageSquare}>
+    <Section title={t("pages.interactionShowcase.dialogs")} icon={MessageSquare}>
       <p className="text-xs text-muted-foreground mb-4">
-        Click any card to open a dialog. Three styles are demonstrated: informational, form, and destructive confirmation.
+        {t("pages.interactionShowcase.dialogDesc")}
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {dialogs.map((d) => {
-          const styleLabel =
-            d.style === "info" ? "Informational" : d.style === "form" ? "Form Input" : "Destructive";
+          const styleLabel = styleLabels[d.style] ?? d.style;
           return (
             <button
               key={d.id}
@@ -156,7 +164,7 @@ function DialogSection() {
             <DialogFooter>
               <DialogClose asChild>
                 <button className="rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
-                  Got it
+                  {t("pages.interactionShowcase.gotIt")}
                 </button>
               </DialogClose>
             </DialogFooter>
@@ -175,17 +183,17 @@ function DialogSection() {
             <DialogFooter className="gap-2 sm:gap-0">
               <DialogClose asChild>
                 <button className="rounded-[var(--radius-widget)] bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-                  Cancel
+                  {t("common.cancel")}
                 </button>
               </DialogClose>
               <button
                 onClick={() => {
                   closeDialog();
-                  toast.error("Account deleted", { description: "This was a demo — nothing was actually deleted." });
+                  toast.error(t("pages.interactionShowcase.accountDeleted"), { description: t("pages.interactionShowcase.accountDeletedDesc") });
                 }}
                 className="rounded-[var(--radius-widget)] bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground transition-colors hover:bg-destructive/90"
               >
-                Delete
+                {t("common.delete")}
               </button>
             </DialogFooter>
           </DialogContent>
@@ -204,13 +212,14 @@ function FormDialogContent({
   title: string;
   description: string;
 }) {
+  const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     onClose();
-    toast.success("Feedback sent", { description: "Thank you for your feedback!" });
+    toast.success(t("pages.interactionShowcase.feedbackSent"), { description: t("pages.interactionShowcase.feedbackSentDesc") });
   };
 
   return (
@@ -222,19 +231,19 @@ function FormDialogContent({
       {!submitted && (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="feedback-name" className="text-sm text-foreground">Your name</Label>
+            <Label htmlFor="feedback-name" className="text-sm text-foreground">{t("pages.interactionShowcase.yourName")}</Label>
             <Input
               id="feedback-name"
-              placeholder="Alex Johnson"
+              placeholder={t("pages.interactionShowcase.yourNamePlaceholder")}
               className="rounded-[var(--radius-widget)] border-border bg-card text-sm focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="feedback-message" className="text-sm text-foreground">Message</Label>
+            <Label htmlFor="feedback-message" className="text-sm text-foreground">{t("pages.interactionShowcase.message")}</Label>
             <textarea
               id="feedback-message"
               rows={3}
-              placeholder="Tell us what you think..."
+              placeholder={t("pages.interactionShowcase.messagePlaceholder")}
               className="w-full rounded-[var(--radius-widget)] border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
             />
           </div>
@@ -244,14 +253,14 @@ function FormDialogContent({
                 type="button"
                 className="rounded-[var(--radius-widget)] bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                Cancel
+                {t("common.cancel")}
               </button>
             </DialogClose>
             <button
               type="submit"
               className="rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              Submit
+              {t("common.submit")}
             </button>
           </DialogFooter>
         </form>
@@ -263,18 +272,19 @@ function FormDialogContent({
 // ── Page ──
 
 export default function InteractionShowcasePage() {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-4">
       {/* Page intro */}
       <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Interactions</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("nav.interactions")}</p>
         <div className="flex items-center gap-2 mb-1">
           <Layers className="h-5 w-5 text-foreground" strokeWidth={1.5} />
-          <h1 className="text-lg font-semibold text-foreground font-display">Interactive UI pattern showcase</h1>
+          <h1 className="text-lg font-semibold text-foreground font-display">{t("pages.interactionShowcase.overview")}</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Interactive UI patterns used across the template. Each section demonstrates a different
-          feedback mechanism — click the cards to see them in action.
+          {t("pages.interactionShowcase.overviewDesc")}
         </p>
       </div>
 

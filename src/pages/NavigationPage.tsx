@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Navigation, ChevronRight, Home, FolderOpen, FileText,
   ChevronsLeft, ChevronLeft, ChevronRight as ChevronRightIcon, ChevronsRight,
@@ -9,31 +10,22 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 // ── View Model ──
 
-const BREADCRUMB_SIMPLE = [
-  { label: "Home" },
-  { label: "Products" },
-  { label: "Electronics" },
-  { label: "Headphones" },
+const BREADCRUMB_SIMPLE_KEYS = ["home", "products", "electronics", "headphones"];
+
+const BREADCRUMB_ICONS_KEYS = [
+  { key: "home", icon: Home },
+  { key: "documents", icon: FolderOpen },
+  { key: "reports", icon: FolderOpen },
+  { key: "q4Summary", icon: FileText },
 ];
 
-const BREADCRUMB_ICONS = [
-  { label: "Home", icon: Home },
-  { label: "Documents", icon: FolderOpen },
-  { label: "Reports", icon: FolderOpen },
-  { label: "Q4 Summary.pdf", icon: FileText },
-];
+const BREADCRUMB_CARD_KEYS = ["dashboard", "settings", "notifications"];
 
-const BREADCRUMB_CARD = [
-  { label: "Dashboard" },
-  { label: "Settings" },
-  { label: "Notifications" },
-];
+const STEPPER_KEYS = ["account", "profile", "preferences", "review", "complete"];
 
-const STEPPER_STEPS = ["Account", "Profile", "Preferences", "Review", "Complete"];
-
-const STANDARD_TABS = ["Overview", "Analytics", "Reports", "Settings"];
-const UNDERLINE_TABS = ["All", "Active", "Archived", "Drafts"];
-const PILL_TABS = ["Day", "Week", "Month", "Year"];
+const STANDARD_TAB_KEYS = ["overview", "analytics", "reports", "settings"];
+const UNDERLINE_TAB_KEYS = ["all", "activeTab", "archived", "drafts"];
+const PILL_TAB_KEYS = ["day", "week", "month", "year"];
 
 // ── View Helpers ──
 
@@ -148,9 +140,18 @@ function Stepper({ steps, current }: { steps: string[]; current: number }) {
 // ── Page ──
 
 export default function NavigationPage() {
+  const { t } = useTranslation();
   const [page1, setPage1] = useState(1);
   const [page2, setPage2] = useState(5);
   const [stepperIndex, setStepperIndex] = useState(1);
+
+  const breadcrumbSimple = BREADCRUMB_SIMPLE_KEYS.map((key) => ({ label: t(`pages.navigation.${key}`) }));
+  const breadcrumbIcons = BREADCRUMB_ICONS_KEYS.map((item) => ({ label: t(`pages.navigation.${item.key}`), icon: item.icon }));
+  const breadcrumbCard = BREADCRUMB_CARD_KEYS.map((key) => ({ label: t(`pages.navigation.${key}`) }));
+  const stepperSteps = STEPPER_KEYS.map((key) => t(`pages.navigation.${key}`));
+  const standardTabs = STANDARD_TAB_KEYS.map((key) => ({ key, label: t(`pages.navigation.${key}`) }));
+  const underlineTabs = UNDERLINE_TAB_KEYS.map((key) => ({ key, label: t(`pages.navigation.${key}`) }));
+  const pillTabs = PILL_TAB_KEYS.map((key) => ({ key, label: t(`pages.navigation.${key}`) }));
 
   return (
     <div className="space-y-4">
@@ -160,57 +161,57 @@ export default function NavigationPage() {
           <div className="flex items-center gap-2">
             <Navigation className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
             <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Navigation
+              {t("pages.navigation.eyebrow")}
             </span>
           </div>
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground font-display tracking-tight">
-            Navigation and wayfinding
+            {t("pages.navigation.title")}
           </h2>
           <p className="text-sm text-muted-foreground max-w-2xl">
-            Breadcrumbs, pagination, steppers, and tab patterns for guiding users through hierarchies and multi-step flows.
+            {t("pages.navigation.description")}
           </p>
         </div>
       </div>
 
       {/* Breadcrumbs */}
-      <Section title="Breadcrumbs" icon={ChevronRight}>
+      <Section title={t("pages.navigation.breadcrumbs")} icon={ChevronRight}>
         <div className="space-y-4">
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">simple</p>
-            <Breadcrumb items={BREADCRUMB_SIMPLE} />
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.simple")}</p>
+            <Breadcrumb items={breadcrumbSimple} />
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">with icons</p>
-            <Breadcrumb items={BREADCRUMB_ICONS} />
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.withIcons")}</p>
+            <Breadcrumb items={breadcrumbIcons} />
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">inside a card</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.insideCard")}</p>
             <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
-              <Breadcrumb items={BREADCRUMB_CARD} />
-              <p className="text-sm text-foreground font-medium mt-3">Notification Preferences</p>
-              <p className="text-xs text-muted-foreground mt-1">Choose how you want to be notified about updates.</p>
+              <Breadcrumb items={breadcrumbCard} />
+              <p className="text-sm text-foreground font-medium mt-3">{t("pages.navigation.notificationPrefs")}</p>
+              <p className="text-xs text-muted-foreground mt-1">{t("pages.navigation.notificationPrefsDesc")}</p>
             </div>
           </div>
         </div>
       </Section>
 
       {/* Pagination */}
-      <Section title="Pagination" icon={ChevronsRight}>
+      <Section title={t("pages.navigation.pagination")} icon={ChevronsRight}>
         <div className="space-y-6">
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">short (5 pages)</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.short5Pages")}</p>
             <Pagination currentPage={page1} totalPages={5} onPageChange={setPage1} />
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">long (20 pages) with ellipsis</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.long20Pages")}</p>
             <Pagination currentPage={page2} totalPages={20} onPageChange={setPage2} />
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">with context</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.withContext")}</p>
             <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
               <div className="flex items-center justify-between">
                 <p className="text-xs text-muted-foreground">
-                  Showing <span className="font-medium text-foreground font-mono-num">41-50</span> of <span className="font-medium text-foreground font-mono-num">200</span> results
+                  {t("common.showing")} <span className="font-medium text-foreground font-mono-num">41-50</span> {t("common.of")} <span className="font-medium text-foreground font-mono-num">200</span> {t("common.results")}
                 </p>
                 <Pagination currentPage={page2} totalPages={20} onPageChange={setPage2} />
               </div>
@@ -220,30 +221,30 @@ export default function NavigationPage() {
       </Section>
 
       {/* Stepper / Wizard */}
-      <Section title="Stepper / Wizard" icon={Circle}>
+      <Section title={t("pages.navigation.stepperWizard")} icon={Circle}>
         <div className="space-y-6">
           <div>
-            <p className="text-xs text-muted-foreground mb-3 font-mono">horizontal stepper</p>
-            <Stepper steps={STEPPER_STEPS} current={stepperIndex} />
+            <p className="text-xs text-muted-foreground mb-3 font-mono">{t("pages.navigation.horizontalStepper")}</p>
+            <Stepper steps={stepperSteps} current={stepperIndex} />
             <div className="flex items-center gap-2 mt-4">
               <Button variant="outline" size="sm" className="rounded-[var(--radius-widget)]" disabled={stepperIndex === 0} onClick={() => setStepperIndex((i) => i - 1)}>
-                Back
+                {t("common.back")}
               </Button>
-              <Button size="sm" className="rounded-[var(--radius-widget)]" disabled={stepperIndex === STEPPER_STEPS.length - 1} onClick={() => setStepperIndex((i) => i + 1)}>
-                {stepperIndex === STEPPER_STEPS.length - 2 ? "Finish" : "Next"}
+              <Button size="sm" className="rounded-[var(--radius-widget)]" disabled={stepperIndex === STEPPER_KEYS.length - 1} onClick={() => setStepperIndex((i) => i + 1)}>
+                {stepperIndex === STEPPER_KEYS.length - 2 ? t("common.finish") : t("common.next")}
               </Button>
               <Button variant="ghost" size="sm" className="ml-auto rounded-[var(--radius-widget)]" onClick={() => setStepperIndex(0)}>
-                Reset
+                {t("common.reset")}
               </Button>
             </div>
           </div>
 
           {/* Vertical stepper */}
           <div>
-            <p className="text-xs text-muted-foreground mb-3 font-mono">vertical stepper</p>
+            <p className="text-xs text-muted-foreground mb-3 font-mono">{t("pages.navigation.verticalStepper")}</p>
             <div className="max-w-sm">
-              {STEPPER_STEPS.map((step, i) => (
-                <div key={step} className="flex gap-3">
+              {STEPPER_KEYS.map((key, i) => (
+                <div key={key} className="flex gap-3">
                   <div className="flex flex-col items-center">
                     <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
                       i < stepperIndex
@@ -254,14 +255,14 @@ export default function NavigationPage() {
                     }`}>
                       {i < stepperIndex ? <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={1.5} /> : <span className="font-mono-num">{i + 1}</span>}
                     </div>
-                    {i < STEPPER_STEPS.length - 1 && (
+                    {i < STEPPER_KEYS.length - 1 && (
                       <div className={`w-px flex-1 min-h-[24px] ${i < stepperIndex ? "bg-primary" : "bg-border"}`} />
                     )}
                   </div>
                   <div className="pb-6">
-                    <p className={`text-sm font-medium ${i <= stepperIndex ? "text-foreground" : "text-muted-foreground"}`}>{step}</p>
+                    <p className={`text-sm font-medium ${i <= stepperIndex ? "text-foreground" : "text-muted-foreground"}`}>{t(`pages.navigation.${key}`)}</p>
                     <p className="text-xs text-muted-foreground">
-                      {i < stepperIndex ? "Completed" : i === stepperIndex ? "In progress" : "Pending"}
+                      {i < stepperIndex ? t("pages.navigation.completed") : i === stepperIndex ? t("pages.navigation.inProgress") : t("pages.navigation.pending")}
                     </p>
                   </div>
                 </div>
@@ -272,23 +273,23 @@ export default function NavigationPage() {
       </Section>
 
       {/* Tab Patterns */}
-      <Section title="Tab Patterns" icon={Navigation}>
+      <Section title={t("pages.navigation.tabPatterns")} icon={Navigation}>
         <div className="space-y-6">
           {/* Standard tabs */}
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">standard tabs</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.standardTabs")}</p>
             <Tabs defaultValue="overview">
               <TabsList>
-                {STANDARD_TABS.map((tab) => (
-                  <TabsTrigger key={tab} value={tab.toLowerCase()}>{tab}</TabsTrigger>
+                {standardTabs.map((tab) => (
+                  <TabsTrigger key={tab.key} value={tab.key}>{tab.label}</TabsTrigger>
                 ))}
               </TabsList>
-              {STANDARD_TABS.map((tab) => (
-                <TabsContent key={tab} value={tab.toLowerCase()}>
+              {standardTabs.map((tab) => (
+                <TabsContent key={tab.key} value={tab.key}>
                   <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4">
-                    <p className="text-sm text-foreground">{tab} content area</p>
-                    {tab === "Overview" && (
-                      <p className="text-xs text-muted-foreground mt-1">Tab panels hold the content for each section.</p>
+                    <p className="text-sm text-foreground">{t(`pages.navigation.${tab.key}Content`)}</p>
+                    {tab.key === "overview" && (
+                      <p className="text-xs text-muted-foreground mt-1">{t("pages.navigation.overviewContentDesc")}</p>
                     )}
                   </div>
                 </TabsContent>
@@ -298,23 +299,23 @@ export default function NavigationPage() {
 
           {/* Underline tabs */}
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">underline style</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.underlineStyle")}</p>
             <Tabs defaultValue="all">
               <TabsList className="bg-transparent border-b border-border rounded-none h-auto p-0 gap-4">
-                {UNDERLINE_TABS.map((tab) => (
+                {underlineTabs.map((tab) => (
                   <TabsTrigger
-                    key={tab}
-                    value={tab.toLowerCase()}
+                    key={tab.key}
+                    value={tab.key}
                     className="rounded-none border-b-2 border-transparent bg-transparent px-1 pb-2 pt-1 data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                   >
-                    {tab}
+                    {tab.label}
                   </TabsTrigger>
                 ))}
               </TabsList>
-              {UNDERLINE_TABS.map((tab) => (
-                <TabsContent key={tab} value={tab.toLowerCase()}>
+              {underlineTabs.map((tab) => (
+                <TabsContent key={tab.key} value={tab.key}>
                   <div className="rounded-[var(--radius-widget)] border border-border bg-card p-4 mt-3">
-                    <p className="text-sm text-foreground">Showing {tab.toLowerCase()} items</p>
+                    <p className="text-sm text-foreground">{t(`pages.navigation.showing${tab.key.charAt(0).toUpperCase() + tab.key.slice(1)}`)}</p>
                   </div>
                 </TabsContent>
               ))}
@@ -323,16 +324,16 @@ export default function NavigationPage() {
 
           {/* Pill tabs */}
           <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">pill style</p>
+            <p className="text-xs text-muted-foreground mb-2 font-mono">{t("pages.navigation.pillStyle")}</p>
             <Tabs defaultValue="day">
               <TabsList className="bg-transparent gap-1 p-0">
-                {PILL_TABS.map((tab) => (
+                {pillTabs.map((tab) => (
                   <TabsTrigger
-                    key={tab}
-                    value={tab.toLowerCase()}
+                    key={tab.key}
+                    value={tab.key}
                     className="rounded-full px-4 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                   >
-                    {tab}
+                    {tab.label}
                   </TabsTrigger>
                 ))}
               </TabsList>

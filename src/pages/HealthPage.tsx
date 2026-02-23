@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Activity, Heart, Moon, Flame, Droplet, Footprints, Sparkles, Brain, ShieldCheck, Zap, MessageSquare, CheckCircle2, AlertTriangle } from "lucide-react";
 import { StatCardWidget, StatGrid } from "@/components/dashboard/StatCardWidget";
 import { DateNavigationWidget } from "@/components/dashboard/DateNavigationWidget";
@@ -9,11 +10,11 @@ import { HeatmapCalendar, heatmapColorScales } from "@/components/dashboard/Heat
 import { TimelineWidget } from "@/components/dashboard/TimelineWidget";
 import { chart } from "@/lib/palette";
 
-const statCards = [
-  { title: "Steps", value: "9,840", subtitle: "Daily target 12k", icon: Footprints, trend: { value: 6.2, label: "vs last week" } },
-  { title: "Calories", value: "2,130", subtitle: "Burned today", icon: Flame, trend: { value: -1.4, label: "vs yesterday" } },
-  { title: "Hydration", value: "2.4L", subtitle: "Goal 3.0L", icon: Droplet, trend: { value: 8.3, label: "vs last week" } },
-  { title: "Sleep", value: "7h 24m", subtitle: "Consistency 82%", icon: Moon, trend: { value: 2.1, label: "vs last week" } },
+const statCardKeys = [
+  { tKey: "steps", subtitleKey: "dailyTarget12k", value: "9,840", icon: Footprints, trendValue: 6.2, trendKey: "vsLastWeek" },
+  { tKey: "calories", subtitleKey: "burnedToday", value: "2,130", icon: Flame, trendValue: -1.4, trendKey: "vsYesterday" },
+  { tKey: "hydration", subtitleKey: "goal3L", value: "2.4L", icon: Droplet, trendValue: 8.3, trendKey: "vsLastWeek" },
+  { tKey: "sleep", subtitleKey: "consistency82", value: "7h 24m", icon: Moon, trendValue: 2.1, trendKey: "vsLastWeek" },
 ];
 
 const weeklySteps = [
@@ -50,12 +51,12 @@ const heartRateSlots = Array.from({ length: 24 }).map((_, i) => ({
   label: `Hour ${i}`,
 }));
 
-const timelineEvents = [
-  { id: "t1", time: "06:30", title: "Wake up", subtitle: "Rested" },
-  { id: "t2", time: "07:10", title: "Hydration", subtitle: "400ml" },
-  { id: "t3", time: "12:20", title: "Walk", subtitle: "3.2km" },
-  { id: "t4", time: "18:10", title: "Workout", subtitle: "Strength 45m" },
-  { id: "t5", time: "21:40", title: "Wind down", subtitle: "Stretching" },
+const timelineEventKeys = [
+  { id: "t1", time: "06:30", titleKey: "wakeUp", subtitleKey: "rested" },
+  { id: "t2", time: "07:10", titleKey: "hydration", subtitle: "400ml" },
+  { id: "t3", time: "12:20", titleKey: "walk", subtitle: "3.2km" },
+  { id: "t4", time: "18:10", titleKey: "workout", subtitleKey: "strength45m" },
+  { id: "t5", time: "21:40", titleKey: "windDown", subtitleKey: "stretching" },
 ];
 
 const heatmapData = Array.from({ length: 365 }).map((_, i) => {
@@ -68,10 +69,10 @@ const heatmapData = Array.from({ length: 365 }).map((_, i) => {
 
 // ── Life.ai data ──
 
-const aiStatCards = [
-  { title: "Insight Score", value: "92", subtitle: "Quality tier A", icon: Brain, trend: { value: 4.2, label: "vs last week" } },
-  { title: "Risk Alerts", value: "3", subtitle: "2 resolved", icon: AlertTriangle, trend: { value: -1.5, label: "vs last week" } },
-  { title: "Automation", value: "68%", subtitle: "Tasks handled", icon: Zap, trend: { value: 6.8, label: "vs last month" } },
+const aiStatCardKeys = [
+  { tKey: "insightScore", subtitleKey: "qualityTierA", value: "92", icon: Brain, trendValue: 4.2, trendKey: "vsLastWeek" },
+  { tKey: "riskAlerts", subtitleKey: "resolved2", value: "3", icon: AlertTriangle, trendValue: -1.5, trendKey: "vsLastWeek" },
+  { tKey: "automation", subtitleKey: "tasksHandled", value: "68%", icon: Zap, trendValue: 6.8, trendKey: "vsLastMonth" },
 ];
 
 const readinessTrend = [
@@ -92,18 +93,18 @@ const recommendationImpact = [
   { label: "Focus", value: 20 },
 ];
 
-const insightTimeline = [
-  { id: "i1", time: "07:30", title: "Sleep debt detected", subtitle: "Recommend early wind down" },
-  { id: "i2", time: "09:10", title: "Hydration dip", subtitle: "Add 400ml before noon" },
-  { id: "i3", time: "13:20", title: "Focus window", subtitle: "Schedule deep work block" },
-  { id: "i4", time: "17:40", title: "Recovery needed", subtitle: "Light movement recommended" },
+const insightTimelineKeys = [
+  { id: "i1", time: "07:30", titleKey: "sleepDebtDetected", subtitleKey: "recommendEarlyWindDown" },
+  { id: "i2", time: "09:10", titleKey: "hydrationDip", subtitleKey: "add400mlBeforeNoon" },
+  { id: "i3", time: "13:20", titleKey: "focusWindow", subtitleKey: "scheduleDeepWorkBlock" },
+  { id: "i4", time: "17:40", titleKey: "recoveryNeeded", subtitleKey: "lightMovementRecommended" },
 ];
 
-const recommendations = [
-  { title: "Shift bedtime by 30 minutes", status: "New" },
-  { title: "Add a 20-minute walk", status: "Active" },
-  { title: "Reduce caffeine after 3 PM", status: "Active" },
-  { title: "Plan protein-forward lunch", status: "Queued" },
+const recommendationKeys = [
+  { titleKey: "shiftBedtime", statusKey: "new" },
+  { titleKey: "addWalk", statusKey: "active" },
+  { titleKey: "reduceCaffeine", statusKey: "active" },
+  { titleKey: "planProteinLunch", statusKey: "queued" },
 ];
 
 function Section({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) {
@@ -119,17 +120,62 @@ function Section({ title, icon: Icon, children }: { title: string; icon: React.E
 }
 
 export default function HealthPage() {
+  const { t } = useTranslation();
+
+  const trendLabelMap: Record<string, string> = {
+    vsLastWeek: t("common.vsLastWeek"),
+    vsYesterday: t("common.vsYesterday"),
+    vsLastMonth: t("common.vsLastMonth"),
+  };
+
+  const statCards = statCardKeys.map((s) => ({
+    title: t(`pages.health.${s.tKey}`),
+    value: s.value,
+    subtitle: t(`pages.health.${s.subtitleKey}`),
+    icon: s.icon,
+    trend: { value: s.trendValue, label: trendLabelMap[s.trendKey] },
+  }));
+
+  const aiStatCards = aiStatCardKeys.map((s) => ({
+    title: t(`pages.health.${s.tKey}`),
+    value: s.value,
+    subtitle: t(`pages.health.${s.subtitleKey}`),
+    icon: s.icon,
+    trend: { value: s.trendValue, label: trendLabelMap[s.trendKey] },
+  }));
+
+  const timelineEvents = timelineEventKeys.map((e) => ({
+    id: e.id,
+    time: e.time,
+    title: t(`pages.health.${e.titleKey}`),
+    subtitle: "subtitleKey" in e && e.subtitleKey ? t(`pages.health.${e.subtitleKey}`) : ("subtitle" in e ? (e as { subtitle: string }).subtitle : undefined),
+  }));
+
+  const insightTimeline = insightTimelineKeys.map((e) => ({
+    id: e.id,
+    time: e.time,
+    title: t(`pages.health.${e.titleKey}`),
+    subtitle: t(`pages.health.${e.subtitleKey}`),
+  }));
+
+  const recommendations = recommendationKeys.map((r) => ({
+    title: t(`pages.health.${r.titleKey}`),
+    status: t(`pages.health.${r.statusKey}`),
+  }));
+
+  const chipKeys = ["summarizeWeek", "improveSleep", "boostFocus", "planRecovery"] as const;
+
   return (
     <div className="space-y-4">
       {/* Page intro */}
       <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">Health</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-1">{t("pages.health.eyebrow")}</p>
         <div className="flex items-center gap-2 mb-1">
           <Activity className="h-5 w-5 text-foreground" strokeWidth={1.5} />
-          <h1 className="text-lg font-semibold text-foreground font-display">Health dashboard with real-world widgets</h1>
+          <h1 className="text-lg font-semibold text-foreground font-display">{t("pages.health.title")}</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Sleep, heart rate, steps, and habit signals organized into a full health analytics view.
+          {t("pages.health.description")}
         </p>
       </div>
 
@@ -137,7 +183,7 @@ export default function HealthPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Heart className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Today</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.today")}</p>
           </div>
           <DateNavigationWidget
             selectedDate={new Date(2026, 1, 13)}
@@ -165,7 +211,7 @@ export default function HealthPage() {
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Moon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Sleep stages</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.sleepStages")}</p>
             <span className="ml-auto text-sm font-semibold text-foreground font-mono-num">7h 24m</span>
           </div>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
@@ -175,7 +221,7 @@ export default function HealthPage() {
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Heart className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Heart rate zones</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.heartRateZones")}</p>
             <span className="ml-auto text-sm font-semibold text-foreground font-mono-num">72 bpm</span>
           </div>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
@@ -185,12 +231,12 @@ export default function HealthPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Section title="Weekly steps" icon={Footprints}>
+        <Section title={t("pages.health.weeklySteps")} icon={Footprints}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <BarChartWidget data={weeklySteps} height={200} color={chart.green} />
           </div>
         </Section>
-        <Section title="Monthly sleep trend" icon={Sparkles}>
+        <Section title={t("pages.health.monthlySleepTrend")} icon={Sparkles}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <LineChartWidget data={monthlySleep} height={200} color={chart.indigo} valueFormatter={(v) => `${v}h`} />
           </div>
@@ -198,7 +244,7 @@ export default function HealthPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Section title="Activity breakdown" icon={Activity}>
+        <Section title={t("pages.health.activityBreakdown")} icon={Activity}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <DonutChartWidget data={activityBreakdown} height={220} showLegend />
           </div>
@@ -206,7 +252,7 @@ export default function HealthPage() {
         <div className="rounded-[var(--radius-card)] bg-muted p-4 md:p-5 lg:col-span-2 max-h-[400px] overflow-y-auto">
           <div className="mb-4 flex items-center gap-2">
             <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Daily timeline</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.dailyTimeline")}</p>
           </div>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <TimelineWidget events={timelineEvents} />
@@ -214,13 +260,13 @@ export default function HealthPage() {
         </div>
       </div>
 
-      <Section title="Activity heatmap — 2026" icon={Activity}>
+      <Section title={t("pages.health.activityHeatmap2026")} icon={Activity}>
         <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
           <HeatmapCalendar
             data={heatmapData}
             year={2026}
             colorScale={heatmapColorScales.green}
-            metricLabel="Activities"
+            metricLabel={t("pages.health.activities")}
           />
         </div>
       </Section>
@@ -228,7 +274,7 @@ export default function HealthPage() {
       {/* Life.ai insights */}
       <div className="flex items-center gap-2 pt-2">
         <Sparkles className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-        <p className="text-sm font-medium text-muted-foreground">Life.ai Insights</p>
+        <p className="text-sm font-medium text-muted-foreground">{t("pages.health.lifeAiInsights")}</p>
       </div>
 
       <StatGrid columns={3}>
@@ -245,12 +291,12 @@ export default function HealthPage() {
       </StatGrid>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Section title="AI readiness trend" icon={ShieldCheck}>
+        <Section title={t("pages.health.aiReadinessTrend")} icon={ShieldCheck}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <LineChartWidget data={readinessTrend} height={200} color={chart.primary} />
           </div>
         </Section>
-        <Section title="Recommendation impact" icon={Zap}>
+        <Section title={t("pages.health.recommendationImpact")} icon={Zap}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <BarChartWidget data={recommendationImpact} height={200} color={chart.teal} />
           </div>
@@ -261,29 +307,29 @@ export default function HealthPage() {
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <MessageSquare className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Prompt studio</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.promptStudio")}</p>
           </div>
           <textarea
             rows={5}
-            placeholder="Ask Life.ai to summarize your week or set a focus goal..."
+            placeholder={t("pages.health.promptPlaceholder")}
             className="w-full rounded-[var(--radius-widget)] border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-primary"
           />
           <div className="mt-3 flex flex-wrap gap-2">
-            {["Summarize week", "Improve sleep", "Boost focus", "Plan recovery"].map((chip) => (
-              <button key={chip} className="rounded-full bg-card px-3 py-1 text-xs text-muted-foreground">
-                {chip}
+            {chipKeys.map((key) => (
+              <button key={key} className="rounded-full bg-card px-3 py-1 text-xs text-muted-foreground">
+                {t(`pages.health.${key}`)}
               </button>
             ))}
           </div>
           <button className="mt-4 w-full rounded-[var(--radius-widget)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
-            Generate insight
+            {t("pages.health.generateInsight")}
           </button>
         </div>
 
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Recommended actions</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.recommendedActions")}</p>
           </div>
           <div className="space-y-3">
             {recommendations.map((item) => (
@@ -298,7 +344,7 @@ export default function HealthPage() {
         <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted p-4 md:p-5">
           <div className="mb-4 flex items-center gap-2">
             <Brain className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-            <p className="text-sm text-muted-foreground">Insight timeline</p>
+            <p className="text-sm text-muted-foreground">{t("pages.health.insightTimeline")}</p>
           </div>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <TimelineWidget events={insightTimeline} />

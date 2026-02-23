@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   LineChart, Line, PieChart, Pie,
   XAxis, YAxis, ResponsiveContainer, AreaChart, Area,
@@ -107,20 +108,20 @@ interface LegendItemVM {
   color: string;
 }
 
-const LINE_LEGEND: LegendItemVM[] = [
-  { label: "Series A", color: chart.primary },
-  { label: "Series B", color: chart.purple },
-  { label: "Series C", color: chart.green },
+const LINE_LEGEND_KEYS = [
+  { tKey: "seriesA", color: chart.primary },
+  { tKey: "seriesB", color: chart.purple },
+  { tKey: "seriesC", color: chart.green },
 ];
 
-const BAR_LEGEND: LegendItemVM[] = [
-  { label: "Income", color: chart.primary },
-  { label: "Expense", color: chart.gray },
+const BAR_LEGEND_KEYS = [
+  { tKey: "income", color: chart.primary },
+  { tKey: "expense", color: chart.gray },
 ];
 
-const AREA_LEGEND: LegendItemVM[] = [
-  { label: "Inflow", color: chartPositive },
-  { label: "Outflow", color: chartNegative },
+const AREA_LEGEND_KEYS = [
+  { tKey: "inflow", color: chartPositive },
+  { tKey: "outflow", color: chartNegative },
 ];
 
 // ── View components ──
@@ -184,10 +185,16 @@ function Legend({ items }: { items: LegendItemVM[] }) {
 // ── Page ──
 
 export default function PalettePage() {
+  const { t } = useTranslation();
+
+  const lineLegend: LegendItemVM[] = LINE_LEGEND_KEYS.map((l) => ({ label: t(`pages.palette.${l.tKey}`), color: l.color }));
+  const barLegend: LegendItemVM[] = BAR_LEGEND_KEYS.map((l) => ({ label: t(`pages.palette.${l.tKey}`), color: l.color }));
+  const areaLegend: LegendItemVM[] = AREA_LEGEND_KEYS.map((l) => ({ label: t(`pages.palette.${l.tKey}`), color: l.color }));
+
   return (
     <>
       {/* Base Colors */}
-      <Section title="Base Colors" icon={Palette}>
+      <Section title={t("pages.palette.baseColors")} icon={Palette}>
         <div className="flex flex-wrap gap-5">
           {BASE_COLORS.map((c) => (
             <Swatch key={c.token} {...c} />
@@ -197,7 +204,7 @@ export default function PalettePage() {
 
       {/* Visualization Palette */}
       <div className="mt-4">
-        <Section title="Visualization Palette" icon={Palette}>
+        <Section title={t("pages.palette.vizPalette")} icon={Palette}>
           <div className="grid grid-cols-6 gap-4 sm:grid-cols-8 lg:grid-cols-12">
             {CHART_SWATCH_COLORS.map((c) => (
               <Swatch key={c.token} {...c} />
@@ -205,7 +212,7 @@ export default function PalettePage() {
           </div>
           <div className="mt-5 pt-4 border-t border-border">
             <p className="text-xs text-muted-foreground mb-3">
-              Utility Tokens
+              {t("pages.palette.utilityTokens")}
             </p>
             <div className="flex flex-wrap gap-5">
               {UTILITY_COLORS.map((c) => (
@@ -219,12 +226,12 @@ export default function PalettePage() {
       {/* Chart Examples */}
       <div className="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-2">
         {/* Line Chart */}
-        <Section title="Line Chart" icon={LineChartIcon}>
+        <Section title={t("pages.palette.lineChart")} icon={LineChartIcon}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div
               className="h-[200px]"
               role="img"
-              aria-label="Example multi-series line chart"
+              aria-label={t("pages.palette.lineChartAria")}
             >
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={LINE_DATA}>
@@ -264,18 +271,18 @@ export default function PalettePage() {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-            <Legend items={LINE_LEGEND} />
+            <Legend items={lineLegend} />
           </div>
         </Section>
 
         {/* Donut Chart */}
-        <Section title="Donut Chart" icon={Target}>
+        <Section title={t("pages.palette.donutChart")} icon={Target}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div className="flex flex-col items-center">
               <div
                 className="h-[180px] w-[180px]"
                 role="img"
-                aria-label="Example donut chart showing asset allocation"
+                aria-label={t("pages.palette.donutChartAria")}
               >
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -317,15 +324,15 @@ export default function PalettePage() {
         </Section>
 
         {/* Grouped Bar Chart */}
-        <Section title="Grouped Bar Chart" icon={BarChart3}>
+        <Section title={t("pages.palette.groupedBarChart")} icon={BarChart3}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div
               role="img"
-              aria-label="Example grouped bar chart showing income vs expense"
+              aria-label={t("pages.palette.groupedBarChartAria")}
             >
               <PixelBarChart
                 data={BAR_DATA}
-                seriesLabels={["Income", "Expense"]}
+                seriesLabels={[t("pages.palette.income"), t("pages.palette.expense")]}
                 height={200}
                 blockGap={2}
                 gridRows={6}
@@ -333,17 +340,17 @@ export default function PalettePage() {
                 tooltipYearSuffix=""
               />
             </div>
-            <Legend items={BAR_LEGEND} />
+            <Legend items={barLegend} />
           </div>
         </Section>
 
         {/* Area Chart */}
-        <Section title="Area Chart (Positive / Negative)" icon={Activity}>
+        <Section title={t("pages.palette.areaChart")} icon={Activity}>
           <div className="rounded-[var(--radius-widget)] border border-border bg-card p-3">
             <div
               className="h-[200px]"
               role="img"
-              aria-label="Example area chart showing positive and negative cash flow"
+              aria-label={t("pages.palette.areaChartAria")}
             >
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={AREA_DATA}>
@@ -402,7 +409,7 @@ export default function PalettePage() {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <Legend items={AREA_LEGEND} />
+            <Legend items={areaLegend} />
           </div>
         </Section>
       </div>
