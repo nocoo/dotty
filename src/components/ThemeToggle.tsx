@@ -1,5 +1,6 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Theme = "light" | "dark" | "system";
 
@@ -10,6 +11,7 @@ function getSystemTheme(): "light" | "dark" {
 const ICON_PROPS = { className: "h-4 w-4", "aria-hidden": true as const, strokeWidth: 1.5 };
 
 export function ThemeToggle() {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState<Theme>(() => {
     return (localStorage.getItem("theme") as Theme) || "system";
   });
@@ -44,7 +46,7 @@ export function ThemeToggle() {
     <button
       onClick={cycleTheme}
       className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-      aria-label={`Toggle theme, currently ${theme}`}
+      aria-label={t("common.toggleTheme", { theme })}
     >
       {theme === "system" ? (
         <Monitor {...ICON_PROPS} />
