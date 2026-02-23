@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 export interface DateNavigationProps {
@@ -8,12 +9,12 @@ export interface DateNavigationProps {
   onToday: () => void;
   onToggleCalendar?: () => void;
   todayLabel?: string;
-  formatDate?: (date: Date) => string;
+  formatDate?: (date: Date, locale: string) => string;
   className?: string;
 }
 
-const defaultFormatDate = (date: Date): string =>
-  date.toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+const defaultFormatDate = (date: Date, locale: string): string =>
+  date.toLocaleDateString(locale, { weekday: "short", year: "numeric", month: "short", day: "numeric" });
 
 const isSameDay = (a: Date, b: Date): boolean =>
   a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
@@ -24,10 +25,13 @@ export function DateNavigationWidget({
   onNextDay,
   onToday,
   onToggleCalendar,
-  todayLabel = "Today",
+  todayLabel,
   formatDate = defaultFormatDate,
   className,
 }: DateNavigationProps) {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language === "zh" ? "zh-CN" : "en-US";
+  const resolvedTodayLabel = todayLabel ?? t("common.today");
   const isToday = isSameDay(selectedDate, new Date());
 
   return (
@@ -42,12 +46,12 @@ export function DateNavigationWidget({
             : "bg-muted border border-border text-foreground hover:bg-accent",
         )}
       >
-        {todayLabel}
+        {resolvedTodayLabel}
       </button>
 
       <button
         onClick={onPrevDay}
-        aria-label="Previous day"
+        aria-label={t("common.previousDay")}
         className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-widget)] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
       >
         <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
@@ -60,13 +64,13 @@ export function DateNavigationWidget({
           onToggleCalendar ? "cursor-pointer hover:bg-accent" : "cursor-default",
         )}
       >
-        <span>{formatDate(selectedDate)}</span>
+        <span>{formatDate(selectedDate, locale)}</span>
         {onToggleCalendar && <CalendarIcon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />}
       </button>
 
       <button
         onClick={onNextDay}
-        aria-label="Next day"
+        aria-label={t("common.nextDay")}
         className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-widget)] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
       >
         <ChevronRight className="h-4 w-4" strokeWidth={1.5} />

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -56,8 +57,8 @@ export const heatmapColorScales = {
 
 const defaultColorScale = heatmapColorScales.green;
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const WEEKDAY_KEYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
+const MONTH_KEYS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"] as const;
 
 function getYearWeeks(year: number): Date[][] {
   const weeks: Date[][] = [];
@@ -102,6 +103,10 @@ export function HeatmapCalendar({
   cellGap = 2,
   className,
 }: HeatmapCalendarProps) {
+  const { t } = useTranslation();
+  const WEEKDAYS = WEEKDAY_KEYS.map((key) => t(`dashboard.weekdays.${key}`));
+  const MONTHS = MONTH_KEYS.map((key) => t(`dashboard.months.${key}`));
+
   const { weeks, dataMap, maxValue, monthLabels } = useMemo(() => {
     const weeks = getYearWeeks(year);
     const dataMap = new Map<string, number>();
@@ -125,7 +130,7 @@ export function HeatmapCalendar({
     });
 
     return { weeks, dataMap, maxValue, monthLabels };
-  }, [data, year]);
+  }, [data, year, MONTHS]);
 
   const labelWidth = 30;
 
@@ -186,11 +191,11 @@ export function HeatmapCalendar({
           </div>
 
           <div className="flex items-center justify-end gap-1 mt-2 text-xs text-muted-foreground">
-            <span>Less</span>
+            <span>{t("common.less")}</span>
             {colorScale.map((color, i) => (
               <div key={i} className="rounded-sm" style={{ width: cellSize, height: cellSize, backgroundColor: color }} />
             ))}
-            <span>More</span>
+            <span>{t("common.more")}</span>
           </div>
         </div>
       </TooltipProvider>

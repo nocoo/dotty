@@ -1,5 +1,6 @@
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
 import { Target } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { CHART_COLORS } from "@/lib/palette";
 
 const data = [
@@ -10,12 +11,13 @@ const data = [
 ].map((d, i) => ({ ...d, fill: CHART_COLORS[i] }));
 
 export function DonutChartCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <Target className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Expense Breakdown
+          {t("dashboard.expenseBreakdown")}
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
@@ -23,7 +25,7 @@ export function DonutChartCard() {
           <div
             className="w-full flex items-center justify-center"
             role="img"
-            aria-label="Expense breakdown donut chart: Food 35%, Shopping 25%, Transport 20%, Bills 20%"
+            aria-label={t("dashboard.expenseBreakdownAria")}
           >
             <div className="aspect-square h-[160px]">
               <ResponsiveContainer width="100%" height="100%">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 // ── Data ──
@@ -27,6 +28,7 @@ const GRID_ROWS = 7;
 const BLOCK_SIZE = Math.floor(CHART_HEIGHT / GRID_ROWS) - BLOCK_GAP;
 
 export function StackedBarCard() {
+  const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   const totals = stackedData.map((d) => d.series.reduce((a, b) => a + b, 0));
@@ -37,7 +39,7 @@ export function StackedBarCard() {
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Stacked engagement
+          {t("dashboard.stackedEngagement")}
         </p>
         <div className="flex items-center gap-3">
           {SERIES_LABELS.map((label, i) => (

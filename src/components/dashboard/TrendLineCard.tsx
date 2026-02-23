@@ -1,5 +1,6 @@
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { Activity } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { chartPrimary, chartAxis } from "@/lib/palette";
 
 const data = [
@@ -10,12 +11,13 @@ const data = [
 ];
 
 export function TrendLineCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center gap-2 px-5 pt-4 pb-3">
         <Activity className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Spending Trend
+          {t("dashboard.spendingTrend")}
         </p>
       </div>
       <div className="flex-1 flex flex-col rounded-[var(--radius-card)] bg-card border border-border p-5">
@@ -25,7 +27,7 @@ export function TrendLineCard() {
           </h2>
           <span className="text-xs font-medium text-muted-foreground font-mono-num">-1.8%</span>
         </div>
-        <div className="flex-1 min-h-[80px]" role="img" aria-label="Spending trend line chart from Monday to Sunday, current total $3,420">
+        <div className="flex-1 min-h-[80px]" role="img" aria-label={t("dashboard.spendingTrendAria")}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <XAxis dataKey="name" tick={{ fill: chartAxis, fontSize: 11 }} axisLine={false} tickLine={false} />

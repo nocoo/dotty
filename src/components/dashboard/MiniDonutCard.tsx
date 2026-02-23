@@ -1,4 +1,5 @@
 import { DonutChartWidget } from "@/components/dashboard/PieChartWidget";
+import { useTranslation } from "react-i18next";
 
 const data = [
   { label: "Active", value: 62 },
@@ -7,11 +8,12 @@ const data = [
 ];
 
 export function MiniDonutCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Mini donut
+          {t("dashboard.miniDonut")}
         </p>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
@@ -21,15 +23,15 @@ export function MiniDonutCard() {
           </div>
           <div className="space-y-2 text-xs text-muted-foreground">
             <div className="flex items-center justify-between gap-6">
-              <span>Active</span>
+              <span>{t("dashboard.activeLabel")}</span>
               <span className="font-mono-num text-foreground">62%</span>
             </div>
             <div className="flex items-center justify-between gap-6">
-              <span>Idle</span>
+              <span>{t("dashboard.idleLabel")}</span>
               <span className="font-mono-num text-foreground">28%</span>
             </div>
             <div className="flex items-center justify-between gap-6">
-              <span>Churn</span>
+              <span>{t("dashboard.churnLabel")}</span>
               <span className="font-mono-num text-foreground">10%</span>
             </div>
           </div>

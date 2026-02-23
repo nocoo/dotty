@@ -1,4 +1,5 @@
 import { ArrowUpDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { PixelBarChart } from "@/components/PixelBarChart";
 
 const data = [
@@ -11,30 +12,31 @@ const data = [
 ];
 
 export function GroupedBarCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <div className="flex items-center gap-2">
           <ArrowUpDown className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Income vs Expense
+            {t("dashboard.incomeVsExpense")}
           </p>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <div className="h-2 w-2 bg-foreground" />
-            <span className="text-xs text-muted-foreground">Income</span>
+            <span className="text-xs text-muted-foreground">{t("dashboard.income")}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="h-2 w-2 bg-muted-foreground" />
-            <span className="text-xs text-muted-foreground">Expense</span>
+            <span className="text-xs text-muted-foreground">{t("dashboard.expense")}</span>
           </div>
         </div>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div
           role="img"
-          aria-label="Grouped bar chart comparing monthly income and expense from July to December"
+          aria-label={t("dashboard.incomeVsExpenseAria")}
         >
           <PixelBarChart
             data={data}

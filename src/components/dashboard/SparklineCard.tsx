@@ -1,4 +1,5 @@
 import { LineChart as RechartsLineChart, Line, ResponsiveContainer } from "recharts";
+import { useTranslation } from "react-i18next";
 import { CHART_COLORS } from "@/lib/palette";
 
 const sparkData = [
@@ -12,11 +13,12 @@ const sparkData = [
 ];
 
 export function SparklineCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Weekly active
+          {t("dashboard.weeklyActive")}
         </p>
       </div>
       <div className="flex-1 flex flex-col rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-3">
@@ -34,7 +36,7 @@ export function SparklineCard() {
             </RechartsLineChart>
           </ResponsiveContainer>
         </div>
-        <p className="text-xs text-muted-foreground">+6.1% vs last week</p>
+        <p className="text-xs text-muted-foreground">{t("dashboard.weeklyActiveChange")}</p>
       </div>
     </div>
   );

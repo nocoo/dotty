@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 // ── Data ──
 
@@ -19,11 +20,12 @@ const VALUE_PER_BLOCK = MAX_VALUE / MAX_BLOCKS;
 // ── Component ──
 
 export function BulletChartCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Bullet KPIs
+          {t("dashboard.bulletKpis")}
         </p>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">

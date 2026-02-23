@@ -1,4 +1,5 @@
 import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const transactions = [
   { name: "Netflix Subscription", amount: -15.99, date: "Today", type: "expense" },
@@ -9,16 +10,17 @@ const transactions = [
 ];
 
 export function RecentListCard() {
+  const { t } = useTranslation();
   return (
     <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <div className="flex items-center gap-2">
           <ArrowLeftRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Recent Transactions
+            {t("dashboard.recentTransactions")}
           </p>
         </div>
-        <span className="cursor-pointer text-xs text-muted-foreground hover:text-foreground">View All</span>
+        <span className="cursor-pointer text-xs text-muted-foreground hover:text-foreground">{t("common.viewAll")}</span>
       </div>
       <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
         <div className="flex flex-col gap-3">
