@@ -29,7 +29,7 @@ export default defineConfig(() => ({
   },
   server: {
     host: "::",
-    port: 7020,
+    port: 7002,
     allowedHosts: ["dotty.dev.hexly.ai"],
     hmr: {
       overlay: false,
