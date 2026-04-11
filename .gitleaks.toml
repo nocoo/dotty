@@ -1,6 +1,5 @@
 [allowlist]
 description = "i18n keys falsely detected as secrets"
-
-[[allowlist.regexes]]
-description = "Hydration reminder translation key"
-regex = '''add400mlBeforeNoon'''
+regexes = [
+  '''add400mlBeforeNoon''',
+]
