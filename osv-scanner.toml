@@ -1,0 +1,3 @@
+# OSV Scanner config
+# Add [[IgnoredVulns]] entries for false positives / unfixable transitive deps
+
