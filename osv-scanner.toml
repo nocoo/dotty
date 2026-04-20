@@ -1,0 +1,3 @@
+# OSV Scanner configuration
+# Add [[IgnoredVulns]] entries for transitive deps that cannot be upgraded
+
