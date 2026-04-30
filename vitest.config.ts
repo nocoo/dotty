@@ -20,9 +20,22 @@ export default defineConfig({
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
     coverage: {
       provider: "v8",
+      // AST-aware remapping is built into vitest v4+; no opt-in needed.
       reporter: ["text", "text-summary", "lcov"],
       include: ["src/models/**/*.ts", "src/viewmodels/**/*.ts", "src/lib/**/*.ts"],
-      exclude: ["src/test/**", "src/**/*.d.ts", "src/models/types.ts"],
+      exclude: [
+        // Test harness / fixtures — not production code.
+        "src/test/**",
+        // Ambient type declarations — no runtime behavior to cover.
+        "src/**/*.d.ts",
+        /*
+         * Pure type definitions for domain models. These contain no executable
+         * statements; coverage tooling would report 0/0 and skew aggregate
+         * percentages. Behavior that uses these types is covered via the
+         * model and viewmodel suites.
+         */
+        "src/models/types.ts",
+      ],
       thresholds: {
         statements: 90,
         branches: 90,
