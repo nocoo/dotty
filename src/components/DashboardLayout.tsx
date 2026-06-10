@@ -66,6 +66,7 @@ export function DashboardLayout() {
 
   // Close mobile sidebar on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing UI state to router pathname (external system)
     setMobileOpen(false);
   }, [location.pathname]);
 
