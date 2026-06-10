@@ -5,7 +5,8 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, Github } from "lucide-react";
+import { Menu } from "lucide-react";
+import { GithubIcon } from "@/components/icons/GithubIcon";
 import { cn } from "@/lib/utils";
 
 // Map route paths to i18n keys for page titles
@@ -138,7 +139,7 @@ export function DashboardLayout() {
               aria-label={t("common.github")}
               className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
             >
-              <Github className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
+              <GithubIcon className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
             </a>
             <LanguageToggle />
             <ThemeToggle />
