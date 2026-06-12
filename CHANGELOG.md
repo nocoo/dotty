@@ -1,11 +1,32 @@
 # Changelog
 
-## [1.1.0] - 2026-05-01n### Changedn- Minor version bump to validate CI/CD pipelinen
-
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.1.1] - 2026-06-12
+
+### Changed
+
+- **deps**: Bumped 24 `@radix-ui/*` packages to latest patch/minor releases (closes #19–#42)
+- **deps**: Upgraded `lucide-react` 0.563 → 1.17 (extracted standalone `GithubIcon` component first to preserve removed icon)
+- **deps**: Upgraded TypeScript 5 → 6, ESLint stack to v10, i18next 25 → 26, react-i18next 16 → 17, sonner 1 → 2, tailwind-merge 2 → 3, @types/node 22 → 25, jsdom 28 → 29, globals 15 → 17, eslint-plugin-react-refresh 0.4 → 0.5
+- **deps**: Pinned and normalized version specifiers across `package.json`
+
+### Security
+
+- **deps**: Bumped `react-router` to 7.17.0 (covers GHSA-8x6r-g9mw-2r78 DoS in `__manifest` endpoint)
+
+### CI
+
+- **security**: Pass `--ignore-scripts` to `bun install` in CI (Shai-Hulud supply-chain defense)
+
+## [1.1.0] - 2026-05-01
+
+### Changed
+
+- Minor version bump to validate CI/CD pipeline
 
 ## [1.0.0] - 2026-02-23
 
