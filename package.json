@@ -9,7 +9,8 @@
     "flatted": "^3.4.2",
     "picomatch": "^4.0.4",
     "rollup": "^4.60.1",
-    "undici": "^7.24.7"
+    "undici": "^7.24.7",
+    "vite": "8.0.16"
   },
   "scripts": {
     "dev": "vite",
