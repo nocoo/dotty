@@ -58,7 +58,7 @@
     "postcss": "^8.5.16",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-i18next": "^17.0.8",
+    "react-i18next": "^17.0.9",
     "react-router": "^8.2.0",
     "recharts": "^3.9.2",
     "sonner": "^2.0.7",
