@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-07-15
+
+### Changed
+
+- **Toolchain**: Replaced ESLint + `typescript-eslint` with [Biome](https://biomejs.dev) 2.5.3
+  as the single tool for lint, format and import sorting. `eslint.config.js` deleted;
+  `biome.json` at repo root holds all rules (`recommended` preset plus tightened
+  `noUnusedImports`, `noUnusedVariables`, `noNonNullAssertion`, `useConst`,
+  `noDangerouslySetInnerHtml`). `src/test/**` overrides relax `noNonNullAssertion` and
+  `noNonNullAssertedOptionalChain` — the only rule relaxations, all others enforced.
+  `public/**` is excluded because it holds hand-authored static SVG assets.
+- **TypeScript**: Bumped `typescript` 6.0 → 7.0.2. Dropped `baseUrl` from `tsconfig.json`
+  (TS 7 removed the option; `paths` stands alone).
+
+### Removed
+
+- `eslint`, `@eslint/js`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`,
+  `typescript-eslint`, `globals` — full ESLint toolchain and the sole
+  `eslint-disable` comment in `DashboardLayout.tsx`.
+
+### Fixed
+
+- `src/main.tsx`: guarded lookup of `#root` (removes `noNonNullAssertion` violation).
+- `GithubIcon`: default `aria-hidden="true"` + `focusable="false"` for decorative use;
+  callers can still override via spread.
+- `Section` helpers in `NetworkOpsDashboardPage` and `WearableDashboardPage` now
+  actually apply their `className` prop instead of taking it and dropping it
+  (`noUnusedFunctionParameters`).
+- Every raw `<button>` in `src/` now carries an explicit `type` attribute (a11y).
+- Applied Biome import ordering, tab-indent formatting, and `node:` protocol prefix
+  across the codebase (~140 files).
+
 ## [1.1.1] - 2026-06-12
 
 ### Changed
