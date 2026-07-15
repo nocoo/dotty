@@ -10,4 +10,6 @@ const isDark = stored === "dark" || (stored !== "light" && prefersDark);
 document.documentElement.classList.toggle("dark", isDark);
 document.documentElement.classList.toggle("light", !isDark);
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element #root not found");
+createRoot(rootElement).render(<App />);

@@ -1,42 +1,42 @@
-import { DonutChartWidget } from "@/components/dashboard/PieChartWidget";
 import { useTranslation } from "react-i18next";
+import { DonutChartWidget } from "@/components/dashboard/PieChartWidget";
 
 const data = [
-  { label: "Active", value: 62 },
-  { label: "Idle", value: 28 },
-  { label: "Churn", value: 10 },
+	{ label: "Active", value: 62 },
+	{ label: "Idle", value: 28 },
+	{ label: "Churn", value: 10 },
 ];
 
 export function MiniDonutCard() {
-  const { t } = useTranslation();
-  return (
-    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
-      <div className="px-5 pt-4 pb-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          {t("dashboard.miniDonut")}
-        </p>
-      </div>
-      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
-        <div className="flex items-center gap-4">
-          <div className="h-24 w-24">
-            <DonutChartWidget data={data} height={96} />
-          </div>
-          <div className="space-y-2 text-xs text-muted-foreground">
-            <div className="flex items-center justify-between gap-6">
-              <span>{t("dashboard.activeLabel")}</span>
-              <span className="font-mono-num text-foreground">62%</span>
-            </div>
-            <div className="flex items-center justify-between gap-6">
-              <span>{t("dashboard.idleLabel")}</span>
-              <span className="font-mono-num text-foreground">28%</span>
-            </div>
-            <div className="flex items-center justify-between gap-6">
-              <span>{t("dashboard.churnLabel")}</span>
-              <span className="font-mono-num text-foreground">10%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	const { t } = useTranslation();
+	return (
+		<div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
+			<div className="px-5 pt-4 pb-3">
+				<p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+					{t("dashboard.miniDonut")}
+				</p>
+			</div>
+			<div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5">
+				<div className="flex items-center gap-4">
+					<div className="h-24 w-24">
+						<DonutChartWidget data={data} height={96} />
+					</div>
+					<div className="space-y-2 text-xs text-muted-foreground">
+						<div className="flex items-center justify-between gap-6">
+							<span>{t("dashboard.activeLabel")}</span>
+							<span className="font-mono-num text-foreground">62%</span>
+						</div>
+						<div className="flex items-center justify-between gap-6">
+							<span>{t("dashboard.idleLabel")}</span>
+							<span className="font-mono-num text-foreground">28%</span>
+						</div>
+						<div className="flex items-center justify-between gap-6">
+							<span>{t("dashboard.churnLabel")}</span>
+							<span className="font-mono-num text-foreground">10%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

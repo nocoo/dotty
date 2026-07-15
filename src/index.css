@@ -11,319 +11,327 @@
  * auto-generates the corresponding utility classes.
  */
 @theme inline {
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
 
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
 
-  --color-sidebar: hsl(var(--sidebar-background));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
+	--color-sidebar: hsl(var(--sidebar-background));
+	--color-sidebar-foreground: hsl(var(--sidebar-foreground));
+	--color-sidebar-primary: hsl(var(--sidebar-primary));
+	--color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+	--color-sidebar-accent: hsl(var(--sidebar-accent));
+	--color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+	--color-sidebar-border: hsl(var(--sidebar-border));
+	--color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --color-success: hsl(var(--success));
-  --color-success-foreground: hsl(var(--success-foreground));
+	--color-success: hsl(var(--success));
+	--color-success-foreground: hsl(var(--success-foreground));
 
-  --color-badge-red: hsl(var(--badge-red));
-  --color-badge-red-foreground: hsl(var(--badge-red-foreground));
+	--color-badge-red: hsl(var(--badge-red));
+	--color-badge-red-foreground: hsl(var(--badge-red-foreground));
 
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-  --color-chart-6: hsl(var(--chart-6));
-  --color-chart-7: hsl(var(--chart-7));
-  --color-chart-8: hsl(var(--chart-8));
-  --color-chart-axis: hsl(var(--chart-axis));
-  --color-chart-muted: hsl(var(--chart-muted));
+	--color-chart-1: hsl(var(--chart-1));
+	--color-chart-2: hsl(var(--chart-2));
+	--color-chart-3: hsl(var(--chart-3));
+	--color-chart-4: hsl(var(--chart-4));
+	--color-chart-5: hsl(var(--chart-5));
+	--color-chart-6: hsl(var(--chart-6));
+	--color-chart-7: hsl(var(--chart-7));
+	--color-chart-8: hsl(var(--chart-8));
+	--color-chart-axis: hsl(var(--chart-axis));
+	--color-chart-muted: hsl(var(--chart-muted));
 
-  --color-heatmap-green-1: hsl(var(--heatmap-green-1));
-  --color-heatmap-green-2: hsl(var(--heatmap-green-2));
-  --color-heatmap-green-3: hsl(var(--heatmap-green-3));
-  --color-heatmap-green-4: hsl(var(--heatmap-green-4));
-  --color-heatmap-red-1: hsl(var(--heatmap-red-1));
-  --color-heatmap-red-2: hsl(var(--heatmap-red-2));
-  --color-heatmap-red-3: hsl(var(--heatmap-red-3));
-  --color-heatmap-red-4: hsl(var(--heatmap-red-4));
-  --color-heatmap-blue-1: hsl(var(--heatmap-blue-1));
-  --color-heatmap-blue-2: hsl(var(--heatmap-blue-2));
-  --color-heatmap-blue-3: hsl(var(--heatmap-blue-3));
-  --color-heatmap-blue-4: hsl(var(--heatmap-blue-4));
-  --color-heatmap-orange-1: hsl(var(--heatmap-orange-1));
-  --color-heatmap-orange-2: hsl(var(--heatmap-orange-2));
-  --color-heatmap-orange-3: hsl(var(--heatmap-orange-3));
-  --color-heatmap-orange-4: hsl(var(--heatmap-orange-4));
+	--color-heatmap-green-1: hsl(var(--heatmap-green-1));
+	--color-heatmap-green-2: hsl(var(--heatmap-green-2));
+	--color-heatmap-green-3: hsl(var(--heatmap-green-3));
+	--color-heatmap-green-4: hsl(var(--heatmap-green-4));
+	--color-heatmap-red-1: hsl(var(--heatmap-red-1));
+	--color-heatmap-red-2: hsl(var(--heatmap-red-2));
+	--color-heatmap-red-3: hsl(var(--heatmap-red-3));
+	--color-heatmap-red-4: hsl(var(--heatmap-red-4));
+	--color-heatmap-blue-1: hsl(var(--heatmap-blue-1));
+	--color-heatmap-blue-2: hsl(var(--heatmap-blue-2));
+	--color-heatmap-blue-3: hsl(var(--heatmap-blue-3));
+	--color-heatmap-blue-4: hsl(var(--heatmap-blue-4));
+	--color-heatmap-orange-1: hsl(var(--heatmap-orange-1));
+	--color-heatmap-orange-2: hsl(var(--heatmap-orange-2));
+	--color-heatmap-orange-3: hsl(var(--heatmap-orange-3));
+	--color-heatmap-orange-4: hsl(var(--heatmap-orange-4));
 
-  --radius-card: 14px;
-  --radius-widget: 10px;
-  --radius-lg: 8px;
-  --radius-md: 6px;
-  --radius-sm: 4px;
+	--radius-card: 14px;
+	--radius-widget: 10px;
+	--radius-lg: 8px;
+	--radius-md: 6px;
+	--radius-sm: 4px;
 
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+	from {
+		height: 0;
+	}
+	to {
+		height: var(--radix-accordion-content-height);
+	}
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+	from {
+		height: var(--radix-accordion-content-height);
+	}
+	to {
+		height: 0;
+	}
 }
 
 /*
  * Design tokens — light (default) & dark mode
  */
 :root {
-  /* L0 body — cool off-white with blue undertone */
-  --background: 220 14% 96%;
-  --foreground: 220 14% 10%;
+	/* L0 body — cool off-white with blue undertone */
+	--background: 220 14% 96%;
+	--foreground: 220 14% 10%;
 
-  /* L1 content panel — clean white */
-  --card: 220 20% 100%;
-  --card-foreground: 220 14% 10%;
+	/* L1 content panel — clean white */
+	--card: 220 20% 100%;
+	--card-foreground: 220 14% 10%;
 
-  /* L2 inner cards */
-  --secondary: 220 14% 98%;
-  --secondary-foreground: 220 14% 10%;
+	/* L2 inner cards */
+	--secondary: 220 14% 98%;
+	--secondary-foreground: 220 14% 10%;
 
-  --popover: 220 20% 100%;
-  --popover-foreground: 220 14% 10%;
+	--popover: 220 20% 100%;
+	--popover-foreground: 220 14% 10%;
 
-  --primary: 220 14% 10%;
-  --primary-foreground: 0 0% 100%;
+	--primary: 220 14% 10%;
+	--primary-foreground: 0 0% 100%;
 
-  --muted: 220 10% 93%;
-  --muted-foreground: 220 6% 50%;
+	--muted: 220 10% 93%;
+	--muted-foreground: 220 6% 50%;
 
-  --accent: 220 10% 94%;
-  --accent-foreground: 220 14% 10%;
+	--accent: 220 10% 94%;
+	--accent-foreground: 220 14% 10%;
 
-  --destructive: 220 14% 10%;
-  --destructive-foreground: 0 0% 100%;
+	--destructive: 220 14% 10%;
+	--destructive-foreground: 0 0% 100%;
 
-  --border: 220 8% 88%;
-  --input: 220 8% 88%;
-  --ring: 220 14% 10%;
+	--border: 220 8% 88%;
+	--input: 220 8% 88%;
+	--ring: 220 14% 10%;
 
-  --radius: 0px;
+	--radius: 0px;
 
-  --sidebar-background: 220 20% 100%;
-  --sidebar-foreground: 220 14% 10%;
-  --sidebar-primary: 220 14% 10%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 220 10% 95%;
-  --sidebar-accent-foreground: 220 14% 10%;
-  --sidebar-border: 220 8% 88%;
-  --sidebar-ring: 220 14% 10%;
+	--sidebar-background: 220 20% 100%;
+	--sidebar-foreground: 220 14% 10%;
+	--sidebar-primary: 220 14% 10%;
+	--sidebar-primary-foreground: 0 0% 100%;
+	--sidebar-accent: 220 10% 95%;
+	--sidebar-accent-foreground: 220 14% 10%;
+	--sidebar-border: 220 8% 88%;
+	--sidebar-ring: 220 14% 10%;
 
-  --success: 160 60% 40%;
-  --success-foreground: 0 0% 100%;
-  --badge-red: 220 14% 10%;
-  --badge-red-foreground: 0 0% 100%;
+	--success: 160 60% 40%;
+	--success-foreground: 0 0% 100%;
+	--badge-red: 220 14% 10%;
+	--badge-red-foreground: 0 0% 100%;
 
-  /* Visualization palette — cool monochrome */
-  --chart-1: 220 10% 10%;
-  --chart-2: 220 6% 28%;
-  --chart-3: 220 5% 42%;
-  --chart-4: 220 4% 56%;
-  --chart-5: 220 4% 70%;
-  --chart-6: 220 6% 84%;
-  --chart-7: 220 8% 91%;
-  --chart-8: 220 10% 96%;
-  --chart-9: 220 8% 18%;
-  --chart-10: 220 6% 33%;
-  --chart-11: 220 5% 47%;
-  --chart-12: 220 4% 61%;
-  --chart-13: 220 5% 74%;
-  --chart-14: 220 7% 87%;
-  --chart-15: 220 8% 22%;
-  --chart-16: 220 6% 37%;
-  --chart-17: 220 4% 52%;
-  --chart-18: 220 4% 66%;
-  --chart-19: 220 5% 78%;
-  --chart-20: 220 8% 90%;
-  --chart-21: 220 8% 14%;
-  --chart-22: 220 6% 30%;
-  --chart-23: 220 5% 44%;
-  --chart-24: 220 4% 58%;
+	/* Visualization palette — cool monochrome */
+	--chart-1: 220 10% 10%;
+	--chart-2: 220 6% 28%;
+	--chart-3: 220 5% 42%;
+	--chart-4: 220 4% 56%;
+	--chart-5: 220 4% 70%;
+	--chart-6: 220 6% 84%;
+	--chart-7: 220 8% 91%;
+	--chart-8: 220 10% 96%;
+	--chart-9: 220 8% 18%;
+	--chart-10: 220 6% 33%;
+	--chart-11: 220 5% 47%;
+	--chart-12: 220 4% 61%;
+	--chart-13: 220 5% 74%;
+	--chart-14: 220 7% 87%;
+	--chart-15: 220 8% 22%;
+	--chart-16: 220 6% 37%;
+	--chart-17: 220 4% 52%;
+	--chart-18: 220 4% 66%;
+	--chart-19: 220 5% 78%;
+	--chart-20: 220 8% 90%;
+	--chart-21: 220 8% 14%;
+	--chart-22: 220 6% 30%;
+	--chart-23: 220 5% 44%;
+	--chart-24: 220 4% 58%;
 
-  /* Chart utility tokens */
-  --chart-axis: 220 4% 58%;
-  --chart-muted: 220 6% 84%;
+	/* Chart utility tokens */
+	--chart-axis: 220 4% 58%;
+	--chart-muted: 220 6% 84%;
 
-  /* Heatmap color scales — cool grayscale */
-  --heatmap-green-1: 220 8% 92%;
-  --heatmap-green-2: 220 5% 72%;
-  --heatmap-green-3: 220 4% 48%;
-  --heatmap-green-4: 220 6% 24%;
-  /* Heatmap color scales — red (cool grayscale) */
-  --heatmap-red-1: 220 8% 90%;
-  --heatmap-red-2: 220 5% 68%;
-  --heatmap-red-3: 220 4% 44%;
-  --heatmap-red-4: 220 6% 22%;
-  /* Heatmap color scales — blue (cool grayscale) */
-  --heatmap-blue-1: 220 8% 93%;
-  --heatmap-blue-2: 220 5% 74%;
-  --heatmap-blue-3: 220 4% 50%;
-  --heatmap-blue-4: 220 6% 28%;
-  /* Heatmap color scales — orange (cool grayscale) */
-  --heatmap-orange-1: 220 8% 88%;
-  --heatmap-orange-2: 220 5% 70%;
-  --heatmap-orange-3: 220 4% 46%;
-  --heatmap-orange-4: 220 6% 26%;
+	/* Heatmap color scales — cool grayscale */
+	--heatmap-green-1: 220 8% 92%;
+	--heatmap-green-2: 220 5% 72%;
+	--heatmap-green-3: 220 4% 48%;
+	--heatmap-green-4: 220 6% 24%;
+	/* Heatmap color scales — red (cool grayscale) */
+	--heatmap-red-1: 220 8% 90%;
+	--heatmap-red-2: 220 5% 68%;
+	--heatmap-red-3: 220 4% 44%;
+	--heatmap-red-4: 220 6% 22%;
+	/* Heatmap color scales — blue (cool grayscale) */
+	--heatmap-blue-1: 220 8% 93%;
+	--heatmap-blue-2: 220 5% 74%;
+	--heatmap-blue-3: 220 4% 50%;
+	--heatmap-blue-4: 220 6% 28%;
+	/* Heatmap color scales — orange (cool grayscale) */
+	--heatmap-orange-1: 220 8% 88%;
+	--heatmap-orange-2: 220 5% 70%;
+	--heatmap-orange-3: 220 4% 46%;
+	--heatmap-orange-4: 220 6% 26%;
 }
 
 .dark {
-  /* L0 body — near-black with cool undertone */
-  --background: 220 14% 5%;
-  --foreground: 220 6% 93%;
+	/* L0 body — near-black with cool undertone */
+	--background: 220 14% 5%;
+	--foreground: 220 6% 93%;
 
-  /* L1 content panel */
-  --card: 220 10% 9%;
-  --card-foreground: 220 6% 93%;
+	/* L1 content panel */
+	--card: 220 10% 9%;
+	--card-foreground: 220 6% 93%;
 
-  /* L2 inner cards */
-  --secondary: 220 8% 13%;
-  --secondary-foreground: 220 6% 93%;
+	/* L2 inner cards */
+	--secondary: 220 8% 13%;
+	--secondary-foreground: 220 6% 93%;
 
-  --popover: 220 10% 9%;
-  --popover-foreground: 220 6% 93%;
+	--popover: 220 10% 9%;
+	--popover-foreground: 220 6% 93%;
 
-  --primary: 220 6% 93%;
-  --primary-foreground: 220 14% 5%;
+	--primary: 220 6% 93%;
+	--primary-foreground: 220 14% 5%;
 
-  --muted: 220 8% 15%;
-  --muted-foreground: 220 4% 52%;
+	--muted: 220 8% 15%;
+	--muted-foreground: 220 4% 52%;
 
-  --accent: 220 8% 15%;
-  --accent-foreground: 220 6% 93%;
+	--accent: 220 8% 15%;
+	--accent-foreground: 220 6% 93%;
 
-  --destructive: 220 6% 93%;
-  --destructive-foreground: 220 14% 5%;
+	--destructive: 220 6% 93%;
+	--destructive-foreground: 220 14% 5%;
 
-  --border: 220 6% 22%;
-  --input: 220 6% 15%;
-  --ring: 220 6% 93%;
+	--border: 220 6% 22%;
+	--input: 220 6% 15%;
+	--ring: 220 6% 93%;
 
-  --sidebar-background: 220 14% 5%;
-  --sidebar-foreground: 220 6% 93%;
-  --sidebar-primary: 220 6% 93%;
-  --sidebar-primary-foreground: 220 14% 5%;
-  --sidebar-accent: 220 8% 15%;
-  --sidebar-accent-foreground: 220 6% 93%;
-  --sidebar-border: 220 6% 22%;
-  --sidebar-ring: 220 6% 93%;
+	--sidebar-background: 220 14% 5%;
+	--sidebar-foreground: 220 6% 93%;
+	--sidebar-primary: 220 6% 93%;
+	--sidebar-primary-foreground: 220 14% 5%;
+	--sidebar-accent: 220 8% 15%;
+	--sidebar-accent-foreground: 220 6% 93%;
+	--sidebar-border: 220 6% 22%;
+	--sidebar-ring: 220 6% 93%;
 
-  --success: 160 60% 45%;
-  --success-foreground: 0 0% 100%;
-  --badge-red: 220 6% 93%;
-  --badge-red-foreground: 220 14% 5%;
+	--success: 160 60% 45%;
+	--success-foreground: 0 0% 100%;
+	--badge-red: 220 6% 93%;
+	--badge-red-foreground: 220 14% 5%;
 
-  /* Visualization palette — cool monochrome inverted */
-  --chart-1: 220 6% 93%;
-  --chart-2: 220 5% 78%;
-  --chart-3: 220 4% 65%;
-  --chart-4: 220 4% 52%;
-  --chart-5: 220 5% 40%;
-  --chart-6: 220 6% 30%;
-  --chart-7: 220 8% 22%;
-  --chart-8: 220 10% 15%;
-  --chart-9: 220 6% 85%;
-  --chart-10: 220 5% 72%;
-  --chart-11: 220 4% 58%;
-  --chart-12: 220 4% 47%;
-  --chart-13: 220 5% 35%;
-  --chart-14: 220 7% 24%;
-  --chart-15: 220 6% 82%;
-  --chart-16: 220 5% 68%;
-  --chart-17: 220 4% 55%;
-  --chart-18: 220 4% 44%;
-  --chart-19: 220 5% 32%;
-  --chart-20: 220 8% 20%;
-  --chart-21: 220 6% 90%;
-  --chart-22: 220 5% 75%;
-  --chart-23: 220 4% 62%;
-  --chart-24: 220 4% 50%;
+	/* Visualization palette — cool monochrome inverted */
+	--chart-1: 220 6% 93%;
+	--chart-2: 220 5% 78%;
+	--chart-3: 220 4% 65%;
+	--chart-4: 220 4% 52%;
+	--chart-5: 220 5% 40%;
+	--chart-6: 220 6% 30%;
+	--chart-7: 220 8% 22%;
+	--chart-8: 220 10% 15%;
+	--chart-9: 220 6% 85%;
+	--chart-10: 220 5% 72%;
+	--chart-11: 220 4% 58%;
+	--chart-12: 220 4% 47%;
+	--chart-13: 220 5% 35%;
+	--chart-14: 220 7% 24%;
+	--chart-15: 220 6% 82%;
+	--chart-16: 220 5% 68%;
+	--chart-17: 220 4% 55%;
+	--chart-18: 220 4% 44%;
+	--chart-19: 220 5% 32%;
+	--chart-20: 220 8% 20%;
+	--chart-21: 220 6% 90%;
+	--chart-22: 220 5% 75%;
+	--chart-23: 220 4% 62%;
+	--chart-24: 220 4% 50%;
 
-  /* Chart utility tokens */
-  --chart-axis: 220 4% 48%;
-  --chart-muted: 220 6% 27%;
+	/* Chart utility tokens */
+	--chart-axis: 220 4% 48%;
+	--chart-muted: 220 6% 27%;
 
-  /* Heatmap color scales — cool grayscale inverted */
-  --heatmap-green-1: 220 8% 20%;
-  --heatmap-green-2: 220 5% 35%;
-  --heatmap-green-3: 220 4% 52%;
-  --heatmap-green-4: 220 6% 74%;
-  /* Heatmap color scales — red (cool grayscale) */
-  --heatmap-red-1: 220 8% 18%;
-  --heatmap-red-2: 220 5% 33%;
-  --heatmap-red-3: 220 4% 50%;
-  --heatmap-red-4: 220 6% 70%;
-  /* Heatmap color scales — blue (cool grayscale) */
-  --heatmap-blue-1: 220 8% 16%;
-  --heatmap-blue-2: 220 5% 30%;
-  --heatmap-blue-3: 220 4% 48%;
-  --heatmap-blue-4: 220 6% 67%;
-  /* Heatmap color scales — orange (cool grayscale) */
-  --heatmap-orange-1: 220 8% 22%;
-  --heatmap-orange-2: 220 5% 38%;
-  --heatmap-orange-3: 220 4% 54%;
-  --heatmap-orange-4: 220 6% 72%;
+	/* Heatmap color scales — cool grayscale inverted */
+	--heatmap-green-1: 220 8% 20%;
+	--heatmap-green-2: 220 5% 35%;
+	--heatmap-green-3: 220 4% 52%;
+	--heatmap-green-4: 220 6% 74%;
+	/* Heatmap color scales — red (cool grayscale) */
+	--heatmap-red-1: 220 8% 18%;
+	--heatmap-red-2: 220 5% 33%;
+	--heatmap-red-3: 220 4% 50%;
+	--heatmap-red-4: 220 6% 70%;
+	/* Heatmap color scales — blue (cool grayscale) */
+	--heatmap-blue-1: 220 8% 16%;
+	--heatmap-blue-2: 220 5% 30%;
+	--heatmap-blue-3: 220 4% 48%;
+	--heatmap-blue-4: 220 6% 67%;
+	/* Heatmap color scales — orange (cool grayscale) */
+	--heatmap-orange-1: 220 8% 22%;
+	--heatmap-orange-2: 220 5% 38%;
+	--heatmap-orange-3: 220 4% 54%;
+	--heatmap-orange-4: 220 6% 72%;
 }
 
 /*
  * Base styles
  */
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-family: "Inter", system-ui, -apple-system, sans-serif;
+		-webkit-font-smoothing: antialiased;
+	}
 }
 
 /*
  * Custom utilities
  */
 @utility font-display {
-  font-family: "DM Sans", system-ui, sans-serif;
+	font-family: "DM Sans", system-ui, sans-serif;
 }
 
 @utility font-mono-num {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-weight: 600;
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-weight: 600;
 }

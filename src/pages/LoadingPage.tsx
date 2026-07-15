@@ -15,16 +15,16 @@ const SIDE = 5;
 // starting from top-left, going right along top, then down right,
 // then left along bottom, then up left.
 function buildSquarePath(side: number): [number, number][] {
-  const path: [number, number][] = [];
-  // Top edge: left → right
-  for (let c = 0; c < side; c++) path.push([0, c]);
-  // Right edge: top+1 → bottom
-  for (let r = 1; r < side; r++) path.push([r, side - 1]);
-  // Bottom edge: right-1 → left
-  for (let c = side - 2; c >= 0; c--) path.push([side - 1, c]);
-  // Left edge: bottom-1 → top+1
-  for (let r = side - 2; r >= 1; r--) path.push([r, 0]);
-  return path;
+	const path: [number, number][] = [];
+	// Top edge: left → right
+	for (let c = 0; c < side; c++) path.push([0, c]);
+	// Right edge: top+1 → bottom
+	for (let r = 1; r < side; r++) path.push([r, side - 1]);
+	// Bottom edge: right-1 → left
+	for (let c = side - 2; c >= 0; c--) path.push([side - 1, c]);
+	// Left edge: bottom-1 → top+1
+	for (let r = side - 2; r >= 1; r--) path.push([r, 0]);
+	return path;
 }
 
 const PATH = buildSquarePath(SIDE);
@@ -39,70 +39,64 @@ const IDLE_OPACITY = 0.06;
 const INTERVAL = 120;
 
 export default function LoadingPage() {
-  const [head, setHead] = useState(0);
+	const [head, setHead] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHead((h) => (h + 1) % TOTAL);
-    }, INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setHead((h) => (h + 1) % TOTAL);
+		}, INTERVAL);
+		return () => clearInterval(timer);
+	}, []);
 
-  // Build a full grid opacity map (only perimeter cells are visible)
-  // Interior cells are not rendered.
-  const opacityMap = new Map<string, number>();
-  for (let i = 0; i < TOTAL; i++) {
-    opacityMap.set(PATH[i].join(","), IDLE_OPACITY);
-  }
-  // Set trail opacities
-  for (let t = 0; t < TRAIL_LENGTH; t++) {
-    const idx = (head - t + TOTAL) % TOTAL;
-    opacityMap.set(PATH[idx].join(","), TRAIL_OPACITIES[t]);
-  }
+	// Build a full grid opacity map (only perimeter cells are visible)
+	// Interior cells are not rendered.
+	const opacityMap = new Map<string, number>();
+	for (let i = 0; i < TOTAL; i++) {
+		opacityMap.set(PATH[i].join(","), IDLE_OPACITY);
+	}
+	// Set trail opacities
+	for (let t = 0; t < TRAIL_LENGTH; t++) {
+		const idx = (head - t + TOTAL) % TOTAL;
+		opacityMap.set(PATH[idx].join(","), TRAIL_OPACITIES[t]);
+	}
 
-  const blockSize = 14;
-  const gap = 3;
+	const blockSize = 14;
+	const gap = 3;
 
-  return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background gap-10">
-      {/* Square spinner */}
-      <div
-        className="grid"
-        style={{
-          gridTemplateColumns: `repeat(${SIDE}, ${blockSize}px)`,
-          gap: `${gap}px`,
-        }}
-      >
-        {Array.from({ length: SIDE * SIDE }, (_, i) => {
-          const r = Math.floor(i / SIDE);
-          const c = i % SIDE;
-          const key = `${r},${c}`;
-          const onPerimeter = opacityMap.has(key);
+	return (
+		<div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background gap-10">
+			{/* Square spinner */}
+			<div
+				className="grid"
+				style={{
+					gridTemplateColumns: `repeat(${SIDE}, ${blockSize}px)`,
+					gap: `${gap}px`,
+				}}
+			>
+				{Array.from({ length: SIDE * SIDE }, (_, i) => {
+					const r = Math.floor(i / SIDE);
+					const c = i % SIDE;
+					const key = `${r},${c}`;
+					const onPerimeter = opacityMap.has(key);
 
-          if (!onPerimeter) {
-            // Interior cell — empty space
-            return (
-              <div
-                key={i}
-                style={{ width: blockSize, height: blockSize }}
-              />
-            );
-          }
+					if (!onPerimeter) {
+						// Interior cell — empty space
+						return <div key={i} style={{ width: blockSize, height: blockSize }} />;
+					}
 
-          return (
-            <div
-              key={i}
-              className="bg-foreground rounded-[1px] transition-opacity duration-100"
-              style={{
-                width: blockSize,
-                height: blockSize,
-                opacity: opacityMap.get(key),
-              }}
-            />
-          );
-        })}
-      </div>
-
-    </div>
-  );
+					return (
+						<div
+							key={i}
+							className="bg-foreground rounded-[1px] transition-opacity duration-100"
+							style={{
+								width: blockSize,
+								height: blockSize,
+								opacity: opacityMap.get(key),
+							}}
+						/>
+					);
+				})}
+			</div>
+		</div>
+	);
 }

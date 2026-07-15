@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
 
 // ── Data ──
 
 const data = [
-  { name: "Revenue", value: 68, target: 80 },
-  { name: "Retention", value: 72, target: 85 },
-  { name: "Adoption", value: 58, target: 70 },
+	{ name: "Revenue", value: 68, target: 80 },
+	{ name: "Retention", value: 72, target: 85 },
+	{ name: "Adoption", value: 58, target: 70 },
 ];
 
 // ── Constants ──
@@ -20,63 +20,63 @@ const VALUE_PER_BLOCK = MAX_VALUE / MAX_BLOCKS;
 // ── Component ──
 
 export function BulletChartCard() {
-  const { t } = useTranslation();
-  return (
-    <div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
-      <div className="flex items-center justify-between px-5 pt-4 pb-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          {t("dashboard.bulletKpis")}
-        </p>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            <div className="h-2 w-2 bg-foreground" />
-            <span className="text-[10px] text-muted-foreground">Value</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <div className="h-2 w-6 border border-dashed border-muted-foreground" />
-            <span className="text-[10px] text-muted-foreground">Target</span>
-          </div>
-        </div>
-      </div>
-      <div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-5">
-        {data.map((d) => {
-          const valueBlocks = Math.max(1, Math.round(d.value / VALUE_PER_BLOCK));
-          const targetBlocks = Math.round(d.target / VALUE_PER_BLOCK);
+	const { t } = useTranslation();
+	return (
+		<div className="h-full flex flex-col rounded-[var(--radius-card)] bg-muted">
+			<div className="flex items-center justify-between px-5 pt-4 pb-3">
+				<p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+					{t("dashboard.bulletKpis")}
+				</p>
+				<div className="flex items-center gap-3">
+					<div className="flex items-center gap-1.5">
+						<div className="h-2 w-2 bg-foreground" />
+						<span className="text-[10px] text-muted-foreground">Value</span>
+					</div>
+					<div className="flex items-center gap-1.5">
+						<div className="h-2 w-6 border border-dashed border-muted-foreground" />
+						<span className="text-[10px] text-muted-foreground">Target</span>
+					</div>
+				</div>
+			</div>
+			<div className="flex-1 rounded-[var(--radius-card)] bg-card border border-border p-5 space-y-5">
+				{data.map((d) => {
+					const valueBlocks = Math.max(1, Math.round(d.value / VALUE_PER_BLOCK));
+					const targetBlocks = Math.round(d.target / VALUE_PER_BLOCK);
 
-          return (
-            <div key={d.name}>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-foreground">{d.name}</span>
-                <span className="text-xs text-muted-foreground font-mono-num">
-                  {d.value} / {d.target}
-                </span>
-              </div>
-              <div className="relative">
-                {/* Block row */}
-                <div className="flex gap-[2px]">
-                  {Array.from({ length: MAX_BLOCKS }, (_, i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "transition-colors duration-100",
-                        i < valueBlocks ? "bg-foreground" : "bg-muted/50",
-                      )}
-                      style={{ width: BLOCK_SIZE * 2, height: BLOCK_SIZE }}
-                    />
-                  ))}
-                </div>
-                {/* Target marker */}
-                <div
-                  className="absolute top-[-2px] h-[calc(100%+4px)] border-l-2 border-dashed border-muted-foreground"
-                  style={{
-                    left: targetBlocks * (BLOCK_SIZE * 2 + BLOCK_GAP) - BLOCK_GAP / 2,
-                  }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+					return (
+						<div key={d.name}>
+							<div className="flex items-center justify-between mb-2">
+								<span className="text-xs text-foreground">{d.name}</span>
+								<span className="text-xs text-muted-foreground font-mono-num">
+									{d.value} / {d.target}
+								</span>
+							</div>
+							<div className="relative">
+								{/* Block row */}
+								<div className="flex gap-[2px]">
+									{Array.from({ length: MAX_BLOCKS }, (_, i) => (
+										<div
+											key={i}
+											className={cn(
+												"transition-colors duration-100",
+												i < valueBlocks ? "bg-foreground" : "bg-muted/50",
+											)}
+											style={{ width: BLOCK_SIZE * 2, height: BLOCK_SIZE }}
+										/>
+									))}
+								</div>
+								{/* Target marker */}
+								<div
+									className="absolute top-[-2px] h-[calc(100%+4px)] border-l-2 border-dashed border-muted-foreground"
+									style={{
+										left: targetBlocks * (BLOCK_SIZE * 2 + BLOCK_GAP) - BLOCK_GAP / 2,
+									}}
+								/>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
 }

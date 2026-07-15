@@ -3,24 +3,24 @@
 
 import { useMemo } from "react";
 import { analyticsStats } from "@/data/mock";
-import { classifyChange, changeToColorClass } from "@/models/stats-overview";
+import { changeToColorClass, classifyChange } from "@/models/stats-overview";
 
 export interface StatCard {
-  label: string;
-  value: string;
-  change: string;
-  changeColorClass: string;
+	label: string;
+	value: string;
+	change: string;
+	changeColorClass: string;
 }
 
 export function useStatsOverviewViewModel() {
-  const stats: StatCard[] = useMemo(
-    () =>
-      analyticsStats.map((s) => ({
-        ...s,
-        changeColorClass: changeToColorClass(classifyChange(s.change)),
-      })),
-    [],
-  );
+	const stats: StatCard[] = useMemo(
+		() =>
+			analyticsStats.map((s) => ({
+				...s,
+				changeColorClass: changeToColorClass(classifyChange(s.change)),
+			})),
+		[],
+	);
 
-  return { stats };
+	return { stats };
 }
