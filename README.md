@@ -59,8 +59,8 @@ Inter is the global body font. Only card numerical values (stats, metrics, perce
 
 | Layer | Technology |
 |---|---|
-| **Build** | [Vite 7](https://vite.dev) + SWC |
-| **UI** | [React 19](https://react.dev) + TypeScript 5.9 |
+| **Build** | [Vite 8](https://vite.dev) + SWC |
+| **UI** | [React 19](https://react.dev) + TypeScript 7 |
 | **Routing** | [React Router 7](https://reactrouter.com) |
 | **Styling** | [Tailwind CSS 4](https://tailwindcss.com) + @tailwindcss/vite + tw-animate-css |
 | **Components** | [shadcn/ui](https://ui.shadcn.com) (31 primitives) |
