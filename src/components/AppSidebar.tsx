@@ -294,7 +294,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 						</TooltipContent>
 					</Tooltip>
 
-					<nav className="flex-1 flex flex-col items-center gap-1 overflow-y-auto pt-1">
+					<nav className="flex-1 flex flex-col items-center gap-1 overflow-x-visible overflow-y-auto pt-1">
 						{ALL_NAV_ITEMS.map((item) => (
 							<CollapsedNavItem key={item.path} item={item} currentPath={pathname} />
 						))}
