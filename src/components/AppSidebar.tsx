@@ -258,8 +258,8 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 	return (
 		<aside
 			className={cn(
-				"sticky top-0 flex h-screen shrink-0 flex-col bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out overflow-hidden",
-				collapsed ? "w-[68px]" : "w-[260px]",
+				"sticky top-0 flex h-screen shrink-0 flex-col bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out",
+				collapsed ? "w-[68px] overflow-y-hidden" : "w-[260px] overflow-hidden",
 			)}
 		>
 			{collapsed ? (
@@ -294,7 +294,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 						</TooltipContent>
 					</Tooltip>
 
-					<nav className="flex-1 flex flex-col items-center gap-1 overflow-x-visible overflow-y-auto pt-1">
+					<nav className="flex-1 flex w-full flex-col items-center gap-1 overflow-y-auto pt-1">
 						{ALL_NAV_ITEMS.map((item) => (
 							<CollapsedNavItem key={item.path} item={item} currentPath={pathname} />
 						))}
