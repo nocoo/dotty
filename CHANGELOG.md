@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-07-16
+
+### Changed
+
+- `README.md`: tech-stack table now shows Vite 8 / TypeScript 7 (was pre-migration
+  Vite 7 / TypeScript 5.9); the "Run tests" snippet uses `bun run test` instead
+  of a bare `vitest run` that assumes vitest is on PATH.
+- `react-i18next` 17.0.9 → 17.0.10 (dependabot, merged from `main`).
+
 ## [1.2.1] - 2026-07-15
 
 ### Changed
