@@ -62,7 +62,7 @@
 		"react-dom": "^19.2.7",
 		"react-i18next": "^17.0.10",
 		"react-router": "^8.2.0",
-		"recharts": "^3.9.2",
+		"recharts": "^3.10.0",
 		"sonner": "^2.0.7",
 		"tailwind-merge": "^3.6.0"
 	},
