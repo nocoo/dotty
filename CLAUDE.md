@@ -11,7 +11,7 @@ This file is the **contract**. Hooks, CI, and config are **enforcement**. If the
 | Fact | Where |
 |---|---|
 | Agent handbook | this file |
-| Human docs | README.md, `docs/accessibility-audit.md` |
+| Human docs | README.md, CHANGELOG.md, `docs/accessibility-audit.md` |
 | Version | `package.json` `"version"` (`__APP_VERSION__` in Vite/Vitest) |
 | Enforcement | `.husky/*`, `.github/workflows/{ci,release}.yml`, `vitest.config.ts` |
 | Machine rules | global `AGENTS.md`, `rules/git-commit.md` |
@@ -32,7 +32,7 @@ This file is the **contract**. Hooks, CI, and config are **enforcement**. If the
 | Component | Choice |
 |---|---|
 | Language | TypeScript 7 strict |
-| Package manager | Bun (`packageManager` bun@1.3.6; CD pins 1.3.11) |
+| Package manager | Bun (`packageManager` bun@1.3.6; CD 1.3.11; CI bun-quality default `latest`) |
 | Runtime | Vite 8 SPA; CF Workers assets (`theme-dotty`) |
 | Lint | Biome `check --error-on-warnings .` |
 | Tests | Vitest L1 95% all four on models/viewmodels/lib |
@@ -90,8 +90,8 @@ Today: pre-commit typecheck/lint/`test`/gitleaks `--staged` on the working tree.
 
 ## Operations / Release
 
-- Entry: bump `package.json` `"version"`, commit, tag `vX.Y.Z`, push. Who: GitHub write + `production` Environment.
-- Do not `wrangler deploy` from a laptop. CD: `.github/workflows/release.yml` (tag + CI-green `main`).
+- Entry: bump `package.json` + CHANGELOG.md, commit, push `main`, wait CI, then push tag `vX.Y.Z`. Who: GitHub write + `production` Environment.
+- Tag push deploys immediately (no CI wait). `main` CD waits CI-green. Do not laptop-`wrangler deploy`.
 - Live-check: `https://dotty.hexly.ai`.
 
 ## Retrospective
