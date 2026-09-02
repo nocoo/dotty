@@ -61,7 +61,7 @@ Inter is the global body font. Only card numerical values (stats, metrics, perce
 |---|---|
 | **Build** | [Vite 8](https://vite.dev) + SWC |
 | **UI** | [React 19](https://react.dev) + TypeScript 7 |
-| **Routing** | [React Router 7](https://reactrouter.com) |
+| **Routing** | [React Router 8](https://reactrouter.com) |
 | **Styling** | [Tailwind CSS 4](https://tailwindcss.com) + @tailwindcss/vite + tw-animate-css |
 | **Components** | [shadcn/ui](https://ui.shadcn.com) (31 primitives) |
 | **Charts** | [Recharts 3](https://recharts.org) + custom PixelBarChart |
@@ -90,8 +90,8 @@ All tokens live in `src/index.css` as CSS custom properties with HSL values (hue
 # Install dependencies
 bun install
 
-# Start dev server (port 7017)
-bun dev
+# Start dev server (port 7002)
+bun run dev
 
 # Build for production
 bun run build
