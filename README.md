@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/icon-rounded.png" alt="Dotty" width="128" height="128" />
+</p>
+
 # dotty
 
 > **Pixel-brutalist dashboard template.**
@@ -37,7 +41,9 @@ Bar charts are rendered as vertically stacked square blocks (`PixelBarChart` com
 
 ### Logo
 
-Three rounded squares arranged to form the number **7** — two blocks on top (the horizontal stroke) and one block bottom-right (the vertical stroke). The logo ships as both a React component (`DottyLogo`) and a static SVG favicon (`public/logo.svg`).
+A floating, rounded ceramic block with opaque black-and-white checker inlays. A pale engineering grid and a separate projected shadow give the large presentation depth. `DottyLogo` and browser favicons use the transparent foreground; the README uses the background presentation.
+
+See the [individual logo comparison](https://hexly.ai/logos/dotty) and [brand usage guide](assets/brand/README.md) for the masters, small-size exports and reproducible asset generator.
 
 ### Typography
 

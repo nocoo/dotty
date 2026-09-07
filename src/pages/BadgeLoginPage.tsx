@@ -69,7 +69,7 @@ export default function BadgeLoginPage() {
 								}}
 							/>
 							<div className="flex items-center gap-2">
-								<DottyLogo className="h-4 w-4 text-primary-foreground" />
+								<DottyLogo className="h-6 w-6 object-contain" />
 								<span className="text-sm font-semibold text-primary-foreground">dotty.</span>
 							</div>
 							<span className="text-[10px] font-medium uppercase tracking-widest text-primary-foreground/60">
@@ -90,9 +90,7 @@ export default function BadgeLoginPage() {
 					{/* Badge content */}
 					<div className="flex flex-1 flex-col items-center px-6 pt-6 pb-14">
 						{/* Logo */}
-						<div className="flex h-24 w-24 items-center justify-center rounded-full bg-muted ring-1 ring-border overflow-hidden p-2.5">
-							<DottyLogo className="h-10 w-10 text-muted-foreground" />
-						</div>
+						<DottyLogo className="h-24 w-24 object-contain" />
 
 						<p className="mt-5 text-lg font-semibold text-foreground">
 							{t("pages.badgeLogin.welcome")}

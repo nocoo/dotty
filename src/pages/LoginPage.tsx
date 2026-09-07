@@ -22,9 +22,7 @@ export default function LoginPage() {
 			<div className="relative w-full max-w-[420px]">
 				{/* Logo / Brand */}
 				<div className="mb-8 text-center">
-					<div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-widget)] bg-primary">
-						<DottyLogo className="h-5 w-5 text-primary-foreground" />
-					</div>
+					<DottyLogo className="mx-auto mb-4 h-24 w-24 object-contain" />
 					<h1 className="text-2xl font-semibold text-foreground">{t("pages.login.welcomeBack")}</h1>
 					<p className="mt-1 text-sm text-muted-foreground">{t("pages.login.signInDescription")}</p>
 				</div>

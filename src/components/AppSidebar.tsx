@@ -266,7 +266,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 				/* ── Collapsed (icon-only) view ── */
 				<div className="flex h-screen w-[68px] flex-col items-center">
 					<div className="flex h-14 items-center justify-center">
-						<DottyLogo className="h-5 w-5 text-primary" />
+						<DottyLogo className="h-7 w-7 shrink-0 object-contain" />
 					</div>
 
 					<button
@@ -320,7 +320,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 					<div className="px-3 h-14 flex items-center">
 						<div className="flex w-full items-center justify-between px-3">
 							<div className="flex items-center gap-3">
-								<DottyLogo className="h-5 w-5 text-primary" />
+								<DottyLogo className="h-7 w-7 shrink-0 object-contain" />
 								<span className="text-lg md:text-xl font-semibold text-foreground">dotty.</span>
 								<span className="rounded-md bg-secondary px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground leading-none">
 									v{__APP_VERSION__}
