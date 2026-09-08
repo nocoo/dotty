@@ -61,11 +61,6 @@ export interface PortfolioItem {
 	up: boolean;
 }
 
-export interface FAQ {
-	q: string;
-	a: string;
-}
-
 export type ToastVariant = "default" | "success" | "error" | "warning" | "info";
 
 export interface ShowcaseToast {
