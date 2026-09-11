@@ -9,15 +9,21 @@ function getVersion(): string {
 	return pkg.version as string;
 }
 
-/** Dev-server middleware that serves GET /api/live */
+/** Dev middleware and production static GET /api/live */
 function apiLivePlugin(): PluginOption {
+	const body = `${JSON.stringify({ status: "ok", version: getVersion() })}\n`;
 	return {
 		name: "api-live",
 		configureServer(server) {
-			server.middlewares.use("/api/live", (_req, res) => {
-				res.setHeader("Content-Type", "application/json");
-				res.end(JSON.stringify({ status: "ok", version: getVersion() }));
+			server.middlewares.use((req, res, next) => {
+				if (new URL(req.url ?? "/", "http://localhost").pathname !== "/api/live") return next();
+				res.setHeader("Content-Type", "application/json; charset=utf-8");
+				res.setHeader("Cache-Control", "no-store");
+				res.end(req.method === "HEAD" ? undefined : body);
 			});
+		},
+		generateBundle() {
+			this.emitFile({ type: "asset", fileName: "api/live", source: body });
 		},
 	};
 }

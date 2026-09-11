@@ -20,7 +20,7 @@ This file is the **contract**. Hooks, CI, and config are **enforcement**. If the
 
 ## Project Invariants
 
-- Static SPA + mock data (`src/data/mock.ts`). No D1, no auth, no real backend. `/api/live` is Vite middleware only.
+- Static SPA + mock data (`src/data/mock.ts`). No D1, no auth, no real backend. `/api/live` is build-emitted static JSON (`status`, `version`) with `Cache-Control: no-store`.
 - Wrangler worker name is `theme-dotty`; `[assets]` is `./dist`. Do not laptop-`wrangler deploy` — CD is `release.yml`.
 - Dev server port **7002** (`vite.config.ts`), host `dotty.dev.hexly.ai`. README must not say 7017.
 - Coverage gate is models/viewmodels/lib only (`vitest.config.ts` `include`). Pages/components are not in the 95% denominator.
@@ -92,7 +92,7 @@ Today: pre-commit typecheck/lint/`test`/gitleaks `--staged` on the working tree.
 
 - Entry: bump `package.json` + CHANGELOG.md, commit, push `main`, wait CI, then push tag `vX.Y.Z`. Who: GitHub write + `production` Environment.
 - Tag push deploys immediately (no CI wait). `main` CD waits CI-green. Do not laptop-`wrangler deploy`.
-- Live-check: `https://dotty.hexly.ai`.
+- Live-check: `GET https://dotty.hexly.ai/api/live`.
 
 ## Retrospective
 
