@@ -1,6 +1,8 @@
 name = "theme-dotty"
+main = "worker.js"
 compatibility_date = "2026-03-08"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
 not_found_handling = "single-page-application"
