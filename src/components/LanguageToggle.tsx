@@ -1,3 +1,4 @@
+import { HeaderTooltip } from "./header-links";
 import { Languages } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
@@ -18,15 +19,17 @@ export function LanguageToggle() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<button
-					type="button"
-					className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-					aria-label={t("language.label")}
-				>
-					<Languages className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
-				</button>
-			</DropdownMenuTrigger>
+			<HeaderTooltip label={t("language.label")}>
+				<DropdownMenuTrigger asChild>
+					<button
+						type="button"
+						className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+						aria-label={t("language.label")}
+					>
+						<Languages className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
+					</button>
+				</DropdownMenuTrigger>
+			</HeaderTooltip>
 			<DropdownMenuContent align="end" className="min-w-[120px]">
 				<DropdownMenuRadioGroup
 					value={i18n.language}

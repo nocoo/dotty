@@ -1,3 +1,4 @@
+import { HeaderTooltip } from "./header-links";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -43,19 +44,21 @@ export function ThemeToggle() {
 	};
 
 	return (
-		<button
-			type="button"
-			onClick={cycleTheme}
-			className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-			aria-label={t("common.toggleTheme", { theme })}
-		>
-			{theme === "system" ? (
-				<Monitor {...ICON_PROPS} />
-			) : theme === "dark" ? (
-				<Moon {...ICON_PROPS} />
-			) : (
-				<Sun {...ICON_PROPS} />
-			)}
-		</button>
+		<HeaderTooltip label={t("common.toggleTheme", { theme })}>
+			<button
+				type="button"
+				onClick={cycleTheme}
+				className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+				aria-label={t("common.toggleTheme", { theme })}
+			>
+				{theme === "system" ? (
+					<Monitor {...ICON_PROPS} />
+				) : theme === "dark" ? (
+					<Moon {...ICON_PROPS} />
+				) : (
+					<Sun {...ICON_PROPS} />
+				)}
+			</button>
+		</HeaderTooltip>
 	);
 }

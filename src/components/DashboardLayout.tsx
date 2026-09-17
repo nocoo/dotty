@@ -1,3 +1,4 @@
+import { HeaderTooltip, HexlyLink } from "./header-links";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -111,14 +112,16 @@ export function DashboardLayout() {
 				<header className="flex h-14 items-center justify-between px-4 md:px-6 shrink-0">
 					<div className="flex items-center gap-3">
 						{isMobile && (
-							<button
-								type="button"
-								onClick={() => setMobileOpen(true)}
-								aria-label={t("common.openNav")}
-								className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-							>
-								<Menu className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
-							</button>
+							<HeaderTooltip label={t("common.openNav")}>
+								<button
+									type="button"
+									onClick={() => setMobileOpen(true)}
+									aria-label={t("common.openNav")}
+									className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+								>
+									<Menu className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
+								</button>
+							</HeaderTooltip>
 						)}
 						{/* Breadcrumb */}
 						<nav className="flex items-center gap-2 text-sm">
@@ -128,15 +131,18 @@ export function DashboardLayout() {
 						</nav>
 					</div>
 					<div className="flex items-center gap-1">
-						<a
-							href="https://github.com/nocoo/dotty"
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={t("common.github")}
-							className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-						>
-							<GithubIcon className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
-						</a>
+						<HeaderTooltip label={t("common.github")}>
+							<a
+								href="https://github.com/nocoo/dotty"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={t("common.github")}
+								className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+							>
+								<GithubIcon className="h-[18px] w-[18px]" aria-hidden="true" strokeWidth={1.5} />
+							</a>
+						</HeaderTooltip>
+						<HexlyLink />
 						<LanguageToggle />
 						<ThemeToggle />
 					</div>
