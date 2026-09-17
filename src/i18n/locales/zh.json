@@ -12,7 +12,6 @@
 		"logOut": "退出登录",
 		"github": "GitHub 仓库",
 		"toggleTheme": "切换主题，当前：{{theme}}",
-		"language": "语言",
 		"currentBadge": "当前",
 		"revoke": "撤销",
 		"viewModule": "查看模块",
@@ -32,7 +31,6 @@
 		"copy": "复制",
 		"copied": "已复制！",
 		"retry": "重试",
-		"close": "关闭",
 		"apply": "应用",
 		"signOut": "退出",
 		"previousDay": "前一天",
@@ -42,15 +40,12 @@
 		"showing": "显示",
 		"results": "条结果",
 		"email": "邮箱",
-		"name": "名称",
 		"status": "状态",
 		"amount": "金额",
 		"date": "日期",
 		"left": "左",
 		"right": "右",
-		"top": "上",
-		"middle": "中",
-		"bottom": "下"
+		"middle": "中"
 	},
 	"language": {
 		"label": "语言",
@@ -85,17 +80,10 @@
 		"notFoundPage": "404 页面",
 		"layout": "布局",
 		"colorPalette": "调色板",
-		"settings": "设置",
-		"tables": "表格",
-		"buttons": "按钮",
-		"feedback": "反馈",
-		"overlays": "弹出层",
-		"dataDisplay": "数据展示",
-		"pills": "标签"
+		"settings": "设置"
 	},
 	"pages": {
 		"notFound": {
-			"title": "404",
 			"backHome": "返回首页"
 		},
 		"login": {
@@ -419,7 +407,6 @@
 			"reportsContent": "报告内容区域",
 			"settingsContent": "设置内容区域",
 			"showingAll": "显示所有项目",
-			"showingActive": "显示活跃项目",
 			"showingArchived": "显示已归档项目",
 			"showingDrafts": "显示草稿项目"
 		},

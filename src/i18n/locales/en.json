@@ -12,7 +12,6 @@
 		"logOut": "Log out",
 		"github": "GitHub repository",
 		"toggleTheme": "Toggle theme, currently {{theme}}",
-		"language": "Language",
 		"currentBadge": "Current",
 		"revoke": "Revoke",
 		"viewModule": "View module",
@@ -32,7 +31,6 @@
 		"copy": "Copy",
 		"copied": "Copied!",
 		"retry": "Retry",
-		"close": "Close",
 		"apply": "Apply",
 		"signOut": "Sign out",
 		"previousDay": "Previous day",
@@ -42,15 +40,12 @@
 		"showing": "Showing",
 		"results": "results",
 		"email": "Email",
-		"name": "Name",
 		"status": "Status",
 		"amount": "Amount",
 		"date": "Date",
 		"left": "Left",
 		"right": "Right",
-		"top": "Top",
-		"middle": "Middle",
-		"bottom": "Bottom"
+		"middle": "Middle"
 	},
 	"language": {
 		"label": "Language",
@@ -85,17 +80,10 @@
 		"notFoundPage": "404 Page",
 		"layout": "Layout",
 		"colorPalette": "Color Palette",
-		"settings": "Settings",
-		"tables": "Tables",
-		"buttons": "Buttons",
-		"feedback": "Feedback",
-		"overlays": "Overlays",
-		"dataDisplay": "Data Display",
-		"pills": "Pills"
+		"settings": "Settings"
 	},
 	"pages": {
 		"notFound": {
-			"title": "404",
 			"backHome": "Back to Homepage"
 		},
 		"login": {
@@ -419,7 +407,6 @@
 			"reportsContent": "Reports content area",
 			"settingsContent": "Settings content area",
 			"showingAll": "Showing all items",
-			"showingActive": "Showing active items",
 			"showingArchived": "Showing archived items",
 			"showingDrafts": "Showing draft items"
 		},
