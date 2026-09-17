@@ -64,7 +64,7 @@ bun run preview
 
 构建结果在 `dist/`。部署到静态主机时，为 React Router 配置回退到 `index.html`。仓库的 [Cloudflare 配置](wrangler.toml)已设置 SPA 回退，现有[部署工作流](.github/workflows/release.yml)使用这些静态资源。
 
-`src/models/` 保存计算逻辑，`src/viewmodels/` 组合数据与界面状态，`src/i18n/locales/` 保存中英文文案。`/api/live` 只由 Vite 开发服务器提供，不是生产业务 API。
+`src/models/` 保存计算逻辑，`src/viewmodels/` 组合数据与界面状态，`src/i18n/locales/` 保存中英文文案。`/api/live` 由 Vite 开发服务器提供，并在构建时输出 `api/live.json` 供生产静态托管；它返回状态和版本，不承载业务数据。
 
 ## 测试
 

@@ -1,106 +1,90 @@
 # Dotty
 
-Pixel-brutalist dashboard template (Vite SPA on Cloudflare Workers assets). Live: `https://dotty.hexly.ai`.
-Profile: ts-worker-web
-Direction: [README.md](README.md). No numbered `docs/01`. Frameworks must not rewrite this file.
+Pixel-brutalist React dashboard template, hosted as a static SPA at `https://dotty.hexly.ai`.
+Profile: ts-worker-web.
+Direction: [README.md](README.md). Frameworks must not rewrite this file.
 
 ## Sources of Truth
 
-This file is the **contract**. Hooks, CI, and config are **enforcement**. If they disagree, raise enforcement; never lower this file.
+This file is the contract; hooks, CI and configuration enforce it. Raise weaker enforcement instead of lowering this contract.
 
 | Fact | Where |
 |---|---|
-| Agent handbook | this file |
-| Human docs | README.md, CHANGELOG.md, `docs/accessibility-audit.md` |
-| Version | `package.json` `"version"` (`__APP_VERSION__` in Vite/Vitest) |
-| Enforcement | `.husky/*`, `.github/workflows/{ci,release}.yml`, `vitest.config.ts` |
-| Machine rules | global `AGENTS.md`, `rules/git-commit.md` |
+| Human docs | [README.md](README.md), [accessibility audit](docs/accessibility-audit.md), `CHANGELOG.md` |
+| Version | `package.json`, injected as `__APP_VERSION__` by Vite/Vitest |
+| Enforcement | `.husky/`, CI/release workflows, `vitest.config.ts`, `vite.config.ts` |
+| Machine rules | Global `AGENTS.md` and `rules/` |
 | Accidents | [Retrospective.md](Retrospective.md) |
-| Env files | omit |
 
 ## Project Invariants
 
-- Static SPA + mock data (`src/data/mock.ts`). No D1, no auth, no real backend. `/api/live` is build-emitted static JSON (`status`, `version`) with `Cache-Control: no-store`.
-- Wrangler worker name is `theme-dotty`; `[assets]` is `./dist`. Do not laptop-`wrangler deploy` — CD is `release.yml`.
-- Dev server port **7002** (`vite.config.ts`), host `dotty.dev.hexly.ai`. README must not say 7017.
-- Coverage gate is models/viewmodels/lib only (`vitest.config.ts` `include`). Pages/components are not in the 95% denominator.
-- MVVM: viewmodels have no View/DOM imports; pages stay thin.
-- `lint-staged` in package.json is unused. pre-commit runs full `lint` + `test` (no coverage) + gitleaks.
+- This is a static SPA with local mock data, no D1 database, business backend or real login. Do not describe demonstration forms as production authentication.
+- `/api/live` is Vite middleware plus emitted `api/live.json` for production; preserve version/status and no-store caching behavior.
+- Worker name is `theme-dotty`, assets are `./dist`, with SPA navigation fallback. Deployment is owned by `release.yml`, never a parallel laptop `wrangler deploy`.
+- Dev port is 7002 (`dotty.dev.hexly.ai`), not 7017. Preserve the approved cold-gray palette, squared frame/rounded-card hierarchy, pixel charts and bilingual interface.
+- Viewmodels have no View/DOM imports; pages stay thin. Replace mock data deliberately when adapting the template.
+- Existing coverage denominator is models/viewmodels/lib; pages/components and browser journeys require their own proof.
 
 ## Stack / Layout
 
 | Component | Choice |
 |---|---|
-| Language | TypeScript 7 strict |
-| Package manager | Bun (`packageManager` bun@1.3.6; CD 1.3.11; CI bun-quality default `latest`) |
-| Runtime | Vite 8 SPA; CF Workers assets (`theme-dotty`) |
-| Lint | Biome `check --error-on-warnings .` |
-| Tests | Vitest L1 95% all four on models/viewmodels/lib |
-| Data | mock only |
-
-```
-src/pages/  src/viewmodels/  src/models/  src/components/
-src/data/mock.ts
-```
+| Language / install | TypeScript 7; Bun manifest 1.3.6, current CI/CD 1.4.2 |
+| App | Vite 8, React Router, Tailwind/Radix, i18next, Recharts |
+| Static / tests | TypeScript, Biome, Vitest/V8, jsdom/Testing Library |
+| `src/pages/`, `src/components/` | Demo pages and reusable dashboard elements |
+| `src/models/`, `src/viewmodels/`, `src/lib/` | Logic and presentation state |
+| `src/data/mock.ts`, `src/i18n/locales/` | Example data and English/Chinese copy |
 
 ## Commands
 
+Run from the root with Bun and Node 24+ for current tooling. No env file, backend account or cloud credential is needed for tests or local development.
+
 ```bash
+bun install --frozen-lockfile
 bun run dev
 bun run typecheck
 bun run lint
 bun run build
 bun run test
 bun run test:coverage
+bun run preview
 ```
+
+`build` emits `dist/`, including the status asset; typechecking alone does not build the SPA. There is no independent API or browser E2E runner yet.
 
 ## Verification
 
-Status: `enforced` | `planned` | `manual` | `N/A`. `enforced` Evidence = hook/CI/config/script.
+6DQ = L1/L2/L3 + G1/G2 + D1. Status: `enforced`, `planned`, `manual`, `N/A`.
 
-Org gaps: index-snapshot pre-commit; stdin-range pre-push; `.skip`/`.only`; coverage on pre-commit; CI typecheck (`typecheck-command: "true"` skips it).
-
-Today: pre-commit typecheck/lint/`test`/gitleaks `--staged` on the working tree. pre-push `build` + `test:coverage` + `lint` + osv. CI bun-quality `@aec4adc1a817c56790d1698329ef9398a15a754a` (v2026.5): build, `test:coverage`, gitleaks, osv; typecheck skipped.
-
-| Change | Proof | Status | Evidence |
+| Dimension | Required proof | Status | Current enforcement / gap |
 |---|---|---|---|
-| Logic | L1 vitest ≥95% on models/viewmodels/lib | enforced | pre-push + CI `test:coverage`; `vitest.config.ts`. pre-commit `test` has no thresholds |
-| API L2 | — | N/A | — |
-| UI L3 | Playwright | N/A | — |
-| Types / lint | tsc + Biome 0 warning | enforced | pre-commit typecheck + lint (working tree). CI lint only |
-| G2 secrets | gitleaks | enforced | pre-commit `--staged`; CI bun-quality |
-| G2 deps | osv `bun.lock` | enforced | pre-push; CI bun-quality |
-| Bundler | `vite build` → `dist/` | enforced | pre-push `build`; CI pre-command; CD `release.yml` |
-| Docs | README if public UI contract changes | manual | human review |
-| Release | tag `vX.Y.Z` == package.json; CD deploy | enforced | `.github/workflows/release.yml` |
+| L1 logic | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only` | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing |
+| L2 HTTP | Real HTTP for the status response and SPA asset contract | planned | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract |
+| L3 UI | Critical navigation, theme/language, forms and chart journeys | planned | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A |
+| G1 static | Strict types and check-only lint; zero errors/warnings | enforced | Local pre-commit typecheck/lint; CI lints but explicitly sets `typecheck: false`, an enforcement gap |
+| G2 security | Secret and dependency scans; missing scanner fails | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans |
+| D1 isolation | Per-run local browser/storage state; no production/daily-dev data | planned | Unit tests use mock data in jsdom; isolated HTTP/browser harness and cleanup guards are absent |
+| Build | Real Vite bundle and status asset | enforced | Pre-push build and CI prepare-command; release workflow rebuilds proven source |
+| Docs | UI and accessibility contract reviewed | manual | README/accessibility notes when behavior changes |
 
-| Hook | Org bar | Status | Evidence |
-|---|---|---|---|
-| pre-commit | index snapshot | planned | — |
-| pre-push | stdin ref range | planned | — |
+| Hook | Current behavior | Required follow-up |
+|---|---|---|
+| pre-commit | Working-tree typecheck/lint/tests without coverage; staged Gitleaks | G1+L1 coverage on index snapshot, <30s |
+| pre-push | Working-tree build/coverage/lint, OSV | L2+G2 on stdin push refs, <3min |
 
-`--no-verify` forbidden on commits and branch pushes. Tag-only may skip.
+Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
+CI now uses `base-ci/quality.yml@ad43150de3a2be2fa464b5cd2f921dc4fa9f8f0f`; typechecking remains explicitly disabled there rather than implemented by a no-op command.
 
 ## Resources / Isolation
 
-| Purpose | Port / resource | Isolation |
-|---|---|---|
-| Dev | 7002 `https://dotty.dev.hexly.ai` | mock data; no prod stores |
-| Prod | `https://dotty.hexly.ai` (`theme-dotty`) | static assets |
+Dev runs at 7002 (`https://dotty.dev.hexly.ai`) with mock data. Production serves static assets. Future L2/L3 must allocate a separate local server, fresh browser context/storage and scoped cleanup, without remote `-test` infrastructure.
 
 ## Operations / Release
 
-- Entry: bump `package.json` + CHANGELOG.md, commit, push `main`, wait CI, then push tag `vX.Y.Z`. Who: GitHub write + `production` Environment.
-- Tag push deploys immediately (no CI wait). `main` CD waits CI-green. Do not laptop-`wrangler deploy`.
-- Live-check: `GET https://dotty.hexly.ai/api/live`.
+Authorized maintainers update `package.json` and changelog, commit/push normally, verify CI and push the matching `vX.Y.Z` tag. `release.yml` uses the shared proven-source Worker deployment; tag/manual paths also prove the selected source rather than trusting a tag alone.
+GitHub write and the exact `production` environment own deployment credentials. Confirm `GET https://dotty.hexly.ai/api/live` returns the intended version after a requested release; do not deploy from the laptop.
 
 ## Retrospective
 
-| Kind | Where |
-|---|---|
-| Accident narrative | [Retrospective.md](Retrospective.md) |
-| Recurring project rule | one line here (cap ~10) |
-| Checkable rule | hook or test |
-
-- Dev port is 7002, not 7017.
-- Coverage is models/viewmodels/lib only.
+Narratives stay in [Retrospective.md](Retrospective.md); keep recurring rules here, cross-project lessons in global rules/nmem, and deterministic requirements in hooks/tests.
