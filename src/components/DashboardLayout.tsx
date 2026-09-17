@@ -131,6 +131,7 @@ export function DashboardLayout() {
 						</nav>
 					</div>
 					<div className="flex items-center gap-1">
+						<LanguageToggle />
 						<HeaderTooltip label={t("common.github")}>
 							<a
 								href="https://github.com/nocoo/dotty"
@@ -143,7 +144,6 @@ export function DashboardLayout() {
 							</a>
 						</HeaderTooltip>
 						<HexlyLink />
-						<LanguageToggle />
 						<ThemeToggle />
 					</div>
 				</header>
