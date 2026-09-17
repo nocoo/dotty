@@ -1,4 +1,3 @@
-import { HeaderTooltip } from "./header-links";
 import { Languages } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
@@ -8,6 +7,7 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { HeaderTooltip } from "./header-links";
 
 const LANGUAGES = [
 	{ value: "en", label: "language.en" },

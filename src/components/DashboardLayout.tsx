@@ -1,4 +1,3 @@
-import { HeaderTooltip, HexlyLink } from "./header-links";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,6 +8,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { HeaderTooltip, HexlyLink } from "./header-links";
 
 // Map route paths to i18n keys for page titles
 const PAGE_TITLE_KEYS: Record<string, string> = {

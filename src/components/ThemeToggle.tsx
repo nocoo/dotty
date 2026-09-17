@@ -1,7 +1,7 @@
-import { HeaderTooltip } from "./header-links";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { HeaderTooltip } from "./header-links";
 
 type Theme = "light" | "dark" | "system";
 
