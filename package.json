@@ -71,7 +71,7 @@
 		"@tailwindcss/vite": "^4.3.3",
 		"@testing-library/jest-dom": "7.0.1",
 		"@testing-library/react": "^16.3.3",
-		"@types/node": "26.6.1",
+		"@types/node": "26.6.2",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
 		"@vitejs/plugin-react-swc": "^4.3.3",
@@ -83,7 +83,7 @@
 		"typescript": "7.0.2",
 		"vite": "8.3.0",
 		"vitest": "5.0.1",
-		"wrangler": "4.134.0"
+		"wrangler": "4.135.0"
 	},
 	"trustedDependencies": [
 		"@biomejs/biome"
