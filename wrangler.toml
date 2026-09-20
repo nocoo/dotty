@@ -1,4 +1,9 @@
 name = "theme-dotty"
+routes = [
+  { pattern = "dotty.hexly.ai", custom_domain = true }
+]
+workers_dev = false
+preview_urls = false
 main = "worker.js"
 compatibility_date = "2026-03-08"
 
