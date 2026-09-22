@@ -60,7 +60,7 @@
 		"postcss": "8.5.28",
 		"react": "^19.3.0",
 		"react-dom": "^19.3.0",
-		"react-i18next": "17.0.14",
+		"react-i18next": "17.0.15",
 		"react-router": "8.4.0",
 		"recharts": "^3.10.1",
 		"sonner": "2.0.8",
