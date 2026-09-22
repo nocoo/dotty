@@ -60,7 +60,7 @@
 		"postcss": "8.5.28",
 		"react": "^19.3.0",
 		"react-dom": "^19.3.0",
-		"react-i18next": "17.0.14",
+		"react-i18next": "17.0.15",
 		"react-router": "8.4.0",
 		"recharts": "^3.10.1",
 		"sonner": "2.0.8",
@@ -83,7 +83,7 @@
 		"typescript": "7.0.2",
 		"vite": "8.3.0",
 		"vitest": "5.0.1",
-		"wrangler": "4.135.0"
+		"wrangler": "4.136.1"
 	},
 	"trustedDependencies": [
 		"@biomejs/biome"
