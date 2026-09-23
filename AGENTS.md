@@ -2,7 +2,7 @@
 
 Pixel-brutalist React dashboard template, hosted as a static SPA at `https://dotty.hexly.ai`.
 Profile: ts-worker-web.
-Direction: [README.md](README.md). Frameworks must not rewrite this file.
+Human overview: [README.md](README.md). Frameworks must not rewrite this file. Maintain this root `AGENTS.md` as the only project handbook; do not create a `CLAUDE.md` alias, copy or import.
 
 ## Sources of Truth
 
@@ -55,14 +55,13 @@ bun run preview
 
 ## Verification
 
-6DQ = L1/L2/L3 + G1/G2 + D1. Status: `enforced`, `planned`, `manual`, `N/A`.
+6DQ = L1/L2/L3 + G2 + D1; the former G1 dimension was merged into L1 on 2026-09-21. Status: `enforced`, `planned`, `manual`, `N/A`.
 
 | Dimension | Required proof | Status | Current enforcement / gap |
 |---|---|---|---|
-| L1 logic | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only` | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing |
+| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing. Static lane: local pre-commit typecheck/lint; CI lints but explicitly sets `typecheck: false`, an enforcement gap. No index-snapshot/timing/rejection proof |
 | L2 HTTP | Real HTTP for the status response and SPA asset contract | planned | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract |
 | L3 UI | Critical navigation, theme/language, forms and chart journeys | planned | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A |
-| G1 static | Strict types and check-only lint; zero errors/warnings | enforced | Local pre-commit typecheck/lint; CI lints but explicitly sets `typecheck: false`, an enforcement gap |
 | G2 security | Secret and dependency scans; missing scanner fails | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans |
 | D1 isolation | Per-run local browser/storage state; no production/daily-dev data | planned | Unit tests use mock data in jsdom; isolated HTTP/browser harness and cleanup guards are absent |
 | Build | Real Vite bundle and status asset | enforced | Pre-push build and CI prepare-command; release workflow rebuilds proven source |
@@ -70,7 +69,7 @@ bun run preview
 
 | Hook | Current behavior | Required follow-up |
 |---|---|---|
-| pre-commit | Working-tree typecheck/lint/tests without coverage; staged Gitleaks | G1+L1 coverage on index snapshot, <30s |
+| pre-commit | Working-tree typecheck/lint/tests without coverage; staged Gitleaks | Unified L1 (types, check-only lint, coverage) on index snapshot, <30s |
 | pre-push | Working-tree build/coverage/lint, OSV | L2+G2 on stdin push refs, <3min |
 
 Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
