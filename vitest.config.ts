@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vitest/config";
 
 function getVersion(): string {
-	const pkg = JSON.parse(readFileSync(path.resolve(__dirname, "package.json"), "utf-8"));
+	const pkg = JSON.parse(readFileSync(path.resolve(import.meta.dirname, "package.json"), "utf-8"));
 	return pkg.version as string;
 }
 
@@ -45,6 +45,6 @@ export default defineConfig({
 		},
 	},
 	resolve: {
-		alias: { "@": path.resolve(__dirname, "./src") },
+		alias: { "@": path.resolve(import.meta.dirname, "./src") },
 	},
 });
