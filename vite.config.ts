@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react-swc";
 import { defineConfig, type PluginOption } from "vite";
 
 function getVersion(): string {
-	const pkg = JSON.parse(readFileSync(path.resolve(__dirname, "package.json"), "utf-8"));
+	const pkg = JSON.parse(readFileSync(path.resolve(import.meta.dirname, "package.json"), "utf-8"));
 	return pkg.version as string;
 }
 
@@ -44,7 +44,7 @@ export default defineConfig(() => ({
 	plugins: [tailwindcss(), react(), apiLivePlugin()],
 	resolve: {
 		alias: {
-			"@": path.resolve(__dirname, "./src"),
+			"@": path.resolve(import.meta.dirname, "./src"),
 		},
 		dedupe: ["react", "react-dom", "react/jsx-runtime", "@radix-ui/react-tooltip"],
 	},
