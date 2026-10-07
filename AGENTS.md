@@ -59,7 +59,7 @@ bun run preview
 
 | Dimension | Required proof | Status | Current enforcement / gap |
 |---|---|---|---|
-| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing. Static lane: local pre-commit typecheck/lint; CI lints but explicitly sets `typecheck: false`, an enforcement gap. No index-snapshot/timing/rejection proof |
+| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing. Static lane: local pre-commit and CI run the real typecheck and strict lint commands. No index-snapshot/timing/rejection proof |
 | L2 HTTP | Real HTTP for the status response and SPA asset contract | planned | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract |
 | L3 UI | Critical navigation, theme/language, forms and chart journeys | planned | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A |
 | G2 security | Secret and dependency scans; missing scanner fails | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans |
@@ -73,7 +73,7 @@ bun run preview
 | pre-push | Working-tree build/coverage/lint, OSV | L2+G2 on stdin push refs, <3min |
 
 Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
-CI now uses `base-ci/quality.yml@ad43150de3a2be2fa464b5cd2f921dc4fa9f8f0f`; typechecking remains explicitly disabled there rather than implemented by a no-op command.
+CI uses `base-ci/quality.yml@ad43150de3a2be2fa464b5cd2f921dc4fa9f8f0f` with the real `bun run typecheck` command.
 
 ## Resources / Isolation
 
