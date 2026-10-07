@@ -16,8 +16,4 @@ jobs:
       coverage-path: "coverage"
       prepare-command: "bun run build"
       test-command: "bun run test:coverage"
-      typecheck: false
-      disabled-check-reasons: |-
-        {
-          "typecheck": "previous CI used a no-op typecheck-command"
-        }
+      typecheck-command: "bun run typecheck"
