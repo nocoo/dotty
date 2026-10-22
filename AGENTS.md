@@ -73,7 +73,7 @@ bun run preview
 | pre-push | Working-tree build/coverage/lint, OSV | L2+G2 on stdin push refs, <3min |
 
 Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
-CI uses `base-ci/quality.yml@ad43150de3a2be2fa464b5cd2f921dc4fa9f8f0f` with the real `bun run typecheck` command.
+CI uses `base-ci/quality.yml@ac635753a869cb85fad1f52aae4ccbd6119f3cae` with the real `bun run typecheck` command.
 
 ## Resources / Isolation
 
