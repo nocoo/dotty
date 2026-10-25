@@ -60,7 +60,7 @@
 		"clsx": "^2.1.1",
 		"cmdk": "^1.1.1",
 		"i18next": "26.5.10",
-		"i18next-browser-languagedetector": "^8.2.1",
+		"i18next-browser-languagedetector": "8.2.2",
 		"lucide-react": "1.61.0",
 		"postcss": "8.5.31",
 		"react": "19.3.1",
