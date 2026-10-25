@@ -8,22 +8,22 @@
 
 All **Critical** issues (6 categories, ~20 instances) have been resolved in atomic commits:
 
-| # | Issue | Status | Commit |
-|---|-------|--------|--------|
-| 1 | Icon-only buttons without accessible names | **Fixed** | `fix: add aria-label to icon-only buttons and aria-hidden to decorative icons` |
-| 2 | Form elements without associated labels | **Fixed** | `fix: add htmlFor and id associations to all form labels and inputs` |
-| 3 | Charts completely inaccessible | **Fixed** | `fix: add role=img and aria-label to all chart containers` |
-| 4 | Data tables built with `<div>` instead of `<table>` | **Fixed** | `fix: replace div-based data tables with semantic table elements` |
-| 5 | Login page missing `<form>` element | **Fixed** | `fix: wrap login inputs in form element and add aria-hidden to decorative icons` |
-| 6 | No skip navigation link | **Fixed** | `fix: add skip navigation link and main content landmark id` |
+| #   | Issue                                               | Status    | Commit                                                                           |
+| --- | --------------------------------------------------- | --------- | -------------------------------------------------------------------------------- |
+| 1   | Icon-only buttons without accessible names          | **Fixed** | `fix: add aria-label to icon-only buttons and aria-hidden to decorative icons`   |
+| 2   | Form elements without associated labels             | **Fixed** | `fix: add htmlFor and id associations to all form labels and inputs`             |
+| 3   | Charts completely inaccessible                      | **Fixed** | `fix: add role=img and aria-label to all chart containers`                       |
+| 4   | Data tables built with `<div>` instead of `<table>` | **Fixed** | `fix: replace div-based data tables with semantic table elements`                |
+| 5   | Login page missing `<form>` element                 | **Fixed** | `fix: wrap login inputs in form element and add aria-hidden to decorative icons` |
+| 6   | No skip navigation link                             | **Fixed** | `fix: add skip navigation link and main content landmark id`                     |
 
 **High** issues #8, #10, and #11 have also been resolved:
 
-| # | Issue | Status | Commit |
-|---|-------|--------|--------|
-| 8 | Progress bars missing ARIA attributes | **Fixed** | `fix: add progressbar role and aria attributes to css progress bars` |
-| 10 | Fake toggle switches in CardShowcasePage | **Fixed** | `fix: replace decorative div toggles with accessible shadcn switch components` |
-| 11 | Theme selector missing radio group semantics | **Fixed** | `fix: add radio group semantics to theme selector buttons` |
+| #   | Issue                                        | Status    | Commit                                                                         |
+| --- | -------------------------------------------- | --------- | ------------------------------------------------------------------------------ |
+| 8   | Progress bars missing ARIA attributes        | **Fixed** | `fix: add progressbar role and aria attributes to css progress bars`           |
+| 10  | Fake toggle switches in CardShowcasePage     | **Fixed** | `fix: replace decorative div toggles with accessible shadcn switch components` |
+| 11  | Theme selector missing radio group semantics | **Fixed** | `fix: add radio group semantics to theme selector buttons`                     |
 
 **Skipped**: High #7 (mobile sidebar focus trap) and #9 (color-only indicators) — deferred as higher risk/effort.
 
@@ -35,12 +35,12 @@ The project's accessibility posture relies almost entirely on Radix UI's built-i
 
 **Total issues identified: 80+**
 
-| Severity | Count | Description |
-|----------|-------|-------------|
-| Critical | ~20 | Blocks assistive technology users entirely |
-| High | ~25 | Significant information loss or usability degradation |
-| Medium | ~25 | Best-practice violations, partial information loss |
-| Low | ~10 | Minor improvements |
+| Severity | Count | Description                                           |
+| -------- | ----- | ----------------------------------------------------- |
+| Critical | ~20   | Blocks assistive technology users entirely            |
+| High     | ~25   | Significant information loss or usability degradation |
+| Medium   | ~25   | Best-practice violations, partial information loss    |
+| Low      | ~10   | Minor improvements                                    |
 
 ---
 
@@ -50,18 +50,18 @@ The project's accessibility posture relies almost entirely on Radix UI's built-i
 
 Multiple buttons contain only an icon with no `aria-label` or visually-hidden text. Screen readers announce "button" with zero context.
 
-| File | Line(s) | Element | Fix |
-|------|---------|---------|-----|
-| `src/components/DashboardLayout.tsx` | 78-83 | Mobile hamburger `<button>` (Menu icon) | Add `aria-label="Open navigation menu"` |
-| `src/components/DashboardLayout.tsx` | 88-95 | GitHub `<a>` link (Github icon) | Add `aria-label="GitHub repository"` |
-| `src/components/AppSidebar.tsx` | 232-237 | Expand sidebar `<button>` (PanelLeft icon) | Add `aria-label="Expand sidebar"` |
-| `src/components/AppSidebar.tsx` | 241-246 | Search `<button>` (Search icon) | Add `aria-label="Search"` |
-| `src/components/AppSidebar.tsx` | 282-287 | Collapse sidebar `<button>` (PanelLeft icon) | Add `aria-label="Collapse sidebar"` |
-| `src/components/AppSidebar.tsx` | 322-324 | Logout `<button>` (LogOut icon) | Add `aria-label="Log out"` |
-| `src/components/ThemeToggle.tsx` | 44-54 | Theme toggle `<button>` (Sun/Moon icon) | Replace `title` with `aria-label` |
-| `src/pages/LoginPage.tsx` | 74-84 | Password visibility `<button>` (Eye icon) | Add `aria-label="Show/Hide password"` |
-| `src/pages/SettingsPage.tsx` | 108-110 | Avatar upload `<button>` (Camera icon) | Add `aria-label="Change profile photo"` |
-| `src/pages/SettingsPage.tsx` | 69 | Settings nav buttons on mobile (icons only when text hidden) | Add `aria-label` to each nav button |
+| File                                 | Line(s) | Element                                                      | Fix                                     |
+| ------------------------------------ | ------- | ------------------------------------------------------------ | --------------------------------------- |
+| `src/components/DashboardLayout.tsx` | 78-83   | Mobile hamburger `<button>` (Menu icon)                      | Add `aria-label="Open navigation menu"` |
+| `src/components/DashboardLayout.tsx` | 88-95   | GitHub `<a>` link (Github icon)                              | Add `aria-label="GitHub repository"`    |
+| `src/components/AppSidebar.tsx`      | 232-237 | Expand sidebar `<button>` (PanelLeft icon)                   | Add `aria-label="Expand sidebar"`       |
+| `src/components/AppSidebar.tsx`      | 241-246 | Search `<button>` (Search icon)                              | Add `aria-label="Search"`               |
+| `src/components/AppSidebar.tsx`      | 282-287 | Collapse sidebar `<button>` (PanelLeft icon)                 | Add `aria-label="Collapse sidebar"`     |
+| `src/components/AppSidebar.tsx`      | 322-324 | Logout `<button>` (LogOut icon)                              | Add `aria-label="Log out"`              |
+| `src/components/ThemeToggle.tsx`     | 44-54   | Theme toggle `<button>` (Sun/Moon icon)                      | Replace `title` with `aria-label`       |
+| `src/pages/LoginPage.tsx`            | 74-84   | Password visibility `<button>` (Eye icon)                    | Add `aria-label="Show/Hide password"`   |
+| `src/pages/SettingsPage.tsx`         | 108-110 | Avatar upload `<button>` (Camera icon)                       | Add `aria-label="Change profile photo"` |
+| `src/pages/SettingsPage.tsx`         | 69      | Settings nav buttons on mobile (icons only when text hidden) | Add `aria-label` to each nav button     |
 
 **WCAG**: 4.1.2 Name, Role, Value (Level A)
 
@@ -69,23 +69,23 @@ Multiple buttons contain only an icon with no `aria-label` or visually-hidden te
 
 All `<Label>` components in `SettingsPage.tsx` lack `htmlFor`, and all `<Input>` components lack `id`. Screen readers cannot associate labels with their inputs.
 
-| File | Line(s) | Elements |
-|------|---------|----------|
-| `src/pages/SettingsPage.tsx` | 123-127 | First name input |
-| `src/pages/SettingsPage.tsx` | 130-134 | Last name input |
-| `src/pages/SettingsPage.tsx` | 137-142 | Email input |
-| `src/pages/SettingsPage.tsx` | 145-150 | Phone input |
-| `src/pages/SettingsPage.tsx` | 155-160 | Bio textarea |
-| `src/pages/SettingsPage.tsx` | 224-229 | Current password input |
-| `src/pages/SettingsPage.tsx` | 233-238 | New password input |
-| `src/pages/SettingsPage.tsx` | 241-246 | Confirm password input |
-| `src/pages/SettingsPage.tsx` | 387-392 | Currency `<select>` (label is a `<p>`, not `<label>`) |
-| `src/pages/SettingsPage.tsx` | 400-405 | Language `<select>` (label is a `<p>`, not `<label>`) |
-| `src/pages/SettingsPage.tsx` | 190-201 | 5 notification `<Switch>` toggles (no label association) |
-| `src/pages/SettingsPage.tsx` | 275, 285 | 2FA switches (no label association) |
-| `src/pages/SettingsPage.tsx` | 413 | Compact mode switch (no label association) |
-| `src/pages/InteractionShowcasePage.tsx` | 224-228 | "Your name" input |
-| `src/pages/InteractionShowcasePage.tsx` | 231-236 | "Message" textarea |
+| File                                    | Line(s)  | Elements                                                 |
+| --------------------------------------- | -------- | -------------------------------------------------------- |
+| `src/pages/SettingsPage.tsx`            | 123-127  | First name input                                         |
+| `src/pages/SettingsPage.tsx`            | 130-134  | Last name input                                          |
+| `src/pages/SettingsPage.tsx`            | 137-142  | Email input                                              |
+| `src/pages/SettingsPage.tsx`            | 145-150  | Phone input                                              |
+| `src/pages/SettingsPage.tsx`            | 155-160  | Bio textarea                                             |
+| `src/pages/SettingsPage.tsx`            | 224-229  | Current password input                                   |
+| `src/pages/SettingsPage.tsx`            | 233-238  | New password input                                       |
+| `src/pages/SettingsPage.tsx`            | 241-246  | Confirm password input                                   |
+| `src/pages/SettingsPage.tsx`            | 387-392  | Currency `<select>` (label is a `<p>`, not `<label>`)    |
+| `src/pages/SettingsPage.tsx`            | 400-405  | Language `<select>` (label is a `<p>`, not `<label>`)    |
+| `src/pages/SettingsPage.tsx`            | 190-201  | 5 notification `<Switch>` toggles (no label association) |
+| `src/pages/SettingsPage.tsx`            | 275, 285 | 2FA switches (no label association)                      |
+| `src/pages/SettingsPage.tsx`            | 413      | Compact mode switch (no label association)               |
+| `src/pages/InteractionShowcasePage.tsx` | 224-228  | "Your name" input                                        |
+| `src/pages/InteractionShowcasePage.tsx` | 231-236  | "Message" textarea                                       |
 
 **Fix**: Add matching `id` to each input and `htmlFor` to each label. For switches, wrap with `<label>` or use `aria-labelledby`.
 
@@ -95,21 +95,21 @@ All `<Label>` components in `SettingsPage.tsx` lack `htmlFor`, and all `<Input>`
 
 All Recharts visualizations lack text alternatives. Screen readers encounter opaque SVG graphics with no meaningful content.
 
-| File | Chart Type |
-|------|------------|
-| `src/components/dashboard/SummaryMetricCard.tsx` | BarChart |
-| `src/components/dashboard/SecondaryMetricCard.tsx` | BarChart |
-| `src/components/dashboard/AreaChartCard.tsx` | AreaChart (dual series) |
-| `src/components/dashboard/BarChartCard.tsx` | BarChart |
-| `src/components/dashboard/DonutChartCard.tsx` | PieChart |
-| `src/components/dashboard/GaugeCard.tsx` | RadialBarChart |
-| `src/components/dashboard/GroupedBarCard.tsx` | BarChart (grouped) |
-| `src/components/dashboard/RadialProgressCard.tsx` | RadialBarChart |
-| `src/components/dashboard/TrendLineCard.tsx` | LineChart |
-| `src/pages/StatsOverviewPage.tsx` | BarChart, PieChart, AreaChart |
-| `src/pages/PortfolioPage.tsx` | LineChart, PieChart |
-| `src/pages/FlowComparisonPage.tsx` | AreaChart, BarChart |
-| `src/pages/ProgressTrackingPage.tsx` | BarChart |
+| File                                               | Chart Type                    |
+| -------------------------------------------------- | ----------------------------- |
+| `src/components/dashboard/SummaryMetricCard.tsx`   | BarChart                      |
+| `src/components/dashboard/SecondaryMetricCard.tsx` | BarChart                      |
+| `src/components/dashboard/AreaChartCard.tsx`       | AreaChart (dual series)       |
+| `src/components/dashboard/BarChartCard.tsx`        | BarChart                      |
+| `src/components/dashboard/DonutChartCard.tsx`      | PieChart                      |
+| `src/components/dashboard/GaugeCard.tsx`           | RadialBarChart                |
+| `src/components/dashboard/GroupedBarCard.tsx`      | BarChart (grouped)            |
+| `src/components/dashboard/RadialProgressCard.tsx`  | RadialBarChart                |
+| `src/components/dashboard/TrendLineCard.tsx`       | LineChart                     |
+| `src/pages/StatsOverviewPage.tsx`                  | BarChart, PieChart, AreaChart |
+| `src/pages/PortfolioPage.tsx`                      | LineChart, PieChart           |
+| `src/pages/FlowComparisonPage.tsx`                 | AreaChart, BarChart           |
+| `src/pages/ProgressTrackingPage.tsx`               | BarChart                      |
 
 **Fix**: Wrap each `<ResponsiveContainer>` in a `<div role="img" aria-label="...">` with a descriptive summary, or provide a visually-hidden `<table>` with the chart data.
 
@@ -117,10 +117,10 @@ All Recharts visualizations lack text alternatives. Screen readers encounter opa
 
 ### 4. Data Tables Built With `<div>` Instead of `<table>` -- RESOLVED
 
-| File | Line(s) | Description |
-|------|---------|-------------|
-| `src/pages/RecordListPage.tsx` | 22-24 | Transaction list uses CSS grid of `<div>`s with `<span>` column headers |
-| `src/pages/PortfolioPage.tsx` | 76-97 | Holdings list uses `<div>` elements |
+| File                           | Line(s) | Description                                                             |
+| ------------------------------ | ------- | ----------------------------------------------------------------------- |
+| `src/pages/RecordListPage.tsx` | 22-24   | Transaction list uses CSS grid of `<div>`s with `<span>` column headers |
+| `src/pages/PortfolioPage.tsx`  | 76-97   | Holdings list uses `<div>` elements                                     |
 
 Screen readers cannot navigate these as data tables. Column headers (`Transaction`, `Category`, `Date`, `Amount`, `Status`) are `<span>` elements, not `<th scope="col">`.
 
@@ -163,13 +163,13 @@ Screen readers cannot navigate these as data tables. Column headers (`Transactio
 
 ### 8. Progress Bars Missing ARIA Attributes (~5 instances) -- RESOLVED
 
-| File | Line(s) | Description |
-|------|---------|-------------|
-| `src/pages/CardShowcasePage.tsx` | 110-115 | Credit utilization bars |
-| `src/pages/ProgressTrackingPage.tsx` | 38-39 | Category budget bars |
-| `src/pages/TargetCardsPage.tsx` | 30-31 | Goal progress bars |
-| `src/components/dashboard/GaugeCard.tsx` | 33-58 | Credit score gauge |
-| `src/components/dashboard/RadialProgressCard.tsx` | 27-45 | Savings progress |
+| File                                              | Line(s) | Description             |
+| ------------------------------------------------- | ------- | ----------------------- |
+| `src/pages/CardShowcasePage.tsx`                  | 110-115 | Credit utilization bars |
+| `src/pages/ProgressTrackingPage.tsx`              | 38-39   | Category budget bars    |
+| `src/pages/TargetCardsPage.tsx`                   | 30-31   | Goal progress bars      |
+| `src/components/dashboard/GaugeCard.tsx`          | 33-58   | Credit score gauge      |
+| `src/components/dashboard/RadialProgressCard.tsx` | 27-45   | Savings progress        |
 
 All are purely visual `<div>` elements. Screen readers convey zero information.
 
@@ -181,12 +181,12 @@ All are purely visual `<div>` elements. Screen readers convey zero information.
 
 Information conveyed solely through color without text/pattern alternatives:
 
-| Pattern | Files | Issue |
-|---------|-------|-------|
-| Income vs. Expense | `RecentListCard.tsx`, `RecordListPage.tsx`, `AccountsPage.tsx` | Green/red color + small arrow icon only |
+| Pattern                  | Files                                                                                       | Issue                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Income vs. Expense       | `RecentListCard.tsx`, `RecordListPage.tsx`, `AccountsPage.tsx`                              | Green/red color + small arrow icon only                                          |
 | Positive/Negative trends | `SummaryMetricCard.tsx`, `SecondaryMetricCard.tsx`, `TrendLineCard.tsx`, `ItemListCard.tsx` | `text-success`/`text-destructive` color only (+ sign prefix partially mitigates) |
-| Chart data series | `AreaChartCard.tsx`, `GroupedBarCard.tsx`, `DonutChartCard.tsx` | Color-only differentiation between series |
-| Gauge rating | `GaugeCard.tsx` | Score label color varies (green/amber/red) |
+| Chart data series        | `AreaChartCard.tsx`, `GroupedBarCard.tsx`, `DonutChartCard.tsx`                             | Color-only differentiation between series                                        |
+| Gauge rating             | `GaugeCard.tsx`                                                                             | Score label color varies (green/amber/red)                                       |
 
 **Fix**: Add visually-hidden text (e.g., "Income:", "Expense:", "increased by", "decreased by"), or use patterns/shapes in addition to color.
 
@@ -221,11 +221,11 @@ Information conveyed solely through color without text/pattern alternatives:
 
 ### 12. Heading Hierarchy Problems
 
-| Issue | Files |
-|-------|-------|
+| Issue                                                              | Files                                                                                                                                             |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<h2>` used for data values (`$8,800`) instead of section headings | `SummaryMetricCard.tsx`, `SecondaryMetricCard.tsx`, `BarChartCard.tsx`, `TrendLineCard.tsx`, `ProgressTrackingPage.tsx`, `FlowComparisonPage.tsx` |
-| `<h3>` used directly under `<h1>` (skipping `<h2>`) | `StatsOverviewPage.tsx` |
-| No headings at all in page content | `DashboardPage.tsx`, `RecordListPage.tsx` |
+| `<h3>` used directly under `<h1>` (skipping `<h2>`)                | `StatsOverviewPage.tsx`                                                                                                                           |
+| No headings at all in page content                                 | `DashboardPage.tsx`, `RecordListPage.tsx`                                                                                                         |
 
 **Fix**: Use `<p>` or `<span>` for data values, ensure sequential heading hierarchy (h1 > h2 > h3).
 
@@ -233,12 +233,12 @@ Information conveyed solely through color without text/pattern alternatives:
 
 ### 13. Missing Semantic Landmarks
 
-| Issue | Files |
-|-------|-------|
-| `<aside>` lacks `aria-label` | `AppSidebar.tsx` |
-| Standalone pages missing `<main>` | `BadgeLoginPage.tsx`, `NotFound.tsx` |
+| Issue                                      | Files                                                                                                                                                                                    |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<aside>` lacks `aria-label`               | `AppSidebar.tsx`                                                                                                                                                                         |
+| Standalone pages missing `<main>`          | `BadgeLoginPage.tsx`, `NotFound.tsx`                                                                                                                                                     |
 | Pages are `<div>` soup with no `<section>` | `DashboardPage.tsx`, `AccountsPage.tsx`, `StatsOverviewPage.tsx`, `ProgressTrackingPage.tsx`, `FlowComparisonPage.tsx`, `HelpPage.tsx`, `PalettePage.tsx`, `InteractionShowcasePage.tsx` |
-| Settings `<nav>` lacks `aria-label` | `SettingsPage.tsx` |
+| Settings `<nav>` lacks `aria-label`        | `SettingsPage.tsx`                                                                                                                                                                       |
 
 **Fix**: Add `aria-label` to landmarks, wrap standalone pages in `<main>`, use `<section aria-labelledby="...">` for logical groupings.
 
@@ -254,11 +254,11 @@ All Lucide icons throughout the project lack explicit `aria-hidden="true"`. Whil
 
 ### 15. Color Contrast Concerns
 
-| Element | Files | Risk |
-|---------|-------|------|
-| `text-muted-foreground` at small sizes | Multiple files | May fail 4.5:1 ratio |
-| 10-11px text (`text-[10px]`, `text-[11px]`) | `RecordListPage.tsx`, `AppSidebar.tsx` | Requires 4.5:1 at this size |
-| `text-yellow-500` on `bg-yellow-500/10` | `RecordListPage.tsx` | Likely insufficient contrast |
+| Element                                     | Files                                  | Risk                         |
+| ------------------------------------------- | -------------------------------------- | ---------------------------- |
+| `text-muted-foreground` at small sizes      | Multiple files                         | May fail 4.5:1 ratio         |
+| 10-11px text (`text-[10px]`, `text-[11px]`) | `RecordListPage.tsx`, `AppSidebar.tsx` | Requires 4.5:1 at this size  |
+| `text-yellow-500` on `bg-yellow-500/10`     | `RecordListPage.tsx`                   | Likely insufficient contrast |
 
 **Fix**: Audit with a contrast checker tool. Ensure minimum 4.5:1 for normal text and 3:1 for large text.
 
@@ -266,11 +266,11 @@ All Lucide icons throughout the project lack explicit `aria-hidden="true"`. Whil
 
 ### 16. Non-Focusable Interactive Elements
 
-| File | Line(s) | Element |
-|------|---------|---------|
-| `src/components/AppSidebar.tsx` | 262 | Avatar with `cursor-pointer` -- not a button, no tabIndex |
-| `src/pages/HelpPage.tsx` | 19-24 | Resource cards with `cursor-pointer` -- plain `<div>`, not keyboard accessible |
-| `src/components/dashboard/RecentListCard.tsx` | 21 | "View All" `<span>` with `cursor-pointer` -- not focusable |
+| File                                          | Line(s) | Element                                                                        |
+| --------------------------------------------- | ------- | ------------------------------------------------------------------------------ |
+| `src/components/AppSidebar.tsx`               | 262     | Avatar with `cursor-pointer` -- not a button, no tabIndex                      |
+| `src/pages/HelpPage.tsx`                      | 19-24   | Resource cards with `cursor-pointer` -- plain `<div>`, not keyboard accessible |
+| `src/components/dashboard/RecentListCard.tsx` | 21      | "View All" `<span>` with `cursor-pointer` -- not focusable                     |
 
 **Fix**: Use `<button>` or `<a>` for interactive elements. If using `<div>`, add `role="button"`, `tabIndex={0}`, and `onKeyDown` handler.
 

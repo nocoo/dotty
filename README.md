@@ -30,13 +30,13 @@ Dotty 是 React 数据看板模板和界面示例集，适合为管理后台、�
 
 打开[在线示例](https://dotty.hexly.ai)，从侧栏浏览各类页面。登录表单、统计指标和业务操作都属于模板演示。
 
-| 示例 | 路由 |
-| --- | --- |
-| Dashboard 与组件 | `/`、`/components` |
-| 控件、数据、表单、导航 | `/interactive`、`/data`、`/forms`、`/navigation` |
+| 示例                   | 路由                                                                |
+| ---------------------- | ------------------------------------------------------------------- |
+| Dashboard 与组件       | `/`、`/components`                                                  |
+| 控件、数据、表单、导航 | `/interactive`、`/data`、`/forms`、`/navigation`                    |
 | 账户、进度、流向、持仓 | `/accounts`、`/progress-tracking`、`/flow-comparison`、`/portfolio` |
-| 场景页面 | `/health`、`/wearable`、`/banking`、`/network` |
-| 布局与主题参考 | `/layout`、`/palette`、`/settings` |
+| 场景页面               | `/health`、`/wearable`、`/banking`、`/network`                      |
+| 布局与主题参考         | `/layout`、`/palette`、`/settings`                                  |
 
 用于自己的项目时，从 `src/pages/` 选择页面与组件，替换 `src/data/mock.ts` 以及页面内的示例数据，再添加自己的数据访问与认证。
 
@@ -68,9 +68,9 @@ bun run preview
 
 ## 测试
 
-| 测试层 | 命令 |
-| --- | --- |
-| 单元与组件测试 | `bun run test` |
+| 测试层         | 命令                 |
+| -------------- | -------------------- |
+| 单元与组件测试 | `bun run test`       |
 | 开发时持续运行 | `bun run test:watch` |
 
 测试使用 Vitest、jsdom 与 Testing Library，读取本地示例数据，不需要云服务。可用 `bun run test:coverage` 查看 models、viewmodels 和 lib 的覆盖率报告。仓库当前没有独立的 API 或浏览器端到端测试入口。
@@ -83,12 +83,12 @@ bun run preview
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-22B5BF)
 
-| 部分 | 实现 |
-| --- | --- |
-| 应用与路由 | React、TypeScript、React Router |
-| 构建与样式 | Vite、SWC、Tailwind CSS、Radix UI |
-| 图表与国际化 | Recharts、PixelBarChart、i18next / react-i18next |
-| 开发与托管 | Bun、Biome、Vitest、Testing Library、Cloudflare Workers 静态资源 |
+| 部分         | 实现                                                             |
+| ------------ | ---------------------------------------------------------------- |
+| 应用与路由   | React、TypeScript、React Router                                  |
+| 构建与样式   | Vite、SWC、Tailwind CSS、Radix UI                                |
+| 图表与国际化 | Recharts、PixelBarChart、i18next / react-i18next                 |
+| 开发与托管   | Bun、Biome、Vitest、Testing Library、Cloudflare Workers 静态资源 |
 
 ## 文档
 
