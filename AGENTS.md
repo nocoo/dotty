@@ -29,7 +29,7 @@ This file is the contract; hooks, CI and configuration enforce it. Raise weaker 
 
 | Component                                    | Choice                                                  |
 | -------------------------------------------- | ------------------------------------------------------- |
-| Language / install                           | TypeScript 7; Bun manifest 1.3.6, current CI/CD 1.4.2   |
+| Language / install                           | TypeScript 7; Bun manifest 1.4.2, current CI/CD 1.4.2   |
 | App                                          | Vite 8, React Router, Tailwind/Radix, i18next, Recharts |
 | Static / tests                               | TypeScript, Biome, Vitest/V8, jsdom/Testing Library     |
 | `src/pages/`, `src/components/`              | Demo pages and reusable dashboard elements              |
