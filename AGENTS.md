@@ -8,13 +8,13 @@ Human overview: [README.md](README.md). Frameworks must not rewrite this file. M
 
 This file is the contract; hooks, CI and configuration enforce it. Raise weaker enforcement instead of lowering this contract.
 
-| Fact | Where |
-|---|---|
-| Human docs | [README.md](README.md), [accessibility audit](docs/accessibility-audit.md), `CHANGELOG.md` |
-| Version | `package.json`, injected as `__APP_VERSION__` by Vite/Vitest |
-| Enforcement | `.husky/`, CI/release workflows, `vitest.config.ts`, `vite.config.ts` |
-| Machine rules | Global `AGENTS.md` and `rules/` |
-| Accidents | [Retrospective.md](Retrospective.md) |
+| Fact          | Where                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| Human docs    | [README.md](README.md), [accessibility audit](docs/accessibility-audit.md), `CHANGELOG.md` |
+| Version       | `package.json`, injected as `__APP_VERSION__` by Vite/Vitest                               |
+| Enforcement   | `.husky/`, CI/release workflows, `vitest.config.ts`, `vite.config.ts`                      |
+| Machine rules | Global `AGENTS.md` and `rules/`                                                            |
+| Accidents     | [Retrospective.md](Retrospective.md)                                                       |
 
 ## Project Invariants
 
@@ -27,14 +27,14 @@ This file is the contract; hooks, CI and configuration enforce it. Raise weaker 
 
 ## Stack / Layout
 
-| Component | Choice |
-|---|---|
-| Language / install | TypeScript 7; Bun manifest 1.3.6, current CI/CD 1.4.2 |
-| App | Vite 8, React Router, Tailwind/Radix, i18next, Recharts |
-| Static / tests | TypeScript, Biome, Vitest/V8, jsdom/Testing Library |
-| `src/pages/`, `src/components/` | Demo pages and reusable dashboard elements |
-| `src/models/`, `src/viewmodels/`, `src/lib/` | Logic and presentation state |
-| `src/data/mock.ts`, `src/i18n/locales/` | Example data and English/Chinese copy |
+| Component                                    | Choice                                                  |
+| -------------------------------------------- | ------------------------------------------------------- |
+| Language / install                           | TypeScript 7; Bun manifest 1.4.2, current CI/CD 1.4.2   |
+| App                                          | Vite 8, React Router, Tailwind/Radix, i18next, Recharts |
+| Static / tests                               | TypeScript, Biome, Vitest/V8, jsdom/Testing Library     |
+| `src/pages/`, `src/components/`              | Demo pages and reusable dashboard elements              |
+| `src/models/`, `src/viewmodels/`, `src/lib/` | Logic and presentation state                            |
+| `src/data/mock.ts`, `src/i18n/locales/`      | Example data and English/Chinese copy                   |
 
 ## Commands
 
@@ -57,20 +57,20 @@ bun run preview
 
 6DQ = L1/L2/L3 + G2 + D1; the former G1 dimension was merged into L1 on 2026-09-21. Status: `enforced`, `planned`, `manual`, `N/A`.
 
-| Dimension | Required proof | Status | Current enforcement / gap |
-|---|---|---|---|
-| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | planned | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing. Static lane: local pre-commit and CI run the real typecheck and strict lint commands. No index-snapshot/timing/rejection proof |
-| L2 HTTP | Real HTTP for the status response and SPA asset contract | planned | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract |
-| L3 UI | Critical navigation, theme/language, forms and chart journeys | planned | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A |
-| G2 security | Secret and dependency scans; missing scanner fails | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans |
-| D1 isolation | Per-run local browser/storage state; no production/daily-dev data | planned | Unit tests use mock data in jsdom; isolated HTTP/browser harness and cleanup guards are absent |
-| Build | Real Vite bundle and status asset | enforced | Pre-push build and CI prepare-command; release workflow rebuilds proven source |
-| Docs | UI and accessibility contract reviewed | manual | README/accessibility notes when behavior changes |
+| Dimension                         | Required proof                                                                                                                        | Status   | Current enforcement / gap                                                                                                                                                                                                                   |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | planned  | Push/CI enforce all four metrics on models/viewmodels/lib; broader UI proof and skip/focus gate are missing. Static lane: local pre-commit and CI run the real typecheck and strict lint commands. No index-snapshot/timing/rejection proof |
+| L2 HTTP                           | Real HTTP for the status response and SPA asset contract                                                                              | planned  | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract                                                                                                                                      |
+| L3 UI                             | Critical navigation, theme/language, forms and chart journeys                                                                         | planned  | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A                                                                                                                                                   |
+| G2 security                       | Secret and dependency scans; missing scanner fails                                                                                    | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans                                                                                                                                                                       |
+| D1 isolation                      | Per-run local browser/storage state; no production/daily-dev data                                                                     | planned  | Unit tests use mock data in jsdom; isolated HTTP/browser harness and cleanup guards are absent                                                                                                                                              |
+| Build                             | Real Vite bundle and status asset                                                                                                     | enforced | Pre-push build and CI prepare-command; release workflow rebuilds proven source                                                                                                                                                              |
+| Docs                              | UI and accessibility contract reviewed                                                                                                | manual   | README/accessibility notes when behavior changes                                                                                                                                                                                            |
 
-| Hook | Current behavior | Required follow-up |
-|---|---|---|
+| Hook       | Current behavior                                                    | Required follow-up                                                    |
+| ---------- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | pre-commit | Working-tree typecheck/lint/tests without coverage; staged Gitleaks | Unified L1 (types, check-only lint, coverage) on index snapshot, <30s |
-| pre-push | Working-tree build/coverage/lint, OSV | L2+G2 on stdin push refs, <3min |
+| pre-push   | Working-tree build/coverage/lint, OSV                               | L2+G2 on stdin push refs, <3min                                       |
 
 Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
 CI uses `base-ci/quality.yml@ac635753a869cb85fad1f52aae4ccbd6119f3cae` with the real `bun run typecheck` command.

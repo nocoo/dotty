@@ -28,12 +28,10 @@ export interface PieChartWidgetProps {
 }
 
 const createPieSectorShape = (chartData: Array<{ fill: string }>) => {
-	const PieSectorShape = (props: PieSectorShapeProps) => {
+	return (props: PieSectorShapeProps) => {
 		const fill = chartData[props.index]?.fill ?? CHART_COLORS[props.index % CHART_COLORS.length];
 		return <Sector {...props} fill={fill} />;
 	};
-	PieSectorShape.displayName = "PieSectorShape";
-	return PieSectorShape;
 };
 
 export function PieChartWidget({

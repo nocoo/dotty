@@ -30,13 +30,13 @@ The project is a static SPA with sample data. Health, finance, network, and logi
 
 Open the [live example](https://dotty.hexly.ai) and explore pages from the sidebar. Login forms, metrics, and business actions are template demonstrations.
 
-| Examples | Routes |
-| --- | --- |
-| Dashboard and components | `/`, `/components` |
-| Controls, data, forms, navigation | `/interactive`, `/data`, `/forms`, `/navigation` |
+| Examples                             | Routes                                                              |
+| ------------------------------------ | ------------------------------------------------------------------- |
+| Dashboard and components             | `/`, `/components`                                                  |
+| Controls, data, forms, navigation    | `/interactive`, `/data`, `/forms`, `/navigation`                    |
 | Accounts, progress, flows, portfolio | `/accounts`, `/progress-tracking`, `/flow-comparison`, `/portfolio` |
-| Scenario pages | `/health`, `/wearable`, `/banking`, `/network` |
-| Layout and theme references | `/layout`, `/palette`, `/settings` |
+| Scenario pages                       | `/health`, `/wearable`, `/banking`, `/network`                      |
+| Layout and theme references          | `/layout`, `/palette`, `/settings`                                  |
 
 For your own project, select pages and components from `src/pages/`, replace `src/data/mock.ts` and page-level sample data, then add your own data access and authentication.
 
@@ -68,9 +68,9 @@ The build output is `dist/`. Configure static hosting to fall back to `index.htm
 
 ## Tests
 
-| Layer | Command |
-| --- | --- |
-| Unit and component tests | `bun run test` |
+| Layer                    | Command              |
+| ------------------------ | -------------------- |
+| Unit and component tests | `bun run test`       |
 | Watch during development | `bun run test:watch` |
 
 Tests use Vitest, jsdom, and Testing Library with local sample data and need no cloud services. Run `bun run test:coverage` for a report on models, viewmodels, and lib. The repository currently has no separate API or browser end-to-end test entry point.
@@ -83,11 +83,11 @@ Tests use Vitest, jsdom, and Testing Library with local sample data and need no 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-22B5BF)
 
-| Area | Implementation |
-| --- | --- |
-| Application and routing | React, TypeScript, React Router |
-| Build and styling | Vite, SWC, Tailwind CSS, Radix UI |
-| Charts and localization | Recharts, PixelBarChart, i18next / react-i18next |
+| Area                    | Implementation                                                        |
+| ----------------------- | --------------------------------------------------------------------- |
+| Application and routing | React, TypeScript, React Router                                       |
+| Build and styling       | Vite, SWC, Tailwind CSS, Radix UI                                     |
+| Charts and localization | Recharts, PixelBarChart, i18next / react-i18next                      |
 | Development and hosting | Bun, Biome, Vitest, Testing Library, Cloudflare Workers static assets |
 
 ## Documentation
