@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.5] - 2026-11-03
+
+### Changed
+
+- Dependency maintenance: `i18next-browser-languagedetector` 8.2.2 → 8.3.0,
+  `postcss` 8.5.31 → 8.5.32, `wrangler` 4.152.0 → 4.156.2, `react-router`
+  8.5.0 → 8.5.1, `@types/node` 26.6.5 → 26.6.6, `@biomejs/biome` 2.6.3 → 2.6.4.
+
 ## [1.3.1] - 2026-09-11
 
 ### Added
