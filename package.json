@@ -68,7 +68,7 @@
 		"i18next": "26.5.10",
 		"i18next-browser-languagedetector": "8.3.0",
 		"lucide-react": "1.61.0",
-		"postcss": "8.5.31",
+		"postcss": "8.5.32",
 		"react": "19.3.1",
 		"react-dom": "19.3.1",
 		"react-i18next": "17.1.8",
