@@ -207,6 +207,7 @@ Information conveyed solely through color without text/pattern alternatives:
 ### 11. Theme Selector Missing Radio Group Semantics -- RESOLVED
 
 `src/pages/SettingsPage.tsx:349-365` -- Light/Dark/System buttons behave as a radio group but lack:
+
 - `role="radiogroup"` on parent
 - `role="radio"` on each button
 - `aria-checked` for the selected option
