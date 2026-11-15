@@ -55,17 +55,22 @@ bun run preview
 
 ## Verification
 
-6DQ = L1/L2/L3 + G2 + D1; the former G1 dimension was merged into L1 on 2026-09-21. Status: `enforced`, `planned`, `manual`, `N/A`.
+Quality follows System1 v1.3.0 Native Mode (`nocoo/base-ci v2026.15`) in `.github/workflows/quality-slots.yml` and `.github/workflows/ci.yml`. Status: `enforced`, `planned`, `manual`, `N/A`.
 
-| Dimension                         | Required proof                                                                                                                        | Status   | Current enforcement / gap                                                                                                                                                                                                                                                |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| L1 logic (incl. former G1 static) | Statements, branches, functions and lines each ≥95%; no `.skip` / `.only`; strict types and check-only lint with zero errors/warnings | enforced | Pre-commit gates a `checkout-index` snapshot: `typecheck`, `biome check --error-on-warnings`, `test:coverage` with Vitest 95/95/95/95 on models/viewmodels/lib, plus staged Gitleaks. Push/CI also enforce coverage; skip/focus gate and broader UI proof remain planned |
-| L2 HTTP                           | Real HTTP for the status response and SPA asset contract                                                                              | planned  | A real `/api/live` surface exists; no HTTP runner currently verifies its status/version/cache contract                                                                                                                                                                   |
-| L3 UI                             | Critical navigation, theme/language, forms and chart journeys                                                                         | planned  | No browser E2E entrypoint exists; absence of Playwright does not make UI verification N/A                                                                                                                                                                                |
-| G2 security                       | Secret and dependency scans; missing scanner fails                                                                                    | enforced | Staged Gitleaks at commit, OSV on `bun.lock` at push, shared CI scans                                                                                                                                                                                                    |
-| D1 isolation                      | Per-run local browser/storage state; no production/daily-dev data                                                                     | planned  | Unit tests use mock data in jsdom; isolated HTTP/browser harness and cleanup guards are absent                                                                                                                                                                           |
-| Build                             | Real Vite bundle and status asset                                                                                                     | enforced | Pre-push build and CI prepare-command; release workflow rebuilds proven source                                                                                                                                                                                           |
-| Docs                              | UI and accessibility contract reviewed                                                                                                | manual   | README/accessibility notes when behavior changes                                                                                                                                                                                                                         |
+| Slot              | Status   | Evidence                                                                          |
+| ----------------- | -------- | --------------------------------------------------------------------------------- |
+| `S1` Types        | enforced | `bun run typecheck` (pre-commit + CI)                                             |
+| `S2` Lint         | enforced | `bun run lint` (`biome check --error-on-warnings`, pre-commit + CI)               |
+| `S3` Workflow     | enforced | SHA-pinned workflow action check in CI                                            |
+| `G1` Secrets      | enforced | `gitleaks` (`.gitleaks.toml`) in pre-commit + CI                                  |
+| `G2` Dependencies | enforced | `osv-scanner` (`osv-scanner.toml`, `bun.lock`) in pre-push + CI                   |
+| `B1` Build        | enforced | `bun run build` in pre-push + CI                                                  |
+| `L1` Unit         | enforced | `bun run test:coverage` (95/95/95/95 on models/viewmodels/lib) in pre-commit + CI |
+| `L2` Runtime      | N/A      | Static assets deployed to Cloudflare Worker                                       |
+| `L3` Integration  | planned  | `/api/live` surface exists; no CI HTTP runner yet                                 |
+| `L4` E2E          | planned  | No Playwright E2E suite yet                                                       |
+| `P1` Package      | N/A      | Private repo, not published to npm                                                |
+| `Z1` Gate         | enforced | `quality / Z1: Gate` required status check on `main`                              |
 
 | Hook       | Current behavior                                                  | Required follow-up                                                               |
 | ---------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -73,7 +78,6 @@ bun run preview
 | pre-push   | Working-tree build/coverage/lint, OSV                             | L2+G2 on stdin push refs, <3min                                                  |
 
 Install restores Husky. `lint-staged` configuration is unused. Hooks are check-only; never use `--no-verify` on commits or branch pushes.
-CI uses `base-ci/quality.yml@ac635753a869cb85fad1f52aae4ccbd6119f3cae` with the real `bun run typecheck` command.
 
 ## Resources / Isolation
 

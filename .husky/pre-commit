@@ -1,5 +1,5 @@
 # === Quality Gate: pre-commit ===
-# L1 (6DQ): typecheck, lint, unit coverage, staged secrets — Git index snapshot, not working tree.
+# L1: typecheck, lint, unit coverage, staged secrets — Git index snapshot, not working tree.
 set -e
 command -v git >/dev/null 2>&1 || {
 	echo "pre-commit: git is required" >&2
