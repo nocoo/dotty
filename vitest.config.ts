@@ -14,6 +14,8 @@ export default defineConfig({
 		__APP_VERSION__: JSON.stringify(getVersion()),
 	},
 	test: {
+		allowOnly: false,
+		passWithNoTests: false,
 		environment: "jsdom",
 		globals: true,
 		setupFiles: ["./src/test/setup.ts"],
