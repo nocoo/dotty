@@ -14,6 +14,7 @@ bun run typecheck               # S1
 bun run lint                    # S2 biome check --error-on-warnings
 bun run test                    # vitest run
 bun run test:coverage           # L1 >= 95% on models/viewmodels/lib
+bun run test:e2e                # L4 Playwright smoke suite against dist/
 bun run build                   # B1 emits dist/ incl. api/live.json
 bun run preview
 ```
@@ -35,18 +36,18 @@ bun run preview
 
 Follows `system1-quality`; CI slot definitions and pinned `base-ci` revision live in [quality-slots.yml](.github/workflows/quality-slots.yml) (`quality / Z1: Gate` required on `main`). Status vocabulary: `enforced`, `planned`, `manual`, `N/A`.
 
-- **Exceptions / gaps**: `L2 Runtime` is `N/A` (static assets on Cloudflare Worker); `P1 Package` is `N/A` (private repo); `L3 Integration` (`/api/live` HTTP) and `L4 E2E` (Playwright) are `planned`.
+- **Exceptions / gaps**: `L2 Runtime` is `N/A` (static assets on Cloudflare Worker); `L3 Integration` (`/api/live` HTTP) is `planned`; `L4 E2E` (Playwright) and `P1 Package` (`wrangler deploy --dry-run`) are `enforced`.
 - **Coverage boundary**: L1 enforces 95/95/95/95 on `src/models/`, `src/viewmodels/`, `src/lib/` (excl. `src/models/types.ts`); `src/pages/`, `src/components/`, and browser journeys need their own proof.
 - **Local hooks**: Husky (`.husky/`, restored by `bun install`; `lint-staged` is unused) is check-only; never use `--no-verify`.
 - **Hook scope & gaps**: `pre-commit` checks staged index (`S1/S2/G1/L1`; gap: negative rejection proof, <30s timing); `pre-push` runs working-tree `B1/L1/S2` + `G2` (gap: stdin pushed refs, <3min).
 
 ## Resources & Isolation
 
-| Lane  | Endpoint / State                                           | Boundary                                                                   |
-| ----- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Dev   | `127.0.0.1:7002` (`https://dotty.dev.hexly.ai`), mock data | Local dev only (not port `7017`); no `.env` or remote state                |
-| Tests | Vitest `jsdom`; future `L3`/`L4` separate local server     | Isolated browser context/storage + scoped cleanup; no remote `-test` infra |
-| Prod  | `https://dotty.hexly.ai` (`theme-dotty` Worker)            | Read-only checks unless release is authorized; CI `release.yml` only       |
+| Lane  | Endpoint / State                                                                              | Boundary                                                                   |
+| ----- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Dev   | `127.0.0.1:7002` (`https://dotty.dev.hexly.ai`), mock data                                    | Local dev only (not port `7017`); no `.env` or remote state                |
+| Tests | Vitest `jsdom`; L4 Playwright against local `dist` preview; future `L3` separate local server | Isolated browser context/storage + scoped cleanup; no remote `-test` infra |
+| Prod  | `https://dotty.hexly.ai` (`theme-dotty` Worker)                                               | Read-only checks unless release is authorized; CI `release.yml` only       |
 
 ## Retrospective
 
