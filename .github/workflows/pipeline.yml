@@ -1,0 +1,44 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy after quality gate passes
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  quality:
+    uses: ./.github/workflows/quality-slots.yml
+
+  deploy:
+    needs: [quality]
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.deploy == true)
+    uses: nocoo/base-ci/.github/workflows/deploy-worker.yml@3703a073693d598159e87f77f99587e586c14cfe # v2026.24
+    with:
+      runtime-version: "1.4.2"
+      install-policy: "blocked"
+      artifact-name: dotty-dist
+      artifact-path: dist
+      environment: production
+      concurrency-group: deploy-dotty-production
+      timeout-minutes: 15
+      verify-command: |
+        EXPECTED=$(jq -r .version package.json)
+        HTTP=$(curl -fsS -o /tmp/live.json -w "%{http_code}" https://dotty.hexly.ai/api/live || echo "000")
+        ACTUAL=$(jq -r .version /tmp/live.json 2>/dev/null || echo "?")
+        test "$HTTP" = "200" && test "$ACTUAL" = "$EXPECTED"
+      verify-retries: 6
+      verify-retry-seconds: 5
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -29,12 +29,12 @@ bun run preview
 - Cloudflare Worker `theme-dotty` (`wrangler.toml`) serves `./dist` with SPA fallback (`run_worker_first = ["/api/live"]`).
 - MVVM boundary: `src/viewmodels/` has no View/DOM imports and `src/pages/` stays thin (`src/models/`, `src/viewmodels/`, `src/lib/` hold logic/state); replace `src/data/mock.ts` deliberately when adapting.
 - Preserve the cold-gray palette, squared frame/rounded-card hierarchy, pixel charts, and bilingual EN/ZH copy (`src/i18n/locales/`).
-- Releases run via [release.yml](.github/workflows/release.yml) (`production` env, proven-source deploy; tag/manual paths verify source); never run a laptop `wrangler deploy`.
-- Release authorization requires bumping `package.json` and `CHANGELOG.md`, passing CI, pushing the matching `vX.Y.Z` tag, and confirming `GET https://dotty.hexly.ai/api/live` returns the target version.
+- Releases run via [pipeline.yml](.github/workflows/pipeline.yml) (`deploy` job, `D1`–`D5` via `deploy-worker.yml` on `main` push after `quality / Z1: Gate` passes, or `workflow_dispatch` with `deploy=true`; reuses `dotty-dist` without rebuilding and verifies `https://dotty.hexly.ai/api/live`); never run a laptop `wrangler deploy`.
+- Release authorization requires bumping `package.json` and `CHANGELOG.md`, passing CI, pushing to `main`, and confirming `GET https://dotty.hexly.ai/api/live` returns the target version.
 
 ## Quality & Local Gates
 
-Follows `system1-quality`; CI slot definitions and pinned `base-ci` revision live in [quality-slots.yml](.github/workflows/quality-slots.yml) (`quality / Z1: Gate` required on `main`). Status vocabulary: `enforced`, `planned`, `manual`, `N/A`.
+Follows `system1-quality`; CI slot definitions and pinned `base-ci` revision live in [quality-slots.yml](.github/workflows/quality-slots.yml) (called by [pipeline.yml](.github/workflows/pipeline.yml); `quality / Z1: Gate` required on `main`). Status vocabulary: `enforced`, `planned`, `manual`, `N/A`.
 
 - **Exceptions / gaps**: `L2 Runtime` is `N/A` (static assets on Cloudflare Worker); `L3 Integration` (`/api/live` HTTP) is `planned`; `L4 E2E` (Playwright) and `P1 Package` (`wrangler deploy --dry-run`) are `enforced`.
 - **Coverage boundary**: L1 enforces 95/95/95/95 on `src/models/`, `src/viewmodels/`, `src/lib/` (excl. `src/models/types.ts`); `src/pages/`, `src/components/`, and browser journeys need their own proof.
@@ -47,7 +47,7 @@ Follows `system1-quality`; CI slot definitions and pinned `base-ci` revision liv
 | ----- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Dev   | `127.0.0.1:7002` (`https://dotty.dev.hexly.ai`), mock data                                    | Local dev only (not port `7017`); no `.env` or remote state                |
 | Tests | Vitest `jsdom`; L4 Playwright against local `dist` preview; future `L3` separate local server | Isolated browser context/storage + scoped cleanup; no remote `-test` infra |
-| Prod  | `https://dotty.hexly.ai` (`theme-dotty` Worker)                                               | Read-only checks unless release is authorized; CI `release.yml` only       |
+| Prod  | `https://dotty.hexly.ai` (`theme-dotty` Worker)                                               | Read-only checks unless release is authorized; CI `pipeline.yml` only      |
 
 ## Retrospective
 
